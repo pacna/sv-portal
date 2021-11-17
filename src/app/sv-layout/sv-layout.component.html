@@ -3,11 +3,12 @@
       <h1>Angular Shadowverse Portal</h1>
     </mat-toolbar>
     <nav mat-tab-nav-bar [color]="'accent'">
-        <a mat-tab-link *ngFor="let link of navLinks"
-        (click)="activeLink = link"
+        <a mat-tab-link 
+        *ngFor="let link of navLinks"
         [routerLink]="link.routeLink"
         routerLinkActive
-        [active]="activeLink == link">
+        #rla="routerLinkActive"
+        [active]="rla.isActive">
        {{link.routeName}} </a>
     </nav>
 </div>
