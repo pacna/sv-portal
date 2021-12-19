@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SVLayoutComponent } from './sv-layout/sv-layout.component';
+import { SVLayoutComponent } from './shared/components/sv-layout/sv-layout.component';
 import { ForestcraftComponent } from './forestcraft/forestcraft.component';
 import { SwordcraftComponent } from './swordcraft/swordcraft.component';
 import { RunecraftComponent } from './runecraft/runecraft.component';
@@ -16,6 +17,7 @@ import { BloodcraftComponent } from './bloodcraft/bloodcraft.component';
 import { HavencraftComponent } from './havencraft/havencraft.component';
 import { PortalcraftComponent } from './portalcraft/portalcraft.component';
 import { NeutralComponent } from './neutral/neutral.component';
+import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,7 @@ import { NeutralComponent } from './neutral/neutral.component';
     HavencraftComponent,
     PortalcraftComponent,
     NeutralComponent,
+    TopNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,8 @@ import { NeutralComponent } from './neutral/neutral.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatTabsModule,
+    MatListModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,11 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SVLayoutComponent implements OnInit {
   navLinks: SVNavigationMenu[] = MENU;
-  activeLink: SVNavigationMenu;
-
   constructor() {}
 
-  ngOnInit(): void {
-    this.activeLink = this.navLinks[0];
-  }
+  ngOnInit(): void {}
 }
