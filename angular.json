@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-sv-portal",
+            "outputPath": "dist/angular-sv-portal/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -115,6 +115,65 @@
               "devServerTarget": "angular-sv-portal:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/angular-sv-portal/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "optimization": false,
+            "sourceMap": true,
+            "extractLicenses": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "angular-sv-portal:build:development",
+              "serverTarget": "angular-sv-portal:server:development"
+            },
+            "production": {
+              "browserTarget": "angular-sv-portal:build:production",
+              "serverTarget": "angular-sv-portal:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-sv-portal:build:production",
+              "serverTarget": "angular-sv-portal:server:production"
+            },
+            "development": {
+              "browserTarget": "angular-sv-portal:build:development",
+              "serverTarget": "angular-sv-portal:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }},

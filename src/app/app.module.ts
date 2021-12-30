@@ -34,7 +34,7 @@ import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
     TopNavComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
