@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shadowcraft',
+  selector: 'shadowcraft',
   templateUrl: './shadowcraft.component.html',
-  styleUrls: ['./shadowcraft.component.scss']
+  styleUrls: ['./shadowcraft.component.scss'],
 })
 export class ShadowcraftComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

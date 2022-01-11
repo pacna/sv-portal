@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-portalcraft',
+  selector: 'portalcraft',
   templateUrl: './portalcraft.component.html',
   styleUrls: ['./portalcraft.component.scss'],
 })

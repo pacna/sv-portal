@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dragoncraft',
+  selector: 'dragoncraft',
   templateUrl: './dragoncraft.component.html',
   styleUrls: ['./dragoncraft.component.scss'],
 })

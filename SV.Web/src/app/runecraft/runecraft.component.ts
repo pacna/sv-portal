@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-runecraft',
+  selector: 'runecraft',
   templateUrl: './runecraft.component.html',
   styleUrls: ['./runecraft.component.scss'],
 })

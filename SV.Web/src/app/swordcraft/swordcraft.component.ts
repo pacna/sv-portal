@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-swordcraft',
+  selector: 'swordcraft',
   templateUrl: './swordcraft.component.html',
-  styleUrls: ['./swordcraft.component.scss']
+  styleUrls: ['./swordcraft.component.scss'],
 })
 export class SwordcraftComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

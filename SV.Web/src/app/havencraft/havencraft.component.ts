@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-havencraft',
+  selector: 'havencraft',
   templateUrl: './havencraft.component.html',
   styleUrls: ['./havencraft.component.scss'],
 })

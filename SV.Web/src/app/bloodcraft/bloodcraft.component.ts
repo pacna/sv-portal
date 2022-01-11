@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-bloodcraft',
+  selector: 'bloodcraft',
   templateUrl: './bloodcraft.component.html',
   styleUrls: ['./bloodcraft.component.scss'],
 })
