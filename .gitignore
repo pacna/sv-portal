@@ -2,3 +2,51 @@
 SV.Server/bin
 SV.Server/obj
 SV.Server/server
+
+# SV.Web
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+SV.Web/dist
+SV.Web/tmp
+SV.Web/out-tsc
+# Only exists if Bazel was run
+SV.Web/bazel-out
+
+# dependencies
+SV.Web/node_modules
+
+# profiling files
+SV.Web/chrome-profiler-events*.json
+
+# IDEs and editors
+SV.Web/.idea
+SV.Web/.project
+SV.Web/.classpath
+SV.Web/.c9/
+SV.Web/*.launch
+SV.Web/.settings/
+SV.Web/*.sublime-workspace
+
+# IDE - VSCode
+SV.Web/.vscode/*
+SV.Web/!.vscode/settings.json
+SV.Web/!.vscode/tasks.json
+SV.Web/!.vscode/launch.json
+SV.Web/!.vscode/extensions.json
+SV.Web/.history/*
+
+# misc
+SV.Web/.angular/cache
+SV.Web/.sass-cache
+SV.Web/connect.lock
+SV.Web/coverage
+SV.Web/libpeerconnection.log
+SV.Web/npm-debug.log
+SV.Web/yarn-error.log
+SV.Web/testem.log
+SV.Web/typings
+
+# System Files
+SV.Web/.DS_Store
+SV.Web/Thumbs.db
