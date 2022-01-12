@@ -76,7 +76,8 @@
               "browserTarget": "SV.Web:build:production"
             },
             "development": {
-              "browserTarget": "SV.Web:build:development"
+              "browserTarget": "SV.Web:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

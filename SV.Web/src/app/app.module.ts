@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SVLayoutComponent } from './shared/components/sv-layout/sv-layout.component';
 import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, SVLayoutComponent, TopNavComponent],
   imports: [
@@ -19,6 +20,7 @@ import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
     MatTabsModule,
     MatListModule,
     MatGridListModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
