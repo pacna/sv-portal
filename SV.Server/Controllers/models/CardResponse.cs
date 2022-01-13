@@ -2,6 +2,7 @@ namespace SV.Server.Controllers.Models
 {
     public class CardResponse
     {
-        public string Name { get; set; }
+        public string Id { get; init; }
+        public string Name { get; init; }
     }
 }

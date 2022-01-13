@@ -1,13 +1,20 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
+using SV.Server.Repositories.Models;
 
 namespace SV.Server.Repositories
 {
     public class CardRepository : ICardRepository
     {
-        public async Task<CardResponse> SearchComics(CardSearchRequest request)
+        public async Task<List<Card>> SearchCards(CardSearchRequest request)
         {
-            return new CardResponse { Name = "Repo" };
+            return null;
+        }
+
+        public async Task<Card> AddCard(CardAddRequest request)
+        {
+            return new Card();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace SV.Server.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(List<CardResponse>))]
         public async Task<IActionResult> SearchCards([FromQuery] CardSearchRequest request)
         {
             return this.Ok(await this._service.SearchCards(request));
@@ -32,10 +33,10 @@ namespace SV.Server.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(statusCode: StatusCodes.Status201Created)]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
         public async Task<IActionResult> AddCard([FromBody] CardAddRequest request)
         {
-            return this.Ok("Success");
+            return this.Ok(await this._service.AddCard(request));
         }
 
         [HttpPut]

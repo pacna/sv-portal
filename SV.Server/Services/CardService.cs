@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories;
+using SV.Server.Repositories.Models;
 
 namespace SV.Server.Services
 {
@@ -12,9 +14,16 @@ namespace SV.Server.Services
             this._cardRepo = cardRepo;
         }
 
-        public async Task<CardResponse> SearchCards(CardSearchRequest request)
+        public async Task<List<CardResponse>> SearchCards(CardSearchRequest request)
         {
-            return await this._cardRepo.SearchComics(request);
+            List<Card> cards = await this._cardRepo.SearchCards(request);
+            return CardMapper.Map(cards: cards);
+        }
+
+        public async Task<CardResponse> AddCard(CardAddRequest request)
+        {
+            Card card = await this._cardRepo.AddCard(request);
+            return CardMapper.Map(card: card);
         }
     }
 }
