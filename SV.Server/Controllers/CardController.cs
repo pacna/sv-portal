@@ -29,7 +29,7 @@ namespace SV.Server.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
         public async Task<IActionResult> GetCard([FromRoute] string id)
         {
-            return this.Ok(id);
+            return this.Ok(await this._service.GetCard(id: id));
         }
 
         [HttpPost]
@@ -39,18 +39,20 @@ namespace SV.Server.Controllers
             return this.Ok(await this._service.AddCard(request));
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> UpdateCard([FromBody] CardUpdateRequest request)
+        public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardUpdateRequest request)
         {
-            return this.Ok("Success");
+            await this._service.UpdateCard(id: id, request: request);
+            return this.NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteCard([FromRoute] string id)
         {
-            return this.Ok("Success");
+            await this._service.RemoveCard(id: id);
+            return this.NoContent();
         }
     }
 }

@@ -7,6 +7,9 @@ namespace SV.Server.Services
     public interface ICardService
     {
         Task<List<CardResponse>> SearchCards(CardSearchRequest request);
+        Task<CardResponse> GetCard(string id);
         Task<CardResponse> AddCard(CardAddRequest request);
+        Task UpdateCard(string id, CardUpdateRequest request);
+        Task RemoveCard(string id);
     }
 }

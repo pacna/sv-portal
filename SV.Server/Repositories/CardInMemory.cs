@@ -20,6 +20,18 @@ namespace SV.Server.Repositories
             return cardsInMemory.ToList();
         }
 
+        public async Task<Card> GetCard(string id)
+        {
+            cardsInMemory.TryGetValue(id, out Card card);
+
+            if (card == null)
+            {
+                return null;
+            }
+
+            return card;
+        }
+
         public async Task<Card> AddCard(CardAddRequest request)
         {
             string cardId = Guid.NewGuid().ToString();
@@ -35,6 +47,29 @@ namespace SV.Server.Repositories
             cardsInMemory.TryAdd(cardId, card);
 
             return card;
+        }
+
+        public async Task UpdateCard(string id, CardUpdateRequest request)
+        {
+            cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
+
+            if (cardBeforeUpdate == null)
+            {
+                return;
+            }
+
+            cardsInMemory[id] = new Card
+            {
+                Id = id,
+                FlavorText = request.FlavorText ?? cardBeforeUpdate.FlavorText,
+                Name = cardBeforeUpdate.Name,
+                PPCost = cardBeforeUpdate.PPCost
+            };
+        }
+
+        public async Task RemoveCard(string id)
+        {
+            cardsInMemory.Remove(id);
         }
     }
 }

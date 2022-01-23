@@ -20,10 +20,26 @@ namespace SV.Server.Services
             return CardMapper.Map(cards: cards);
         }
 
+        public async Task<CardResponse> GetCard(string id)
+        {
+            Card card = await this._cardRepo.GetCard(id: id);
+            return CardMapper.Map(card: card);
+        }
+
         public async Task<CardResponse> AddCard(CardAddRequest request)
         {
             Card card = await this._cardRepo.AddCard(request);
             return CardMapper.Map(card: card);
+        }
+
+        public async Task UpdateCard(string id, CardUpdateRequest request)
+        {
+            await this._cardRepo.UpdateCard(id: id, request: request);
+        }
+
+        public async Task RemoveCard(string id)
+        {
+            await this._cardRepo.RemoveCard(id: id);
         }
     }
 }

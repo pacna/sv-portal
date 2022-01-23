@@ -12,9 +12,24 @@ namespace SV.Server.Repositories
             return null;
         }
 
+        public async Task<Card> GetCard(string id)
+        {
+            return null;
+        }
+
         public async Task<Card> AddCard(CardAddRequest request)
         {
             return new Card();
+        }
+
+        public async Task UpdateCard(string id, CardUpdateRequest request)
+        {
+            return;
+        }
+
+        public async Task RemoveCard(string id)
+        {
+            return;
         }
     }
 }
