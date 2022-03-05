@@ -1,7 +1,9 @@
 <div id="forest-craft">
     <mat-grid-list cols="4">
-        <mat-grid-tile *ngFor="let i of dataSource">
-            <img [src]="i.artUrl" />
+        <mat-grid-tile *ngFor="let d of dataSource; let i = index">
+            <div [lightbox]="i" gallery="lightbox">
+                <img [src]="d.data.src" />
+            </div>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

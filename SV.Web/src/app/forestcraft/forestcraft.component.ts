@@ -1,3 +1,4 @@
+import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
 import { CardResponse } from './../shared/types/card-response';
 import { CardsApiService } from './../shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
@@ -28,8 +29,25 @@ const cards: CardResponse[] = [
   styleUrls: ['./forestcraft.component.scss'],
 })
 export class ForestcraftComponent implements OnInit {
-  dataSource = cards;
-  constructor(private readonly cardsApiService: CardsApiService) {}
+  dataSource: GalleryItem[] = cards.map((x: CardResponse) => {
+    return {
+      type: 'image',
+      data: { src: x.artUrl, thumb: x.artUrl } as ImageItemData,
+    } as GalleryItem;
+  });
+  constructor(
+    private readonly cardsApiService: CardsApiService,
+    private readonly gallery: Gallery
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.gallery
+      .ref('lightbox', {
+        thumbPosition: 'bottom',
+        counterPosition: 'bottom',
+        imageSize: 'contain',
+        thumbView: 'contain',
+      } as GalleryConfig)
+      .load(this.dataSource);
+  }
 }
