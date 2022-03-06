@@ -1,12 +1,12 @@
 {
-  "name": "sv.web",
+  "name": "SV.Web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --watch=false --browsers ChromeHeadless",
     "dev:ssr": "ng run SV.Web:serve-ssr",
     "serve:ssr": "node dist/SV.Web/server/main.js",
     "build:ssr": "ng build && ng run SV.Web:server",

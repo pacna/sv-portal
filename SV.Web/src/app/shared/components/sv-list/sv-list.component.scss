@@ -1,0 +1,11 @@
+#sv-list {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  mat-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+}

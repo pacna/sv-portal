@@ -1,4 +1,3 @@
-import { LightboxModule } from 'ng-gallery/lightbox';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +7,6 @@ import { forestCraftRoutes } from './forestcraft.routing';
 import { ForestcraftComponent } from './forestcraft.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
-import { GalleryModule } from 'ng-gallery';
 
 @NgModule({
   declarations: [ForestcraftComponent],
@@ -19,8 +17,6 @@ import { GalleryModule } from 'ng-gallery';
     MatGridListModule,
     MatTableModule,
     SharedModule,
-    LightboxModule,
-    GalleryModule,
   ],
   exports: [ForestcraftComponent],
 })

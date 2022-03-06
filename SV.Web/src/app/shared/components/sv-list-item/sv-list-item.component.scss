@@ -1,0 +1,25 @@
+@import "../../../../colors.scss";
+
+#sv-list-item {
+  text-align: center;
+  .sv-list-gallery-item {
+    img {
+      width: 220px;
+      height: 285px;
+    }
+    img:hover {
+      filter: drop-shadow($secondary-blue 0px 0px 12px);
+    }
+  }
+
+  .sv-list-name-link {
+    margin-top: 16px;
+    a {
+      color: $plain-white;
+      text-shadow: 2px 2px 20px $secondary-blue;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+  }
+}

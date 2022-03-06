@@ -1,8 +1,10 @@
+@import "../../../../colors.scss";
+
 mat-toolbar {
   background-color: rgba(0, 0, 0, 0.5);
   h1 {
-    color: white;
-    text-shadow: 2px 2px 20px #01b1da;
+    color: $plain-white;
+    text-shadow: 2px 2px 20px $secondary-blue;
     margin: auto;
   }
 }
@@ -10,7 +12,7 @@ mat-toolbar {
 nav {
   background-color: rgba(0, 0, 0, 0.5);
   a {
-    color: white;
+    color: $plain-white;
   }
 
   .mat-tab-link {

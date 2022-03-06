@@ -1,0 +1,11 @@
+<mat-grid-list id="sv-list" cols="4" rowHeight="0.8:1">
+    <ng-container *ngIf="!svCards.length">
+        <mat-spinner color="accent"></mat-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="svCards.length">
+        <mat-grid-tile *ngFor="let card of svCards; let i = index">
+            <sv-list-item [cardIndex]="i" [card]="card"></sv-list-item>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>
