@@ -28,7 +28,7 @@ export class SVListComponent implements OnInit {
     const cardsGallery: GalleryItem[] = cards.map((card: CardResponse) => {
       return {
         type: 'image',
-        data: { src: card.artUrl, thumb: card.artUrl } as ImageItemData,
+        data: { src: card.artPath, thumb: card.artPath } as ImageItemData,
       } as GalleryItem;
     });
 

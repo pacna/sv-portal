@@ -16,6 +16,7 @@ namespace SV.Server.Services
             return new CardResponse
             {
                 Id = card.Id,
+                ArtPath = card.ArtPath,
                 FlavorText = card.FlavorText,
                 Name = card.Name,
                 PPCost = card.PPCost

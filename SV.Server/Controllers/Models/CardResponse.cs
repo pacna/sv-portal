@@ -6,5 +6,6 @@ namespace SV.Server.Controllers.Models
         public string FlavorText { get; init; }
         public string Name { get; init; }
         public int PPCost { get; init; }
+        public string ArtPath { get; init; }
     }
 }

@@ -1,6 +1,7 @@
 import { CardResponse } from './../shared/types/card-response';
 import { CardsApiService } from './../shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'forestcraft',
@@ -8,19 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forestcraft.component.scss'],
 })
 export class ForestcraftComponent implements OnInit {
-  cards: CardResponse[] = [
-    {
-      id: '1',
-      name: 'Amataz, Reverse Blader',
-      artUrl: 'https://svgdb.me/assets/cards/en/C_100111010.png',
-    },
-    {
-      id: '1',
-      name: 'Amataz, Reverse Blader',
-      artUrl: 'https://svgdb.me/assets/thumbnails/en/C_100011010.png',
-    },
-  ];
+  cards: CardResponse[] = [];
   constructor(private readonly cardsApiService: CardsApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchCards().subscribe();
+  }
+
+  searchCards(): Observable<void> {
+    return this.cardsApiService.searchCards().pipe(
+      map((response: CardResponse[]) => {
+        this.cards = response;
+      })
+    );
+  }
+
+  hasCards(): boolean {
+    return this.cards.length > 0;
+  }
 }

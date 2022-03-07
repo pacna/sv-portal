@@ -1,3 +1,13 @@
 <div id="forest-craft">
-    <sv-list [cards]="cards"></sv-list>
+    <div class="mb-40">
+        <header-action-bar>
+            <h2 slot="header"> Forestcraft </h2>
+            <div slot="actions">
+                <button mat-raised-button class="primary-action-button">Create</button>
+            </div>
+        </header-action-bar>
+    </div>
+    <loading-content [hasLoaded]="hasCards()">
+        <sv-list [cards]="cards"></sv-list>
+    </loading-content>
 </div>

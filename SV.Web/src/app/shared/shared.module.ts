@@ -1,4 +1,4 @@
-import { LightboxModule } from 'ng-gallery/lightbox';
+import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SVListComponent } from './components/sv-list/sv-list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
+import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
+import { LoadingContentComponent } from './components/loading-content/loading-content.component';
 
 @NgModule({
   declarations: [
@@ -20,19 +22,27 @@ import { SVListItemComponent } from './components/sv-list-item/sv-list-item.comp
     SVLayoutComponent,
     SVListComponent,
     SVListItemComponent,
+    HeaderActionBarComponent,
+    LoadingContentComponent,
   ],
   imports: [
     CommonModule,
     MatGridListModule,
     GalleryModule,
-    LightboxModule,
+    LightboxModule.withConfig({ panelClass: 'fullscreen' } as LightboxConfig),
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatTabsModule,
     RouterModule,
     HttpClientModule,
   ],
-  exports: [TopNavComponent, SVLayoutComponent, SVListComponent],
+  exports: [
+    TopNavComponent,
+    SVLayoutComponent,
+    SVListComponent,
+    HeaderActionBarComponent,
+    LoadingContentComponent,
+  ],
   providers: [CardsApiService],
 })
 export class SharedModule {}

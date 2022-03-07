@@ -12,7 +12,34 @@ namespace SV.Server.Repositories
 
         static CardInMemory()
         {
+            string item1Id = Guid.NewGuid().ToString();
+            string item2Id = Guid.NewGuid().ToString();
+            string item3Id = Guid.NewGuid().ToString();
             cardsInMemory = new Dictionary<string, Card>();
+            cardsInMemory.TryAdd(item1Id, new Card
+            {
+                Id = item1Id,
+                FlavorText = "Foobar",
+                Name = "Water Fairy",
+                ArtPath = "https://svgdb.me/assets/cards/en/C_100111010.png",
+                PPCost = 1
+            });
+            cardsInMemory.TryAdd(item2Id, new Card
+            {
+                Id = item2Id,
+                FlavorText = "Foobar",
+                Name = "Biofabrication",
+                ArtPath = "https://svgdb.me/assets/cards/en/C_107834020.png",
+                PPCost = 0
+            });
+            cardsInMemory.TryAdd(item3Id, new Card
+            {
+                Id = item3Id,
+                FlavorText = "Foobar",
+                Name = "Everlasting Castle",
+                ArtPath = "https://svgdb.me/assets/cards/en/C_113242010.png",
+                PPCost = 0
+            });
         }
 
         public async Task<List<Card>> SearchCards(CardSearchRequest request)
@@ -41,7 +68,8 @@ namespace SV.Server.Repositories
                 Id = cardId,
                 FlavorText = request.FlavorText,
                 Name = request.Name,
-                PPCost = request.PPCost
+                PPCost = request.PPCost,
+                ArtPath = request.ArtPath
             };
 
             cardsInMemory.TryAdd(cardId, card);

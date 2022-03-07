@@ -1,4 +1,8 @@
+import { CardResponse } from './../shared/types/card-response';
+import { CardsApiService } from './../shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'swordcraft',
@@ -6,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./swordcraft.component.scss'],
 })
 export class SwordcraftComponent implements OnInit {
-  constructor() {}
+  cards: CardResponse[] = [];
+  constructor(private readonly cardsApiService: CardsApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchCards().subscribe();
+  }
+
+  searchCards(): Observable<void> {
+    return this.cardsApiService.searchCards().pipe(
+      map((response: CardResponse[]) => {
+        this.cards = response;
+      })
+    );
+  }
 }

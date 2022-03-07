@@ -1,11 +1,11 @@
 import { SharedModule } from './../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { forestCraftRoutes } from './forestcraft.routing';
 import { ForestcraftComponent } from './forestcraft.component';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
@@ -14,8 +14,8 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     RouterModule.forChild(forestCraftRoutes),
     MatCardModule,
-    MatGridListModule,
     MatTableModule,
+    MatButtonModule,
     SharedModule,
   ],
   exports: [ForestcraftComponent],

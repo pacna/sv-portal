@@ -1,0 +1,20 @@
+@import "../../../../colors.scss";
+
+mat-toolbar {
+  background-color: $plain-black;
+  border-radius: 4px;
+
+  mat-toolbar-row {
+    padding: 0px 20px;
+    display: flex;
+
+    .cols {
+      flex: 1;
+    }
+
+    .actions {
+      display: inherit;
+      justify-content: flex-end;
+    }
+  }
+}

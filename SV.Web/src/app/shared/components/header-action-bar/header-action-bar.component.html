@@ -1,0 +1,10 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <div class="cols">
+            <ng-content select="[slot=header]"></ng-content>
+        </div>
+        <div class="cols actions">
+            <ng-content select="[slot=actions]"></ng-content>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

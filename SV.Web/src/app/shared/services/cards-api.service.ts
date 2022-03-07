@@ -1,3 +1,4 @@
+import { CardResponse } from './../types/card-response';
 import { CardSearchRequest } from './../types/card-search-request';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,10 +12,12 @@ export class CardsApiService {
 
   constructor(private readonly http: HttpClient) {}
 
-  searchComics(request: CardSearchRequest): Observable<{ name: string }> {
+  searchCards(
+    request: CardSearchRequest = {} as CardSearchRequest
+  ): Observable<CardResponse[]> {
     const params = new URLSearchParams(Object.assign(request));
 
-    return this.http.get<{ name: string }>(
+    return this.http.get<CardResponse[]>(
       `${this.cardsUrlSegment}?${params.toString()}`
     );
   }
