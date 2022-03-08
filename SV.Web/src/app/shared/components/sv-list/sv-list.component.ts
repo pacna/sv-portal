@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GalleryItem, ImageItemData, Gallery, GalleryConfig } from 'ng-gallery';
-import { CardResponse } from '../../types/card-response';
+import { CardResponse } from '../../types/api/card-response';
 
 @Component({
   selector: 'sv-list',
@@ -12,6 +12,8 @@ export class SVListComponent implements OnInit {
     if (!cards) return;
     this.handleCards(cards);
   }
+  @Input() numberOfColumns: number = 4;
+  @Output() viewCardId: EventEmitter<string> = new EventEmitter<string>();
 
   svCards: CardResponse[] = [];
 
@@ -28,7 +30,10 @@ export class SVListComponent implements OnInit {
     const cardsGallery: GalleryItem[] = cards.map((card: CardResponse) => {
       return {
         type: 'image',
-        data: { src: card.artPath, thumb: card.artPath } as ImageItemData,
+        data: {
+          src: card.artLocation,
+          thumb: card.artLocation,
+        } as ImageItemData,
       } as GalleryItem;
     });
 

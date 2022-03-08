@@ -1,3 +1,5 @@
+using SV.Server.Controllers.Models;
+
 namespace SV.Server.Repositories.Models
 {
     public class Card
@@ -6,6 +8,7 @@ namespace SV.Server.Repositories.Models
         public string FlavorText { get; init; }
         public string Name { get; init; }
         public int PPCost { get; init; }
-        public string ArtPath { get; init; }
+        public string ArtLocation { get; init; }
+        public CraftType Craft { get; init; }
     }
 }

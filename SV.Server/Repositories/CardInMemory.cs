@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
@@ -15,36 +16,75 @@ namespace SV.Server.Repositories
             string item1Id = Guid.NewGuid().ToString();
             string item2Id = Guid.NewGuid().ToString();
             string item3Id = Guid.NewGuid().ToString();
+            string item4Id = Guid.NewGuid().ToString();
+            string item5Id = Guid.NewGuid().ToString();
+            string item6Id = Guid.NewGuid().ToString();
             cardsInMemory = new Dictionary<string, Card>();
             cardsInMemory.TryAdd(item1Id, new Card
             {
                 Id = item1Id,
                 FlavorText = "Foobar",
                 Name = "Water Fairy",
-                ArtPath = "https://svgdb.me/assets/cards/en/C_100111010.png",
-                PPCost = 1
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_100111010.png",
+                PPCost = 1,
+                Craft = CraftType.Forestcraft
             });
             cardsInMemory.TryAdd(item2Id, new Card
             {
                 Id = item2Id,
                 FlavorText = "Foobar",
-                Name = "Biofabrication",
-                ArtPath = "https://svgdb.me/assets/cards/en/C_107834020.png",
-                PPCost = 0
+                Name = "Heroic Resolve",
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_121134010.png",
+                PPCost = 1,
+                Craft = CraftType.Forestcraft
             });
             cardsInMemory.TryAdd(item3Id, new Card
             {
                 Id = item3Id,
                 FlavorText = "Foobar",
-                Name = "Everlasting Castle",
-                ArtPath = "https://svgdb.me/assets/cards/en/C_113242010.png",
-                PPCost = 0
+                Name = "Tree of Wonders",
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_120123010.png",
+                PPCost = 2,
+                Craft = CraftType.Forestcraft
+            });
+            cardsInMemory.TryAdd(item4Id, new Card
+            {
+                Id = item4Id,
+                FlavorText = "Foobar",
+                Name = "Quickblader",
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_100211010.png",
+                PPCost = 1,
+                Craft = CraftType.Swordcraft
+            });
+            cardsInMemory.TryAdd(item5Id, new Card
+            {
+                Id = item5Id,
+                FlavorText = "Foobar",
+                Name = "Sunny Day Encounter",
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_121234010.png",
+                PPCost = 1,
+                Craft = CraftType.Swordcraft
+            });
+            cardsInMemory.TryAdd(item6Id, new Card
+            {
+                Id = item6Id,
+                FlavorText = "Foobar",
+                Name = "Royal Banner",
+                ArtLocation = "https://svgdb.me/assets/cards/en/C_100222010.png",
+                PPCost = 4,
+                Craft = CraftType.Swordcraft
             });
         }
 
         public async Task<List<Card>> SearchCards(CardSearchRequest request)
         {
-            return cardsInMemory.ToList();
+            List<Card> cardList = cardsInMemory.ToList();
+            if (request.Craft.HasValue)
+            {
+                cardList = cardList.Where(x => x.Craft == request.Craft.Value).ToList();
+            }
+
+            return cardList;
         }
 
         public async Task<Card> GetCard(string id)
@@ -69,7 +109,7 @@ namespace SV.Server.Repositories
                 FlavorText = request.FlavorText,
                 Name = request.Name,
                 PPCost = request.PPCost,
-                ArtPath = request.ArtPath
+                ArtLocation = request.ArtLocation
             };
 
             cardsInMemory.TryAdd(cardId, card);

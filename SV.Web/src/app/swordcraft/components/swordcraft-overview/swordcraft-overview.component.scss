@@ -1,0 +1,12 @@
+@import "../../../../colors.scss";
+
+#swordcraft-overview {
+  header-action-bar {
+    display: block;
+  }
+
+  h2 {
+    color: $plain-white;
+    text-shadow: 2px 2px 20px $secondary-blue;
+  }
+}

@@ -16,10 +16,9 @@ namespace SV.Server.Services
             return new CardResponse
             {
                 Id = card.Id,
-                ArtPath = card.ArtPath,
-                FlavorText = card.FlavorText,
+                ArtLocation = card.ArtLocation,
                 Name = card.Name,
-                PPCost = card.PPCost
+                Craft = card.Craft
             };
         }
     }

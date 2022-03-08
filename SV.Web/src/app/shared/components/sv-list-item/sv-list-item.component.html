@@ -1,8 +1,8 @@
 <div id="sv-list-item">
     <div class="sv-list-gallery-item" [lightbox]="cardIndex" gallery="sv-cards-gallery">
-        <img [src]="card.artPath" [alt]="card.name">
+        <img [src]="card.artLocation" [alt]="card.name">
     </div>
     <div class="sv-list-name-link">
-        <a href="">{{ card.name }}</a>
+        <a (click)="sendCardId(card.id)">{{ card.name }}</a>
     </div>
 </div>

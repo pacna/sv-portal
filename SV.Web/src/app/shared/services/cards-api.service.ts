@@ -1,5 +1,4 @@
-import { CardResponse } from './../types/card-response';
-import { CardSearchRequest } from './../types/card-search-request';
+import { CardResponse, CardSearchRequest } from '../types/api';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -20,5 +19,9 @@ export class CardsApiService {
     return this.http.get<CardResponse[]>(
       `${this.cardsUrlSegment}?${params.toString()}`
     );
+  }
+
+  getCard(id: string): Observable<CardResponse> {
+    return this.http.get<CardResponse>(`${this.cardsUrlSegment}/${id}`);
   }
 }

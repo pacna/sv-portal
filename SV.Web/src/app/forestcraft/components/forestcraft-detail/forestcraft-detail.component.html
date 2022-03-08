@@ -1,0 +1,18 @@
+<div id="forestcraft-detail">
+    <header-action-bar class="mb-40">
+        <h2 slot="header"> {{ card?.name }} </h2>
+        <ng-container slot="actions">
+            <button mat-raised-button class="secondary-action-button">Edit</button>
+            <button mat-raised-button class="primary-destructive-action-button">Remove</button>
+        </ng-container>
+    </header-action-bar>
+    <div class="main-detail">
+        <div class="cols">
+            <img [src]="card?.artLocation">
+        </div>
+        <div class="cols">
+            Hello World
+            <button (click)="playAudio()"> HI </button>
+        </div>
+    </div>
+</div>

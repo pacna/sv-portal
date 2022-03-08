@@ -1,10 +1,11 @@
+import { ForestcraftOverviewComponent } from './components/forestcraft-overview/forestcraft-overview.component';
 import { Routes } from '@angular/router';
-import { ForestcraftComponent } from './forestcraft.component';
+import { ForestcraftDetailComponent } from './components/forestcraft-detail/forestcraft-detail.component';
 
 export const forestCraftRoutes: Routes = [
   {
     path: '',
-    component: ForestcraftComponent,
+    component: ForestcraftOverviewComponent,
     children: [
       {
         path: '',
@@ -12,5 +13,9 @@ export const forestCraftRoutes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: ':id',
+    component: ForestcraftDetailComponent,
   },
 ];

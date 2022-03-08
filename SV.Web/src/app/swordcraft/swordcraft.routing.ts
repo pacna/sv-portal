@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { SwordcraftComponent } from './swordcraft.component';
+import { SwordcraftOverviewComponent } from './components/swordcraft-overview/swordcraft-overview.component';
 
 export const swordCraftRoutes: Routes = [
   {
     path: '',
-    component: SwordcraftComponent,
+    component: SwordcraftOverviewComponent,
     children: [
       {
         path: '',

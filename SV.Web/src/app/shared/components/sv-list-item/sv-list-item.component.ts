@@ -1,6 +1,5 @@
-import { CardResponse } from './../../types/card-response';
-import { Component, Input, OnInit } from '@angular/core';
-
+import { CardResponse } from '../../types/api/card-response';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'sv-list-item',
   templateUrl: './sv-list-item.component.html',
@@ -9,7 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SVListItemComponent implements OnInit {
   @Input() card: CardResponse;
   @Input() cardIndex: number;
+  @Output() viewCardId: EventEmitter<string> = new EventEmitter<string>();
   constructor() {}
 
   ngOnInit(): void {}
+
+  sendCardId(id: string): void {
+    this.viewCardId.emit(id);
+  }
 }

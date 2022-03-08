@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SwordcraftComponent } from './swordcraft.component';
+import { SwordcraftOverviewComponent } from './swordcraft-overview.component';
 
-describe('SwordcraftComponent', () => {
-  let component: SwordcraftComponent;
-  let fixture: ComponentFixture<SwordcraftComponent>;
+describe('SwordcraftOverviewComponent', () => {
+  let component: SwordcraftOverviewComponent;
+  let fixture: ComponentFixture<SwordcraftOverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SwordcraftComponent ]
+      declarations: [ SwordcraftOverviewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SwordcraftComponent);
+    fixture = TestBed.createComponent(SwordcraftOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

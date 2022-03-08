@@ -1,0 +1,29 @@
+@import "../../../../colors.scss";
+
+#forestcraft-detail {
+  header-action-bar {
+    display: block;
+
+    .secondary-action-button {
+      margin-right: 1rem;
+    }
+  }
+
+  .main-detail {
+    display: flex;
+
+    img {
+      width: 272px;
+      height: 354px;
+    }
+
+    .cols {
+      flex: 1;
+    }
+  }
+
+  h2 {
+    color: $plain-white;
+    text-shadow: 2px 2px 20px $secondary-blue;
+  }
+}
