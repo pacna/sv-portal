@@ -6,5 +6,8 @@ namespace SV.Server.Controllers.Models
     {
         [Description("Basic")]
         Basic,
+
+        [Description("Promo")]
+        Promo
     }
 }
