@@ -1,4 +1,8 @@
-import { CardResponse, CardSearchRequest } from '../types/api';
+import {
+  CardResponse,
+  CardSearchRequest,
+  CardDetailResponse,
+} from '../types/api';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -21,7 +25,7 @@ export class CardsApiService {
     );
   }
 
-  getCard(id: string): Observable<CardResponse> {
-    return this.http.get<CardResponse>(`${this.cardsUrlSegment}/${id}`);
+  getCard(id: string): Observable<CardDetailResponse> {
+    return this.http.get<CardDetailResponse>(`${this.cardsUrlSegment}/${id}`);
   }
 }

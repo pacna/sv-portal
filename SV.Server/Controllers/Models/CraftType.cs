@@ -2,33 +2,33 @@ using System.ComponentModel;
 
 namespace SV.Server.Controllers.Models
 {
-  public enum CraftType
-  {
-    [Description("Forestcraft")]
-    Forestcraft,
+    public enum CraftType
+    {
+        [Description("Forestcraft")]
+        Forestcraft,
 
-    [Description("Swordcraft")]
-    Swordcraft,
+        [Description("Swordcraft")]
+        Swordcraft,
 
-    [Description("Runecraft")]
-    Runecraft,
+        [Description("Runecraft")]
+        Runecraft,
 
-    [Description("Dragoncraft")]
-    Dragoncraft,
+        [Description("Dragoncraft")]
+        Dragoncraft,
 
-    [Description("Shadowcraft")]
-    Shadowcraft,
+        [Description("Shadowcraft")]
+        Shadowcraft,
 
-    [Description("Bloodcraft")]
-    Bloodcraft,
+        [Description("Bloodcraft")]
+        Bloodcraft,
 
-    [Description("Havencraft")]
-    Havencraft,
+        [Description("Havencraft")]
+        Havencraft,
 
-    [Description("Portalcraft")]
-    Portalcraft,
+        [Description("Portalcraft")]
+        Portalcraft,
 
-    [Description("Neutral")]
-    Neutral
-  }
+        [Description("Neutral")]
+        Neutral
+    }
 }

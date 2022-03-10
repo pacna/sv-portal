@@ -9,5 +9,10 @@ namespace SV.Server.Repositories
         {
             return dict.Values.ToList();
         }
+
+        public static bool IsNullOrEmpty<TItem>(this IList<TItem> list)
+        {
+            return list == null || list.Count == 0;
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { CardResponse } from '../../../shared/types/api/card-response';
+import { CardDetailResponse } from './../../../shared/types/api/card-detail-response';
 import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
@@ -10,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./forestcraft-detail.component.scss'],
 })
 export class ForestcraftDetailComponent implements OnInit {
-  card: CardResponse;
-  galleryCards: CardResponse[] = [];
+  card: CardDetailResponse;
   audio = new Audio();
   constructor(
     private readonly cardsApiService: CardsApiService,
@@ -34,9 +33,8 @@ export class ForestcraftDetailComponent implements OnInit {
 
   getCard(id: string): Observable<void> {
     return this.cardsApiService.getCard(id).pipe(
-      map((response: CardResponse) => {
+      map((response: CardDetailResponse) => {
         this.card = response;
-        this.galleryCards = [this.card];
       })
     );
   }

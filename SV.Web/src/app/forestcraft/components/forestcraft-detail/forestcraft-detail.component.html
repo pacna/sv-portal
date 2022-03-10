@@ -7,11 +7,11 @@
         </ng-container>
     </header-action-bar>
     <div class="main-detail">
-        <div class="cols">
+        <div class="is-three-fifth">
             <img [src]="card?.artLocation">
         </div>
-        <div class="cols">
-            Hello World
+        <div class="is-two-fifth">
+            <card-details [cardDetail]="card"></card-details>
             <button (click)="playAudio()"> HI </button>
         </div>
     </div>

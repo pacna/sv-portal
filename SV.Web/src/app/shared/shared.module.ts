@@ -15,6 +15,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
 import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
 import { LoadingContentComponent } from './components/loading-content/loading-content.component';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { LoadingContentComponent } from './components/loading-content/loading-co
     SVListItemComponent,
     HeaderActionBarComponent,
     LoadingContentComponent,
+    CardDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { LoadingContentComponent } from './components/loading-content/loading-co
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatTabsModule,
+    MatListModule,
     RouterModule,
     HttpClientModule,
   ],
@@ -42,6 +46,7 @@ import { LoadingContentComponent } from './components/loading-content/loading-co
     SVListComponent,
     HeaderActionBarComponent,
     LoadingContentComponent,
+    CardDetailsComponent,
   ],
   providers: [CardsApiService],
 })

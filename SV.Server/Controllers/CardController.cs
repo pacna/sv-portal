@@ -26,7 +26,7 @@ namespace SV.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardDetailResponse))]
         public async Task<IActionResult> GetCard([FromRoute] string id)
         {
             return this.Ok(await this._service.GetCard(id: id));

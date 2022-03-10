@@ -1,20 +1,15 @@
 using System.Collections.Generic;
-using SV.Server.Controllers.Models;
 
-namespace SV.Server.Repositories.Models
+namespace SV.Server.Controllers.Models
 {
-    public class Card
+    public class CardDetailResponse : CardResponse
     {
         public string AbilityText { get; init; }
-        public string ArtLocation { get; init; }
-        public List<string> AudioLocations { get; init; }
+        public IList<string> AudioLocations { get; init; }
         public BattleStats BattleStats { get; init; }
         public CardPackType? CardPack { get; init; }
-        public CraftType Craft { get; init; }
         public EvoFollowerSpecs Evo { get; init; }
         public string FlavorText { get; init; }
-        public string Id { get; init; }
-        public string Name { get; init; }
         public int PPCost { get; init; }
         public RarityType Rarity { get; init; }
         public CardType Type { get; init; }

@@ -17,6 +17,13 @@
       height: 354px;
     }
 
+    .is-two-fifth {
+      flex-basis: 40%;
+    }
+
+    .is-three-fifth {
+      flex-basis: 60%;
+    }
     .cols {
       flex: 1;
     }
