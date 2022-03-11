@@ -7,6 +7,7 @@ import { CardDetailResponse } from './../../types/api/card-detail-response';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardDetails } from '../../types/customs/card-details';
 import { Craft } from '../..';
+import { enumCostMapperToString } from './function';
 
 @Component({
   selector: 'card-details',
@@ -31,38 +32,30 @@ export class CardDetailsComponent implements OnInit {
       createCostText: this.displayCost(
         cardDetail.cardPack,
         cardDetail.rarity,
-        true
+        CreateCost
       ),
-      liquefyCostText: this.displayCost(cardDetail.cardPack, cardDetail.rarity),
+      liquefyCostText: this.displayCost(
+        cardDetail.cardPack,
+        cardDetail.rarity,
+        LiquefyCost
+      ),
       type: CardType[cardDetail.type],
     } as CardDetails;
   }
 
-  private displayCost(
-    cardPack: CardPack,
-    rarity: Rarity,
-    isThisForCreate: boolean = false
-  ): string {
-    if (cardPack == CardPack.basic) {
+  private displayCost(cardPack: CardPack, rarity: Rarity, cost: any): string {
+    if (cardPack === CardPack.basic || cardPack === CardPack.promo) {
       return '- -';
     }
     switch (rarity) {
       case Rarity.bronze:
-        return isThisForCreate
-          ? CreateCost.bronze.toString()
-          : LiquefyCost.bronze.toString();
+        return enumCostMapperToString(cost, 'bronze');
       case Rarity.silver:
-        return isThisForCreate
-          ? CreateCost.silver.toString()
-          : LiquefyCost.silver.toString();
+        return enumCostMapperToString(cost, 'silver');
       case Rarity.gold:
-        return isThisForCreate
-          ? CreateCost.gold.toString()
-          : LiquefyCost.gold.toString();
+        return enumCostMapperToString(cost, 'gold');
       case Rarity.legendary:
-        return isThisForCreate
-          ? CreateCost.legendary.toString()
-          : LiquefyCost.legendary.toString();
+        return enumCostMapperToString(cost, 'legendary');
       default:
         return '- -';
     }

@@ -1,3 +1,4 @@
 export enum CardPack {
-  basic,
+  basic = 'Basic',
+  promo = 'Promo',
 }

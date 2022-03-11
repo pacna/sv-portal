@@ -1,13 +1,8 @@
-using System.ComponentModel;
-
 namespace SV.Server.Controllers.Models
 {
-    public enum CardPackType
+    public static class CardPackType
     {
-        [Description("Basic")]
-        Basic,
-
-        [Description("Promo")]
-        Promo
+        public const string Basic = "Basic";
+        public const string Promo = "Promo";
     }
 }

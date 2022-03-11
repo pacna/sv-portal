@@ -9,7 +9,7 @@ namespace SV.Server.Repositories.Models
         public string ArtLocation { get; init; }
         public List<string> AudioLocations { get; init; }
         public BattleStats BattleStats { get; init; }
-        public CardPackType? CardPack { get; init; }
+        public string CardPack { get; init; }
         public CraftType Craft { get; init; }
         public EvoFollowerSpecs Evo { get; init; }
         public string FlavorText { get; init; }
