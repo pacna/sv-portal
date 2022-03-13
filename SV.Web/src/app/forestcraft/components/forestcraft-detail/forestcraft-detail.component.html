@@ -1,6 +1,6 @@
 <div id="forestcraft-detail">
     <header-action-bar class="mb-40">
-        <h2 slot="header"> {{ card?.name }} </h2>
+        <h2 slot="header"> {{ card.name }} </h2>
         <ng-container slot="actions">
             <button mat-raised-button class="secondary-action-button">Edit</button>
             <button mat-raised-button class="primary-destructive-action-button">Remove</button>
@@ -8,12 +8,20 @@
     </header-action-bar>
     <div class="main-detail">
         <div class="is-three-fifth">
-            <img [src]="card?.artLocation" class="mb-40">
-            <card-description class="mt-40"></card-description>
+            <section [ngClass]="{'center-text': isFollower}" class="mb-40">
+                <img [src]="card.artLocation">
+                <img *ngIf="isFollower" [src]="card.evo.artLocation">
+            </section>
+            <section>
+                <follower-description *ngIf="isFollower" [cardDetail]="card"></follower-description>
+                <card-description *ngIf="!isFollower" [cardDescription]="cardDescription"></card-description>
+            </section>
         </div>
         <div class="is-two-fifth">
             <card-details [cardDetail]="card"></card-details>
-            <button (click)="playAudio()"> HI </button>
+            <button *ngIf="hasAudio" (click)="playAudio()" mat-icon-button class="mt-32" color="accent">
+                <mat-icon>play_circle_outline</mat-icon>
+            </button>
         </div>
     </div>
 </div>

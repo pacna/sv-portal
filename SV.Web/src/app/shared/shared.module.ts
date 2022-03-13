@@ -19,6 +19,9 @@ import { LoadingContentComponent } from './components/loading-content/loading-co
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatListModule } from '@angular/material/list';
 import { CardDescriptionComponent } from './components/card-description/card-description.component';
+import { FollowerDescriptionComponent } from './components/follower-description/follower-description.component';
+import { FollowerDetailDescriptionComponent } from './components/follower-detail-description/follower-detail-description.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { CardDescriptionComponent } from './components/card-description/card-des
     LoadingContentComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
+    FollowerDescriptionComponent,
+    FollowerDetailDescriptionComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +57,7 @@ import { CardDescriptionComponent } from './components/card-description/card-des
     LoadingContentComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
+    FollowerDescriptionComponent,
   ],
   providers: [CardsApiService],
 })

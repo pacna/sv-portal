@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { forestCraftRoutes } from './forestcraft.routing';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { ForestcraftOverviewComponent } from './components/forestcraft-overview/forestcraft-overview.component';
 import { ForestcraftDetailComponent } from './components/forestcraft-detail/forestcraft-detail.component';
 
@@ -18,6 +19,7 @@ import { ForestcraftDetailComponent } from './components/forestcraft-detail/fore
     MatCardModule,
     MatTableModule,
     MatButtonModule,
+    MatIconModule,
     MatGridListModule,
     SharedModule,
   ],

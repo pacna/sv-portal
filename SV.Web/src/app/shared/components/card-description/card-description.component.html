@@ -1,6 +1,4 @@
 <div id="card-description">
-    <p class="card-skills"> Put an Enhanced Puppet into your hand.</p>
-    <p class="card-content-description">
-        He was truly blessed, to have been able to witness the puppet's progress.
-    </p>
+    <p class="card-skills" [innerHTML]="description.abilityText"></p>
+    <p class="card-content-description" [innerHTML]="description.flavorText"></p>
 </div>

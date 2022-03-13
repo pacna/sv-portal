@@ -1,5 +1,7 @@
 @import "./colors.scss";
 @import "./buttons.scss";
+@import "./margins.scss";
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -12,12 +14,8 @@ body {
   background-image: url("./assets/sv-background.jpg");
 }
 
-.mt-40 {
-  margin-top: 40px !important;
-}
-
-.mb-40 {
-  margin-bottom: 40px !important;
+.center-text {
+  text-align: center;
 }
 
 // override material styles to match the app UI

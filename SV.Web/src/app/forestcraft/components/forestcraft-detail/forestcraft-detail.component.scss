@@ -28,8 +28,19 @@
       flex: 1;
     }
 
+    follower-description,
     card-description {
       display: block;
+    }
+
+    .mat-icon {
+      height: 48px;
+      width: 48px;
+      font-size: 48px;
+    }
+
+    .mat-icon-button .mat-icon {
+      line-height: inherit;
     }
   }
 

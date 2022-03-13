@@ -27,6 +27,7 @@ namespace SV.Server.Repositories
                 AudioLocations = new List<string>
                 {
                     "https://svgdb.me/assets/audio/en/vo_100111010_1.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100111010_2.mp3"
                 },
                 BattleStats = new BattleStats
                 {
@@ -38,6 +39,7 @@ namespace SV.Server.Repositories
                 Evo = new EvoFollowerSpecs
                 {
                     AbilityText = "(Same as the unevolved form.)",
+                    ArtLocation = "https://svgdb.me/assets/cards/en/E_100111010.png",
                     FlavorText = "If you try and hurt me, we'll make you regret it. But if you're a good friend, the fairies won't forget it!",
                     BattleStats = new BattleStats
                     {
@@ -94,6 +96,7 @@ namespace SV.Server.Repositories
                 Evo = new EvoFollowerSpecs
                 {
                     AbilityText = "(Same as the unevolved form.)",
+                    ArtLocation = "https://svgdb.me/assets/cards/en/E_100211010.png",
                     FlavorText = "You didn't seriously think surrounding me was gonna work, did you? I got news for you then—this next part isn't gonna go well for you either.",
                     BattleStats = new BattleStats
                     {
@@ -136,13 +139,13 @@ namespace SV.Server.Repositories
 
         public async Task<List<Card>> SearchCards(CardSearchRequest request)
         {
-            List<Card> cardList = cardsInMemory.ToList();
+            IEnumerable<Card> cardList = cardsInMemory.ToList();
             if (request.Craft.HasValue)
             {
-                cardList = cardList.Where(x => x.Craft == request.Craft.Value).ToList();
+                cardList = cardList.Where(x => x.Craft == request.Craft.Value);
             }
 
-            return cardList;
+            return cardList.ToList();
         }
 
         public async Task<Card> GetCard(string id)
