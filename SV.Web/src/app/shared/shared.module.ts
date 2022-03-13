@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -17,6 +18,7 @@ import { HeaderActionBarComponent } from './components/header-action-bar/header-
 import { LoadingContentComponent } from './components/loading-content/loading-content.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatListModule } from '@angular/material/list';
+import { CardDescriptionComponent } from './components/card-description/card-description.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
     HeaderActionBarComponent,
     LoadingContentComponent,
     CardDetailsComponent,
+    CardDescriptionComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { MatListModule } from '@angular/material/list';
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatTabsModule,
+    MatButtonModule,
     MatListModule,
     RouterModule,
     HttpClientModule,
@@ -47,6 +51,7 @@ import { MatListModule } from '@angular/material/list';
     HeaderActionBarComponent,
     LoadingContentComponent,
     CardDetailsComponent,
+    CardDescriptionComponent,
   ],
   providers: [CardsApiService],
 })

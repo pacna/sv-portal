@@ -19,6 +19,7 @@ export class CardDetailsComponent implements OnInit {
     if (!cardDetail) return;
     this.handleCardDetail(cardDetail);
   }
+
   card: CardDetails;
 
   constructor() {}
@@ -32,18 +33,22 @@ export class CardDetailsComponent implements OnInit {
       createCostText: this.displayCost(
         cardDetail.cardPack,
         cardDetail.rarity,
-        CreateCost
+        Object.assign({} as CreateCost, LiquefyCost)
       ),
       liquefyCostText: this.displayCost(
         cardDetail.cardPack,
         cardDetail.rarity,
-        LiquefyCost
+        Object.assign({} as LiquefyCost, LiquefyCost)
       ),
       type: CardType[cardDetail.type],
     } as CardDetails;
   }
 
-  private displayCost(cardPack: CardPack, rarity: Rarity, cost: any): string {
+  private displayCost(
+    cardPack: CardPack,
+    rarity: Rarity,
+    cost: CreateCost | LiquefyCost
+  ): string {
     if (cardPack === CardPack.basic || cardPack === CardPack.promo) {
       return '- -';
     }

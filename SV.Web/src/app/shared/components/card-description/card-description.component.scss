@@ -1,0 +1,16 @@
+@import "../../../../colors.scss";
+
+#card-description {
+  .card-skills {
+    color: $plain-white;
+  }
+
+  .card-content-description {
+    margin-top: 16px;
+    margin-left: 16px;
+    border-radius: 6px;
+    padding: 16px 44px;
+    background-color: #041424;
+    color: $secondary-blue;
+  }
+}

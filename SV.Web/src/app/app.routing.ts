@@ -46,8 +46,17 @@ export const routes: Routes = [
     loadChildren: () => import('./neutral').then((mod) => mod.NeutralModule),
   },
   {
+    path: '404',
+    loadChildren: () =>
+      import('./shared/modules/not-found').then((mod) => mod.NotFoundModule),
+  },
+  {
     path: '',
     redirectTo: 'forestcraft',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: '404',
   },
 ];

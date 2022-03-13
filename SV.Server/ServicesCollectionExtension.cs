@@ -1,0 +1,60 @@
+using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using SV.Server.Repositories;
+using SV.Server.Services;
+using SV.Server.Settings;
+
+namespace SV.Server
+{
+    internal static class ServicesCollectionExtension
+    {
+        internal static void AddServices(this IServiceCollection services)
+        {
+            services.AddSingleton<ICardService, CardService>();
+        }
+
+        internal static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddSingleton<ICardRepository, CardInMemory>();
+        }
+
+        internal static void AddSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "SV Server",
+                    Description = "The backend for SV frontend"
+                });
+            });
+        }
+
+        internal static void AddCors(this IServiceCollection services, ICORSPolicySettings corsPolicySettings)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: corsPolicySettings.PolicyName,
+                    builder =>
+                    {
+                        builder.WithOrigins(corsPolicySettings.AllowedOrigins);
+                        // https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+                        // If you set headers to anything other than "*", 
+                        // you should include at least "accept", "content-type", and "origin", 
+                        // plus any custom headers that you want to support
+                        builder.WithHeaders(HeaderNames.Accept, HeaderNames.ContentType, HeaderNames.Origin);
+                        builder.WithMethods
+                        (
+                            HttpMethod.Get.Method,
+                            HttpMethod.Post.Method,
+                            HttpMethod.Put.Method,
+                            HttpMethod.Delete.Method
+                        );
+                    });
+            });
+        }
+    }
+}

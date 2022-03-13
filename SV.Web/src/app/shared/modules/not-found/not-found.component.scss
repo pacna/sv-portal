@@ -1,0 +1,12 @@
+@import "../../../../colors.scss";
+
+#not-found {
+  margin: auto;
+  text-align: center;
+  max-width: 500px;
+  color: $plain-white;
+
+  p {
+    line-height: 2rem;
+  }
+}
