@@ -1,10 +1,10 @@
+import { RunecraftOverviewComponent } from './components/runecraft-overview/runecraft-overview.component';
 import { Routes } from '@angular/router';
-import { RunecraftComponent } from './runecraft.component';
 
 export const runeCraftRoutes: Routes = [
   {
     path: '',
-    component: RunecraftComponent,
+    component: RunecraftOverviewComponent,
     children: [
       {
         path: '',

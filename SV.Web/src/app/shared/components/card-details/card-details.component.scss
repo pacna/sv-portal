@@ -1,33 +1,36 @@
 @import "../../../../colors.scss";
 
 #card-details {
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 24px;
-  border-radius: 6px;
-  max-width: 300px;
+  display: flex;
 
-  h3 {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: $plain-white;
-    text-shadow: 2px 2px 20px $secondary-blue;
+  img {
+    width: 272px;
+    height: 354px;
   }
 
-  dl {
-    color: $plain-white;
-    margin-top: 16px;
-    margin-bottom: 0px;
-    line-height: 30px;
+  .is-two-fifth {
+    flex-basis: 40%;
+  }
 
-    dt {
-      float: left;
-      font-weight: bold;
-      margin-right: 16px;
-    }
+  .is-three-fifth {
+    flex-basis: 60%;
+  }
+  .cols {
+    flex: 1;
+  }
 
-    dd {
-      text-transform: capitalize;
-      margin-left: 0px;
-    }
+  follower-description,
+  card-description {
+    display: block;
+  }
+
+  .mat-icon {
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+  }
+
+  .mat-icon-button .mat-icon {
+    line-height: inherit;
   }
 }

@@ -1,15 +1,18 @@
 <div id="card-details">
-    <h3> Card Details </h3>
-    <dl>
-        <dt>Craft:</dt>
-        <dd>{{ card?.craft}}</dd>
-        <dt>Rarity:</dt>
-        <dd>{{ card?.rarity }}</dd>
-        <dt>Create:</dt>
-        <dd> {{ card?.createCostText }} </dd>
-        <dt> Liquefy: </dt>
-        <dd> {{ card?.liquefyCostText }} </dd>
-        <dt> Type: </dt>
-        <dd> {{ card?.type }} </dd>
-    </dl>
+    <div class="is-three-fifth">
+        <section [ngClass]="{'center-text': isFollower}" class="mb-40">
+            <img [src]="card.artLocation">
+            <img *ngIf="isFollower" [src]="card.evo.artLocation">
+        </section>
+        <section>
+            <follower-description *ngIf="isFollower" [cardDetail]="card"></follower-description>
+            <card-description *ngIf="!isFollower" [cardDescription]="cardDescription"></card-description>
+        </section>
+    </div>
+    <div class="is-two-fifth">
+        <card-details-description [cardDetail]="card"></card-details-description>
+        <button *ngIf="hasAudio" (click)="playAudio()" mat-icon-button class="mt-32" color="accent">
+            <mat-icon>play_circle_outline</mat-icon>
+        </button>
+    </div>
 </div>

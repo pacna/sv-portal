@@ -1,13 +1,6 @@
-import { LiquefyCost } from './../../types/customs/liquefy-cost.enum';
-import { CardPack } from './../../types/customs/card-pack.enum';
-import { CreateCost } from './../../types/customs/create-cost.enum';
-import { CardType } from './../../types/customs/card-type.enum';
-import { Rarity } from './../../types/customs/rarity.enum';
-import { CardDetailResponse } from './../../types/api/card-detail-response';
+import { CardDescription } from './../../types/customs/card-description';
 import { Component, Input, OnInit } from '@angular/core';
-import { CardDetails } from '../../types/customs/card-details';
-import { Craft } from '../..';
-import { enumCostMapperToString } from './function';
+import { CardDetailResponse, CardType } from '../..';
 
 @Component({
   selector: 'card-details',
@@ -15,54 +8,40 @@ import { enumCostMapperToString } from './function';
   styleUrls: ['./card-details.component.scss'],
 })
 export class CardDetailsComponent implements OnInit {
-  @Input() set cardDetail(cardDetail: CardDetailResponse) {
-    if (!cardDetail) return;
-    this.handleCardDetail(cardDetail);
+  @Input() set detail(detail: CardDetailResponse) {
+    if (!detail) return;
+    this.handleCardDetails(detail);
   }
-
-  card: CardDetails;
-
+  card: CardDetailResponse = {} as CardDetailResponse;
+  audio = new Audio();
+  cardDescription: CardDescription = {} as CardDescription;
+  audioCounter: number = 0;
   constructor() {}
 
   ngOnInit(): void {}
 
-  private handleCardDetail(cardDetail: CardDetailResponse): void {
-    this.card = {
-      craft: Craft[cardDetail.craft],
-      rarity: Rarity[cardDetail.rarity],
-      createCostText: this.displayCost(
-        cardDetail.cardPack,
-        cardDetail.rarity,
-        Object.assign({} as CreateCost, LiquefyCost)
-      ),
-      liquefyCostText: this.displayCost(
-        cardDetail.cardPack,
-        cardDetail.rarity,
-        Object.assign({} as LiquefyCost, LiquefyCost)
-      ),
-      type: CardType[cardDetail.type],
-    } as CardDetails;
+  playAudio(): void {
+    this.audio.src = this.card.audioLocations[this.audioCounter];
+    this.audio.play();
+    this.audioCounter++;
+    if (this.audioCounter >= this.card.audioLocations.length) {
+      this.audioCounter = 0;
+    }
   }
 
-  private displayCost(
-    cardPack: CardPack,
-    rarity: Rarity,
-    cost: CreateCost | LiquefyCost
-  ): string {
-    if (cardPack === CardPack.basic || cardPack === CardPack.promo) {
-      return '- -';
-    }
-    switch (rarity) {
-      case Rarity.bronze:
-        return enumCostMapperToString(cost, 'bronze');
-      case Rarity.silver:
-        return enumCostMapperToString(cost, 'silver');
-      case Rarity.gold:
-        return enumCostMapperToString(cost, 'gold');
-      case Rarity.legendary:
-        return enumCostMapperToString(cost, 'legendary');
-      default:
-        return '- -';
-    }
+  get isFollower(): boolean {
+    return this.card.type === CardType.follower;
+  }
+
+  get hasAudio(): boolean {
+    return this.card.audioLocations?.length > 0;
+  }
+
+  private handleCardDetails(detail: CardDetailResponse): void {
+    this.card = detail;
+    this.cardDescription = {
+      abilityText: detail.abilityText,
+      flavorText: detail.flavorText,
+    };
   }
 }

@@ -1,19 +1,19 @@
+import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { RunecraftComponent } from './runecraft.component';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { runeCraftRoutes } from './runecraft.routing';
+import { RunecraftDetailComponent } from './components/runecraft-detail/runecraft-detail.component';
+import { RunecraftOverviewComponent } from './components/runecraft-overview/runecraft-overview.component';
 
 @NgModule({
-  declarations: [RunecraftComponent],
+  declarations: [RunecraftDetailComponent, RunecraftOverviewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(runeCraftRoutes),
-    MatCardModule,
-    MatGridListModule,
+    SharedModule,
+    MatButtonModule,
   ],
-  exports: [RunecraftComponent],
 })
 export class RunecraftModule {}

@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
@@ -16,12 +17,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
 import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
 import { LoadingContentComponent } from './components/loading-content/loading-content.component';
-import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatListModule } from '@angular/material/list';
 import { CardDescriptionComponent } from './components/card-description/card-description.component';
 import { FollowerDescriptionComponent } from './components/follower-description/follower-description.component';
 import { FollowerDetailDescriptionComponent } from './components/follower-detail-description/follower-detail-description.component';
-import { MatDividerModule } from '@angular/material/divider';
+import { CardDetailsDescriptionComponent } from './components/card-details-description/card-details-description.component';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,11 @@ import { MatDividerModule } from '@angular/material/divider';
     SVListItemComponent,
     HeaderActionBarComponent,
     LoadingContentComponent,
-    CardDetailsComponent,
+    CardDetailsDescriptionComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
     FollowerDetailDescriptionComponent,
+    CardDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatTabsModule,
     MatButtonModule,
     MatListModule,
+    MatIconModule,
     RouterModule,
     HttpClientModule,
   ],
@@ -55,6 +58,7 @@ import { MatDividerModule } from '@angular/material/divider';
     SVListComponent,
     HeaderActionBarComponent,
     LoadingContentComponent,
+    CardDetailsDescriptionComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,

@@ -6,22 +6,7 @@
             <button mat-raised-button class="primary-destructive-action-button">Remove</button>
         </ng-container>
     </header-action-bar>
-    <div class="main-detail">
-        <div class="is-three-fifth">
-            <section [ngClass]="{'center-text': isFollower}" class="mb-40">
-                <img [src]="card.artLocation">
-                <img *ngIf="isFollower" [src]="card.evo.artLocation">
-            </section>
-            <section>
-                <follower-description *ngIf="isFollower" [cardDetail]="card"></follower-description>
-                <card-description *ngIf="!isFollower" [cardDescription]="cardDescription"></card-description>
-            </section>
-        </div>
-        <div class="is-two-fifth">
-            <card-details [cardDetail]="card"></card-details>
-            <button *ngIf="hasAudio" (click)="playAudio()" mat-icon-button class="mt-32" color="accent">
-                <mat-icon>play_circle_outline</mat-icon>
-            </button>
-        </div>
-    </div>
+    <loading-content [hasLoaded]="hasCard()">
+        <card-details [detail]="card"></card-details>
+    </loading-content>
 </div>
