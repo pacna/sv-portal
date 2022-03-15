@@ -23,6 +23,12 @@ import { FollowerDescriptionComponent } from './components/follower-description/
 import { FollowerDetailDescriptionComponent } from './components/follower-detail-description/follower-detail-description.component';
 import { CardDetailsDescriptionComponent } from './components/card-details-description/card-details-description.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -37,6 +43,7 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
     FollowerDescriptionComponent,
     FollowerDetailDescriptionComponent,
     CardDetailsComponent,
+    CardsFilterSearchComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +58,12 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
     MatIconModule,
     RouterModule,
     HttpClientModule,
+    MatChipsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [
     TopNavComponent,
@@ -62,6 +75,7 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
     CardDetailsComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
+    CardsFilterSearchComponent,
   ],
   providers: [CardsApiService],
 })

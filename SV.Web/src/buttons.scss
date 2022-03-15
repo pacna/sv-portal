@@ -5,6 +5,12 @@
   background-color: $primary-blue;
 }
 
+button.primary-action-button.mat-button-disabled {
+  background-color: $primary-blue !important;
+  color: $plain-white !important;
+  opacity: 50%;
+}
+
 .secondary-action-button {
   color: $primary-blue;
   background-color: $plain-white;

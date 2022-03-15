@@ -1,3 +1,4 @@
+import { CardSearchRequest } from './../../../shared/types/api/card-search-request';
 import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { CardResponse } from '../../../shared/types/api/card-response';
 import { Component, OnInit } from '@angular/core';
@@ -23,11 +24,13 @@ export class SwordcraftOverviewComponent implements OnInit {
   }
 
   searchCards(): Observable<void> {
-    return this.cardsApiService.searchCards({ craft: Craft.swordcraft }).pipe(
-      map((response: CardResponse[]) => {
-        this.cards = response;
-      })
-    );
+    return this.cardsApiService
+      .searchCards({ craft: Craft.swordcraft } as CardSearchRequest)
+      .pipe(
+        map((response: CardResponse[]) => {
+          this.cards = response;
+        })
+      );
   }
 
   hasCards(): boolean {

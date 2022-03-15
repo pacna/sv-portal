@@ -1,0 +1,43 @@
+@import "../../../../colors.scss";
+
+#cards-filter-search {
+  text-align: center;
+  flex-direction: column;
+  padding: 8px 16px;
+
+  h3 {
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  form {
+    mat-form-field {
+      width: 100%;
+    }
+
+    mat-chip-list {
+      display: flex;
+      justify-content: center;
+
+      mat-chip {
+        cursor: pointer;
+      }
+      .mat-chip-selected {
+        background-color: $primary-blue;
+      }
+    }
+
+    section {
+      position: absolute;
+      bottom: 1.5em;
+      left: 0;
+      right: 0;
+      padding: 8px 16px 0px;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

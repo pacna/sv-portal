@@ -1,3 +1,4 @@
+import { CardSearchRequest } from './../../../shared/types/api/card-search-request';
 import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
@@ -23,11 +24,13 @@ export class RunecraftOverviewComponent implements OnInit {
   }
 
   searchCards(): Observable<void> {
-    return this.cardsApiService.searchCards({ craft: Craft.runecraft }).pipe(
-      map((response: CardResponse[]) => {
-        this.cards = response;
-      })
-    );
+    return this.cardsApiService
+      .searchCards({ craft: Craft.runecraft } as CardSearchRequest)
+      .pipe(
+        map((response: CardResponse[]) => {
+          this.cards = response;
+        })
+      );
   }
 
   hasCards(): boolean {

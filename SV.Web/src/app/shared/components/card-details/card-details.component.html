@@ -1,8 +1,9 @@
 <div id="card-details">
     <div class="is-three-fifth">
         <section [ngClass]="{'center-text': isFollower}" class="mb-40">
-            <img [src]="card.artLocation">
-            <img *ngIf="isFollower" [src]="card.evo.artLocation">
+            <ng-container *ngFor="let card of cardsGallery; let i = index">
+                <img [lightbox]="i" gallery="cards-detail-gallery" [src]="card.data.src">
+            </ng-container>
         </section>
         <section>
             <follower-description *ngIf="isFollower" [cardDetail]="card"></follower-description>

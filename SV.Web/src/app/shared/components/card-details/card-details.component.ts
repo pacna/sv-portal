@@ -1,3 +1,4 @@
+import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
 import { CardDescription } from './../../types/customs/card-description';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardDetailResponse, CardType } from '../..';
@@ -9,14 +10,15 @@ import { CardDetailResponse, CardType } from '../..';
 })
 export class CardDetailsComponent implements OnInit {
   @Input() set detail(detail: CardDetailResponse) {
-    if (!detail) return;
+    if (!detail || !this.hasCard(detail)) return;
     this.handleCardDetails(detail);
   }
   card: CardDetailResponse = {} as CardDetailResponse;
   audio = new Audio();
   cardDescription: CardDescription = {} as CardDescription;
   audioCounter: number = 0;
-  constructor() {}
+  cardsGallery: GalleryItem[] = [];
+  constructor(private gallery: Gallery) {}
 
   ngOnInit(): void {}
 
@@ -43,5 +45,39 @@ export class CardDetailsComponent implements OnInit {
       abilityText: detail.abilityText,
       flavorText: detail.flavorText,
     };
+    this.loadCardsGallery(detail);
+  }
+
+  hasCard(card: CardDetailResponse): boolean {
+    return Object.keys(card).length > 0;
+  }
+
+  private loadCardsGallery(card: CardDetailResponse): void {
+    this.cardsGallery.push({
+      type: 'image',
+      data: {
+        src: card.artLocation,
+        thumb: card.artLocation,
+      } as ImageItemData,
+    } as GalleryItem);
+
+    if (this.isFollower) {
+      this.cardsGallery.push({
+        type: 'image',
+        data: {
+          src: card.evo.artLocation,
+          thumb: card.evo.artLocation,
+        } as ImageItemData,
+      } as GalleryItem);
+    }
+
+    this.gallery
+      .ref('cards-detail-gallery', {
+        thumbPosition: 'bottom',
+        counterPosition: 'bottom',
+        imageSize: 'contain',
+        thumbView: 'contain',
+      } as GalleryConfig)
+      .load(this.cardsGallery);
   }
 }

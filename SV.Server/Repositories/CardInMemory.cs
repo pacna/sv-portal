@@ -140,9 +140,25 @@ namespace SV.Server.Repositories
         public async Task<List<Card>> SearchCards(CardSearchRequest request)
         {
             IEnumerable<Card> cardList = cardsInMemory.ToList();
+
             if (request.Craft.HasValue)
             {
                 cardList = cardList.Where(x => x.Craft == request.Craft.Value);
+            }
+
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                cardList = cardList.Where(x => x.Name.Contains(request.Name, StringComparison.InvariantCultureIgnoreCase));
+            }
+
+            if (!request.Rarities.IsNullOrEmpty())
+            {
+                cardList = cardList.Where(x => request.Rarities.Contains(x.Rarity));
+            }
+
+            if (!request.Types.IsNullOrEmpty())
+            {
+                cardList = cardList.Where(x => request.Types.Contains(x.Type));
             }
 
             return cardList.ToList();

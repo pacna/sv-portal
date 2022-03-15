@@ -22,3 +22,27 @@ body {
 .mat-tab-header-pagination-chevron {
   border-color: $plain-white !important;
 }
+
+.mat-drawer-container {
+  position: unset !important;
+
+  .mat-drawer {
+    left: 0;
+    max-width: 360px;
+    min-width: 320px;
+  }
+}
+
+.mat-form-field-outline-thick,
+.mat-focused .mat-form-field-label,
+.mat-option.mat-selected {
+  color: $primary-blue !important;
+}
+
+.mat-select-panel {
+  min-width: calc(100% + 32px) !important;
+}
+
+.mat-pseudo-checkbox-checked {
+  background-color: $primary-blue !important;
+}
