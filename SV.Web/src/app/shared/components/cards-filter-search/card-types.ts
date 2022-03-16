@@ -1,4 +1,4 @@
-import { CardType } from '../..';
+import { CardType } from './../../types/customs/card-type.enum';
 import { CardTypeConfig } from './../../types/customs/card-type-config';
 export const CardTypes: Record<
   'follower' | 'spell' | 'amulet',

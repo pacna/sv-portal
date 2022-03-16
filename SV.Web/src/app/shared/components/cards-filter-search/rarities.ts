@@ -1,4 +1,4 @@
-import { Rarity } from '../..';
+import { Rarity } from './../../types/customs/rarity.enum';
 import { RartiyConfig } from './../../types/customs/rarity-config';
 export const Rarities: Record<
   'bronze' | 'silver' | 'gold' | 'legendary',

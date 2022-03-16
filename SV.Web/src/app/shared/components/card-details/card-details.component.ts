@@ -1,7 +1,8 @@
 import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
 import { CardDescription } from './../../types/customs/card-description';
 import { Component, Input, OnInit } from '@angular/core';
-import { CardDetailResponse, CardType } from '../..';
+import { CardType } from '../../types/customs/card-type.enum';
+import { CardDetailResponse } from '../../types/api/card-detail-response';
 
 @Component({
   selector: 'card-details',

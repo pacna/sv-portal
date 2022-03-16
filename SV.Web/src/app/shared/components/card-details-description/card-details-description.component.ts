@@ -6,7 +6,7 @@ import { Rarity } from '../../types/customs/rarity.enum';
 import { CardDetailResponse } from '../../types/api/card-detail-response';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardDetails } from '../../types/customs/card-details';
-import { Craft } from '../..';
+import { Craft } from '../../types/customs/craft.enum';
 import { enumCostMapperToString } from './function';
 
 @Component({
