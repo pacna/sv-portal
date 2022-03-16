@@ -1,6 +1,9 @@
 <mat-drawer-container id="forestcraft-overview">
     <mat-drawer #drawer>
-        <cards-filter-search [headerCraftType]="forestCraftType"></cards-filter-search>
+        <cards-filter-search 
+        [headerCraftType]="forestCraftType"
+        [currentFilterRequest]="currentFilterRequest" 
+        (changeSearchFilter)="handleFilterRequest($event)"></cards-filter-search>
     </mat-drawer>
     <mat-drawer-content>
         <header-action-bar>

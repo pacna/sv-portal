@@ -1,5 +1,3 @@
-import { MENU } from './menu';
-import { SVNavigationMenu } from './types/sv-layout.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sv-layout.component.scss'],
 })
 export class SVLayoutComponent implements OnInit {
-  navLinks: SVNavigationMenu[] = MENU;
   constructor() {}
 
   ngOnInit(): void {}
