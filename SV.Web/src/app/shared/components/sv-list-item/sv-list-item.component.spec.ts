@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CardResponse } from '../../types/api/card-response';
 
 import { SVListItemComponent } from './sv-list-item.component';
 
@@ -15,6 +16,7 @@ describe('SVListItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SVListItemComponent);
     component = fixture.componentInstance;
+    component.card = { artLocation: '', name: '' } as CardResponse;
     fixture.detectChanges();
   });
 
