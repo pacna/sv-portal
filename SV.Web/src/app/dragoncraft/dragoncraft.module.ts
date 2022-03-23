@@ -1,19 +1,19 @@
+import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
 import { dragonCraftRoutes } from './dragoncraft.routing';
-import { DragoncraftComponent } from './dragoncraft.component';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { DragoncraftOverviewComponent } from './components/dragoncraft-overview/dragoncraft-overview.component';
+import { DragoncraftDetailComponent } from './components/dragoncraft-detail/dragoncraft-detail.component';
 
 @NgModule({
-  declarations: [DragoncraftComponent],
+  declarations: [DragoncraftOverviewComponent, DragoncraftDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dragonCraftRoutes),
-    MatCardModule,
-    MatGridListModule,
+    SharedModule,
+    MatButtonModule,
   ],
-  exports: [DragoncraftComponent],
 })
 export class DragoncraftModule {}

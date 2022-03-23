@@ -1,10 +1,10 @@
+import { DragoncraftOverviewComponent } from './components/dragoncraft-overview/dragoncraft-overview.component';
 import { Routes } from '@angular/router';
-import { DragoncraftComponent } from './dragoncraft.component';
 
 export const dragonCraftRoutes: Routes = [
   {
     path: '',
-    component: DragoncraftComponent,
+    component: DragoncraftOverviewComponent,
     children: [
       {
         path: '',
