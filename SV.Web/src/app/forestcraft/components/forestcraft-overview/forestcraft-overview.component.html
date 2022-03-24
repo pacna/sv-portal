@@ -18,7 +18,7 @@
             </button>
         </section>
         <loading-content [hasLoaded]="hasCards()">
-            <sv-list [cards]="cards" (viewCardId)="handleCardInfo($event)"></sv-list>
+            <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
         </loading-content>
     </mat-drawer-content>
 </mat-drawer-container>

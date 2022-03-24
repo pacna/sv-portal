@@ -13,7 +13,8 @@ export class SVListComponent implements OnInit {
     this.handleCards(cards);
   }
   @Input() numberOfColumns: number = 4;
-  @Output() viewCardId: EventEmitter<string> = new EventEmitter<string>();
+  @Output() viewCardInfo: EventEmitter<Pick<CardResponse, 'id' | 'craft'>> =
+    new EventEmitter<Pick<CardResponse, 'id' | 'craft'>>();
 
   svCards: CardResponse[] = [];
 

@@ -37,7 +37,7 @@ export class RunecraftOverviewComponent implements OnInit {
     return this.cards.length > 0;
   }
 
-  handleCardInfo(id: string): void {
-    this.router.navigate([id], { relativeTo: this.route });
+  handleCardInfo(info: Pick<CardResponse, 'id' | 'craft'>): void {
+    this.router.navigateByUrl(`${Craft[info.craft]}/${info.id}`);
   }
 }

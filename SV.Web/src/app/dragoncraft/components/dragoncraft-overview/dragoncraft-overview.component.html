@@ -6,6 +6,6 @@
         </ng-container>
     </header-action-bar>
     <loading-content [hasLoaded]="hasCards()">
-        <sv-list [cards]="cards" (viewCardId)="handleCardInfo($event)"></sv-list>
+        <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
     </loading-content>
 </div>

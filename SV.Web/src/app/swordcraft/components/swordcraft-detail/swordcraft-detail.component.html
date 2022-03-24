@@ -1,1 +1,12 @@
-<p>swordcraft-detail works!</p>
+<div id="swordcraft-detail">
+    <header-action-bar class="mb-40">
+        <h2 slot="header"> {{ card.name }} </h2>
+        <ng-container slot="actions">
+            <button mat-raised-button class="secondary-action-button">Edit</button>
+            <button mat-raised-button class="primary-destructive-action-button">Remove</button>
+        </ng-container>
+    </header-action-bar>
+    <loading-content [hasLoaded]="hasCard()">
+        <card-details [detail]="card"></card-details>
+    </loading-content>
+</div>
