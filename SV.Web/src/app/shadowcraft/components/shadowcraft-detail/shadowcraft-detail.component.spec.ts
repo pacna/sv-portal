@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShadowcraftComponent } from './shadowcraft.component';
+import { ShadowcraftDetailComponent } from './shadowcraft-detail.component';
 
-describe('ShadowcraftComponent', () => {
-  let component: ShadowcraftComponent;
-  let fixture: ComponentFixture<ShadowcraftComponent>;
+describe('ShadowcraftDetailComponent', () => {
+  let component: ShadowcraftDetailComponent;
+  let fixture: ComponentFixture<ShadowcraftDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShadowcraftComponent ]
+      declarations: [ ShadowcraftDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShadowcraftComponent);
+    fixture = TestBed.createComponent(ShadowcraftDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
