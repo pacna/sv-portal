@@ -1,3 +1,4 @@
+import { LightboxModule } from 'ng-gallery/lightbox';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardResponse } from '../../types/api/card-response';
 
@@ -9,6 +10,7 @@ describe('SVListItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [LightboxModule],
       declarations: [SVListItemComponent],
     }).compileComponents();
   });

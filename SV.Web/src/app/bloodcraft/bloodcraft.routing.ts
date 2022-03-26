@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { BloodcraftComponent } from './bloodcraft.component';
+import { BloodcraftOverviewComponent } from './components/bloodcraft-overview/bloodcraft-overview.component';
 
 export const bloodCraftRoutes: Routes = [
   {
     path: '',
-    component: BloodcraftComponent,
+    component: BloodcraftOverviewComponent,
     children: [
       {
         path: '',

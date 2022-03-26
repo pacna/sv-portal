@@ -1,30 +1,29 @@
 import {
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
-  MockCardDetailsComponent,
+  MockSVListComponent,
 } from './../../../shared/testing/shared-mocks.spec';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CardDetailResponse } from './../../../shared/types/api/card-detail-response';
 import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForestcraftDetailComponent } from './forestcraft-detail.component';
+import { BloodcraftOverviewComponent } from './bloodcraft-overview.component';
+import { CardsApiService } from '../../../shared/services/cards-api.service';
 import { of } from 'rxjs';
 
-describe('ForestcraftDetailComponent', () => {
-  let component: ForestcraftDetailComponent;
-  let fixture: ComponentFixture<ForestcraftDetailComponent>;
+describe('BloodcraftOverviewComponent', () => {
+  let component: BloodcraftOverviewComponent;
+  let fixture: ComponentFixture<BloodcraftOverviewComponent>;
   let cardsApiService: jasmine.SpyObj<CardsApiService>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [
-        ForestcraftDetailComponent,
+        BloodcraftOverviewComponent,
         MockHeaderActionBarComponent,
         MockLoadingContentComponent,
-        MockCardDetailsComponent,
+        MockSVListComponent,
       ],
       providers: [
         {
@@ -39,8 +38,8 @@ describe('ForestcraftDetailComponent', () => {
     cardsApiService = TestBed.inject(
       CardsApiService
     ) as jasmine.SpyObj<CardsApiService>;
-    cardsApiService.getCard.and.returnValue(of({} as CardDetailResponse));
-    fixture = TestBed.createComponent(ForestcraftDetailComponent);
+    cardsApiService.searchCards.and.returnValue(of([]));
+    fixture = TestBed.createComponent(BloodcraftOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

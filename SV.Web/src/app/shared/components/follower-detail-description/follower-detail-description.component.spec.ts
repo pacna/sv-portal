@@ -1,3 +1,4 @@
+import { MockCardDescriptionComponent } from './../../testing/shared-mocks.spec';
 import { FollowerDescription } from './../../types/customs/follower-description';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -9,7 +10,10 @@ describe('FollowerDetailDescriptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FollowerDetailDescriptionComponent],
+      declarations: [
+        FollowerDetailDescriptionComponent,
+        MockCardDescriptionComponent,
+      ],
     }).compileComponents();
   });
 

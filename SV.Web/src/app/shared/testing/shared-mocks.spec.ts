@@ -1,6 +1,10 @@
+import { CardsFilterRequest } from './../types/customs/cards-filter-request';
+import { Craft } from 'src/app/shared/types/customs';
+import { CardResponse } from './../types/api/card-response';
 import { CardDescription } from './../types/customs/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FollowerDescription } from '../types/customs/follower-description';
 
 // https://stackoverflow.com/questions/41240163/mocking-child-components-angular-2
 @Component({
@@ -37,4 +41,54 @@ export class MockCardDetailsDescriptionComponent {
 })
 export class MockCardDescriptionComponent {
   @Input() cardDescription: CardDescription;
+}
+
+@Component({
+  selector: 'follower-detail-description',
+  template: '',
+})
+export class MockFollowerDetailDescriptionComponent {
+  @Input() followerHeaderText: string = 'Base';
+  @Input() followerDescription: FollowerDescription;
+}
+
+@Component({
+  selector: 'header-action-bar',
+  template: '',
+})
+export class MockHeaderActionBarComponent {}
+
+@Component({
+  selector: 'loading-content',
+  template: '',
+})
+export class MockLoadingContentComponent {
+  @Input() hasLoaded: boolean = false;
+}
+
+@Component({
+  selector: 'sv-list',
+  template: '',
+})
+export class MockSVListComponent {
+  @Input() cards: CardResponse[];
+}
+
+@Component({
+  selector: 'cards-filter-search',
+  template: '',
+})
+export class MockCardsFilterSearchComponent {
+  @Input() headerCraftType: Craft;
+  @Input() currentFilterRequest: CardsFilterRequest;
+  @Output() changeSearchFilter: EventEmitter<CardsFilterRequest> =
+    new EventEmitter<CardsFilterRequest>();
+}
+
+@Component({
+  selector: 'card-details',
+  template: '',
+})
+export class MockCardDetailsComponent {
+  @Input() detail: CardDetailResponse;
 }

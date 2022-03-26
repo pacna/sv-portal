@@ -1,3 +1,8 @@
+import {
+  MockHeaderActionBarComponent,
+  MockLoadingContentComponent,
+  MockSVListComponent,
+} from './../../../shared/testing/shared-mocks.spec';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
 import { CardsApiService } from './../../../shared/services/cards-api.service';
@@ -14,7 +19,12 @@ describe('SwordcraftOverviewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [SwordcraftOverviewComponent],
+      declarations: [
+        SwordcraftOverviewComponent,
+        MockHeaderActionBarComponent,
+        MockLoadingContentComponent,
+        MockSVListComponent,
+      ],
       providers: [
         {
           provide: CardsApiService,

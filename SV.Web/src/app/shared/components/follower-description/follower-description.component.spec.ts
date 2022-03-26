@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockFollowerDetailDescriptionComponent } from '../../testing/shared-mocks.spec';
 
 import { FollowerDescriptionComponent } from './follower-description.component';
 
@@ -8,7 +9,10 @@ describe('FollowerDescriptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FollowerDescriptionComponent],
+      declarations: [
+        FollowerDescriptionComponent,
+        MockFollowerDetailDescriptionComponent,
+      ],
     }).compileComponents();
   });
 

@@ -1,3 +1,11 @@
+import {
+  MockCardsFilterSearchComponent,
+  MockHeaderActionBarComponent,
+  MockLoadingContentComponent,
+  MockSVListComponent,
+} from './../../../shared/testing/shared-mocks.spec';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
 import { CardsApiService } from './../../../shared/services/cards-api.service';
@@ -5,6 +13,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForestcraftOverviewComponent } from './forestcraft-overview.component';
 import { of } from 'rxjs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 describe('ForestcraftOverviewComponent', () => {
   let component: ForestcraftOverviewComponent;
@@ -13,8 +22,19 @@ describe('ForestcraftOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ForestcraftOverviewComponent],
+      imports: [
+        RouterTestingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+      ],
+      declarations: [
+        ForestcraftOverviewComponent,
+        MockHeaderActionBarComponent,
+        MockLoadingContentComponent,
+        MockSVListComponent,
+        MockCardsFilterSearchComponent,
+      ],
       providers: [
         {
           provide: CardsApiService,
