@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HavencraftComponent } from './havencraft.component';
+import { HavencraftOverviewComponent } from './components/havencraft-overview/havencraft-overview.component';
 
 export const havenCraftRoutes: Routes = [
   {
     path: '',
-    component: HavencraftComponent,
+    component: HavencraftOverviewComponent,
     children: [
       {
         path: '',
