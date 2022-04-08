@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { PortalcraftComponent } from './portalcraft.component';
+import { PortalcraftOverviewComponent } from './components/portalcraft-overview/portalcraft-overview.component';
 
 export const portalCraftRoutes: Routes = [
   {
     path: '',
-    component: PortalcraftComponent,
+    component: PortalcraftOverviewComponent,
     children: [
       {
         path: '',

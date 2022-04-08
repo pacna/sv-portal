@@ -1,6 +1,6 @@
 <div id="sv-list-item">
     <div class="sv-list-gallery-item" [lightbox]="cardIndex" gallery="sv-cards-gallery">
-        <img [src]="card.artLocation" [alt]="card.name">
+        <img [src]="card.artLocation" [alt]="card.name" decoding="async">
     </div>
     <div class="sv-list-name-link">
         <a (click)="sendCardInfo(card)">{{ card.name }}</a>

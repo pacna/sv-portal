@@ -2,7 +2,7 @@
     <div class="is-three-fifth">
         <section [ngClass]="{'center-text': isFollower}" class="mb-40">
             <ng-container *ngFor="let card of cardsGallery; let i = index">
-                <img [lightbox]="i" gallery="cards-detail-gallery" [src]="card.data.src">
+                <img [lightbox]="i" gallery="cards-detail-gallery" [src]="card.data.src" decoding="async">
             </ng-container>
         </section>
         <section>
