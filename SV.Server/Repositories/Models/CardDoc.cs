@@ -3,7 +3,7 @@ using SV.Server.Controllers.Models;
 
 namespace SV.Server.Repositories.Models
 {
-    public class Card
+    public class CardDoc
     {
         public string AbilityText { get; init; }
         public string ArtLocation { get; init; }

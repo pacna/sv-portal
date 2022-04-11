@@ -12,12 +12,12 @@ namespace SV.Server
     {
         internal static void AddServices(this IServiceCollection services)
         {
-            services.AddSingleton<ICardService, CardService>();
+            services.AddTransient<ICardService, CardService>();
         }
 
         internal static void AddRepositories(this IServiceCollection services)
         {
-            services.AddSingleton<ICardRepository, CardInMemory>();
+            services.AddTransient<ICardRepository, CardRepository>();
         }
 
         internal static void AddSwagger(this IServiceCollection services)

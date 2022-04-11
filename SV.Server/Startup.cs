@@ -1,9 +1,11 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SV.Server.Contexts;
 using SV.Server.Settings;
 
 namespace SV.Server
@@ -12,11 +14,12 @@ namespace SV.Server
     {
         private IConfiguration Configuration { get; }
         private ICORSPolicySettings CORSPolicySettings { get; set; }
+        private INpgsqlPostgresDBSetting NpgsqlPostgresDBSetting { get; set; }
 
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            this.GetInitCORSPolicy(configuration: configuration);
+            this.GetInitSettings(configuration: configuration);
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -27,6 +30,8 @@ namespace SV.Server
             services.AddRepositories();
             services.AddSwagger();
             services.AddCors(corsPolicySettings: this.CORSPolicySettings);
+            services.AddDbContext<SVPortalContext>(options =>
+                    options.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString).UseSnakeCaseNamingConvention());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,15 +58,16 @@ namespace SV.Server
             });
         }
 
-        private void GetInitCORSPolicy(IConfiguration configuration)
+        private void GetInitSettings(IConfiguration configuration)
         {
             try
             {
                 this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
+                this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Unable to set CORS policy --", ex.ToString());
+                Console.WriteLine("Unable to set setting --", ex.ToString());
             }
         }
     }

@@ -7,9 +7,9 @@ namespace SV.Server.Repositories
 {
     public interface ICardRepository
     {
-        Task<List<Card>> SearchCards(CardSearchRequest request);
-        Task<Card> GetCard(string id);
-        Task<Card> AddCard(CardAddRequest request);
+        Task<List<CardDoc>> SearchCards(CardSearchRequest request);
+        Task<CardDoc> GetCard(string id);
+        Task<CardDoc> AddCard(CardAddRequest request);
         Task UpdateCard(string id, CardUpdateRequest request);
         Task RemoveCard(string id);
     }
