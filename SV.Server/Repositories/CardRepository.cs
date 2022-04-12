@@ -15,15 +15,7 @@ namespace SV.Server.Repositories
 
         public async Task<List<CardDoc>> SearchCards(CardSearchRequest request)
         {
-            List<Card> cards = await base.SearchCards();
-
-            return cards.Select(x => new CardDoc
-            {
-                Id = x.CardId,
-                Name = x.Name,
-                Craft = x.Craft
-
-            }).ToList();
+            return await base.SearchCards();
         }
 
         public async Task<CardDoc> GetCard(string id)

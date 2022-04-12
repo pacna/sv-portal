@@ -8,6 +8,9 @@ namespace SV.Server.Contexts
         {
         }
 
+        public DbSet<Audio> Audios { get; set; }
+        public DbSet<BattleStats> BattleStats { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Evo> Evos { get; set; }
     }
 }

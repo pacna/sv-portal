@@ -18,5 +18,6 @@ namespace SV.Server.Repositories.Models
         public int PPCost { get; init; }
         public RarityType Rarity { get; init; }
         public CardType Type { get; init; }
+        public bool IsEvo { get; init; }
     }
 }
