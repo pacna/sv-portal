@@ -14,11 +14,9 @@ namespace SV.Server.Repositories
         IQueryable<Card> _queryableCard;
         IQueryable<Evo> _queryableEvo;
 
-        SVPortalContext _context;
 
         public PostgresRepository(SVPortalContext context)
         {
-            this._context = context;
             this._queryableAudio = context.Audios.AsQueryable<Audio>();
             this._queryableBattleStats = context.BattleStats.AsQueryable<BattleStats>();
             this._queryableCard = context.Cards.AsQueryable<Card>();

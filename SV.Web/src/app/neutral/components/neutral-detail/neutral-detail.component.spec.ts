@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NeutralComponent } from './neutral.component';
+import { NeutralDetailComponent } from './neutral-detail.component';
 
-describe('NeutralComponent', () => {
-  let component: NeutralComponent;
-  let fixture: ComponentFixture<NeutralComponent>;
+describe('NeutralDetailComponent', () => {
+  let component: NeutralDetailComponent;
+  let fixture: ComponentFixture<NeutralDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NeutralComponent ]
+      declarations: [ NeutralDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NeutralComponent);
+    fixture = TestBed.createComponent(NeutralDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

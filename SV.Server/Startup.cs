@@ -31,7 +31,7 @@ namespace SV.Server
             services.AddSwagger();
             services.AddCors(corsPolicySettings: this.CORSPolicySettings);
             services.AddDbContext<SVPortalContext>(options =>
-                    options.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString).UseSnakeCaseNamingConvention());
+                    options.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,11 @@
+<div id="neutral-overview">
+    <header-action-bar class="mb-40">
+        <h2 slot="header"> Neutral </h2>
+        <ng-container slot="actions">
+            <button mat-raised-button class="primary-action-button">Create</button>
+        </ng-container>
+    </header-action-bar>
+    <loading-content [hasLoaded]="hasCards()">
+        <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
+    </loading-content>
+</div>

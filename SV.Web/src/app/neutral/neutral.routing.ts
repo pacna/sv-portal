@@ -1,10 +1,10 @@
+import { NeutralOverviewComponent } from './components/neutral-overview/neutral-overview.component';
 import { Routes } from '@angular/router';
-import { NeutralComponent } from './neutral.component';
 
 export const neutralRoutes: Routes = [
   {
     path: '',
-    component: NeutralComponent,
+    component: NeutralOverviewComponent,
     children: [
       {
         path: '',
