@@ -6,10 +6,10 @@ namespace SV.Server.Services
 {
     public interface ICardService
     {
-        Task<List<CardResponse>> SearchCards(CardSearchRequest request);
-        Task<CardDetailResponse> GetCard(string id);
-        Task<CardResponse> AddCard(CardAddRequest request);
-        Task UpdateCard(string id, CardUpdateRequest request);
-        Task RemoveCard(string id);
+        Task<List<CardResponse>> SearchCardsAsync(CardSearchRequest request);
+        Task<CardDetailResponse> GetCardAsync(string id);
+        Task<CardResponse> AddCardAsync(CardAddRequest request);
+        Task UpdateCardAsync(string id, CardUpdateRequest request);
+        Task RemoveCardAsync(string id);
     }
 }

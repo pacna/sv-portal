@@ -7,11 +7,11 @@ using SV.Server.Repositories.Models;
 
 namespace SV.Server.Repositories
 {
-    public class CardInMemory : ICardRepository
+    internal class CardInMemoryRepository : ICardRepository
     {
         private static Dictionary<string, CardDoc> cardsInMemory;
 
-        static CardInMemory()
+        static CardInMemoryRepository()
         {
             string item1Id = Guid.NewGuid().ToString();
             string item2Id = Guid.NewGuid().ToString();
@@ -137,7 +137,7 @@ namespace SV.Server.Repositories
             });
         }
 
-        public async Task<List<CardDoc>> SearchCards(CardSearchRequest request)
+        public Task<List<CardDoc>> SearchCardsAsync(CardSearchRequest request)
         {
             IEnumerable<CardDoc> cardList = cardsInMemory.ToList();
 
@@ -161,10 +161,10 @@ namespace SV.Server.Repositories
                 cardList = cardList.Where(x => request.Types.Contains(x.Type));
             }
 
-            return cardList.ToList();
+            return Task.FromResult<List<CardDoc>>(cardList.ToList());
         }
 
-        public async Task<CardDoc> GetCard(string id)
+        public Task<CardDoc> GetCardAsync(string id)
         {
             cardsInMemory.TryGetValue(id, out CardDoc card);
 
@@ -173,10 +173,10 @@ namespace SV.Server.Repositories
                 return null;
             }
 
-            return card;
+            return Task.FromResult<CardDoc>(card);
         }
 
-        public async Task<CardDoc> AddCard(CardAddRequest request)
+        public Task<CardDoc> AddCardAsync(CardAddRequest request)
         {
             string cardId = Guid.NewGuid().ToString();
 
@@ -191,16 +191,16 @@ namespace SV.Server.Repositories
 
             cardsInMemory.TryAdd(cardId, card);
 
-            return card;
+            return Task.FromResult<CardDoc>(card);
         }
 
-        public async Task UpdateCard(string id, CardUpdateRequest request)
+        public Task UpdateCardAsync(string id, CardUpdateRequest request)
         {
             cardsInMemory.TryGetValue(id, out CardDoc cardBeforeUpdate);
 
             if (cardBeforeUpdate == null)
             {
-                return;
+                return Task.CompletedTask;
             }
 
             cardsInMemory[id] = new CardDoc
@@ -210,11 +210,14 @@ namespace SV.Server.Repositories
                 Name = cardBeforeUpdate.Name,
                 PPCost = cardBeforeUpdate.PPCost
             };
+
+            return Task.CompletedTask;
         }
 
-        public async Task RemoveCard(string id)
+        public Task RemoveCardAsync(string id)
         {
             cardsInMemory.Remove(id);
+            return Task.CompletedTask;
         }
     }
 }

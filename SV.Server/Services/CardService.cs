@@ -6,7 +6,7 @@ using SV.Server.Repositories.Models;
 
 namespace SV.Server.Services
 {
-    public class CardService : ICardService
+    internal class CardService : ICardService
     {
         private readonly ICardRepository _cardRepo;
         public CardService(ICardRepository cardRepo)
@@ -14,32 +14,32 @@ namespace SV.Server.Services
             this._cardRepo = cardRepo;
         }
 
-        public async Task<List<CardResponse>> SearchCards(CardSearchRequest request)
+        public async Task<List<CardResponse>> SearchCardsAsync(CardSearchRequest request)
         {
-            List<CardDoc> cards = await this._cardRepo.SearchCards(request);
+            List<CardDoc> cards = await this._cardRepo.SearchCardsAsync(request);
             return CardMapper.Map(cards: cards);
         }
 
-        public async Task<CardDetailResponse> GetCard(string id)
+        public async Task<CardDetailResponse> GetCardAsync(string id)
         {
-            CardDoc card = await this._cardRepo.GetCard(id: id);
+            CardDoc card = await this._cardRepo.GetCardAsync(id: id);
             return CardMapper.MapDetailResponse(card: card);
         }
 
-        public async Task<CardResponse> AddCard(CardAddRequest request)
+        public async Task<CardResponse> AddCardAsync(CardAddRequest request)
         {
-            CardDoc card = await this._cardRepo.AddCard(request);
+            CardDoc card = await this._cardRepo.AddCardAsync(request);
             return CardMapper.Map(card: card);
         }
 
-        public async Task UpdateCard(string id, CardUpdateRequest request)
+        public Task UpdateCardAsync(string id, CardUpdateRequest request)
         {
-            await this._cardRepo.UpdateCard(id: id, request: request);
+            return this._cardRepo.UpdateCardAsync(id: id, request: request);
         }
 
-        public async Task RemoveCard(string id)
+        public Task RemoveCardAsync(string id)
         {
-            await this._cardRepo.RemoveCard(id: id);
+            return this._cardRepo.RemoveCardAsync(id: id);
         }
     }
 }

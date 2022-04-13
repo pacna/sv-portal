@@ -7,33 +7,36 @@ using SV.Server.Repositories.Models;
 
 namespace SV.Server.Repositories
 {
-    public class CardRepository : PostgresRepository, ICardRepository
+    internal class CardRepository : ICardRepository
     {
-        public CardRepository(SVPortalContext context) : base(context: context)
+        CardAggregateRepository _cardAggregateRepository;
+
+        public CardRepository(SVPortalContext context)
         {
+            this._cardAggregateRepository = new(context: context);
         }
 
-        public async Task<List<CardDoc>> SearchCards(CardSearchRequest request)
+        public Task<List<CardDoc>> SearchCardsAsync(CardSearchRequest request)
         {
-            return await base.SearchCards();
+            return this._cardAggregateRepository.SearchCardsAsync();
         }
 
-        public async Task<CardDoc> GetCard(string id)
+        public Task<CardDoc> GetCardAsync(string id)
         {
-            return null;
+            return this._cardAggregateRepository.GetCardAsync(id: id);
         }
 
-        public async Task<CardDoc> AddCard(CardAddRequest request)
+        public async Task<CardDoc> AddCardAsync(CardAddRequest request)
         {
             return new CardDoc();
         }
 
-        public async Task UpdateCard(string id, CardUpdateRequest request)
+        public async Task UpdateCardAsync(string id, CardUpdateRequest request)
         {
             return;
         }
 
-        public async Task RemoveCard(string id)
+        public async Task RemoveCardAsync(string id)
         {
             return;
         }
