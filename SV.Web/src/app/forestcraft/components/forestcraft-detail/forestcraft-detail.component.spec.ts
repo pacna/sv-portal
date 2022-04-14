@@ -2,11 +2,11 @@ import {
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
   MockCardDetailsComponent,
-} from './../../../shared/testing/shared-mocks.spec';
+  SharedSpies,
+} from '@svportal/shared/testing';
+import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CardDetailResponse } from './../../../shared/types/api/card-detail-response';
-import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForestcraftDetailComponent } from './forestcraft-detail.component';

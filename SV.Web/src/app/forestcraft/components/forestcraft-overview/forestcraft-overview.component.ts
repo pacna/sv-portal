@@ -1,11 +1,9 @@
-import { CardsFilterRequest } from './../../../shared/types/customs/cards-filter-request';
-import { CardSearchRequest } from './../../../shared/types/api/card-search-request';
-import { CardResponse } from '../../../shared/types/api/card-response';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
+import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
+import { Craft, CardsFilterRequest } from '@svportal/shared/types/customs';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Craft } from '../../../shared/types/customs';
 import { MatDrawer } from '@angular/material/sidenav';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 

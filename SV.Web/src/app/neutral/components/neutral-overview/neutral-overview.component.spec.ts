@@ -1,10 +1,10 @@
-import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
 import {
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
   MockSVListComponent,
-} from './../../../shared/testing/shared-mocks.spec';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
+  SharedSpies,
+} from '@svportal/shared/testing';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NeutralOverviewComponent } from './neutral-overview.component';

@@ -1,14 +1,14 @@
 import {
-  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
+  MockCardsFilterSearchComponent,
   MockSVListComponent,
-} from './../../../shared/testing/shared-mocks.spec';
+  SharedSpies,
+} from '@svportal/shared/testing';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForestcraftOverviewComponent } from './forestcraft-overview.component';

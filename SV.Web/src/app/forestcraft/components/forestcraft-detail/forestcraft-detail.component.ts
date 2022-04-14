@@ -1,5 +1,5 @@
-import { CardDetailResponse } from './../../../shared/types/api/card-detail-response';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
+import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

@@ -2,13 +2,13 @@ import {
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
   MockSVListComponent,
-} from './../../../shared/testing/shared-mocks.spec';
+  SharedSpies,
+} from '@svportal/shared/testing';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SharedSpies } from './../../../shared/testing/shared-spies.spec';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BloodcraftOverviewComponent } from './bloodcraft-overview.component';
-import { CardsApiService } from '../../../shared/services/cards-api.service';
 import { of } from 'rxjs';
 
 describe('BloodcraftOverviewComponent', () => {

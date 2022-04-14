@@ -1,9 +1,8 @@
-import { CardSearchRequest } from './../../../shared/types/api/card-search-request';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
+import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
+import { Craft } from '@svportal/shared/types/customs/craft.enum';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { CardResponse } from 'src/app/shared/types/api';
-import { Craft } from 'src/app/shared/types/customs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

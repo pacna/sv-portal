@@ -1,10 +1,9 @@
-import { CardSearchRequest } from './../../../shared/types/api/card-search-request';
-import { CardsApiService } from './../../../shared/services/cards-api.service';
-import { CardResponse } from '../../../shared/types/api/card-response';
+import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
+import { Craft } from '@svportal/shared/types/customs/craft.enum';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { Craft } from '../../../shared/types/customs';
 
 @Component({
   selector: 'swordcraft-overview',
