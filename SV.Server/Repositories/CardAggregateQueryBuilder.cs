@@ -49,11 +49,11 @@ namespace SV.Server.Repositories
                     where !evo.IsEvo
                     select new CardDoc
                     {
-                        AbilityText = evo.AbilityDescription,
+                        AbilityText = evo.AbilityText,
                         ArtLocation = evo.ArtLocation,
                         CardPack = card.CardPack,
                         Craft = card.Craft,
-                        FlavorText = card.FlavorText,
+                        FlavorText = evo.FlavorText,
                         Id = card.CardId,
                         Name = card.Name,
                         PPCost = card.PPCost,

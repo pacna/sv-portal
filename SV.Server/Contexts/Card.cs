@@ -15,9 +15,6 @@ namespace SV.Server.Contexts
         [Column(name: "craft")]
         public CraftType Craft { get; set; }
 
-        [Column(name: "flavor_text")]
-        public string FlavorText { get; set; }
-
         [Column(name: "name")]
         public string Name { get; set; }
 

@@ -9,14 +9,14 @@ namespace SV.Server.Contexts
         [Column(name: "evo_id")]
         public string EvoId { get; set; }
 
-        [Column(name: "ability_description")]
-        public string AbilityDescription { get; set; }
+        [Column(name: "ability_text")]
+        public string AbilityText { get; set; }
 
         [Column(name: "art_location")]
         public string ArtLocation { get; set; }
 
-        [Column(name: "flavor_description")]
-        public string FlavorDescription { get; set; }
+        [Column(name: "flavor_text")]
+        public string FlavorText { get; set; }
 
         [Column(name: "is_evo")]
         public bool IsEvo { get; set; }

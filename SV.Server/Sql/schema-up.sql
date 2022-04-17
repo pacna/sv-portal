@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS sv_portal.card
     card_id TEXT UNIQUE DEFAULT gen_random_uuid(),
     card_pack TEXT NOT NULL,
     craft INTEGER NOT NULL,
-    flavor_text TEXT NOT NULL,
     name TEXT NOT NULL,
     ppcost INTEGER NOT NULL,
     rarity INTEGER NOT NULL,
@@ -27,9 +26,9 @@ CREATE TABLE IF NOT EXISTS sv_portal.audio
 CREATE TABLE IF NOT EXISTS sv_portal.evo
 (
     evo_id TEXT UNIQUE DEFAULT gen_random_uuid(),
-    ability_description TEXT,
+    ability_text TEXT,
     art_location TEXT NOT NULL,
-    flavor_description TEXT,
+    flavor_text TEXT,
     is_evo BOOLEAN NOT NULL,
     card_id TEXT,
     PRIMARY KEY (evo_id),
