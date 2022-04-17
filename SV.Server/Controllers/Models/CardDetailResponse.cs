@@ -6,7 +6,7 @@ namespace SV.Server.Controllers.Models
     {
         public string AbilityText { get; init; }
         public IList<string> AudioLocations { get; init; }
-        public BattleStats BattleStats { get; init; }
+        public FollowerBattleStats BattleStats { get; init; }
         public string CardPack { get; init; }
         public EvoFollowerSpecs Evo { get; init; }
         public string FlavorText { get; init; }
