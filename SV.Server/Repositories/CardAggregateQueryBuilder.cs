@@ -19,14 +19,14 @@ namespace SV.Server.Repositories
             this._queryableEvo = context.Set<Evo>().AsQueryable<Evo>();
         }
 
-        public IQueryable<CardDoc> BuildSearchQuery()
+        public IQueryable<CardEvoView> BuildSearchQuery()
         {
             return this._queryableCard.Join
             (
                 this._queryableEvo,
                 card => card.CardId,
                 evo => evo.CardId,
-                (card, evo) => new CardDoc
+                (card, evo) => new CardEvoView
                 {
                     Id = card.CardId,
                     ArtLocation = evo.ArtLocation,
@@ -42,9 +42,24 @@ namespace SV.Server.Repositories
             return this.GetAudioByCardId(cardId: cardId).Select(x => x.Location);
         }
 
-        public IQueryable<Card> BuildGetQuery(string id)
+        public IQueryable<CardDoc> BuildGetQuery(string id)
         {
-            return this._queryableCard.Where(x => x.CardId == id);
+            return (from card in this._queryableCard
+                    join evo in this._queryableEvo on card.CardId equals evo.CardId
+                    where !evo.IsEvo
+                    select new CardDoc
+                    {
+                        AbilityText = evo.AbilityDescription,
+                        ArtLocation = evo.ArtLocation,
+                        CardPack = card.CardPack,
+                        Craft = card.Craft,
+                        FlavorText = card.FlavorText,
+                        Id = card.CardId,
+                        Name = card.Name,
+                        PPCost = card.PPCost,
+                        Rarity = card.Rarity,
+                        Type = card.Type
+                    });
         }
 
         private IQueryable<Audio> GetAudioByCardId(string cardId)

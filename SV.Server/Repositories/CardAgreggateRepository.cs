@@ -16,31 +16,39 @@ namespace SV.Server.Repositories
             this._queryBuilder = new(context: context);
         }
 
-        public Task<List<CardDoc>> SearchCardsAsync()
+        public async Task<List<CardDoc>> SearchCardsAsync()
         {
-            return this._queryBuilder.BuildSearchQuery().ToListAsync();
+            List<CardDoc> cards = new List<CardDoc>();
+
+            await foreach (var card in this._queryBuilder.BuildSearchQuery().AsAsyncEnumerable())
+            {
+                cards.Add(card.ToDataLayer());
+            }
+
+            return cards;
         }
 
         public async Task<CardDoc> GetCardAsync(string id)
         {
-            Card card = await this._queryBuilder.BuildGetQuery(id: id).FirstOrDefaultAsync();
+            CardDoc card = await this._queryBuilder.BuildGetQuery(id: id).FirstOrDefaultAsync();
 
-            if (card == null)
-            {
-                return null;
-            }
+            return card;
+            // if (card == null)
+            // {
+            //     return null;
+            // }
 
-            List<string> audioLocations = await this._queryBuilder.BuildAudioGetQuery(cardId: id).ToListAsync();
+            // List<string> audioLocations = await this._queryBuilder.BuildAudioGetQuery(cardId: id).ToListAsync();
 
-            return new CardDoc
-            {
-                Id = card.CardId,
-                AudioLocations = audioLocations,
-                Rarity = card.Rarity,
-                Craft = card.Craft,
-                Type = card.Type,
-                Name = card.Name
-            };
+            // return new CardDoc
+            // {
+            //     Id = card.CardId,
+            //     AudioLocations = audioLocations,
+            //     Rarity = card.Rarity,
+            //     Craft = card.Craft,
+            //     Type = card.Type,
+            //     Name = card.Name
+            // };
         }
     }
 }
