@@ -1,10 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SV.Server.Contexts
 {
     [Table("battle_stats", Schema = "sv_portal")]
-    public class BattleStats
+    public class BattleStatsDocument
     {
+        [Key]
         [Column(name: "battle_stats_id")]
         public string BattleStatsId { get; set; }
 

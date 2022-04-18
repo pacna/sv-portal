@@ -7,44 +7,73 @@ namespace SV.Server.Repositories
 {
     internal class CardAggregateQueryBuilder
     {
-        IQueryable<Audio> _queryableAudio;
-        IQueryable<BattleStats> _queryableBattleStats;
-        IQueryable<Card> _queryableCard;
-        IQueryable<Evo> _queryableEvo;
+        IQueryable<AudioDocument> _queryableAudio;
+        IQueryable<BattleStatsDocument> _queryableBattleStats;
+        IQueryable<CardDocument> _queryableCard;
+        IQueryable<EvoDocument> _queryableEvo;
 
         public CardAggregateQueryBuilder(SVPortalContext context)
         {
-            this._queryableAudio = context.Set<Audio>().AsQueryable();
-            this._queryableBattleStats = context.Set<BattleStats>().AsQueryable<BattleStats>();
-            this._queryableCard = context.Set<Card>().AsQueryable<Card>();
-            this._queryableEvo = context.Set<Evo>().AsQueryable<Evo>();
+            this._queryableAudio = context.Set<AudioDocument>().AsQueryable<AudioDocument>();
+            this._queryableBattleStats = context.Set<BattleStatsDocument>().AsQueryable<BattleStatsDocument>();
+            this._queryableCard = context.Set<CardDocument>().AsQueryable<CardDocument>();
+            this._queryableEvo = context.Set<EvoDocument>().AsQueryable<EvoDocument>();
         }
 
-        public IQueryable<CardDoc> BuildSearchQuery()
+        public IQueryable<Card> BuildSearchQuery(ICardSearchQuery query)
+        {
+            IQueryable<Card> searchQuery = this.BuildSearchQuery();
+
+            if (query.Craft.HasValue)
+            {
+                searchQuery = searchQuery.Where(x => x.Craft == query.Craft.Value);
+            }
+
+            if (!string.IsNullOrEmpty(query.Name))
+            {
+                searchQuery = searchQuery.Where(x => x.Name.ToLower().Contains(query.Name.ToLower()));
+            }
+
+            if (!query.Rarities.IsNullOrEmpty())
+            {
+                searchQuery = searchQuery.Where(x => query.Rarities.Contains(x.Rarity));
+            }
+
+            if (!query.Types.IsNullOrEmpty())
+            {
+                searchQuery = searchQuery.Where(x => query.Types.Contains(x.Type));
+            }
+
+            return searchQuery;
+        }
+
+        public IQueryable<Card> BuildSearchQuery()
         {
             return
             (
                 from card in this._queryableCard
                 join evo in this._queryableEvo on card.CardId equals evo.CardId
                 where !evo.IsEvo
-                select new CardDoc
+                select new Card
                 {
                     Id = card.CardId,
                     Craft = card.Craft,
                     ArtLocation = evo.ArtLocation,
-                    Name = card.Name
+                    Name = card.Name,
+                    Rarity = card.Rarity,
+                    Type = card.Type
                 }
             );
         }
 
-        public IQueryable<CardDoc> BuildGetQuery(string id)
+        public IQueryable<Card> BuildGetQuery(string id)
         {
             return
             (
                 from card in this._queryableCard
                 join evo in this._queryableEvo on card.CardId equals evo.CardId
                 where card.CardId == id && !evo.IsEvo
-                select new CardDoc
+                select new Card
                 {
                     AbilityText = evo.AbilityText,
                     ArtLocation = evo.ArtLocation,
@@ -52,14 +81,15 @@ namespace SV.Server.Repositories
                     (
                         from card in this._queryableCard
                         join audio in this._queryableAudio on card.CardId equals audio.CardId
+                        where card.CardId == id
                         select audio.Location
                     ).ToList(),
                     BattleStats =
                     (
                         from evo in this._queryableEvo
                         join battleStats in this._queryableBattleStats on evo.EvoId equals battleStats.EvoId
-                        where !evo.IsEvo
-                        select new FollowerBattleStats
+                        where evo.CardId == id && !evo.IsEvo
+                        select new BattleStats
                         {
                             Atk = battleStats.Atk,
                             Def = battleStats.Def
@@ -81,7 +111,7 @@ namespace SV.Server.Repositories
                                 from secondaryEvo in this._queryableEvo
                                 join evoBattleStats in this._queryableBattleStats on secondaryEvo.EvoId equals evoBattleStats.EvoId
                                 where secondaryEvo.IsEvo
-                                select new FollowerBattleStats
+                                select new BattleStats
                                 {
                                     Atk = evoBattleStats.Atk,
                                     Def = evoBattleStats.Def

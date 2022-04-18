@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SV.Server.Contexts;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories
 {
@@ -15,12 +16,12 @@ namespace SV.Server.Repositories
             this._queryBuilder = new(context: context);
         }
 
-        public Task<List<CardDoc>> SearchCardsAsync()
+        public Task<List<Card>> SearchCardsAsync(SearchCardRequest request)
         {
-            return this._queryBuilder.BuildSearchQuery().ToListAsync();
+            return this._queryBuilder.BuildSearchQuery(request).ToListAsync();
         }
 
-        public Task<CardDoc> GetCardAsync(string id)
+        public Task<Card> GetCardAsync(string id)
         {
             return this._queryBuilder.BuildGetQuery(id: id).FirstOrDefaultAsync();
         }

@@ -1,10 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SV.Server.Contexts
 {
     [Table("audio", Schema = "sv_portal")]
-    public class Audio
+    public class AudioDocument
     {
+        [Key]
         [Column(name: "audio_id")]
         public string AudioId { get; set; }
 

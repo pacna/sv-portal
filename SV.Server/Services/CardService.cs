@@ -16,19 +16,19 @@ namespace SV.Server.Services
 
         public async Task<List<CardResponse>> SearchCardsAsync(CardSearchRequest request)
         {
-            List<CardDoc> cards = await this._cardRepo.SearchCardsAsync(request);
+            List<Card> cards = await this._cardRepo.SearchCardsAsync(request.ToDataLayer());
             return CardMapper.Map(cards: cards);
         }
 
         public async Task<CardDetailResponse> GetCardAsync(string id)
         {
-            CardDoc card = await this._cardRepo.GetCardAsync(id: id);
+            Card card = await this._cardRepo.GetCardAsync(id: id);
             return CardMapper.MapDetailResponse(card: card);
         }
 
         public async Task<CardResponse> AddCardAsync(CardAddRequest request)
         {
-            CardDoc card = await this._cardRepo.AddCardAsync(request);
+            Card card = await this._cardRepo.AddCardAsync(request);
             return CardMapper.Map(card: card);
         }
 

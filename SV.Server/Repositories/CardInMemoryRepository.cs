@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories
 {
     internal class CardInMemoryRepository : ICardRepository
     {
-        private static Dictionary<string, CardDoc> cardsInMemory;
+        private static Dictionary<string, Card> cardsInMemory;
 
         static CardInMemoryRepository()
         {
@@ -19,8 +20,8 @@ namespace SV.Server.Repositories
             string item4Id = Guid.NewGuid().ToString();
             string item5Id = Guid.NewGuid().ToString();
             string item6Id = Guid.NewGuid().ToString();
-            cardsInMemory = new Dictionary<string, CardDoc>();
-            cardsInMemory.TryAdd(item1Id, new CardDoc
+            cardsInMemory = new Dictionary<string, Card>();
+            cardsInMemory.TryAdd(item1Id, new Card
             {
                 AbilityText = "Last Words: Put a Fairy into your hand.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_100111010.png",
@@ -29,7 +30,7 @@ namespace SV.Server.Repositories
                     "https://svgdb.me/assets/audio/en/vo_100111010_1.mp3",
                     "https://svgdb.me/assets/audio/en/vo_100111010_2.mp3"
                 },
-                BattleStats = new FollowerBattleStats
+                BattleStats = new BattleStats
                 {
                     Atk = 1,
                     Def = 1
@@ -41,7 +42,7 @@ namespace SV.Server.Repositories
                     AbilityText = "(Same as the unevolved form.)",
                     ArtLocation = "https://svgdb.me/assets/cards/en/E_100111010.png",
                     FlavorText = "If you try and hurt me, we'll make you regret it. But if you're a good friend, the fairies won't forget it!",
-                    BattleStats = new FollowerBattleStats
+                    BattleStats = new BattleStats
                     {
                         Atk = 3,
                         Def = 3
@@ -54,7 +55,7 @@ namespace SV.Server.Repositories
                 Rarity = RarityType.Bronze,
                 Type = CardType.Follower
             });
-            cardsInMemory.TryAdd(item2Id, new CardDoc
+            cardsInMemory.TryAdd(item2Id, new Card
             {
                 AbilityText = "At the end of this turn, if at least 4 cards were played this turn, draw a card and give +1/+1 to all allied followers.<br>If at least 8 cards were played, draw 2 cards and give +2/+2 instead.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_121134010.png",
@@ -66,7 +67,7 @@ namespace SV.Server.Repositories
                 Rarity = RarityType.Gold,
                 Type = CardType.Spell
             });
-            cardsInMemory.TryAdd(item3Id, new CardDoc
+            cardsInMemory.TryAdd(item3Id, new Card
             {
                 AbilityText = "Fusion: Fairies<br>----------<br>Countdown (3)<br>At the end of your turn, activate 1 of the following effects in order. If this amulet is fused with at least 1 card, activate 2 effects instead.<br>1. Draw a card.<br>2. Summon a Fairy and give it Ward.<br>3. Restore 2 defense to your leader.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_120123010.png",
@@ -78,7 +79,7 @@ namespace SV.Server.Repositories
                 Rarity = RarityType.Silver,
                 Type = CardType.Amulet
             });
-            cardsInMemory.TryAdd(item4Id, new CardDoc
+            cardsInMemory.TryAdd(item4Id, new Card
             {
                 AbilityText = "Storm.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_100211010.png",
@@ -86,7 +87,7 @@ namespace SV.Server.Repositories
                 {
                     "https://svgdb.me/assets/audio/en/vo_100211010_1.mp3"
                 },
-                BattleStats = new FollowerBattleStats
+                BattleStats = new BattleStats
                 {
                     Atk = 1,
                     Def = 1
@@ -98,7 +99,7 @@ namespace SV.Server.Repositories
                     AbilityText = "(Same as the unevolved form.)",
                     ArtLocation = "https://svgdb.me/assets/cards/en/E_100211010.png",
                     FlavorText = "You didn't seriously think surrounding me was gonna work, did you? I got news for you then—this next part isn't gonna go well for you either.",
-                    BattleStats = new FollowerBattleStats
+                    BattleStats = new BattleStats
                     {
                         Atk = 3,
                         Def = 3
@@ -111,7 +112,7 @@ namespace SV.Server.Repositories
                 Rarity = RarityType.Bronze,
                 Type = CardType.Follower
             });
-            cardsInMemory.TryAdd(item5Id, new CardDoc
+            cardsInMemory.TryAdd(item5Id, new Card
             {
                 AbilityText = "Put a random Swordcraft follower from your deck into your hand. Then, if there are any Natura cards in your hand, put a Naterran Great Tree into your hand.Rally(7): Recover 1 play point.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_121234010.png",
@@ -123,7 +124,7 @@ namespace SV.Server.Repositories
                 Rarity = RarityType.Gold,
                 Type = CardType.Spell
             });
-            cardsInMemory.TryAdd(item6Id, new CardDoc
+            cardsInMemory.TryAdd(item6Id, new Card
             {
                 AbilityText = "Fanfare: Give +1/+0 to all allied Officer followers. Whenever an allied Officer follower comes into play, give it + 1 / +0.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_100222010.png",
@@ -137,9 +138,9 @@ namespace SV.Server.Repositories
             });
         }
 
-        public Task<List<CardDoc>> SearchCardsAsync(CardSearchRequest request)
+        public Task<List<Card>> SearchCardsAsync(SearchCardRequest request)
         {
-            IEnumerable<CardDoc> cardList = cardsInMemory.ToList();
+            IEnumerable<Card> cardList = cardsInMemory.ToList();
 
             if (request.Craft.HasValue)
             {
@@ -153,7 +154,7 @@ namespace SV.Server.Repositories
 
             if (!request.Rarities.IsNullOrEmpty())
             {
-                cardList = cardList.Where(x => request.Rarities.Contains(x.Rarity));
+                cardList = cardList.Where(x => request.Rarities.Contains((RarityType)x.Rarity));
             }
 
             if (!request.Types.IsNullOrEmpty())
@@ -161,26 +162,26 @@ namespace SV.Server.Repositories
                 cardList = cardList.Where(x => request.Types.Contains(x.Type));
             }
 
-            return Task.FromResult<List<CardDoc>>(cardList.ToList());
+            return Task.FromResult<List<Card>>(cardList.ToList());
         }
 
-        public Task<CardDoc> GetCardAsync(string id)
+        public Task<Card> GetCardAsync(string id)
         {
-            cardsInMemory.TryGetValue(id, out CardDoc card);
+            cardsInMemory.TryGetValue(id, out Card card);
 
             if (card == null)
             {
                 return null;
             }
 
-            return Task.FromResult<CardDoc>(card);
+            return Task.FromResult<Card>(card);
         }
 
-        public Task<CardDoc> AddCardAsync(CardAddRequest request)
+        public Task<Card> AddCardAsync(CardAddRequest request)
         {
             string cardId = Guid.NewGuid().ToString();
 
-            CardDoc card = new CardDoc
+            Card card = new Card
             {
                 Id = cardId,
                 FlavorText = request.FlavorText,
@@ -191,19 +192,19 @@ namespace SV.Server.Repositories
 
             cardsInMemory.TryAdd(cardId, card);
 
-            return Task.FromResult<CardDoc>(card);
+            return Task.FromResult<Card>(card);
         }
 
         public Task UpdateCardAsync(string id, CardUpdateRequest request)
         {
-            cardsInMemory.TryGetValue(id, out CardDoc cardBeforeUpdate);
+            cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
 
             if (cardBeforeUpdate == null)
             {
                 return Task.CompletedTask;
             }
 
-            cardsInMemory[id] = new CardDoc
+            cardsInMemory[id] = new Card
             {
                 Id = id,
                 FlavorText = request.FlavorText ?? cardBeforeUpdate.FlavorText,

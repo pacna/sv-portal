@@ -7,12 +7,12 @@ namespace SV.Server.Services
 {
     public static class CardMapper
     {
-        public static List<CardResponse> Map(List<CardDoc> cards)
+        public static List<CardResponse> Map(List<Card> cards)
         {
             return cards.ConvertAll<CardResponse>(c => Map(card: c));
         }
 
-        public static CardResponse Map(CardDoc card)
+        public static CardResponse Map(Card card)
         {
             return card == null
                 ? null
@@ -25,7 +25,7 @@ namespace SV.Server.Services
                 };
         }
 
-        public static CardDetailResponse MapDetailResponse(CardDoc card)
+        public static CardDetailResponse MapDetailResponse(Card card)
         {
             return card == null
                 ? null

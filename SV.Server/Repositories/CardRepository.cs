@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SV.Server.Contexts;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories
 {
@@ -16,19 +16,19 @@ namespace SV.Server.Repositories
             this._cardAggregateRepository = new(context: context);
         }
 
-        public Task<List<CardDoc>> SearchCardsAsync(CardSearchRequest request)
+        public Task<List<Card>> SearchCardsAsync(SearchCardRequest request)
         {
-            return this._cardAggregateRepository.SearchCardsAsync();
+            return this._cardAggregateRepository.SearchCardsAsync(request: request);
         }
 
-        public Task<CardDoc> GetCardAsync(string id)
+        public Task<Card> GetCardAsync(string id)
         {
             return this._cardAggregateRepository.GetCardAsync(id: id);
         }
 
-        public Task<CardDoc> AddCardAsync(CardAddRequest request)
+        public Task<Card> AddCardAsync(CardAddRequest request)
         {
-            return Task.FromResult<CardDoc>(new CardDoc());
+            return Task.FromResult<Card>(new Card());
         }
 
         public Task UpdateCardAsync(string id, CardUpdateRequest request)

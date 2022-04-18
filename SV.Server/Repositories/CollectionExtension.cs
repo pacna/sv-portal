@@ -14,5 +14,10 @@ namespace SV.Server.Repositories
         {
             return list == null || list.Count == 0;
         }
+
+        public static bool IsNullOrEmpty<TItem>(this IEnumerable<TItem> enumerable)
+        {
+            return enumerable == null || !enumerable.Any();
+        }
     }
 }

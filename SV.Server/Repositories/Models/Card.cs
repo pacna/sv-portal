@@ -3,12 +3,12 @@ using SV.Server.Controllers.Models;
 
 namespace SV.Server.Repositories.Models
 {
-    public class CardDoc
+    public class Card
     {
         public string AbilityText { get; init; }
         public string ArtLocation { get; init; }
         public List<string> AudioLocations { get; init; }
-        public FollowerBattleStats BattleStats { get; init; }
+        public BattleStats BattleStats { get; init; }
         public string CardPack { get; init; }
         public CraftType Craft { get; init; }
         public EvoFollowerSpecs Evo { get; init; }

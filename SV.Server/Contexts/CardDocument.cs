@@ -1,11 +1,13 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using SV.Server.Controllers.Models;
 
 namespace SV.Server.Contexts
 {
     [Table("card", Schema = "sv_portal")]
-    public class Card
+    public class CardDocument
     {
+        [Key]
         [Column(name: "card_id")]
         public string CardId { get; set; }
 
