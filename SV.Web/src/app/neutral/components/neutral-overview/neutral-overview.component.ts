@@ -4,7 +4,9 @@ import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'neutral-overview',
   templateUrl: './neutral-overview.component.html',
@@ -26,6 +28,7 @@ export class NeutralOverviewComponent implements OnInit {
     return this.cardsApiService
       .searchCards({ craft: Craft.neutral } as CardSearchRequest)
       .pipe(
+        untilDestroyed(this),
         map((response: CardResponse[]) => {
           this.cards = response;
         })

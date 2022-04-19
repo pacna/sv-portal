@@ -37,16 +37,10 @@ export class ForestcraftOverviewComponent implements OnInit {
     return this.route.queryParams.pipe(
       untilDestroyed(this),
       switchMap((params: Params) => {
-        this.currentFilterRequest = params as CardsFilterRequest;
-        const hasParams: boolean =
-          Object.keys(this.currentFilterRequest).length > 0;
+        this.currentFilterRequest = new CardsFilterRequest(params);
+        const hasParams: boolean = Object.keys(this.currentFilterRequest).length > 0;
         if (hasParams) {
-          return this.searchCards({
-            craft: !this.currentFilterRequest.isAll ? Craft.forestcraft : null,
-            name: this.currentFilterRequest.name,
-            rarities: this.currentFilterRequest.rarities,
-            types: this.currentFilterRequest.types,
-          } as CardSearchRequest);
+          return this.searchCards(this.currentFilterRequest.mapToRequest(Craft.forestcraft));
         }
 
         return this.searchCards();

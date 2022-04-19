@@ -73,25 +73,9 @@ export class CardsFilterSearchComponent implements OnInit {
   }
 
   private handleCurrentFilterRequest(request: CardsFilterRequest): void {
-    this.craftCtrl.setValue(
-      String(request.isAll) == 'true' ? this.all : this.none
-    );
-
+    this.craftCtrl.setValue(request.isAll ? this.all : this.none);
     this.nameCtrl.setValue(request.name);
-
-    // map these to num since they get return as 'string' from the route queryParams
-    this.raritiesCtrl.setValue(
-      request.rarities ? this.mapToNumber(request.rarities) : []
-    );
-    this.typesCtrl.setValue(
-      request.types ? this.mapToNumber(request.types) : []
-    );
-  }
-
-  private mapToNumber<TValue>(value: TValue | TValue[]): number[] {
-    if (Array.isArray(value)) {
-      return value.map((x: TValue) => Number(x));
-    }
-    return [Number(value)];
+    this.raritiesCtrl.setValue(request.rarities);
+    this.typesCtrl.setValue(request.types);
   }
 }

@@ -4,7 +4,9 @@ import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'runecraft-overview',
   templateUrl: './runecraft-overview.component.html',
@@ -26,6 +28,7 @@ export class RunecraftOverviewComponent implements OnInit {
     return this.cardsApiService
       .searchCards({ craft: Craft.runecraft } as CardSearchRequest)
       .pipe(
+        untilDestroyed(this),
         map((response: CardResponse[]) => {
           this.cards = response;
         })
