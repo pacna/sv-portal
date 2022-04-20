@@ -3,6 +3,7 @@ import { CardSearchRequest } from './../api/card-search-request';
 import { Craft } from './craft.enum';
 import { CardType } from './card-type.enum';
 import { Rarity } from './rarity.enum';
+import { UtilityHelper } from '../../helpers/utility-helper';
 
 export class CardsFilterRequest {
   isAll: boolean;
@@ -29,7 +30,7 @@ export class CardsFilterRequest {
     entriesinParams.forEach(([key, value]: [string, any]) => {
       if (this.isArrayProp(key)) {
         this[key] = Array.isArray(value) ? value.map((x: string) => Number(x)) : [Number(value)];
-      } else if (this.isStringBool(value)) {
+      } else if (UtilityHelper.isStringBool(value)) {
         this[key] = (value === 'true');
       } else {
         this[key] = value;
@@ -39,9 +40,5 @@ export class CardsFilterRequest {
 
   private isArrayProp(propValue): boolean {
     return ['rarities', 'types'].includes(propValue);
-  }
-
-  private isStringBool(paramValue: string): boolean {
-    return paramValue === 'true' || paramValue === 'false';
   }
 }

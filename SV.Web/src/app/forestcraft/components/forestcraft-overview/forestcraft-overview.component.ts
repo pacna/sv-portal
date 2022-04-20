@@ -6,6 +6,7 @@ import { map, Observable, switchMap } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UtilityHelper } from '@svportal/shared/helpers';
 
 @UntilDestroy()
 @Component({
@@ -38,9 +39,8 @@ export class ForestcraftOverviewComponent implements OnInit {
       untilDestroyed(this),
       switchMap((params: Params) => {
         this.currentFilterRequest = new CardsFilterRequest(params);
-        const hasParams: boolean = Object.keys(this.currentFilterRequest).length > 0;
-        if (hasParams) {
-          return this.searchCards(this.currentFilterRequest.mapToRequest(Craft.forestcraft));
+        if (!UtilityHelper.isObjEmpty(this.currentFilterRequest)) {
+          return this.searchCards(this.currentFilterRequest.mapToRequest(this.forestCraftType));
         }
 
         return this.searchCards();
@@ -50,7 +50,7 @@ export class ForestcraftOverviewComponent implements OnInit {
 
   searchCards(
     request: CardSearchRequest = {
-      craft: Craft.forestcraft,
+      craft: this.forestCraftType,
     } as CardSearchRequest
   ): Observable<void> {
     return this.cardsApiService.searchCards(request).pipe(

@@ -3,6 +3,7 @@ import { CardDescription } from './../../types/customs/card-description';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardType } from '../../types/customs/card-type.enum';
 import { CardDetailResponse } from '../../types/api/card-detail-response';
+import { UtilityHelper } from '@svportal/shared/helpers';
 
 @Component({
   selector: 'card-details',
@@ -50,7 +51,7 @@ export class CardDetailsComponent implements OnInit {
   }
 
   hasCard(card: CardDetailResponse): boolean {
-    return Object.keys(card).length > 0;
+    return !UtilityHelper.isObjEmpty(card);
   }
 
   private loadCardsGallery(card: CardDetailResponse): void {

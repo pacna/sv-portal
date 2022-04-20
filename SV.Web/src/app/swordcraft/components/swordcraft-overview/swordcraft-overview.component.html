@@ -1,11 +1,24 @@
-<div id="swordcraft-overview">
-    <header-action-bar class="mb-40">
-        <h2 slot="header"> Swordcraft </h2>
-        <ng-container slot="actions">
-            <button mat-raised-button class="primary-action-button">Create</button>
-        </ng-container>
-    </header-action-bar>
-    <loading-content [hasLoaded]="hasCards()">
-        <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
-    </loading-content>
-</div>
+<mat-drawer-container id="swordcraft-overview">
+    <mat-drawer #drawer>
+        <cards-filter-search 
+        [headerCraftType]="swordCraftType"
+        [currentFilterRequest]="currentFilterRequest" 
+        (changeSearchFilter)="handleFilterRequest($event)"></cards-filter-search>
+    </mat-drawer>
+    <mat-drawer-content>
+        <header-action-bar>
+            <h2 slot="header"> Swordcraft </h2>
+            <ng-container slot="actions">
+                <button mat-raised-button class="primary-action-button">Create</button>
+            </ng-container>
+        </header-action-bar>
+        <section class="mt-16 mb-16">
+            <button mat-raised-button class="secondary-action-button" (click)="openFilter()">
+                <mat-icon>filter_list</mat-icon> Filter
+            </button>
+        </section>
+        <loading-content [hasLoaded]="hasCards()">
+            <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
+        </loading-content>
+    </mat-drawer-content>
+</mat-drawer-container>
