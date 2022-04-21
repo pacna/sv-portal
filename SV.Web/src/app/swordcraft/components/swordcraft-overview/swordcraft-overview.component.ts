@@ -41,7 +41,9 @@ export class SwordcraftOverviewComponent implements OnInit {
       switchMap((params: Params) => {
         this.currentFilterRequest = new CardsFilterRequest(params);
         if (!UtilityHelper.isObjEmpty(this.currentFilterRequest)) {
-          return this.searchCards(this.currentFilterRequest.mapToRequest(this.swordCraftType));
+          return this.searchCards(
+            this.currentFilterRequest.mapToRequest(this.swordCraftType)
+          );
         }
 
         return this.searchCards();
@@ -72,7 +74,7 @@ export class SwordcraftOverviewComponent implements OnInit {
   }
 
   hasCards(): boolean {
-    return this.cards.length > 0;
+    return !UtilityHelper.isStringOrArrayEmpty(this.cards);
   }
 
   handleCardInfo(info: Pick<CardResponse, 'id' | 'craft'>): void {

@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
     SharedModule,
     MatButtonModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
   ],
 })
 export class SwordcraftModule {}

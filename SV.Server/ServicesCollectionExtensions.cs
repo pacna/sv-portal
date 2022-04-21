@@ -8,7 +8,7 @@ using SV.Server.Settings;
 
 namespace SV.Server
 {
-    internal static class ServicesCollectionExtension
+    internal static class ServicesCollectionExtensions
     {
         internal static void AddServices(this IServiceCollection services)
         {

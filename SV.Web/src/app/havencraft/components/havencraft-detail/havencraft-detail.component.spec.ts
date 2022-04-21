@@ -8,9 +8,8 @@ describe('HavencraftDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HavencraftDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [HavencraftDetailComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

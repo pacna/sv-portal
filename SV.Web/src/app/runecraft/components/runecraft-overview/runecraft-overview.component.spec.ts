@@ -1,4 +1,5 @@
 import {
+  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
   MockLoadingContentComponent,
   MockSVListComponent,
@@ -10,6 +11,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RunecraftOverviewComponent } from './runecraft-overview.component';
 import { of } from 'rxjs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('RunecraftOverviewComponent', () => {
   let component: RunecraftOverviewComponent;
@@ -18,12 +22,18 @@ describe('RunecraftOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+      ],
       declarations: [
         RunecraftOverviewComponent,
         MockHeaderActionBarComponent,
         MockLoadingContentComponent,
         MockSVListComponent,
+        MockCardsFilterSearchComponent,
       ],
       providers: [
         {
