@@ -38,7 +38,7 @@ export class CardDetailsComponent implements OnInit {
   }
 
   get hasAudio(): boolean {
-    return this.card.audioLocations?.length > 0;
+    return !UtilityHelper.isStringOrArrayEmpty(this.card.audioLocations);
   }
 
   private handleCardDetails(detail: CardDetailResponse): void {

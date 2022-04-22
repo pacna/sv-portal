@@ -1,12 +1,15 @@
 <mat-toolbar>
-    <h1>SV Portal</h1>
+  <h1>SV Portal</h1>
 </mat-toolbar>
 <nav mat-tab-nav-bar [color]="'accent'">
-    <a mat-tab-link 
+  <a
+    mat-tab-link
     *ngFor="let link of navLinks"
     [routerLink]="link.routeLink"
     routerLinkActive
     #rla="routerLinkActive"
-    [active]="rla.isActive">
-    {{link.routeName}} </a>
+    [active]="rla.isActive"
+  >
+    {{ link.routeName }}
+  </a>
 </nav>

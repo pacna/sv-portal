@@ -1,42 +1,58 @@
 <div id="cards-filter-search">
-    <h3> {{ header }} Filter </h3>
-    <form class="mt-24" [formGroup]="filterSearchFormGroup" (ngSubmit)="submit()">
-        <mat-chip-list class="mb-24" multiple formControlName="craft">
-            <mat-chip [value]='all' [selected]='isAll' (click)="setToAll()">
-                All
-            </mat-chip>
-            <mat-chip [value]='none' [selected]='!isAll' (click)="setToNone()">
-                {{ header }}
-            </mat-chip>
-        </mat-chip-list>
-        <mat-form-field appearance="outline" class="mb-16">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mb-16">
-            <mat-label>Rarity</mat-label>
-            <mat-select multiple formControlName="rarities">
-                <mat-option [value]="rarities.bronze.type"> {{ rarities.bronze.name }} </mat-option>
-                <mat-option [value]="rarities.silver.type"> {{ rarities.silver.name }} </mat-option>
-                <mat-option [value]="rarities.gold.type"> {{ rarities.gold.name }} </mat-option>
-                <mat-option [value]="rarities.legendary.type"> {{ rarities.legendary.name }} </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Type</mat-label>
-            <mat-select multiple formControlName="types">
-                <mat-option [value]="cardTypes.follower.type"> {{cardTypes.follower.name }} </mat-option>
-                <mat-option [value]="cardTypes.spell.type"> {{cardTypes.spell.name }} </mat-option>
-                <mat-option [value]="cardTypes.amulet.type"> {{cardTypes.amulet.name }} </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <section>
-            <button 
-                mat-raised-button class="primary-action-button" 
-                [disabled]="!filterSearchFormGroup.valid"
-                type="submit">
-                Search
-            </button>
-        </section>
-    </form>
+  <h3>{{ header }} Filter</h3>
+  <form class="mt-24" [formGroup]="filterSearchFormGroup" (ngSubmit)="submit()">
+    <mat-chip-list class="mb-24" multiple formControlName="craft">
+      <mat-chip [value]="all" [selected]="isAll" (click)="setToAll()">
+        All
+      </mat-chip>
+      <mat-chip [value]="none" [selected]="!isAll" (click)="setToNone()">
+        {{ header }}
+      </mat-chip>
+    </mat-chip-list>
+    <mat-form-field appearance="outline" class="mb-16">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-16">
+      <mat-label>Rarity</mat-label>
+      <mat-select multiple formControlName="rarities">
+        <mat-option [value]="rarities.bronze.type">
+          {{ rarities.bronze.name }}
+        </mat-option>
+        <mat-option [value]="rarities.silver.type">
+          {{ rarities.silver.name }}
+        </mat-option>
+        <mat-option [value]="rarities.gold.type">
+          {{ rarities.gold.name }}
+        </mat-option>
+        <mat-option [value]="rarities.legendary.type">
+          {{ rarities.legendary.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select multiple formControlName="types">
+        <mat-option [value]="cardTypes.follower.type">
+          {{ cardTypes.follower.name }}
+        </mat-option>
+        <mat-option [value]="cardTypes.spell.type">
+          {{ cardTypes.spell.name }}
+        </mat-option>
+        <mat-option [value]="cardTypes.amulet.type">
+          {{ cardTypes.amulet.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <section>
+      <button
+        mat-raised-button
+        class="primary-action-button"
+        [disabled]="!filterSearchFormGroup.valid"
+        type="submit"
+      >
+        Search
+      </button>
+    </section>
+  </form>
 </div>
