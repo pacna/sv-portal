@@ -10,7 +10,13 @@
     <header-action-bar>
       <h2 slot="header">Forestcraft</h2>
       <ng-container slot="actions">
-        <button mat-raised-button class="primary-action-button">Create</button>
+        <button
+          mat-raised-button
+          class="primary-action-button"
+          (click)="openCardManagement()"
+        >
+          Create
+        </button>
       </ng-container>
     </header-action-bar>
     <section class="mt-16 mb-16">

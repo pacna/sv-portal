@@ -7,6 +7,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UtilityHelper } from '@svportal/shared/helpers';
+import { MatDialog } from '@angular/material/dialog';
+import { CardManagementComponent } from '@svportal/shared/components/card-management/card-management.component';
 
 @UntilDestroy()
 @Component({
@@ -22,7 +24,8 @@ export class ForestcraftOverviewComponent implements OnInit {
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +64,15 @@ export class ForestcraftOverviewComponent implements OnInit {
         this.cards = response;
       })
     );
+  }
+
+  openCardManagement(): void {
+    this.dialog.open(CardManagementComponent, {
+      autoFocus: false,
+      height: '100%',
+      minWidth: '100%',
+      data: { craft: this.forestCraftType },
+    });
   }
 
   handleFilterRequest(filterRequest: CardsFilterRequest): void {

@@ -1,0 +1,51 @@
+// override material styles to match the app UI
+.mat-tab-header-pagination-chevron {
+  border-color: $plain-white !important;
+}
+
+.mat-drawer-container {
+  position: unset !important;
+
+  .mat-drawer {
+    left: 0;
+    max-width: 360px;
+    min-width: 320px;
+  }
+}
+
+.mat-form-field-outline-thick,
+.mat-focused .mat-form-field-label,
+.mat-option.mat-selected {
+  color: $primary-blue !important;
+}
+
+.mat-select-panel {
+  min-width: calc(100% + 32px) !important;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked,
+.mat-primary .mat-pseudo-checkbox-indeterminate,
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: $primary-blue !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick,
+.mat-focused .mat-form-field-required-marker,
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent,
+.mat-form-field.mat-form-field-invalid
+  .mat-form-field-label
+  .mat-form-field-required-marker,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label,
+.mat-form-field.mat-warn .mat-input-element,
+.mat-form-field-invalid .mat-input-element {
+  color: $primary-red !important;
+}
+
+.mat-form-field.mat-warn .mat-input-element,
+.mat-form-field-invalid .mat-input-element {
+  caret-color: $primary-red !important;
+}

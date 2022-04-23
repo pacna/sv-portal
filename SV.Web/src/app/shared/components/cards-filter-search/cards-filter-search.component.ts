@@ -1,7 +1,7 @@
 import { AllOrNone } from './../../types/customs/all-or-none.enum';
 import { CardsFilterRequest } from './../../types/customs/cards-filter-request';
-import { CardTypes } from './card-types';
-import { Rarities } from './rarities';
+import { CardTypes } from '../../types/customs/card-types';
+import { Rarities } from '../../types/customs/rarities';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Craft } from '../../types/customs/craft.enum';

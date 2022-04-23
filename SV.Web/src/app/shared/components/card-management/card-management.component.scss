@@ -1,0 +1,10 @@
+@import "colors";
+#card-management {
+  width: calc(90% / 2);
+  padding: 24px;
+  margin: auto;
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
