@@ -23,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // Third party
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 // Self
 import { SVLayoutComponent } from './components/sv-layout/sv-layout.component';
@@ -39,6 +40,8 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
 import { CardManagementComponent } from './components/card-management/card-management.component';
 import { CardsApiService } from './services/cards-api.service';
+import { CardEditorComponent } from './components/card-editor/card-editor.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { CardsApiService } from './services/cards-api.service';
     CardDetailsComponent,
     CardsFilterSearchComponent,
     CardManagementComponent,
+    CardEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +81,8 @@ import { CardsApiService } from './services/cards-api.service';
     MatSelectModule,
     MatDialogModule,
     MatStepperModule,
+    MatDividerModule,
+    CKEditorModule,
   ],
   exports: [
     TopNavComponent,

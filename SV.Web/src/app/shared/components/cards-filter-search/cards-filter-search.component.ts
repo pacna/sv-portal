@@ -26,6 +26,8 @@ export class CardsFilterSearchComponent implements OnInit {
   @Output() changeSearchFilter: EventEmitter<CardsFilterRequest> =
     new EventEmitter<CardsFilterRequest>();
 
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
+
   all: AllOrNone = AllOrNone.all;
   none: AllOrNone = AllOrNone.none;
   rarities: Record<'bronze' | 'silver' | 'gold' | 'legendary', RartiyConfig> =

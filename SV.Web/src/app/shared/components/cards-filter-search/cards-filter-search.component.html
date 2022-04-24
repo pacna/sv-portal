@@ -1,5 +1,15 @@
 <div id="cards-filter-search">
-  <h3>{{ header }} Filter</h3>
+  <header>
+    <h3>{{ header }} Filter</h3>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="close"
+      (click)="close.emit()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
   <form class="mt-24" [formGroup]="filterSearchFormGroup" (ngSubmit)="submit()">
     <mat-chip-list class="mb-24" multiple formControlName="craft">
       <mat-chip [value]="all" [selected]="isAll" (click)="setToAll()">

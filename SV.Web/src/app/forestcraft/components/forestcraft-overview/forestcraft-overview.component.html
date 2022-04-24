@@ -4,6 +4,7 @@
       [headerCraftType]="forestCraftType"
       [currentFilterRequest]="currentFilterRequest"
       (changeSearchFilter)="handleFilterRequest($event)"
+      (close)="drawer.close()"
     ></cards-filter-search>
   </mat-drawer>
   <mat-drawer-content>

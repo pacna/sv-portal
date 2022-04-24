@@ -1,0 +1,9 @@
+<h5 class="mb-16">{{ editorHeader }}</h5>
+
+<form [formGroup]="ckeditorFormGroup">
+  <ckeditor
+    [config]="ckeditorConfig"
+    [editor]="editor"
+    formControlName="ckeditorText"
+  ></ckeditor>
+</form>
