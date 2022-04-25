@@ -3,11 +3,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'card-editor',
-  templateUrl: './card-editor.component.html',
-  styleUrls: ['./card-editor.component.scss'],
+  selector: 'evo-card-editor',
+  templateUrl: './evo-card-editor.component.html',
+  styleUrls: ['./evo-card-editor.component.scss'],
 })
-export class CardEditorComponent implements OnInit {
+export class EvoCardEditorComponent implements OnInit {
+  @Input() editorHeader: string;
   editor = ClassicEditor;
   ckeditorConfig = {
     toolbar: [
@@ -27,9 +28,7 @@ export class CardEditorComponent implements OnInit {
     ],
   };
 
-  @Input() editorHeader: string;
-
-  ckeditorTextCtrl: FormControl = new FormControl('');
+  protected ckeditorTextCtrl: FormControl = new FormControl('');
   ckeditorFormGroup: FormGroup = new FormGroup({
     ckeditorText: this.ckeditorTextCtrl,
   });

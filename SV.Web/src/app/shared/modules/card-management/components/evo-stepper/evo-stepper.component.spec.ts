@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardEditorComponent } from './card-editor.component';
+import { EvoStepperComponent } from './evo-stepper.component';
 
-describe('CardEditorComponent', () => {
-  let component: CardEditorComponent;
-  let fixture: ComponentFixture<CardEditorComponent>;
+describe('EvoStepperComponent', () => {
+  let component: EvoStepperComponent;
+  let fixture: ComponentFixture<EvoStepperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardEditorComponent ]
+      declarations: [ EvoStepperComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardEditorComponent);
+    fixture = TestBed.createComponent(EvoStepperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

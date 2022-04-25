@@ -1,0 +1,54 @@
+<div id="card-management">
+  <header>
+    <h3>{{ title }}</h3>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="close"
+      (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <mat-stepper orientation="vertical">
+    <mat-step>
+      <ng-template matStepLabel>Card</ng-template>
+      <card-stepper></card-stepper>
+      <div class="button-container mt-16">
+        <button mat-raised-button class="primary-action-button" matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Audio</ng-template>
+      <audio-stepper></audio-stepper>
+      <div class="button-container mt-16">
+        <button
+          mat-raised-button
+          matStepperPrevious
+          class="secondary-action-button mr-16"
+        >
+          Back
+        </button>
+        <button mat-raised-button class="primary-action-button" matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Evo</ng-template>
+      <evo-stepper></evo-stepper>
+      <div class="mt-40 button-container">
+        <button
+          mat-raised-button
+          matStepperPrevious
+          class="secondary-action-button mr-16"
+        >
+          Back
+        </button>
+        <button mat-raised-button class="primary-action-button">Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

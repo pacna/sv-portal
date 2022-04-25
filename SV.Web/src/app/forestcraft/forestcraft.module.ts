@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { forestCraftRoutes } from './forestcraft.routing';
 import { ForestcraftOverviewComponent } from './components/forestcraft-overview/forestcraft-overview.component';
 import { ForestcraftDetailComponent } from './components/forestcraft-detail/forestcraft-detail.component';
+import { CardManagementModule } from '../shared/modules/card-management';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [ForestcraftOverviewComponent, ForestcraftDetailComponent],
@@ -17,7 +19,9 @@ import { ForestcraftDetailComponent } from './components/forestcraft-detail/fore
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
     SharedModule,
+    CardManagementModule,
   ],
 })
 export class ForestcraftModule {}

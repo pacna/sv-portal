@@ -15,15 +15,12 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Third party
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 // Self
 import { SVLayoutComponent } from './components/sv-layout/sv-layout.component';
@@ -38,10 +35,7 @@ import { FollowerDetailDescriptionComponent } from './components/follower-detail
 import { CardDetailsDescriptionComponent } from './components/card-details-description/card-details-description.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
-import { CardManagementComponent } from './components/card-management/card-management.component';
 import { CardsApiService } from './services/cards-api.service';
-import { CardEditorComponent } from './components/card-editor/card-editor.component';
-import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -57,32 +51,31 @@ import { MatDividerModule } from '@angular/material/divider';
     FollowerDetailDescriptionComponent,
     CardDetailsComponent,
     CardsFilterSearchComponent,
-    CardManagementComponent,
-    CardEditorComponent,
   ],
   imports: [
+    // angular
     CommonModule,
-    MatGridListModule,
+    RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+    // third party
     GalleryModule,
     LightboxModule.withConfig({ panelClass: 'fullscreen' } as LightboxConfig),
+
+    // material
     MatProgressSpinnerModule,
+    MatGridListModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    RouterModule,
-    HttpClientModule,
     MatChipsModule,
-    ReactiveFormsModule,
-    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatDividerModule,
-    CKEditorModule,
   ],
   exports: [
     TopNavComponent,

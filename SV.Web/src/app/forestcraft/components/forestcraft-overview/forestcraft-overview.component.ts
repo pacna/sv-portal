@@ -8,7 +8,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UtilityHelper } from '@svportal/shared/helpers';
 import { MatDialog } from '@angular/material/dialog';
-import { CardManagementComponent } from '@svportal/shared/components/card-management/card-management.component';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 
 @UntilDestroy()
 @Component({

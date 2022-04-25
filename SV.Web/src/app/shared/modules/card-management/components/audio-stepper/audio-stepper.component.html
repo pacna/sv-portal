@@ -1,0 +1,21 @@
+<form [formGroup]="audioStepperFormGroup">
+  <div>
+    <mat-form-field appearance="outline" class="cols is-four-fifth">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+    </mat-form-field>
+    <section class="cols is-one-fifth action">
+      <button mat-raised-button class="primary-action-button">Create</button>
+    </section>
+  </div>
+  <mat-form-field>
+    <mat-chip-list>
+      <mat-chip *ngFor="let fruit of ['foo', 'bar']">
+        <mat-icon>music_note</mat-icon>
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>
+</form>

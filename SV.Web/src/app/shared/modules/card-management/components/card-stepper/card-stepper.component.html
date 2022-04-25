@@ -1,0 +1,49 @@
+<form [formGroup]="cardStepperFormGroup">
+  <mat-form-field appearance="outline" class="mt-16">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>PPCost</mat-label>
+    <input matInput formControlName="ppCost" type="number" min="0" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Rarity</mat-label>
+    <mat-select formControlName="rarity">
+      <mat-option [value]="rarities.bronze.type">
+        {{ rarities.bronze.name }}
+      </mat-option>
+      <mat-option [value]="rarities.silver.type">
+        {{ rarities.silver.name }}
+      </mat-option>
+      <mat-option [value]="rarities.gold.type">
+        {{ rarities.gold.name }}
+      </mat-option>
+      <mat-option [value]="rarities.legendary.type">
+        {{ rarities.legendary.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option [value]="cardTypes.follower.type">
+        {{ cardTypes.follower.name }}
+      </mat-option>
+      <mat-option [value]="cardTypes.spell.type">
+        {{ cardTypes.spell.name }}
+      </mat-option>
+      <mat-option [value]="cardTypes.amulet.type">
+        {{ cardTypes.amulet.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Pack</mat-label>
+    <mat-select formControlName="pack">
+      <mat-option *ngFor="let pack of cardPacks">
+        {{ pack }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

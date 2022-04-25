@@ -1,0 +1,29 @@
+<h4>{{ evoHeader }}</h4>
+<form [formGroup]="evoContentFormGroup">
+  <mat-form-field appearance="outline" class="mt-16">
+    <mat-label>Art location</mat-label>
+    <input matInput formControlName="artLocation" />
+  </mat-form-field>
+  <div class="battle-stats">
+    <section class="cols">
+      <mat-form-field appearance="outline">
+        <mat-label>Atk</mat-label>
+        <input matInput formControlName="atk" type="number" min="0" />
+      </mat-form-field>
+    </section>
+    <section class="cols">
+      <mat-form-field appearance="outline">
+        <mat-label>Def</mat-label>
+        <input matInput formControlName="def" type="number" min="0" />
+      </mat-form-field>
+    </section>
+  </div>
+  <evo-card-editor
+    class="mt-16"
+    [editorHeader]="abilityTextHeader"
+  ></evo-card-editor>
+  <evo-card-editor
+    class="mt-16"
+    [editorHeader]="flavorTextHeader"
+  ></evo-card-editor>
+</form>
