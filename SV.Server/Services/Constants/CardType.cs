@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace SV.Server.Controllers.Models
+namespace SV.Server.Services.Constants
 {
     public enum CardType
     {

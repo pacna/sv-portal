@@ -26,12 +26,12 @@ namespace SV.Server.Repositories
             return this._cardAggregateRepository.GetCardAsync(id: id);
         }
 
-        public Task<Card> AddCardAsync(CardAddRequest request)
+        public Task<Card> AddCardAsync(Card card)
         {
-            return Task.FromResult<Card>(new Card());
+            return Task.FromResult<Card>(card);
         }
 
-        public Task UpdateCardAsync(string id, CardUpdateRequest request)
+        public Task UpdateCardAsync(string id, CardPutRequest request)
         {
             return Task.CompletedTask;
         }

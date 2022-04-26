@@ -1,3 +1,5 @@
+using SV.Server.Services.Constants;
+
 namespace SV.Server.Controllers.Models
 {
     public class CardResponse

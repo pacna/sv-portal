@@ -10,8 +10,8 @@ namespace SV.Server.Repositories
     {
         Task<List<Card>> SearchCardsAsync(SearchCardRequest request);
         Task<Card> GetCardAsync(string id);
-        Task<Card> AddCardAsync(CardAddRequest request);
-        Task UpdateCardAsync(string id, CardUpdateRequest request);
+        Task<Card> AddCardAsync(Card card);
+        Task UpdateCardAsync(string id, CardPutRequest request);
         Task RemoveCardAsync(string id);
     }
 }

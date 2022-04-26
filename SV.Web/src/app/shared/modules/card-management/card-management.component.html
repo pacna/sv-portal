@@ -47,7 +47,13 @@
         >
           Back
         </button>
-        <button mat-raised-button class="primary-action-button">Submit</button>
+        <button
+          mat-raised-button
+          class="primary-action-button"
+          (click)="submit()"
+        >
+          Submit
+        </button>
       </div>
     </mat-step>
   </mat-stepper>

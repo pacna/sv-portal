@@ -7,10 +7,10 @@ namespace SV.Server.Repositories
 {
     internal class CardAggregateQueryBuilder
     {
-        IQueryable<AudioDocument> _queryableAudio;
-        IQueryable<BattleStatsDocument> _queryableBattleStats;
-        IQueryable<CardDocument> _queryableCard;
-        IQueryable<EvoDocument> _queryableEvo;
+        private IQueryable<AudioDocument> _queryableAudio;
+        private IQueryable<BattleStatsDocument> _queryableBattleStats;
+        private IQueryable<CardDocument> _queryableCard;
+        private IQueryable<EvoDocument> _queryableEvo;
 
         public CardAggregateQueryBuilder(SVPortalContext context)
         {

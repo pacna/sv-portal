@@ -9,7 +9,7 @@ namespace SV.Server.Controllers
 {
 
     [Route("cards")]
-    public class CardController : ControllerBase
+    public class CardController : BaseController
     {
         private readonly ICardService _service;
 
@@ -20,28 +20,31 @@ namespace SV.Server.Controllers
 
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(List<CardResponse>))]
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         public async Task<IActionResult> SearchCards([FromQuery] CardSearchRequest request)
         {
-            return this.Ok(await this._service.SearchCardsAsync(request));
+            return this.OkIfFound(await this._service.SearchCardsAsync(request.ToRequest()));
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardDetailResponse))]
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCard([FromRoute] string id)
         {
-            return this.Ok(await this._service.GetCardAsync(id: id));
+            return this.OkIfFound(await this._service.GetCardAsync(id: id));
         }
 
         [HttpPost]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
-        public async Task<IActionResult> AddCard([FromBody] CardAddRequest request)
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> AddCard([FromBody] CardPostRequest request)
         {
-            return this.Ok(await this._service.AddCardAsync(request));
+            return this.OkIfFound(await this._service.AddCardAsync(request.ToRequest()));
         }
 
         [HttpPut("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardUpdateRequest request)
+        public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardPutRequest request)
         {
             await this._service.UpdateCardAsync(id: id, request: request);
             return this.NoContent();

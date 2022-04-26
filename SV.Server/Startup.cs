@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,7 @@ namespace SV.Server
             app.UseRouting();
             app.UseSwagger();
             app.UseCors(policyName: this.CORSPolicySettings.PolicyName);
+            app.UseMiddleware<HttpExceptionMiddleware>();
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "SV Server");

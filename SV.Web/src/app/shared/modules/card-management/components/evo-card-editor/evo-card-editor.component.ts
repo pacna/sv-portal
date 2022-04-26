@@ -28,7 +28,7 @@ export class EvoCardEditorComponent implements OnInit {
     ],
   };
 
-  protected ckeditorTextCtrl: FormControl = new FormControl('');
+  private ckeditorTextCtrl: FormControl = new FormControl('');
   ckeditorFormGroup: FormGroup = new FormGroup({
     ckeditorText: this.ckeditorTextCtrl,
   });

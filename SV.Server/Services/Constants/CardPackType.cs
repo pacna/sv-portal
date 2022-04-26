@@ -1,4 +1,4 @@
-namespace SV.Server.Controllers.Models
+namespace SV.Server.Services.Constants
 {
     public static class CardPackType
     {

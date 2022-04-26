@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Services
 {
@@ -14,9 +15,9 @@ namespace SV.Server.Services
             this._cardRepo = cardRepo;
         }
 
-        public async Task<List<CardResponse>> SearchCardsAsync(CardSearchRequest request)
+        public async Task<List<CardResponse>> SearchCardsAsync(SearchCardRequest request)
         {
-            List<Card> cards = await this._cardRepo.SearchCardsAsync(request.ToDataLayer());
+            List<Card> cards = await this._cardRepo.SearchCardsAsync(request: request);
             return CardMapper.Map(cards: cards);
         }
 
@@ -26,13 +27,15 @@ namespace SV.Server.Services
             return CardMapper.MapDetailResponse(card: card);
         }
 
-        public async Task<CardResponse> AddCardAsync(CardAddRequest request)
+        public async Task<CardResponse> AddCardAsync(AddCardRequest request)
         {
-            Card card = await this._cardRepo.AddCardAsync(request);
+            request.ThrowIfInvalid();
+ 
+            Card card = await this._cardRepo.AddCardAsync(CardMapper.Map(request: request));
             return CardMapper.Map(card: card);
         }
 
-        public Task UpdateCardAsync(string id, CardUpdateRequest request)
+        public Task UpdateCardAsync(string id, CardPutRequest request)
         {
             return this._cardRepo.UpdateCardAsync(id: id, request: request);
         }

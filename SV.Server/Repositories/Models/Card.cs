@@ -1,22 +1,23 @@
 using System.Collections.Generic;
 using SV.Server.Controllers.Models;
+using SV.Server.Services.Constants;
 
 namespace SV.Server.Repositories.Models
 {
     public class Card
     {
-        public string AbilityText { get; init; }
-        public string ArtLocation { get; init; }
-        public List<string> AudioLocations { get; init; }
-        public BattleStats BattleStats { get; init; }
-        public string CardPack { get; init; }
-        public CraftType Craft { get; init; }
-        public EvoFollowerSpecs Evo { get; init; }
-        public string FlavorText { get; init; }
-        public string Id { get; init; }
-        public string Name { get; init; }
-        public int PPCost { get; init; }
-        public RarityType Rarity { get; init; }
-        public CardType Type { get; init; }
+        public string AbilityText { get; set; }
+        public string ArtLocation { get; set; }
+        public List<string> AudioLocations { get; set; }
+        public BattleStats BattleStats { get; set; }
+        public string CardPack { get; set; }
+        public CraftType Craft { get; set; }
+        public EvoFollowerSpecs Evo { get; set; }
+        public string FlavorText { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public int PPCost { get; set; }
+        public RarityType Rarity { get; set; }
+        public CardType Type { get; set; }
     }
 }

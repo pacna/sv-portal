@@ -9,7 +9,7 @@ namespace SV.Server.Repositories
 {
     internal class CardAggregateRepository
     {
-        CardAggregateQueryBuilder _queryBuilder;
+        private readonly CardAggregateQueryBuilder _queryBuilder;
 
         public CardAggregateRepository(SVPortalContext context)
         {

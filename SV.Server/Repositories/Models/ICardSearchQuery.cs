@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SV.Server.Controllers.Models;
+using SV.Server.Services.Constants;
 
 namespace SV.Server.Repositories.Models
 {

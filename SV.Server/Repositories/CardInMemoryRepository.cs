@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Constants;
 using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories
@@ -171,31 +172,23 @@ namespace SV.Server.Repositories
 
             if (card == null)
             {
-                return null;
+                return Task.FromResult<Card>(null);
             }
 
             return Task.FromResult<Card>(card);
         }
 
-        public Task<Card> AddCardAsync(CardAddRequest request)
+        public Task<Card> AddCardAsync(Card card)
         {
-            string cardId = Guid.NewGuid().ToString();
+            string id = Guid.NewGuid().ToString();
+            card.Id = id;
 
-            Card card = new Card
-            {
-                Id = cardId,
-                FlavorText = request.FlavorText,
-                Name = request.Name,
-                PPCost = request.PPCost,
-                ArtLocation = request.ArtLocation
-            };
-
-            cardsInMemory.TryAdd(cardId, card);
+            cardsInMemory.TryAdd(id, card);
 
             return Task.FromResult<Card>(card);
         }
 
-        public Task UpdateCardAsync(string id, CardUpdateRequest request)
+        public Task UpdateCardAsync(string id, CardPutRequest request)
         {
             cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
 

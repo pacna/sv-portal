@@ -15,6 +15,7 @@ import { CardManagementComponent } from './card-management.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { EvoCardEditorComponent } from './components/evo-card-editor/evo-card-editor.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { EvoCardEditorComponent } from './components/evo-card-editor/evo-card-ed
     MatSelectModule,
     MatChipsModule,
     MatDividerModule,
+    MatTooltipModule,
     CKEditorModule,
   ],
 })

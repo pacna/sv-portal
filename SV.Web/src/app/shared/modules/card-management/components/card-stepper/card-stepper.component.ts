@@ -20,21 +20,15 @@ export class CardStepperComponent implements OnInit {
   cardPacks: CardPack[] = Packs;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  protected nameCtrl: FormControl = new FormControl(null, [
+  private nameCtrl: FormControl = new FormControl(null, [Validators.required]);
+  private rarityCtrl: FormControl = new FormControl(null, [
     Validators.required,
   ]);
-  protected rarityCtrl: FormControl = new FormControl(null, [
+  private typeCtrl: FormControl = new FormControl(null, [Validators.required]);
+  private ppCostCtrl: FormControl = new FormControl(null, [
     Validators.required,
   ]);
-  protected typeCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  protected ppCostCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  protected packCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
+  private packCtrl: FormControl = new FormControl(null, [Validators.required]);
 
   cardStepperFormGroup: FormGroup = new FormGroup({
     name: this.nameCtrl,

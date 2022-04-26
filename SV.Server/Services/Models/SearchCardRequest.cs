@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Constants;
 
 namespace SV.Server.Services.Models
 {

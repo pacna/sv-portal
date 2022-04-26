@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SV.Server.Controllers.Models;
+using SV.Server.Services.Constants;
 
 namespace SV.Server.Contexts
 {

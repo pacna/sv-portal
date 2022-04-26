@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using SV.Server.Controllers.Models;
-using SV.Server.Repositories;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Services
 {
@@ -45,6 +45,25 @@ namespace SV.Server.Services
                     Rarity = card.Rarity,
                     Type = card.Type
                 };
+        }
+
+        public static Card Map(AddCardRequest request)
+        {
+            return new Card
+            {
+                AbilityText = request.BaseEvo.AbilityText,
+                ArtLocation = request.BaseEvo.ArtLocation,
+                AudioLocations = request.AudioLocations,
+                BattleStats = request.BaseEvo.BattleStats,
+                CardPack = request.Pack,
+                Craft = request.Craft,
+                Evo = request.Evolved,
+                FlavorText = request.BaseEvo.FlavorText,
+                Name = request.Name,
+                PPCost = request.PPCost,
+                Rarity = request.Rarity,
+                Type = request.Type
+            };   
         }
     }
 }

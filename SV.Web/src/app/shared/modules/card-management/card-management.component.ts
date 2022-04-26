@@ -21,4 +21,6 @@ export class CardManagementComponent implements OnInit {
   close(): void {
     this.dialogRef.close();
   }
+
+  submit(): void {}
 }

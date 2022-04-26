@@ -10,9 +10,9 @@ export class EvoContentStepperComponent implements OnInit {
   @Input() evoHeader: string;
   readonly abilityTextHeader: string = 'Ability Text';
   readonly flavorTextHeader: string = 'Flavor Text';
-  protected atkCtrl: FormControl = new FormControl(null);
-  protected defCtrl: FormControl = new FormControl(null);
-  protected artLocationCtrl: FormControl = new FormControl(null, [
+  private atkCtrl: FormControl = new FormControl(null);
+  private defCtrl: FormControl = new FormControl(null);
+  private artLocationCtrl: FormControl = new FormControl(null, [
     Validators.required,
   ]);
   evoContentFormGroup: FormGroup = new FormGroup({

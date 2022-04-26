@@ -1,6 +1,6 @@
 namespace SV.Server.Controllers.Models
 {
-    public class CardUpdateRequest
+    public class CardPutRequest
     {
         public string FlavorText { get; set; }
     }
