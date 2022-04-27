@@ -1,4 +1,4 @@
-import { SVNavigationMenu } from './types/sv-layout.interface';
+import { SVNavigationMenu } from '../types/customs/sv-navigation-menu';
 
 export const MENU: SVNavigationMenu[] = [
   {

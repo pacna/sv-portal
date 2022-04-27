@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Rarities, Packs, CardTypes } from '../../../../constants';
 import {
-  Rarities,
-  Packs,
   CardPack,
   RartiyConfig,
   CardTypeConfig,
-  CardTypes,
 } from '../../../../types/customs';
 import { CardStepper, IManagementStepper } from '../../types';
 

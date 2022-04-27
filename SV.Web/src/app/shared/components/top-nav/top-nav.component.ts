@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MENU } from './menu';
-import { SVNavigationMenu } from './types';
+import { SVNavigationMenu } from '../../types/customs/sv-navigation-menu';
+import { MENU } from '../../constants/menu';
 
 @Component({
   selector: 'top-nav',

@@ -1,4 +1,4 @@
-import { CardPack } from './card-pack.enum';
+import { CardPack } from '../types/customs/card-pack.enum';
 
 export const Packs: CardPack[] = [
   CardPack.basic,
