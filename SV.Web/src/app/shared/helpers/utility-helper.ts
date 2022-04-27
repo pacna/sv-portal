@@ -1,9 +1,9 @@
 export class UtilityHelper {
-  static isStringOrArrayEmpty<TValue>(value: string | TValue[]): boolean {
+  static isStringOrArrayEmpty<T>(value: string | T[]): boolean {
     return value?.length === 0;
   }
 
-  static isObjEmpty<TValue>(value: TValue): boolean {
+  static isObjEmpty<T>(value: T): boolean {
     return Object.keys(value).length === 0;
   }
 

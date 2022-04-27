@@ -13,7 +13,7 @@
   <mat-stepper orientation="vertical">
     <mat-step>
       <ng-template matStepLabel>Card</ng-template>
-      <card-stepper></card-stepper>
+      <card-stepper #cardStepper></card-stepper>
       <div class="button-container mt-16">
         <button mat-raised-button class="primary-action-button" matStepperNext>
           Next
@@ -22,7 +22,7 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Audio</ng-template>
-      <audio-stepper></audio-stepper>
+      <audio-stepper #audioStepper></audio-stepper>
       <div class="button-container mt-16">
         <button
           mat-raised-button
@@ -38,7 +38,7 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Evo</ng-template>
-      <evo-stepper></evo-stepper>
+      <evo-stepper #evoStepper></evo-stepper>
       <div class="mt-40 button-container">
         <button
           mat-raised-button
@@ -50,6 +50,7 @@
         <button
           mat-raised-button
           class="primary-action-button"
+          [disabled]="!isValid"
           (click)="submit()"
         >
           Submit

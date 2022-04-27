@@ -2,13 +2,14 @@ import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
 import { Craft, CardsFilterRequest } from '@svportal/shared/types/customs';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UtilityHelper } from '@svportal/shared/helpers';
 import { MatDialog } from '@angular/material/dialog';
 import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types';
 
 @UntilDestroy()
 @Component({
@@ -67,12 +68,21 @@ export class ForestcraftOverviewComponent implements OnInit {
   }
 
   openCardManagement(): void {
-    this.dialog.open(CardManagementComponent, {
-      autoFocus: false,
-      height: '100%',
-      minWidth: '100%',
-      data: { craft: this.forestCraftType },
-    });
+    this.dialog
+      .open(CardManagementComponent, {
+        autoFocus: false,
+        height: '100%',
+        minWidth: '100%',
+        data: { craft: this.forestCraftType } as CardManagementData,
+      })
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        switchMap((shouldRefresh: boolean) => {
+          return shouldRefresh ? this.initFilterSearch() : of(null);
+        })
+      )
+      .subscribe();
   }
 
   handleFilterRequest(filterRequest: CardsFilterRequest): void {

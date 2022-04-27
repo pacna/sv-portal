@@ -2,6 +2,7 @@ import {
   CardResponse,
   CardSearchRequest,
   CardDetailResponse,
+  CardPostRequest,
 } from '../types/api';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -45,5 +46,9 @@ export class CardsApiService {
 
   getCard(id: string): Observable<CardDetailResponse> {
     return this.http.get<CardDetailResponse>(`${this.cardsUrlSegment}/${id}`);
+  }
+
+  postCard(request: CardPostRequest): Observable<CardResponse> {
+    return this.http.post<CardResponse>(this.cardsUrlSegment, request);
   }
 }

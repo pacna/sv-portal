@@ -41,7 +41,7 @@
   <mat-form-field appearance="outline">
     <mat-label>Pack</mat-label>
     <mat-select formControlName="pack">
-      <mat-option *ngFor="let pack of cardPacks">
+      <mat-option *ngFor="let pack of cardPacks" [value]="pack">
         {{ pack }}
       </mat-option>
     </mat-select>

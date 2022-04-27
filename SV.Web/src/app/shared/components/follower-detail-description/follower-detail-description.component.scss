@@ -8,8 +8,8 @@
   section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 140px;
-    margin-bottom: 16px;
 
     h4 {
       color: $secondary-blue;
@@ -29,9 +29,8 @@
     }
 
     span {
-      display: inherit;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
+      text-align: center;
       height: 16px;
       width: 16px;
       padding: 4px;

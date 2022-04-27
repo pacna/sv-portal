@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   Rarities,
@@ -8,13 +8,16 @@ import {
   CardTypeConfig,
   CardTypes,
 } from '../../../../types/customs';
+import { CardStepper, IManagementStepper } from '../../types';
 
 @Component({
   selector: 'card-stepper',
   templateUrl: './card-stepper.component.html',
   styleUrls: ['./card-stepper.component.scss'],
 })
-export class CardStepperComponent implements OnInit {
+export class CardStepperComponent
+  implements OnInit, IManagementStepper<CardStepper>
+{
   rarities: Record<'bronze' | 'silver' | 'gold' | 'legendary', RartiyConfig> =
     Rarities;
   cardPacks: CardPack[] = Packs;
@@ -40,4 +43,18 @@ export class CardStepperComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public isValid(): boolean {
+    return this.cardStepperFormGroup.valid;
+  }
+
+  public getValue(): CardStepper {
+    return {
+      name: this.nameCtrl.value,
+      rarity: this.rarityCtrl.value,
+      type: this.typeCtrl.value,
+      ppCost: this.ppCostCtrl.value,
+      pack: this.packCtrl.value,
+    };
+  }
 }
