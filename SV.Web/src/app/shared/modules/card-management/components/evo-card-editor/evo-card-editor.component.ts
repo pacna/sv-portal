@@ -37,6 +37,10 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
 
   ngOnInit(): void {}
 
+  get stepperFormGroup(): FormGroup {
+    return this.ckeditorFormGroup;
+  }
+
   public getValue(): string {
     return this.ckeditorTextCtrl.value;
   }

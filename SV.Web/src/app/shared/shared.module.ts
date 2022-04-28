@@ -53,18 +53,18 @@ import { CardsApiService } from './services/cards-api.service';
     CardsFilterSearchComponent,
   ],
   imports: [
-    // angular
+    // Angular
     CommonModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
 
-    // third party
+    // Third party
     GalleryModule,
     LightboxModule.withConfig({ panelClass: 'fullscreen' } as LightboxConfig),
 
-    // material
+    // Material
     MatProgressSpinnerModule,
     MatGridListModule,
     MatToolbarModule,

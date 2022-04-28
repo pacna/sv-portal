@@ -1,7 +1,11 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BattleStats } from '../../../../types/customs/battle-stats';
+import { CardType } from '../../../../types/customs/card-type.enum';
 import { EvoFollowerSpecs } from '../../../../types/customs/evo-follower-specs';
+import { CardManagementEventService } from '../../services';
 import { IFormValue, IManagementStepper } from '../../types';
+import { CardManagementEvent } from '../../types/card-management-event';
 
 @Component({
   selector: 'evo-content-stepper',
@@ -26,9 +30,12 @@ export class EvoContentStepperComponent
     def: this.defCtrl,
     artLocation: this.artLocationCtrl,
   });
-  constructor() {}
+  isSelectedFollower: boolean = false;
+  constructor(private readonly eventService: CardManagementEventService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handler();
+  }
 
   public isValid(): boolean {
     return this.evoContentFormGroup.valid;
@@ -36,13 +43,38 @@ export class EvoContentStepperComponent
 
   public getValue(): EvoFollowerSpecs {
     return {
-      battleStats: {
-        atk: this.atkCtrl.value,
-        def: this.defCtrl.value,
-      },
+      battleStats: this.createBattleStats(),
       artLocation: this.artLocationCtrl.value,
       abilityText: this.abilityEditor.getValue(),
       flavorText: this.flavorEditor.getValue(),
     };
+  }
+
+  createBattleStats(): BattleStats {
+    return this.atkCtrl.value && this.defCtrl.value
+      ? { atk: this.atkCtrl.value, def: this.defCtrl.value }
+      : null;
+  }
+
+  private handler(): void {
+    this.eventService.listener().subscribe((event: CardManagementEvent) => {
+      this.handleMessage(event);
+    });
+  }
+
+  private handleMessage(event: CardManagementEvent): void {
+    if (event?.type === CardType.follower) {
+      this.isSelectedFollower = true;
+      this.atkCtrl.setValidators([Validators.required]);
+      this.atkCtrl.updateValueAndValidity();
+      this.defCtrl.setValidators([Validators.required]);
+      this.defCtrl.updateValueAndValidity();
+    } else {
+      this.isSelectedFollower = false;
+      this.atkCtrl.setValidators(null);
+      this.atkCtrl.updateValueAndValidity();
+      this.defCtrl.setValidators(null);
+      this.defCtrl.updateValueAndValidity();
+    }
   }
 }

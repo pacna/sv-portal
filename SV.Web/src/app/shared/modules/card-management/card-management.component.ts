@@ -7,8 +7,10 @@ import {
   CardManagementData,
   CardStepper,
   EvoStepper,
+  IFormValue,
   IManagementStepper,
 } from './types';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'card-management',
@@ -17,7 +19,7 @@ import {
 })
 export class CardManagementComponent implements OnInit {
   @ViewChild('cardStepper') cardStepper: IManagementStepper<CardStepper>;
-  @ViewChild('audioStepper') audioStepper: IManagementStepper<string[]>;
+  @ViewChild('audioStepper') audioStepper: IFormValue<string[]>;
   @ViewChild('evoStepper') evoStepper: IManagementStepper<EvoStepper>;
   title: string;
   constructor(
@@ -35,11 +37,7 @@ export class CardManagementComponent implements OnInit {
   }
 
   get isValid(): boolean {
-    return (
-      this.cardStepper?.isValid() &&
-      this.audioStepper?.isValid() &&
-      this.evoStepper?.isValid()
-    );
+    return this.cardStepper?.isValid() && this.evoStepper?.isValid();
   }
 
   submit(): void {

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 import { Rarities, Packs, CardTypes } from '../../../../constants';
 import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
 } from '../../../../types/customs';
+import { CardManagementEventService } from '../../services';
 import { CardStepper, IManagementStepper } from '../../types';
 
 @Component({
@@ -38,9 +40,17 @@ export class CardStepperComponent
     ppCost: this.ppCostCtrl,
     pack: this.packCtrl,
   });
-  constructor() {}
+  constructor(private readonly eventService: CardManagementEventService) {}
 
   ngOnInit(): void {}
+
+  updateEvoForm(event: MatSelectChange): void {
+    this.eventService.send({ type: event.value });
+  }
+
+  get stepperFormGroup(): FormGroup {
+    return this.cardStepperFormGroup;
+  }
 
   public isValid(): boolean {
     return this.cardStepperFormGroup.valid;

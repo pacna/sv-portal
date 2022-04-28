@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IManagementStepper } from '../../types';
+import { UtilityHelper } from '../../../../helpers/utility-helper';
+import { IFormValue } from '../../types';
 
 @Component({
   selector: 'audio-stepper',
   templateUrl: './audio-stepper.component.html',
   styleUrls: ['./audio-stepper.component.scss'],
 })
-export class AudioStepperComponent
-  implements OnInit, IManagementStepper<string[]>
-{
+export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
   private audioLocationToAddCtrl: FormControl = new FormControl(null);
   audios: string[] = [];
   audioStepperFormGroup: FormGroup = new FormGroup({
@@ -20,7 +19,11 @@ export class AudioStepperComponent
   ngOnInit(): void {}
 
   addAudio(): void {
-    this.audios.push(this.audioLocationToAddCtrl.value);
+    if (
+      !UtilityHelper.isStringOrArrayEmpty(this.audioLocationToAddCtrl.value)
+    ) {
+      this.audios.push(this.audioLocationToAddCtrl.value);
+    }
   }
 
   removeAudio(index: number): void {
@@ -28,10 +31,6 @@ export class AudioStepperComponent
       ...this.audios.slice(0, index),
       ...this.audios.slice(index + 1),
     ];
-  }
-
-  public isValid(): boolean {
-    return this.audioStepperFormGroup.valid;
   }
 
   public getValue(): string[] {

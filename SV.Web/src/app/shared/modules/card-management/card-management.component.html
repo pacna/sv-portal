@@ -10,8 +10,8 @@
       <mat-icon>close</mat-icon>
     </button>
   </header>
-  <mat-stepper orientation="vertical">
-    <mat-step>
+  <mat-stepper orientation="vertical" [linear]="true">
+    <mat-step [stepControl]="cardStepper?.stepperFormGroup">
       <ng-template matStepLabel>Card</ng-template>
       <card-stepper #cardStepper></card-stepper>
       <div class="button-container mt-16">

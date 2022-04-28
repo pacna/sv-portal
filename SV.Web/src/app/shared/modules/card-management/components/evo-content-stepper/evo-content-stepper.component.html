@@ -4,7 +4,7 @@
     <mat-label>Art location</mat-label>
     <input matInput formControlName="artLocation" />
   </mat-form-field>
-  <div class="battle-stats">
+  <div class="battle-stats" *ngIf="isSelectedFollower">
     <section class="cols">
       <mat-form-field appearance="outline">
         <mat-label>Atk</mat-label>
