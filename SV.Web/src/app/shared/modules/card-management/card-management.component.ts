@@ -10,7 +10,7 @@ import {
   IFormValue,
   IManagementStepper,
 } from './types';
-import { FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'card-management',
@@ -25,6 +25,7 @@ export class CardManagementComponent implements OnInit {
   constructor(
     private readonly dialogRef: MatDialogRef<CardManagementComponent>,
     private readonly cardsApiService: CardsApiService,
+    private readonly snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) private readonly dialogData: CardManagementData
   ) {}
 
@@ -60,6 +61,7 @@ export class CardManagementComponent implements OnInit {
       .postCard(request)
       .subscribe((response: CardResponse) => {
         this.dialogRef.close(true);
+        this.snackBar.open('Card added', null, { duration: 3000 });
       });
   }
 }

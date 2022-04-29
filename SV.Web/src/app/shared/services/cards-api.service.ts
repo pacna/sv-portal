@@ -51,4 +51,8 @@ export class CardsApiService {
   postCard(request: CardPostRequest): Observable<CardResponse> {
     return this.http.post<CardResponse>(this.cardsUrlSegment, request);
   }
+
+  deleteCard(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.cardsUrlSegment}/${id}`);
+  }
 }

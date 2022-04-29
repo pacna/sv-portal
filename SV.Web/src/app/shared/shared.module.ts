@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Third party
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
@@ -36,6 +37,7 @@ import { CardDetailsDescriptionComponent } from './components/card-details-descr
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
 import { CardsApiService } from './services/cards-api.service';
+import { CardDeactivateComponent } from './components/card-deactivate/card-deactivate.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { CardsApiService } from './services/cards-api.service';
     FollowerDetailDescriptionComponent,
     CardDetailsComponent,
     CardsFilterSearchComponent,
+    CardDeactivateComponent,
   ],
   imports: [
     // Angular
@@ -76,6 +79,7 @@ import { CardsApiService } from './services/cards-api.service';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
   exports: [
     TopNavComponent,

@@ -5,6 +5,9 @@ import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UtilityHelper } from '@svportal/shared/helpers';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { MatDialog } from '@angular/material/dialog';
+import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
+import { CardDeactivateData } from '@svportal/shared/types';
 
 @UntilDestroy()
 @Component({
@@ -16,7 +19,8 @@ export class ForestcraftDetailComponent implements OnInit {
   card: CardDetailResponse = {} as CardDetailResponse;
   constructor(
     private readonly cardsApiService: CardsApiService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +43,18 @@ export class ForestcraftDetailComponent implements OnInit {
         this.card = response;
       })
     );
+  }
+
+  openCardDeactivate(): void {
+    this.dialog.open(CardDeactivateComponent, {
+      height: '240px',
+      width: '400px',
+      data: {
+        id: this.card.id,
+        name: this.card.name,
+        craft: this.card.craft,
+      } as CardDeactivateData,
+      autoFocus: false,
+    });
   }
 }

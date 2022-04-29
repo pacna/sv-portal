@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Third party
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -51,6 +52,7 @@ import { CardManagementEventService } from './services/card-management-event.ser
     MatChipsModule,
     MatDividerModule,
     MatTooltipModule,
+    MatSnackBarModule,
 
     // Third party
     CKEditorModule,
