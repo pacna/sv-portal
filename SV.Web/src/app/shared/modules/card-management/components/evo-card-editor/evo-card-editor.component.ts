@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { IFormValue } from '../../types/iform-value';
+
+declare const require: any;
 
 @Component({
   selector: 'evo-card-editor',
@@ -10,7 +12,7 @@ import { IFormValue } from '../../types/iform-value';
 })
 export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
   @Input() editorHeader: string;
-  editor = ClassicEditor;
+  editor;
   ckeditorConfig = {
     toolbar: [
       'heading',
@@ -33,12 +35,22 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
   ckeditorFormGroup: FormGroup = new FormGroup({
     ckeditorText: this.ckeditorTextCtrl,
   });
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // hack to load ckeditor for SSR
+    this.loadCKEditorHack();
+  }
 
   ngOnInit(): void {}
 
   get stepperFormGroup(): FormGroup {
     return this.ckeditorFormGroup;
+  }
+
+  private loadCKEditorHack(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
+      this.editor = ClassicEditor;
+    }
   }
 
   public getValue(): string {
