@@ -113,7 +113,10 @@
             "outputPath": "dist/SV.Web/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
-            "inlineStyleLanguage": "scss"
+            "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": [".", "src/styles"]
+            }
           },
           "configurations": {
             "production": {

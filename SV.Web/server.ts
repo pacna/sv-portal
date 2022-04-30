@@ -8,6 +8,11 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+import { applyDomino } from '@ntegral/ngx-universal-window';
+
+const BROWSER_DIR = join(process.cwd(), 'dist/SV.Web/browser');
+applyDomino(global, join(BROWSER_DIR, 'index.html'));
+
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // The Express app is exported so that it can be used by serverless Functions.
