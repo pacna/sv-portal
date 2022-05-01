@@ -7,9 +7,9 @@ namespace SV.Server.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult OkIfFound<TResult>(TResult result)
         {
-            return result == null ?
-                this.NotFound() :
-                this.Ok(result);
+            return result == null
+                ? this.NotFound()
+                : this.Ok(result);
         }
     }
 }

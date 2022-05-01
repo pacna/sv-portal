@@ -38,7 +38,7 @@ namespace SV.Server.Repositories
                 },
                 CardPack = CardPackType.Basic,
                 Craft = CraftType.Forestcraft,
-                Evo = new EvoFollowerSpecs
+                Evo = new EvoSpecs
                 {
                     AbilityText = "(Same as the unevolved form.)",
                     ArtLocation = "https://svgdb.me/assets/cards/en/E_100111010.png",
@@ -95,7 +95,7 @@ namespace SV.Server.Repositories
                 },
                 CardPack = CardPackType.Basic,
                 Craft = CraftType.Swordcraft,
-                Evo = new EvoFollowerSpecs
+                Evo = new EvoSpecs
                 {
                     AbilityText = "(Same as the unevolved form.)",
                     ArtLocation = "https://svgdb.me/assets/cards/en/E_100211010.png",
@@ -188,7 +188,7 @@ namespace SV.Server.Repositories
             return Task.FromResult<Card>(card);
         }
 
-        public Task UpdateCardAsync(string id, CardPutRequest request)
+        public Task UpdateCardAsync(string id, UpdateCardRequest request)
         {
             cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
 

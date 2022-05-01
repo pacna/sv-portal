@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { CardType } from '../../../../types/customs/card-type.enum';
-import { EvoFollowerSpecs } from '../../../../types/customs/evo-follower-specs';
+import { EvoSpecs } from '../../../../types/customs/evo-specs';
 import { CardManagementEventService } from '../../services';
 import { EvoStepper, IManagementStepper } from '../../types';
 import { CardManagementEvent } from '../../types/card-management-event';
@@ -14,8 +13,8 @@ import { CardManagementEvent } from '../../types/card-management-event';
 export class EvoStepperComponent
   implements OnInit, IManagementStepper<EvoStepper>
 {
-  @ViewChild('base') base: IManagementStepper<EvoFollowerSpecs>;
-  @ViewChild('evolved') evolved: IManagementStepper<EvoFollowerSpecs>;
+  @ViewChild('base') base: IManagementStepper<EvoSpecs>;
+  @ViewChild('evolved') evolved: IManagementStepper<EvoSpecs>;
   isSelectedFollower: boolean = false;
   readonly baseHeader: string = 'Base';
   readonly evolvedHeader: string = 'Evolved';

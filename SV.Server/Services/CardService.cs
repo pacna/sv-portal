@@ -37,7 +37,7 @@ namespace SV.Server.Services
 
         public Task UpdateCardAsync(string id, CardPutRequest request)
         {
-            return this._cardRepo.UpdateCardAsync(id: id, request: request);
+            return this._cardRepo.UpdateCardAsync(id: id, request: new UpdateCardRequest());
         }
 
         public Task RemoveCardAsync(string id)

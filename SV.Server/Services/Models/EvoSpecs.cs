@@ -1,6 +1,6 @@
-namespace SV.Server.Controllers.Models
+namespace SV.Server.Services.Models
 {
-    public class EvoFollowerSpecs
+    public class EvoSpecs
     {
         public string AbilityText { get; init; }
         public BattleStats BattleStats { get; init; }

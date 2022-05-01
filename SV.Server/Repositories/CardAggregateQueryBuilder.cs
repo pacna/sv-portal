@@ -1,16 +1,17 @@
 using System.Linq;
 using SV.Server.Contexts;
-using SV.Server.Controllers.Models;
+using SV.Server.Contexts.Documents;
 using SV.Server.Repositories.Models;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories
 {
     internal class CardAggregateQueryBuilder
     {
-        private IQueryable<AudioDocument> _queryableAudio;
-        private IQueryable<BattleStatsDocument> _queryableBattleStats;
-        private IQueryable<CardDocument> _queryableCard;
-        private IQueryable<EvoDocument> _queryableEvo;
+        private readonly IQueryable<AudioDocument> _queryableAudio;
+        private readonly IQueryable<BattleStatsDocument> _queryableBattleStats;
+        private readonly IQueryable<CardDocument> _queryableCard;
+        private readonly IQueryable<EvoDocument> _queryableEvo;
 
         public CardAggregateQueryBuilder(SVPortalContext context)
         {
@@ -47,7 +48,43 @@ namespace SV.Server.Repositories
             return searchQuery;
         }
 
-        public IQueryable<Card> BuildSearchQuery()
+        public IQueryable<string> BuildEvoIdsSearchQuery(string cardId)
+        {
+            return
+            (
+                from evo in this._queryableEvo
+                where evo.CardId == cardId
+                select evo.EvoId
+            );
+        }
+
+        public IQueryable<Card> BuildGetQuery(string id)
+        {
+            return
+            (
+                from card in this._queryableCard
+                join evo in this._queryableEvo on card.CardId equals evo.CardId
+                where card.CardId == id && !evo.IsEvo
+                select new Card
+                {
+                    AbilityText = evo.AbilityText,
+                    ArtLocation = evo.ArtLocation,
+                    AudioLocations = this.BuildAudioGetQuery(id).ToList(),
+                    BattleStats = this.BuildBattleStatsGetQuery(id, false).FirstOrDefault(),
+                    CardPack = card.CardPack,
+                    Craft = card.Craft,
+                    Evo = this.BuildEvoSpecsGetQuery(id).FirstOrDefault(),
+                    FlavorText = evo.FlavorText,
+                    Id = card.CardId,
+                    Name = card.Name,
+                    PPCost = card.PPCost,
+                    Rarity = card.Rarity,
+                    Type = card.Type
+                }
+            );
+        }
+
+        private IQueryable<Card> BuildSearchQuery()
         {
             return
             (
@@ -66,67 +103,46 @@ namespace SV.Server.Repositories
             );
         }
 
-        public IQueryable<Card> BuildGetQuery(string id)
+        private IQueryable<EvoSpecs> BuildEvoSpecsGetQuery(string cardId)
         {
             return
             (
                 from card in this._queryableCard
                 join evo in this._queryableEvo on card.CardId equals evo.CardId
-                where card.CardId == id && !evo.IsEvo
-                select new Card
+                where evo.CardId == cardId && evo.IsEvo
+                select new EvoSpecs
                 {
                     AbilityText = evo.AbilityText,
                     ArtLocation = evo.ArtLocation,
-                    AudioLocations =
-                    (
-                        from card in this._queryableCard
-                        join audio in this._queryableAudio on card.CardId equals audio.CardId
-                        where card.CardId == id
-                        select audio.Location
-                    ).ToList(),
-                    BattleStats =
-                    (
-                        from evo in this._queryableEvo
-                        join battleStats in this._queryableBattleStats on evo.EvoId equals battleStats.EvoId
-                        where evo.CardId == id && !evo.IsEvo
-                        select new BattleStats
-                        {
-                            Atk = battleStats.Atk,
-                            Def = battleStats.Def
-                        }
-                    ).FirstOrDefault(),
-                    CardPack = card.CardPack,
-                    Craft = card.Craft,
-                    Evo =
-                    (
-                        from evoCard in this._queryableCard
-                        join secondaryEvo in this._queryableEvo on evoCard.CardId equals secondaryEvo.CardId
-                        where evoCard.CardId == id && secondaryEvo.IsEvo
-                        select new EvoFollowerSpecs
-                        {
-                            AbilityText = secondaryEvo.AbilityText,
-                            ArtLocation = secondaryEvo.ArtLocation,
-                            BattleStats =
-                            (
-                                from secondaryEvo in this._queryableEvo
-                                join evoBattleStats in this._queryableBattleStats on secondaryEvo.EvoId equals evoBattleStats.EvoId
-                                where secondaryEvo.IsEvo
-                                select new BattleStats
-                                {
-                                    Atk = evoBattleStats.Atk,
-                                    Def = evoBattleStats.Def
-                                }
-                            ).FirstOrDefault(),
-                            FlavorText = secondaryEvo.FlavorText
-                        }
-                    ).FirstOrDefault(),
-                    FlavorText = evo.FlavorText,
-                    Id = card.CardId,
-                    Name = card.Name,
-                    PPCost = card.PPCost,
-                    Rarity = card.Rarity,
-                    Type = card.Type
+                    BattleStats = this.BuildBattleStatsGetQuery(cardId, true).FirstOrDefault(),
+                    FlavorText = evo.FlavorText
                 }
+            );
+        }
+
+        private IQueryable<BattleStats> BuildBattleStatsGetQuery(string cardId, bool isEvo)
+        {
+            return
+            (
+                from evo in this._queryableEvo
+                join battleStats in this._queryableBattleStats on evo.EvoId equals battleStats.EvoId
+                where evo.CardId == cardId && evo.IsEvo == isEvo
+                select new BattleStats
+                {
+                    Atk = battleStats.Atk,
+                    Def = battleStats.Def
+                }
+            );
+        }
+
+        private IQueryable<string> BuildAudioGetQuery(string cardId)
+        {
+            return
+            (
+                from card in this._queryableCard
+                join audio in this._queryableAudio on card.CardId equals audio.CardId
+                where card.CardId == cardId
+                select audio.Location
             );
         }
     }

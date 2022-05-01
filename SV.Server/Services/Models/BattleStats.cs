@@ -1,4 +1,4 @@
-namespace SV.Server.Controllers.Models
+namespace SV.Server.Services.Models
 {
     public class BattleStats
     {

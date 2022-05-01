@@ -29,9 +29,9 @@ namespace SV.Server.Controllers.Models
         public List<string> AudioLocations { get; init; }
 
         [Required]
-        public EvoFollowerSpecs BaseEvo { get; init; }
+        public EvoSpecs BaseEvo { get; init; }
 
-        public EvoFollowerSpecs Evolved { get; init; }
+        public EvoSpecs Evolved { get; init; }
 
         public AddCardRequest ToRequest()
         {

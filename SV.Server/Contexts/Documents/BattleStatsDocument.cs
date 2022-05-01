@@ -1,13 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SV.Server.Contexts
+namespace SV.Server.Contexts.Documents
 {
     [Table("battle_stats", Schema = "sv_portal")]
     public class BattleStatsDocument
     {
-        [Key]
-        [Column(name: "battle_stats_id")]
+        public BattleStatsDocument()
+        {
+        }
+
+        public BattleStatsDocument(string evoId)
+        {
+            this.EvoId = evoId;
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(name: "battle_stats_id")]
         public string BattleStatsId { get; set; }
 
         [Column(name: "atk")]

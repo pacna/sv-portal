@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BattleStats } from '../../../../types/customs/battle-stats';
 import { CardType } from '../../../../types/customs/card-type.enum';
-import { EvoFollowerSpecs } from '../../../../types/customs/evo-follower-specs';
+import { EvoSpecs } from '../../../../types/customs/evo-specs';
 import { CardManagementEventService } from '../../services';
 import { IFormValue, IManagementStepper } from '../../types';
 import { CardManagementEvent } from '../../types/card-management-event';
@@ -13,7 +13,7 @@ import { CardManagementEvent } from '../../types/card-management-event';
   styleUrls: ['./evo-content-stepper.component.scss'],
 })
 export class EvoContentStepperComponent
-  implements OnInit, IManagementStepper<EvoFollowerSpecs>
+  implements OnInit, IManagementStepper<EvoSpecs>
 {
   @ViewChild('abilityEditor') abilityEditor: IFormValue<string>;
   @ViewChild('flavorEditor') flavorEditor: IFormValue<string>;
@@ -41,7 +41,7 @@ export class EvoContentStepperComponent
     return this.evoContentFormGroup.valid;
   }
 
-  public getValue(): EvoFollowerSpecs {
+  public getValue(): EvoSpecs {
     return {
       battleStats: this.createBattleStats(),
       artLocation: this.artLocationCtrl.value,

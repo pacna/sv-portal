@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SV.Server.Contexts;
-using SV.Server.Controllers.Models;
 using SV.Server.Repositories.Models;
 using SV.Server.Services.Models;
 
@@ -28,17 +27,17 @@ namespace SV.Server.Repositories
 
         public Task<Card> AddCardAsync(Card card)
         {
-            return Task.FromResult<Card>(card);
+            return this._cardAggregateRepository.AddCardAsync(() => new CardAggregateDocument(card));
         }
 
-        public Task UpdateCardAsync(string id, CardPutRequest request)
+        public Task UpdateCardAsync(string id, UpdateCardRequest request)
         {
             return Task.CompletedTask;
         }
 
         public Task RemoveCardAsync(string id)
         {
-            return Task.CompletedTask;
+            return this._cardAggregateRepository.RemoveCardAsync(cardId: id);
         }
     }
 }

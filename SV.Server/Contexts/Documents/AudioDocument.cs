@@ -1,13 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SV.Server.Contexts
+namespace SV.Server.Contexts.Documents
 {
     [Table("audio", Schema = "sv_portal")]
     public class AudioDocument
     {
-        [Key]
-        [Column(name: "audio_id")]
+        public AudioDocument()
+        {
+        }
+
+        public AudioDocument(string cardId)
+        {
+            this.CardId = cardId;
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(name: "audio_id")]
         public string AudioId { get; set; }
 
         [Column(name: "location")]

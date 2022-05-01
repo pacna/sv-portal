@@ -1,14 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SV.Server.Contexts
+namespace SV.Server.Contexts.Documents
 {
 
     [Table("evo", Schema = "sv_portal")]
     public class EvoDocument
     {
-        [Key]
-        [Column(name: "evo_id")]
+        public EvoDocument()
+        {
+        }
+
+        public EvoDocument(string cardId)
+        {
+            this.CardId = cardId;
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(name: "evo_id")]
         public string EvoId { get; set; }
 
         [Column(name: "ability_text")]

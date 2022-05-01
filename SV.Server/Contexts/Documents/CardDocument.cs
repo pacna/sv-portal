@@ -2,13 +2,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using SV.Server.Services.Constants;
 
-namespace SV.Server.Contexts
+namespace SV.Server.Contexts.Documents
 {
     [Table("card", Schema = "sv_portal")]
     public class CardDocument
     {
-        [Key]
-        [Column(name: "card_id")]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(name: "card_id")]
         public string CardId { get; set; }
 
         [Column(name: "card_pack")]

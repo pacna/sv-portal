@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using SV.Server.Controllers.Models;
 using SV.Server.Services.Constants;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Repositories.Models
 {
@@ -12,7 +12,7 @@ namespace SV.Server.Repositories.Models
         public BattleStats BattleStats { get; set; }
         public string CardPack { get; set; }
         public CraftType Craft { get; set; }
-        public EvoFollowerSpecs Evo { get; set; }
+        public EvoSpecs Evo { get; set; }
         public string FlavorText { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }

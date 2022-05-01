@@ -9,7 +9,7 @@ export * from './card-type.enum';
 export * from './cards-filter-request';
 export * from './craft.enum';
 export * from './create-cost.enum';
-export * from './evo-follower-specs';
+export * from './evo-specs';
 export * from './follower-description';
 export * from './liquefy-cost.enum';
 export * from './rarity-config';

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using SV.Server.Services.Constants;
+using SV.Server.Services.Models;
 
 namespace SV.Server.Controllers.Models
 {
@@ -9,7 +10,7 @@ namespace SV.Server.Controllers.Models
         public IList<string> AudioLocations { get; init; }
         public BattleStats BattleStats { get; init; }
         public string CardPack { get; init; }
-        public EvoFollowerSpecs Evo { get; init; }
+        public EvoSpecs Evo { get; init; }
         public string FlavorText { get; init; }
         public int PPCost { get; init; }
         public RarityType Rarity { get; init; }

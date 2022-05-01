@@ -1,6 +1,6 @@
 import { BattleStats } from './battle-stats';
 
-export interface EvoFollowerSpecs {
+export interface EvoSpecs {
   artLocation: string;
   abilityText: string;
   battleStats: BattleStats;

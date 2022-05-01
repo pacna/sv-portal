@@ -1,6 +1,6 @@
-import { EvoFollowerSpecs } from '../../../types/customs/evo-follower-specs';
+import { EvoSpecs } from '../../../types/customs/evo-specs';
 
 export interface EvoStepper {
-  base: EvoFollowerSpecs;
-  evolved: EvoFollowerSpecs;
+  base: EvoSpecs;
+  evolved: EvoSpecs;
 }

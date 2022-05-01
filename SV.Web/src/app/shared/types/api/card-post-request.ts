@@ -1,10 +1,4 @@
-import {
-  CardPack,
-  CardType,
-  Craft,
-  EvoFollowerSpecs,
-  Rarity,
-} from '../customs';
+import { CardPack, CardType, Craft, EvoSpecs, Rarity } from '../customs';
 
 export interface CardPostRequest {
   craft: Craft;
@@ -14,6 +8,6 @@ export interface CardPostRequest {
   rarity: Rarity;
   type: CardType;
   audioLocations: string[];
-  baseEvo: EvoFollowerSpecs;
-  evolved: EvoFollowerSpecs;
+  baseEvo: EvoSpecs;
+  evolved: EvoSpecs;
 }
