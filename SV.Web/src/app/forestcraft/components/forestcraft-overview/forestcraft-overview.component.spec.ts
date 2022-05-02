@@ -1,9 +1,9 @@
 import {
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
   MockCardsFilterSearchComponent,
   MockSVListComponent,
   SharedSpies,
+  MockPageContentComponent,
 } from '@svportal/shared/testing';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ForestcraftOverviewComponent } from './forestcraft-overview.component';
 import { of } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('ForestcraftOverviewComponent', () => {
   let component: ForestcraftOverviewComponent;
@@ -27,11 +28,12 @@ describe('ForestcraftOverviewComponent', () => {
         MatSidenavModule,
         BrowserAnimationsModule,
         MatIconModule,
+        MatDialogModule,
       ],
       declarations: [
         ForestcraftOverviewComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
+        MockPageContentComponent,
         MockSVListComponent,
         MockCardsFilterSearchComponent,
       ],

@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="pageState">
+  <ng-container *ngSwitchCase="pageSuccessState.empty">
+    <empty-content></empty-content>
+  </ng-container>
+  <ng-container *ngSwitchCase="pageSuccessState.exist">
+    <ng-content></ng-content>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <mat-spinner color="accent"></mat-spinner>
+  </ng-container>
+</ng-container>

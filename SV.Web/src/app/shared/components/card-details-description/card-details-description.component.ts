@@ -7,7 +7,6 @@ import { CardDetailResponse } from '../../types/api/card-detail-response';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardDetails } from '../../types/customs/card-details';
 import { Craft } from '../../types/customs/craft.enum';
-import { enumCostMapperToString } from './function';
 
 @Component({
   selector: 'card-details-description',
@@ -30,39 +29,20 @@ export class CardDetailsDescriptionComponent implements OnInit {
     this.card = {
       craft: Craft[cardDetail.craft],
       rarity: Rarity[cardDetail.rarity],
-      createCostText: this.displayCost(
-        cardDetail.cardPack,
-        cardDetail.rarity,
-        Object.assign({} as CreateCost, LiquefyCost)
+      createCostText: this.displayCost(cardDetail.cardPack, () =>
+        CreateCost[Rarity[cardDetail.rarity]]?.toString()
       ),
-      liquefyCostText: this.displayCost(
-        cardDetail.cardPack,
-        cardDetail.rarity,
-        Object.assign({} as LiquefyCost, LiquefyCost)
+      liquefyCostText: this.displayCost(cardDetail.cardPack, () =>
+        LiquefyCost[Rarity[cardDetail.rarity]]?.toString()
       ),
       type: CardType[cardDetail.type],
     } as CardDetails;
   }
 
-  private displayCost(
-    cardPack: CardPack,
-    rarity: Rarity,
-    cost: CreateCost | LiquefyCost
-  ): string {
+  private displayCost(cardPack: CardPack, displayCostFn: () => string): string {
     if (cardPack === CardPack.basic || cardPack === CardPack.promo) {
       return '- -';
     }
-    switch (rarity) {
-      case Rarity.bronze:
-        return enumCostMapperToString(cost, 'bronze');
-      case Rarity.silver:
-        return enumCostMapperToString(cost, 'silver');
-      case Rarity.gold:
-        return enumCostMapperToString(cost, 'gold');
-      case Rarity.legendary:
-        return enumCostMapperToString(cost, 'legendary');
-      default:
-        return '- -';
-    }
+    return displayCostFn();
   }
 }

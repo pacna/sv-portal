@@ -1,5 +1,9 @@
 import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
-import { Craft, CardsFilterRequest } from '@svportal/shared/types/customs';
+import {
+  Craft,
+  CardsFilterRequest,
+  PageSuccessState,
+} from '@svportal/shared/types/customs';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, Observable, of, switchMap } from 'rxjs';
@@ -10,6 +14,7 @@ import { UtilityHelper } from '@svportal/shared/helpers';
 import { MatDialog } from '@angular/material/dialog';
 import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 import { CardManagementData } from '@svportal/shared/modules/card-management/types';
+import { ModalConfig } from '@svportal/shared/constants';
 
 @UntilDestroy()
 @Component({
@@ -21,6 +26,7 @@ export class ForestcraftOverviewComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
   cards: CardResponse[] = [];
   forestCraftType: Craft = Craft.forestcraft;
+  pageSuccessState: PageSuccessState;
   currentFilterRequest: CardsFilterRequest = {} as CardsFilterRequest;
   constructor(
     private readonly cardsApiService: CardsApiService,
@@ -63,6 +69,9 @@ export class ForestcraftOverviewComponent implements OnInit {
       untilDestroyed(this),
       map((response: CardResponse[]) => {
         this.cards = response;
+        this.pageSuccessState = UtilityHelper.isStringOrArrayEmpty(response)
+          ? PageSuccessState.empty
+          : PageSuccessState.exist;
       })
     );
   }
@@ -71,8 +80,8 @@ export class ForestcraftOverviewComponent implements OnInit {
     this.dialog
       .open(CardManagementComponent, {
         autoFocus: false,
-        height: '100%',
-        minWidth: '100%',
+        height: ModalConfig.fullHeight,
+        minWidth: ModalConfig.fullWidth,
         data: { craft: this.forestCraftType } as CardManagementData,
       })
       .afterClosed()
@@ -92,10 +101,6 @@ export class ForestcraftOverviewComponent implements OnInit {
       relativeTo: this.route,
       queryParams: filterRequest,
     });
-  }
-
-  hasCards(): boolean {
-    return !UtilityHelper.isStringOrArrayEmpty(this.cards);
   }
 
   handleCardInfo(info: Pick<CardResponse, 'id' | 'craft'>): void {

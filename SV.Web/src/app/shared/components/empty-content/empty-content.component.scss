@@ -1,0 +1,19 @@
+@import "colors";
+
+#empty-content {
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  p {
+    color: $secondary-blue;
+  }
+
+  pre {
+    color: $plain-white;
+  }
+}

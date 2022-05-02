@@ -3,11 +3,11 @@ import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { UtilityHelper } from '@svportal/shared/helpers';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
-import { CardDeactivateData } from '@svportal/shared/types';
+import { CardDeactivateData, PageSuccessState } from '@svportal/shared/types';
+import { ModalConfig } from '@svportal/shared/constants';
 
 @UntilDestroy()
 @Component({
@@ -17,6 +17,7 @@ import { CardDeactivateData } from '@svportal/shared/types';
 })
 export class ForestcraftDetailComponent implements OnInit {
   card: CardDetailResponse = {} as CardDetailResponse;
+  pageSuccessState: PageSuccessState;
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly route: ActivatedRoute,
@@ -32,23 +33,20 @@ export class ForestcraftDetailComponent implements OnInit {
     this.getCard(cardId).subscribe();
   }
 
-  hasCard(): boolean {
-    return !UtilityHelper.isObjEmpty(this.card);
-  }
-
   getCard(id: string): Observable<void> {
     return this.cardsApiService.getCard(id).pipe(
       untilDestroyed(this),
       map((response: CardDetailResponse) => {
         this.card = response;
+        this.pageSuccessState = PageSuccessState.exist;
       })
     );
   }
 
   openCardDeactivate(): void {
     this.dialog.open(CardDeactivateComponent, {
-      height: '240px',
-      width: '400px',
+      height: ModalConfig.minHeight,
+      width: ModalConfig.minWidth,
       data: {
         id: this.card.id,
         name: this.card.name,

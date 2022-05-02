@@ -29,11 +29,11 @@
         <mat-icon>filter_list</mat-icon> Filter
       </button>
     </section>
-    <loading-content [hasLoaded]="hasCards()">
+    <page-content [pageState]="pageSuccessState">
       <sv-list
         [cards]="cards"
         (viewCardInfo)="handleCardInfo($event)"
       ></sv-list>
-    </loading-content>
+    </page-content>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,10 +1,11 @@
 import { CardsFilterRequest } from './../types/customs/cards-filter-request';
-import { Craft } from 'src/app/shared/types/customs';
 import { CardResponse } from './../types/api/card-response';
 import { CardDescription } from './../types/customs/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FollowerDescription } from '../types/customs/follower-description';
+import { Craft } from '../types/customs/craft.enum';
+import { PageSuccessState } from '../types/customs/page-success-state.enum';
 
 // https://stackoverflow.com/questions/41240163/mocking-child-components-angular-2
 @Component({
@@ -91,4 +92,13 @@ export class MockCardsFilterSearchComponent {
 })
 export class MockCardDetailsComponent {
   @Input() detail: CardDetailResponse;
+}
+
+@Component({
+  selector: 'page-content',
+  template: '',
+})
+export class MockPageContentComponent {
+  @Input() pageState: PageSuccessState;
+  pageSuccessState = PageSuccessState;
 }

@@ -6,7 +6,9 @@ describe('CardManagementEventService', () => {
   let service: CardManagementEventService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [CardManagementEventService],
+    });
     service = TestBed.inject(CardManagementEventService);
   });
 

@@ -38,6 +38,8 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
 import { CardsApiService } from './services/cards-api.service';
 import { CardDeactivateComponent } from './components/card-deactivate/card-deactivate.component';
+import { EmptyContentComponent } from './components/empty-content/empty-content.component';
+import { PageContentComponent } from './components/page-content/page-content.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { CardDeactivateComponent } from './components/card-deactivate/card-deact
     CardDetailsComponent,
     CardsFilterSearchComponent,
     CardDeactivateComponent,
+    EmptyContentComponent,
+    PageContentComponent,
   ],
   imports: [
     // Angular
@@ -92,6 +96,7 @@ import { CardDeactivateComponent } from './components/card-deactivate/card-deact
     CardDescriptionComponent,
     FollowerDescriptionComponent,
     CardsFilterSearchComponent,
+    PageContentComponent,
   ],
   providers: [CardsApiService],
 })

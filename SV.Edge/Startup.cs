@@ -31,9 +31,12 @@ namespace SV.Edge
             services.AddRepositories();
             services.AddSwagger();
             services.AddCors(corsPolicySettings: this.CORSPolicySettings);
-            services.AddDbContext<SVPortalContext>(options =>
+            services.AddDbContext<SVPortalContext>(optionsBuilder =>
             {
-                options.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString);
+                optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options => 
+                {
+                    options.EnableRetryOnFailure(maxRetryCount: 3);
+                });
             });
         }
 
