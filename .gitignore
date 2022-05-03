@@ -1,7 +1,10 @@
 # SV.Edge
-SV.Edge/bin
-SV.Edge/obj
-SV.Edge/server
+SV.Edge/src/SV.Edge/bin
+SV.Edge/src/SV.Edge/obj
+SV.Edge/src/SV.Edge/server
+SV.Edge/tests/SV.Edge.Tests/bin
+SV.Edge/tests/SV.Edge.Tests/obj
+
 
 # SV.Web
 # See http://help.github.com/ignore-files/ for more about ignoring files.

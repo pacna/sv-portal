@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { CardsFilterSearchComponent } from './cards-filter-search.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('CardsFilterSearchComponent', () => {
   let component: CardsFilterSearchComponent;
@@ -20,6 +21,7 @@ describe('CardsFilterSearchComponent', () => {
         ReactiveFormsModule,
         MatSelectModule,
         MatInputModule,
+        MatIconModule,
         BrowserAnimationsModule,
         MatChipsModule,
       ],

@@ -42,10 +42,6 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
 
   ngOnInit(): void {}
 
-  get stepperFormGroup(): FormGroup {
-    return this.ckeditorFormGroup;
-  }
-
   private loadCKEditorHack(): void {
     if (isPlatformBrowser(this.platformId)) {
       const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');

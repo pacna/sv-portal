@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { EvoCardEditorComponent } from './evo-card-editor.component';
 
@@ -8,9 +10,9 @@ describe('EvoCardEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EvoCardEditorComponent ]
-    })
-    .compileComponents();
+      imports: [CKEditorModule, FormsModule, ReactiveFormsModule],
+      declarations: [EvoCardEditorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
