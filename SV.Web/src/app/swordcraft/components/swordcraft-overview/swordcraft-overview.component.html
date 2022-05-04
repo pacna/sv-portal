@@ -4,13 +4,20 @@
       [headerCraftType]="swordCraftType"
       [currentFilterRequest]="currentFilterRequest"
       (changeSearchFilter)="handleFilterRequest($event)"
+      (close)="drawer.close()"
     ></cards-filter-search>
   </mat-drawer>
   <mat-drawer-content>
     <header-action-bar>
       <h2 slot="header">Swordcraft</h2>
       <ng-container slot="actions">
-        <button mat-raised-button class="primary-action-button">Create</button>
+        <button
+          mat-raised-button
+          class="primary-action-button"
+          (click)="openCardManagement()"
+        >
+          Create
+        </button>
       </ng-container>
     </header-action-bar>
     <section class="mt-16 mb-16">
@@ -22,11 +29,11 @@
         <mat-icon>filter_list</mat-icon> Filter
       </button>
     </section>
-    <loading-content [hasLoaded]="hasCards()">
+    <page-content [pageState]="pageSuccessState">
       <sv-list
         [cards]="cards"
         (viewCardInfo)="handleCardInfo($event)"
       ></sv-list>
-    </loading-content>
+    </page-content>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,8 +1,8 @@
 import {
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
   MockCardDetailsComponent,
   SharedSpies,
+  MockPageContentComponent,
 } from '@svportal/shared/testing';
 import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
@@ -10,6 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SwordcraftDetailComponent } from './swordcraft-detail.component';
 import { of } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('SwordcraftDetailComponent', () => {
   let component: SwordcraftDetailComponent;
@@ -18,12 +19,12 @@ describe('SwordcraftDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, MatDialogModule],
       declarations: [
         SwordcraftDetailComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
         MockCardDetailsComponent,
+        MockPageContentComponent,
       ],
       providers: [
         {

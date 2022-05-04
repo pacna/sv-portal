@@ -7,7 +7,7 @@ using SV.Edge.Services.Models;
 
 namespace SV.Edge.Services
 {
-    internal class CardService : ICardService
+    public class CardService : ICardService
     {
         private readonly ICardRepository _cardRepo;
         public CardService(ICardRepository cardRepo)

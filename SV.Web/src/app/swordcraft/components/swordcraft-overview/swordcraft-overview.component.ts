@@ -3,11 +3,16 @@ import { Craft } from '@svportal/shared/types/customs/craft.enum';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MatDrawer } from '@angular/material/sidenav';
 import { CardsFilterRequest } from '@svportal/shared/types/customs/cards-filter-request';
 import { UtilityHelper } from '@svportal/shared/helpers';
+import { PageSuccessState } from '@svportal/shared/types/customs/page-success-state.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { ModalConfig } from '@svportal/shared/constants/modal-config';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 
 @UntilDestroy()
 @Component({
@@ -19,11 +24,13 @@ export class SwordcraftOverviewComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
   cards: CardResponse[] = [];
   swordCraftType: Craft = Craft.swordcraft;
+  pageSuccessState: PageSuccessState;
   currentFilterRequest: CardsFilterRequest = {} as CardsFilterRequest;
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -60,8 +67,29 @@ export class SwordcraftOverviewComponent implements OnInit {
       untilDestroyed(this),
       map((response: CardResponse[]) => {
         this.cards = response;
+        this.pageSuccessState = UtilityHelper.isStringOrArrayEmpty(response)
+          ? PageSuccessState.empty
+          : PageSuccessState.exist;
       })
     );
+  }
+
+  openCardManagement(): void {
+    this.dialog
+      .open(CardManagementComponent, {
+        autoFocus: false,
+        height: ModalConfig.fullHeight,
+        minWidth: ModalConfig.fullWidth,
+        data: { craft: this.swordCraftType } as CardManagementData,
+      })
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        switchMap((shouldRefresh: boolean) => {
+          return shouldRefresh ? this.initFilterSearch() : of(null);
+        })
+      )
+      .subscribe();
   }
 
   handleFilterRequest(filterRequest: CardsFilterRequest): void {
@@ -71,10 +99,6 @@ export class SwordcraftOverviewComponent implements OnInit {
       relativeTo: this.route,
       queryParams: filterRequest,
     });
-  }
-
-  hasCards(): boolean {
-    return !UtilityHelper.isStringOrArrayEmpty(this.cards);
   }
 
   handleCardInfo(info: Pick<CardResponse, 'id' | 'craft'>): void {

@@ -1,7 +1,7 @@
 import {
   MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
+  MockPageContentComponent,
   MockSVListComponent,
   SharedSpies,
 } from '@svportal/shared/testing';
@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('SwordcraftOverviewComponent', () => {
   let component: SwordcraftOverviewComponent;
@@ -27,11 +28,12 @@ describe('SwordcraftOverviewComponent', () => {
         MatSidenavModule,
         BrowserAnimationsModule,
         MatIconModule,
+        MatDialogModule,
       ],
       declarations: [
         SwordcraftOverviewComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
+        MockPageContentComponent,
         MockSVListComponent,
         MockCardsFilterSearchComponent,
       ],

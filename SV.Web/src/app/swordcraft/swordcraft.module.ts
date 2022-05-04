@@ -8,16 +8,20 @@ import { SwordcraftOverviewComponent } from './components/swordcraft-overview/sw
 import { SwordcraftDetailComponent } from './components/swordcraft-detail/swordcraft-detail.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CardManagementModule } from '@svportal/shared/modules/card-management';
 
 @NgModule({
   declarations: [SwordcraftOverviewComponent, SwordcraftDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(swordCraftRoutes),
-    SharedModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatDialogModule,
+    SharedModule,
+    CardManagementModule,
   ],
 })
 export class SwordcraftModule {}

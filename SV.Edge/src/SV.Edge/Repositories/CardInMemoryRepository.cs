@@ -2,25 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SV.Edge.Controllers.Models;
 using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Constants;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories
 {
-    internal class CardInMemoryRepository : ICardRepository
+    public class CardInMemoryRepository : ICardRepository
     {
         private static Dictionary<string, Card> cardsInMemory;
 
         static CardInMemoryRepository()
         {
-            string item1Id = Guid.NewGuid().ToString();
-            string item2Id = Guid.NewGuid().ToString();
-            string item3Id = Guid.NewGuid().ToString();
-            string item4Id = Guid.NewGuid().ToString();
-            string item5Id = Guid.NewGuid().ToString();
-            string item6Id = Guid.NewGuid().ToString();
+            string item1Id = "fe60ee56-bb98-4001-b783-b3e1dde98f67";
+            string item2Id = "e6f3a146-ecf6-439b-9946-ed77ef01a4f8";
+            string item3Id = "dff0ebb6-ef5c-4051-99b4-a9d887192c9f";
+            string item4Id = "f52852a7-4845-4853-804d-a7122e70c77e";
+            string item5Id = "ac6a31db-2606-4aaf-aebc-612622b2b37b";
+            string item6Id = "bfdcf741-6d31-4ac5-a6a0-d86453aadd7e";
             cardsInMemory = new Dictionary<string, Card>();
             cardsInMemory.TryAdd(item1Id, new Card
             {
