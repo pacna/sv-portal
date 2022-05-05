@@ -8,16 +8,20 @@ import { RunecraftDetailComponent } from './components/runecraft-detail/runecraf
 import { RunecraftOverviewComponent } from './components/runecraft-overview/runecraft-overview.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CardManagementModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [RunecraftDetailComponent, RunecraftOverviewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(runeCraftRoutes),
-    SharedModule,
     MatButtonModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    SharedModule,
+    CardManagementModule,
   ],
 })
 export class RunecraftModule {}
