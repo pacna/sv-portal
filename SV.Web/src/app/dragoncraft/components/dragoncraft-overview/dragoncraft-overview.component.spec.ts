@@ -1,6 +1,7 @@
 import {
+  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
+  MockPageContentComponent,
   MockSVListComponent,
   SharedSpies,
 } from '@svportal/shared/testing';
@@ -10,6 +11,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DragoncraftOverviewComponent } from './dragoncraft-overview.component';
 import { of } from 'rxjs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('DragoncraftOverviewComponent', () => {
   let component: DragoncraftOverviewComponent;
@@ -18,12 +23,19 @@ describe('DragoncraftOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatDialogModule,
+      ],
       declarations: [
         DragoncraftOverviewComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
+        MockPageContentComponent,
         MockSVListComponent,
+        MockCardsFilterSearchComponent,
       ],
       providers: [
         {

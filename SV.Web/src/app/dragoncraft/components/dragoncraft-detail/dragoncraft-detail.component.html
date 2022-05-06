@@ -1,1 +1,16 @@
-<p>dragoncraft-detail works!</p>
+<header-action-bar class="mb-40">
+  <h2 slot="header">{{ card.name }}</h2>
+  <ng-container slot="actions">
+    <button mat-raised-button class="secondary-action-button">Edit</button>
+    <button
+      mat-raised-button
+      class="primary-destructive-action-button"
+      (click)="openCardDeactivate()"
+    >
+      Remove
+    </button>
+  </ng-container>
+</header-action-bar>
+<page-content [pageState]="pageSuccessState">
+  <card-details [detail]="card"></card-details>
+</page-content>

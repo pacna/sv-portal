@@ -1,5 +1,6 @@
 import { DragoncraftOverviewComponent } from './components/dragoncraft-overview/dragoncraft-overview.component';
 import { Routes } from '@angular/router';
+import { DragoncraftDetailComponent } from './components/dragoncraft-detail/dragoncraft-detail.component';
 
 export const dragonCraftRoutes: Routes = [
   {
@@ -12,5 +13,9 @@ export const dragonCraftRoutes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: ':id',
+    component: DragoncraftDetailComponent,
   },
 ];

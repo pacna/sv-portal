@@ -1,12 +1,23 @@
 @import "colors";
 
 #dragoncraft-overview {
+  background-color: transparent;
+
   header-action-bar {
     display: block;
+
+    h2 {
+      color: $plain-white;
+      text-shadow: 2px 2px 20px $secondary-blue;
+    }
   }
 
-  h2 {
-    color: $plain-white;
-    text-shadow: 2px 2px 20px $secondary-blue;
+  section {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      padding: 2px 16px;
+    }
   }
 }
