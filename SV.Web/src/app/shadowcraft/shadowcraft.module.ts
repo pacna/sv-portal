@@ -6,14 +6,22 @@ import { RouterModule } from '@angular/router';
 import { shadowCraftRoutes } from './shadowcraft.routing';
 import { ShadowcraftOverviewComponent } from './components/shadowcraft-overview/shadowcraft-overview.component';
 import { ShadowcraftDetailComponent } from './components/shadowcraft-detail/shadowcraft-detail.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CardManagementModule } from '@svportal/shared/modules/card-management';
 
 @NgModule({
   declarations: [ShadowcraftOverviewComponent, ShadowcraftDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(shadowCraftRoutes),
-    SharedModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDialogModule,
+    SharedModule,
+    CardManagementModule,
   ],
 })
 export class ShadowcraftModule {}
