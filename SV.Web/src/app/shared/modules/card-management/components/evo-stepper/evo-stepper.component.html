@@ -1,8 +1,13 @@
-<evo-content-stepper [evoHeader]="baseHeader" #base></evo-content-stepper>
+<evo-content-stepper
+  [evoHeader]="baseHeader"
+  [evo]="evoBase"
+  #base
+></evo-content-stepper>
 <ng-container *ngIf="isSelectedFollower">
   <mat-divider class="mt-32 mb-32"></mat-divider>
   <evo-content-stepper
     [evoHeader]="evolvedHeader"
+    [evo]="evoEvolved"
     #evolved
   ></evo-content-stepper>
 </ng-container>

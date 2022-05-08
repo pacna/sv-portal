@@ -1,3 +1,4 @@
+export * from './card-edit-event';
 export * from './card-management-data';
 export * from './card-management-event';
 export * from './card-stepper';

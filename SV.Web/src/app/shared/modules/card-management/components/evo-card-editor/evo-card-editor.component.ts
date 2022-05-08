@@ -11,6 +11,9 @@ declare const require: any;
   styleUrls: ['./evo-card-editor.component.scss'],
 })
 export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
+  @Input() set editorText(editorText: string) {
+    this.ckeditorTextCtrl.setValue(editorText ?? '');
+  }
   @Input() editorHeader: string;
   editor;
   ckeditorConfig = {

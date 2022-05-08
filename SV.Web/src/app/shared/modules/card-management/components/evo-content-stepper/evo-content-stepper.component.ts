@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { filter } from 'rxjs';
 import { BattleStats } from '../../../../types/customs/battle-stats';
 import { CardType } from '../../../../types/customs/card-type.enum';
 import { EvoSpecs } from '../../../../types/customs/evo-specs';
@@ -18,6 +19,10 @@ export class EvoContentStepperComponent
   @ViewChild('abilityEditor') abilityEditor: IFormValue<string>;
   @ViewChild('flavorEditor') flavorEditor: IFormValue<string>;
   @Input() evoHeader: string;
+  @Input() set evo(evo: EvoSpecs) {
+    if (!evo) return;
+    this.handleEvo(evo);
+  }
   readonly abilityTextHeader: string = 'Ability Text';
   readonly flavorTextHeader: string = 'Flavor Text';
   private atkCtrl: FormControl = new FormControl(null);
@@ -31,6 +36,8 @@ export class EvoContentStepperComponent
     artLocation: this.artLocationCtrl,
   });
   isSelectedFollower: boolean = false;
+  abilityText: string;
+  flavorText: string;
   constructor(private readonly eventService: CardManagementEventService) {}
 
   ngOnInit(): void {
@@ -56,14 +63,28 @@ export class EvoContentStepperComponent
       : null;
   }
 
+  private handleEvo(evo: EvoSpecs): void {
+    this.artLocationCtrl.setValue(evo.artLocation);
+    this.abilityText = evo.abilityText;
+    this.flavorText = evo.flavorText;
+    if (evo.battleStats) {
+      this.handleMessage({ type: CardType.follower } as CardManagementEvent);
+      this.atkCtrl.setValue(evo.battleStats.atk);
+      this.defCtrl.setValue(evo.battleStats.def);
+    }
+  }
+
   private handler(): void {
-    this.eventService.listener().subscribe((event: CardManagementEvent) => {
-      this.handleMessage(event);
-    });
+    this.eventService
+      .listener()
+      .pipe(filter(Boolean))
+      .subscribe((event: CardManagementEvent) => {
+        this.handleMessage(event);
+      });
   }
 
   private handleMessage(event: CardManagementEvent): void {
-    if (event?.type === CardType.follower) {
+    if (event.type === CardType.follower) {
       this.isSelectedFollower = true;
       this.atkCtrl.setValidators([Validators.required]);
       this.atkCtrl.updateValueAndValidity();

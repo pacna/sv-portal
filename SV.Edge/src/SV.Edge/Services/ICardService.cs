@@ -10,7 +10,7 @@ namespace SV.Edge.Services
         Task<List<CardResponse>> SearchCardsAsync(SearchCardRequest request);
         Task<CardDetailResponse> GetCardAsync(string id);
         Task<CardResponse> AddCardAsync(AddCardRequest request);
-        Task UpdateCardAsync(string id, CardPutRequest request);
+        Task<CardResponse> UpdateCardAsync(string id, CardPutRequest request);
         Task RemoveCardAsync(string id);
     }
 }

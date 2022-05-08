@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using SV.Edge.Services.Constants;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Controllers.Models
@@ -13,7 +12,5 @@ namespace SV.Edge.Controllers.Models
         public EvoSpecs Evo { get; init; }
         public string FlavorText { get; init; }
         public int PPCost { get; init; }
-        public RarityType Rarity { get; init; }
-        public CardType Type { get; init; }
     }
 }

@@ -8,5 +8,7 @@ namespace SV.Edge.Controllers.Models
         public CraftType Craft { get; init; }
         public string Id { get; init; }
         public string Name { get; init; }
+        public RarityType Rarity  { get; init; }
+        public CardType Type { get; init; }
     }
 }

@@ -19,9 +19,11 @@ namespace SV.Edge.Services
                 : new CardResponse
                 {
                     Id = card.Id,
-                    ArtLocation = card?.ArtLocation,
+                    ArtLocation = card.ArtLocation,
                     Name = card.Name,
-                    Craft = card.Craft
+                    Craft = card.Craft,
+                    Rarity = card.Rarity,
+                    Type = card.Type
                 };
         }
 

@@ -43,11 +43,11 @@ namespace SV.Edge.Controllers
         }
 
         [HttpPut("{id}")]
-        [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardPutRequest request)
         {
-            await this._service.UpdateCardAsync(id: id, request: request);
-            return this.NoContent();
+            return this.OkIfFound(await this._service.UpdateCardAsync(id: id, request: request));
         }
 
         [HttpDelete("{id}")]

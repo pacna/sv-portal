@@ -187,13 +187,13 @@ namespace SV.Edge.Repositories
             return Task.FromResult<Card>(card);
         }
 
-        public Task UpdateCardAsync(string id, UpdateCardRequest request)
+        public Task<Card> UpdateCardAsync(string id, UpdateCardRequest request)
         {
             cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
 
             if (cardBeforeUpdate == null)
             {
-                return Task.CompletedTask;
+                return null;
             }
 
             cardsInMemory[id] = new Card
@@ -204,7 +204,7 @@ namespace SV.Edge.Repositories
                 PPCost = cardBeforeUpdate.PPCost
             };
 
-            return Task.CompletedTask;
+            return Task.FromResult<Card>(cardsInMemory[id]);
         }
 
         public Task RemoveCardAsync(string id)

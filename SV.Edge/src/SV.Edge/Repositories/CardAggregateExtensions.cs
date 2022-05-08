@@ -10,25 +10,25 @@ namespace SV.Edge.Repositories
     {
         public static IEnumerable<AudioDocument> ToEnumerable(this List<AudioDocument> audios, string cardId)
         {
-            return !audios.IsNullOrEmpty() ?
-                    audios.Select(x => new AudioDocument(cardId: cardId)
-                    {
-                        Location = x.Location
-                    }) :
-                    Enumerable.Empty<AudioDocument>();
+            return audios.IsNullOrEmpty()
+                ? Enumerable.Empty<AudioDocument>()
+                : audios.Select(x => new AudioDocument(cardId: cardId)
+                {
+                    Location = x.Location
+                });
         }
 
         public static EvoDocument ToDocument(this EvoDocument evo, string cardId)
         {
-            if (evo == null) 
-                return null;
-            return new EvoDocument(cardId: cardId)
-            {
-                AbilityText = evo.AbilityText,
-                ArtLocation = evo.ArtLocation,
-                FlavorText = evo.FlavorText,
-                IsEvo = evo.IsEvo
-            };
+            return evo == null
+                ? null
+                : new EvoDocument(cardId: cardId)
+                {
+                    AbilityText = evo.AbilityText,
+                    ArtLocation = evo.ArtLocation,
+                    FlavorText = evo.FlavorText,
+                    IsEvo = evo.IsEvo
+                };
         }
 
         public static EvoDocument ToDocument(this Card card, bool isEvo)
@@ -44,26 +44,26 @@ namespace SV.Edge.Repositories
 
         public static EvoDocument ToDocument(this EvoSpecs evo, bool isEvo)
         {
-            if (evo == null)
-                return null;
-            return new EvoDocument
-            {
-                AbilityText = evo.AbilityText,
-                ArtLocation = evo.ArtLocation,
-                FlavorText = evo.FlavorText,
-                IsEvo = isEvo
-            };
+            return evo == null
+                ? null
+                : new EvoDocument
+                {
+                    AbilityText = evo.AbilityText,
+                    ArtLocation = evo.ArtLocation,
+                    FlavorText = evo.FlavorText,
+                    IsEvo = isEvo
+                };
         }
 
         public static BattleStatsDocument ToDocument(this BattleStats battleStats)
         {
-            if (battleStats == null)
-                return null;
-            return new BattleStatsDocument
-            {
-                Atk = battleStats.Atk,
-                Def = battleStats.Def
-            };
+            return battleStats == null
+                ? null
+                : new BattleStatsDocument
+                {
+                    Atk = battleStats.Atk,
+                    Def = battleStats.Def
+                };
         }
 
         public static BattleStatsDocument ToDocument(this BattleStatsDocument battleStats, string evoId)
@@ -90,12 +90,12 @@ namespace SV.Edge.Repositories
 
         public static List<AudioDocument> ToList(this List<string> audios)
         {
-            if (audios.IsNullOrEmpty()) 
-                return null;
-            return audios.ConvertAll(x => new AudioDocument
-            {
-                Location = x
-            });
+            return audios.IsNullOrEmpty() 
+                ? null
+                : audios.ConvertAll(x => new AudioDocument
+                {
+                    Location = x
+                });
         }
     }
 }

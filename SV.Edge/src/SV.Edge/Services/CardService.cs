@@ -35,9 +35,10 @@ namespace SV.Edge.Services
             return CardMapper.Map(card: card);
         }
 
-        public Task UpdateCardAsync(string id, CardPutRequest request)
+        public async Task<CardResponse> UpdateCardAsync(string id, CardPutRequest request)
         {
-            return this._cardRepo.UpdateCardAsync(id: id, request: new UpdateCardRequest());
+            Card card = await this._cardRepo.UpdateCardAsync(id: id, request: new UpdateCardRequest());
+            return CardMapper.Map(card: card);
         }
 
         public Task RemoveCardAsync(string id)

@@ -1,13 +1,20 @@
 import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
-import { CardDeactivateData, PageSuccessState } from '@svportal/shared/types';
+import {
+  CardDeactivateData,
+  CardResponse,
+  Craft,
+  PageSuccessState,
+} from '@svportal/shared/types';
 import { ModalConfig } from '@svportal/shared/constants';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 
 @UntilDestroy()
 @Component({
@@ -54,5 +61,26 @@ export class ForestcraftDetailComponent implements OnInit {
       } as CardDeactivateData,
       autoFocus: false,
     });
+  }
+
+  openCardManagement(): void {
+    this.dialog
+      .open(CardManagementComponent, {
+        autoFocus: false,
+        height: ModalConfig.fullHeight,
+        minWidth: ModalConfig.fullWidth,
+        data: {
+          craft: Craft.forestcraft,
+          card: this.card,
+        } as CardManagementData,
+      })
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        switchMap((card: CardResponse) => {
+          return card ? this.getCard(card.id) : of(null);
+        })
+      )
+      .subscribe();
   }
 }

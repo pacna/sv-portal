@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { filter } from 'rxjs';
 import { CardType } from '../../../../types/customs/card-type.enum';
 import { EvoSpecs } from '../../../../types/customs/evo-specs';
-import { CardManagementEventService } from '../../services';
-import { EvoStepper, IManagementStepper } from '../../types';
+import {
+  CardEditEventService,
+  CardManagementEventService,
+} from '../../services';
+import { CardEditEvent, EvoStepper, IManagementStepper } from '../../types';
 import { CardManagementEvent } from '../../types/card-management-event';
 
 @Component({
@@ -15,10 +19,15 @@ export class EvoStepperComponent
 {
   @ViewChild('base') base: IManagementStepper<EvoSpecs>;
   @ViewChild('evolved') evolved: IManagementStepper<EvoSpecs>;
+  evoBase: EvoSpecs;
+  evoEvolved: EvoSpecs;
   isSelectedFollower: boolean = false;
   readonly baseHeader: string = 'Base';
   readonly evolvedHeader: string = 'Evolved';
-  constructor(private readonly eventService: CardManagementEventService) {}
+  constructor(
+    private readonly eventService: CardManagementEventService,
+    private readonly eventEditService: CardEditEventService
+  ) {}
 
   ngOnInit(): void {
     this.handler();
@@ -36,12 +45,29 @@ export class EvoStepperComponent
   }
 
   private handler(): void {
-    this.eventService.listener().subscribe((event: CardManagementEvent) => {
-      this.handleMessage(event);
-    });
+    this.eventService
+      .listener()
+      .pipe(filter(Boolean))
+      .subscribe((event: CardManagementEvent) => {
+        this.handleMessage(event);
+      });
+
+    this.eventEditService
+      .listener()
+      .pipe(filter(Boolean))
+      .subscribe((event: CardEditEvent) => {
+        this.handleEditMessage(event);
+      });
   }
 
   private handleMessage(event: CardManagementEvent): void {
-    this.isSelectedFollower = event?.type === CardType.follower;
+    this.isSelectedFollower = event.type === CardType.follower;
+  }
+
+  private handleEditMessage(event: CardEditEvent): void {
+    const { evo } = event;
+    this.evoBase = evo.base;
+    this.evoEvolved = evo.evolved;
+    this.isSelectedFollower = !!evo.evolved;
   }
 }

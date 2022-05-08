@@ -6,7 +6,7 @@ using SV.Edge.Services.Models;
 
 namespace SV.Edge.Controllers.Models
 {
-    public class CardPostRequest
+    public class CardPostRequest: ICardPostPutBaseRequest
     {
         [Required, ValidEnum(typeof(CraftType?))]
         public CraftType? Craft { get; init; }

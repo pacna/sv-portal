@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { filter } from 'rxjs';
 import { UtilityHelper } from '../../../../helpers/utility-helper';
-import { IFormValue } from '../../types';
+import { CardEditEventService } from '../../services/card-edit-event.service';
+import { CardEditEvent, IFormValue } from '../../types';
 
 @Component({
   selector: 'audio-stepper',
@@ -14,9 +16,11 @@ export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
   audioStepperFormGroup: FormGroup = new FormGroup({
     audioLocationToAdd: this.audioLocationToAddCtrl,
   });
-  constructor() {}
+  constructor(private readonly eventEditService: CardEditEventService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handler();
+  }
 
   addAudio(): void {
     if (
@@ -31,6 +35,19 @@ export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
       ...this.audios.slice(0, index),
       ...this.audios.slice(index + 1),
     ];
+  }
+
+  private handler(): void {
+    this.eventEditService
+      .listener()
+      .pipe(filter(Boolean))
+      .subscribe((event: CardEditEvent) => {
+        this.handleMessage(event);
+      });
+  }
+
+  private handleMessage(event: CardEditEvent): void {
+    this.audios = event.audios;
   }
 
   public getValue(): string[] {

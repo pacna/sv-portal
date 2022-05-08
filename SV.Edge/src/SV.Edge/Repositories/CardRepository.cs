@@ -30,9 +30,9 @@ namespace SV.Edge.Repositories
             return this._cardAggregateRepository.AddCardAsync(() => new CardAggregateDocument(card));
         }
 
-        public Task UpdateCardAsync(string id, UpdateCardRequest request)
+        public Task<Card> UpdateCardAsync(string id, UpdateCardRequest request)
         {
-            return Task.CompletedTask;
+            return Task.FromResult<Card>(new Card());
         }
 
         public Task RemoveCardAsync(string id)

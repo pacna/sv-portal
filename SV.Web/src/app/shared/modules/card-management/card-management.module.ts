@@ -25,7 +25,7 @@ import { EvoStepperComponent } from './components/evo-stepper/evo-stepper.compon
 import { EvoContentStepperComponent } from './components/evo-content-stepper/evo-content-stepper.component';
 import { CardManagementComponent } from './card-management.component';
 import { EvoCardEditorComponent } from './components/evo-card-editor/evo-card-editor.component';
-import { CardManagementEventService } from './services/card-management-event.service';
+import { CardManagementEventService, CardEditEventService } from './services';
 
 @NgModule({
   declarations: [
@@ -57,6 +57,6 @@ import { CardManagementEventService } from './services/card-management-event.ser
     // Third party
     CKEditorModule,
   ],
-  providers: [CardManagementEventService],
+  providers: [CardManagementEventService, CardEditEventService],
 })
 export class CardManagementModule {}

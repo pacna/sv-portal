@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
+import { filter } from 'rxjs';
 import { Rarities, Packs, CardTypes } from '../../../../constants';
 import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
 } from '../../../../types/customs';
-import { CardManagementEventService } from '../../services';
-import { CardStepper, IManagementStepper } from '../../types';
+import {
+  CardEditEventService,
+  CardManagementEventService,
+} from '../../services';
+import { CardEditEvent, CardStepper, IManagementStepper } from '../../types';
 
 @Component({
   selector: 'card-stepper',
@@ -32,7 +36,6 @@ export class CardStepperComponent
     Validators.required,
   ]);
   private packCtrl: FormControl = new FormControl(null, [Validators.required]);
-
   cardStepperFormGroup: FormGroup = new FormGroup({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
@@ -40,9 +43,14 @@ export class CardStepperComponent
     ppCost: this.ppCostCtrl,
     pack: this.packCtrl,
   });
-  constructor(private readonly eventService: CardManagementEventService) {}
+  constructor(
+    private readonly eventService: CardManagementEventService,
+    private readonly eventEditService: CardEditEventService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handler();
+  }
 
   updateEvoForm(event: MatSelectChange): void {
     this.eventService.send({ type: event.value });
@@ -50,6 +58,27 @@ export class CardStepperComponent
 
   get stepperFormGroup(): FormGroup {
     return this.cardStepperFormGroup;
+  }
+
+  private handler(): void {
+    this.eventEditService
+      .listener()
+      .pipe(filter(Boolean))
+      .subscribe((event: CardEditEvent) => {
+        this.handleMessage(event);
+      });
+  }
+
+  private handleMessage(event: CardEditEvent): void {
+    const { card } = event;
+    this.nameCtrl.setValue(card.name);
+    this.rarityCtrl.setValue(card.rarity);
+    this.rarityCtrl.disable();
+    this.typeCtrl.setValue(card.type);
+    this.typeCtrl.disable();
+    this.ppCostCtrl.setValue(card.ppCost);
+    this.packCtrl.setValue(card.pack);
+    this.packCtrl.disable();
   }
 
   public isValid(): boolean {
