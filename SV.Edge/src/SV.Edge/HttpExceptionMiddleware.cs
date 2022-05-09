@@ -29,7 +29,6 @@ namespace SV.Edge
                 if (IsServerSideError(statusCode: statusCode))
                 {
                     Console.WriteLine("Server exception");
-                    return;
                 }
 
                 response.StatusCode = statusCode;

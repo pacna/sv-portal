@@ -68,7 +68,7 @@ export class EvoContentStepperComponent
     this.abilityText = evo.abilityText;
     this.flavorText = evo.flavorText;
     if (evo.battleStats) {
-      this.handleMessage({ type: CardType.follower } as CardManagementEvent);
+      this.updateValidation(CardType.follower);
       this.atkCtrl.setValue(evo.battleStats.atk);
       this.defCtrl.setValue(evo.battleStats.def);
     }
@@ -84,7 +84,11 @@ export class EvoContentStepperComponent
   }
 
   private handleMessage(event: CardManagementEvent): void {
-    if (event.type === CardType.follower) {
+    this.updateValidation(event.type);
+  }
+
+  private updateValidation(type: CardType): void {
+    if (type === CardType.follower) {
       this.isSelectedFollower = true;
       this.atkCtrl.setValidators([Validators.required]);
       this.atkCtrl.updateValueAndValidity();

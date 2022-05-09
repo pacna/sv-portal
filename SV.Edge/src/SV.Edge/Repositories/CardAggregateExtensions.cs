@@ -18,6 +18,16 @@ namespace SV.Edge.Repositories
                 });
         }
 
+        public static IEnumerable<AudioDocument> ToEnumerable(this List<string> audios, string cardId)
+        {
+            return audios.IsNullOrEmpty()
+                ? Enumerable.Empty<AudioDocument>()
+                : audios.Select(x => new AudioDocument(cardId: cardId)
+                {
+                    Location = x
+                });
+        }
+
         public static EvoDocument ToDocument(this EvoDocument evo, string cardId)
         {
             return evo == null

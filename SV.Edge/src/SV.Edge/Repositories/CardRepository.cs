@@ -32,7 +32,7 @@ namespace SV.Edge.Repositories
 
         public Task<Card> UpdateCardAsync(string id, UpdateCardRequest request)
         {
-            return Task.FromResult<Card>(new Card());
+            return this._cardAggregateRepository.UpdateCardAsync(cardId: id, request: request);
         }
 
         public Task RemoveCardAsync(string id)

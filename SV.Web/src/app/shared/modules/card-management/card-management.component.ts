@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   CardDetailResponse,
   CardPostRequest,
+  CardPutRequest,
   CardResponse,
 } from '../../types/api';
 import { CardsApiService } from '../../services/cards-api.service';
@@ -22,6 +23,7 @@ import {
 } from './types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CardEditEventService, CardManagementEventService } from './services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'card-management',
@@ -56,32 +58,45 @@ export class CardManagementComponent implements OnInit {
     const card: CardStepper = this.cardStepper.getValue();
     const evo: EvoStepper = this.evoStepper.getValue();
 
-    const request: CardPostRequest = {
-      craft: this.dialogData.craft,
-      name: card.name,
-      pack: card.pack,
-      ppCost: card.ppCost,
-      rarity: card.rarity,
-      type: card.type,
-      audioLocations: this.audioStepper.getValue(),
-      baseEvo: evo.base,
-      evolved: evo?.evolved,
-    } as CardPostRequest;
+    let cardObs$: Observable<CardResponse>;
+    let msg: string = 'Card added';
 
-    this.cardsApiService
-      .postCard(request)
-      .subscribe((response: CardResponse) => {
-        this.exit(true);
-        this.snackBar.open('Card added', null, { duration: 3000 });
-      });
+    if (this.dialogData.card) {
+      const id: string = this.dialogData.card.id;
+      cardObs$ = this.cardsApiService.putCard(id, {
+        name: card.name,
+        ppCost: card.ppCost,
+        audioLocations: this.audioStepper.getValue(),
+        baseEvo: evo.base,
+        evolved: evo?.evolved,
+      } as CardPutRequest);
+      msg = 'Card updated';
+    } else {
+      cardObs$ = this.cardsApiService.postCard({
+        craft: this.dialogData.craft,
+        name: card.name,
+        pack: card.pack,
+        ppCost: card.ppCost,
+        rarity: card.rarity,
+        type: card.type,
+        audioLocations: this.audioStepper.getValue(),
+        baseEvo: evo.base,
+        evolved: evo?.evolved,
+      } as CardPostRequest);
+    }
+
+    cardObs$.subscribe((response: CardResponse) => {
+      this.exit(response);
+      this.snackBar.open(msg, null, { duration: 3000 });
+    });
   }
 
   get isValid(): boolean {
     return this.cardStepper?.isValid() && this.evoStepper?.isValid();
   }
 
-  private exit(shouldRefresh: boolean = false): void {
-    this.dialogRef.close(shouldRefresh);
+  private exit(card: CardResponse = null): void {
+    this.dialogRef.close(card);
     this.eventService.clearCache();
     this.eventEditService.clearCache();
   }

@@ -3,6 +3,7 @@ import {
   CardSearchRequest,
   CardDetailResponse,
   CardPostRequest,
+  CardPutRequest,
 } from '../types/api';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -50,6 +51,13 @@ export class CardsApiService {
 
   postCard(request: CardPostRequest): Observable<CardResponse> {
     return this.http.post<CardResponse>(this.cardsUrlSegment, request);
+  }
+
+  putCard(id: string, request: CardPutRequest): Observable<CardResponse> {
+    return this.http.put<CardResponse>(
+      `${this.cardsUrlSegment}/${id}`,
+      request
+    );
   }
 
   deleteCard(id: string): Observable<void> {

@@ -4,9 +4,10 @@ import { CardManagementEvent } from '../types/card-management-event';
 
 @Injectable()
 export class CardManagementEventService {
-  private event$: BehaviorSubject<CardManagementEvent> = new BehaviorSubject(
-    null
-  );
+  private event$: BehaviorSubject<CardManagementEvent> =
+    new BehaviorSubject<CardManagementEvent>(null);
+  private eventObs$: Observable<CardManagementEvent> =
+    this.event$.asObservable();
   constructor() {}
 
   send(event: CardManagementEvent): void {
@@ -14,7 +15,7 @@ export class CardManagementEventService {
   }
 
   listener(): Observable<CardManagementEvent> {
-    return this.event$.asObservable();
+    return this.eventObs$;
   }
 
   clearCache(): void {

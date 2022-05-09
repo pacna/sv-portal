@@ -4,7 +4,9 @@ import { CardEditEvent } from '../types/card-edit-event';
 
 @Injectable()
 export class CardEditEventService {
-  private event$: BehaviorSubject<CardEditEvent> = new BehaviorSubject(null);
+  private event$: BehaviorSubject<CardEditEvent> =
+    new BehaviorSubject<CardEditEvent>(null);
+  private eventObs$: Observable<CardEditEvent> = this.event$.asObservable();
   constructor() {}
 
   send(event: CardEditEvent): void {
@@ -12,7 +14,7 @@ export class CardEditEventService {
   }
 
   listener(): Observable<CardEditEvent> {
-    return this.event$.asObservable();
+    return this.eventObs$;
   }
 
   clearCache(): void {

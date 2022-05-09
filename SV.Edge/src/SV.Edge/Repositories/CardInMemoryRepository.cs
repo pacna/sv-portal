@@ -199,9 +199,18 @@ namespace SV.Edge.Repositories
             cardsInMemory[id] = new Card
             {
                 Id = id,
-                FlavorText = request.FlavorText ?? cardBeforeUpdate.FlavorText,
-                Name = cardBeforeUpdate.Name,
-                PPCost = cardBeforeUpdate.PPCost
+                AbilityText = request.BaseEvo.AbilityText,
+                ArtLocation = request.BaseEvo.ArtLocation,
+                AudioLocations = request.AudioLocations,
+                BattleStats = request.BaseEvo.BattleStats,
+                CardPack =  cardBeforeUpdate.CardPack,
+                Craft = cardBeforeUpdate.Craft,
+                Evo = request.Evolved,
+                FlavorText = request.BaseEvo.FlavorText,
+                Name = request.Name,
+                PPCost = request.PPCost,
+                Rarity = cardBeforeUpdate.Rarity,
+                Type = cardBeforeUpdate.Type
             };
 
             return Task.FromResult<Card>(cardsInMemory[id]);

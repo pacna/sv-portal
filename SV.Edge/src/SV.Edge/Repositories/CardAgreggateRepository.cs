@@ -74,19 +74,93 @@ namespace SV.Edge.Repositories
             }
             catch(Exception ex)
             {
-                Console.WriteLine("DB error", ex.ToString());
-                throw new HttpException(HttpStatusCode.InternalServerError, ex.ToString());
+                Console.WriteLine("DB error", ex.Message);
+                throw new HttpException(HttpStatusCode.InternalServerError, ex.Message);
             }
 
             return new Card
             {
                 Id = cardAggregateDoc.CardDocument.CardId,
-                CardPack = cardAggregateDoc.CardDocument.CardPack,
+                ArtLocation = cardAggregateDoc.BaseEvoDocument.ArtLocation,
+                Craft = cardAggregateDoc.CardDocument.Craft,
                 Name = cardAggregateDoc.CardDocument.Name,
-                PPCost = cardAggregateDoc.CardDocument.PPCost,
                 Rarity = cardAggregateDoc.CardDocument.Rarity,
                 Type = cardAggregateDoc.CardDocument.Type
             };
+        }
+
+        public async Task<Card> UpdateCardAsync(string cardId, UpdateCardRequest request)
+        {
+            try
+            {
+                // order matters when updating
+                // safely update the card doc before updating docs that have foreign key dependent
+                await this._context.Set<CardDocument>().Where(x => x.CardId == cardId).UpdateAsync(x => new CardDocument
+                {
+                    PPCost = request.PPCost,
+                    Name = request.Name
+                });
+
+                await this._context.SaveChangesAsync();
+
+                // Npgsql doesn't like having multiple different operations on the same table so separting the add and delete on audio docs 
+                await this._context.Set<AudioDocument>().Where(x => x.CardId == cardId).DeleteAsync();
+                await this._context.SaveChangesAsync();
+
+                Task audiosAddTask = AddAudiosAsync(request.AudioLocations.ToEnumerable(cardId: cardId));
+                Task baseEvoUpdateTask = this._context.Set<EvoDocument>().Where(x => x.CardId == cardId && !x.IsEvo).UpdateAsync(x => new EvoDocument
+                {
+                    ArtLocation = request.BaseEvo.ArtLocation,
+                    AbilityText = request.BaseEvo.AbilityText,
+                    FlavorText = request.BaseEvo.FlavorText
+                });
+
+                await Task.WhenAll(audiosAddTask, baseEvoUpdateTask);
+                await this._context.SaveChangesAsync();
+
+                // safely update the evo doc before updating docs that have foreign key dependent 
+                if (request.Evolved != null)
+                {
+                    string baseEvoId = await this._queryBuilder.BuildEvoIdGetQuery(cardId: cardId).FirstOrDefaultAsync();
+                    await this._context.Set<BattleStatsDocument>().Where(x => x.EvoId == baseEvoId).UpdateAsync(x => new BattleStatsDocument
+                    {
+                        Atk = request.BaseEvo.BattleStats.Atk,
+                        Def = request.BaseEvo.BattleStats.Def
+                    });
+                    await this._context.SaveChangesAsync();
+
+                    await this._context.Set<EvoDocument>().Where(x => x.CardId == cardId && x.IsEvo).UpdateAsync(x => new EvoDocument
+                    {
+                        ArtLocation = request.Evolved.ArtLocation,
+                        AbilityText = request.Evolved.AbilityText,
+                        FlavorText = request.Evolved.FlavorText
+                    });
+                    await this._context.SaveChangesAsync();
+
+                    string evolvedId = await this._queryBuilder.BuildEvoIdGetQuery(cardId: cardId, isEvo: true).FirstOrDefaultAsync();
+                    await this._context.Set<BattleStatsDocument>().Where(x => x.EvoId == evolvedId).UpdateAsync(x => new BattleStatsDocument
+                    {
+                        Atk = request.Evolved.BattleStats.Atk,
+                        Def = request.Evolved.BattleStats.Def
+                    });
+                    await this._context.SaveChangesAsync();
+                }
+
+                return new Card
+                {
+                    Id = cardId,
+                    ArtLocation = request.BaseEvo.ArtLocation,
+                    Craft = request.Craft,
+                    Name = request.Name,
+                    Rarity = request.Rarity,
+                    Type = request.Type
+                };                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("DB error", ex.Message);
+                throw new HttpException(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
         public async Task RemoveCardAsync(string cardId)
@@ -109,8 +183,8 @@ namespace SV.Edge.Repositories
             }
             catch(Exception ex)
             {
-                Console.WriteLine("DB error", ex.ToString());
-                throw new HttpException(HttpStatusCode.InternalServerError, ex.ToString());
+                Console.WriteLine("DB error", ex.Message);
+                throw new HttpException(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 

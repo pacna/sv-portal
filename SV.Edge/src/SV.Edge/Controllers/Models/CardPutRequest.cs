@@ -17,5 +17,17 @@ namespace SV.Edge.Controllers.Models
         public EvoSpecs BaseEvo { get; init; }
 
         public EvoSpecs Evolved { get; init; }
+
+        internal UpdateCardRequest ToRequest()
+        {
+            return new UpdateCardRequest
+            {
+                Name = this.Name,
+                PPCost = this.PPCost,
+                AudioLocations = this.AudioLocations,
+                BaseEvo = this.BaseEvo,
+                Evolved = this.Evolved
+            };
+        }
     }
 }

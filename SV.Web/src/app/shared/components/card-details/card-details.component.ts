@@ -55,22 +55,22 @@ export class CardDetailsComponent implements OnInit {
   }
 
   private loadCardsGallery(card: CardDetailResponse): void {
-    this.cardsGallery.push({
+    this.cardsGallery[0] = {
       type: 'image',
       data: {
         src: card.artLocation,
         thumb: card.artLocation,
       } as ImageItemData,
-    } as GalleryItem);
+    } as GalleryItem;
 
     if (this.isFollower) {
-      this.cardsGallery.push({
+      this.cardsGallery[1] = {
         type: 'image',
         data: {
           src: card.evo.artLocation,
           thumb: card.evo.artLocation,
         } as ImageItemData,
-      } as GalleryItem);
+      } as GalleryItem;
     }
 
     this.gallery

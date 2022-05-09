@@ -47,7 +47,7 @@ namespace SV.Edge.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardPutRequest request)
         {
-            return this.OkIfFound(await this._service.UpdateCardAsync(id: id, request: request));
+            return this.OkIfFound(await this._service.UpdateCardAsync(id: id, request: request.ToRequest()));
         }
 
         [HttpDelete("{id}")]

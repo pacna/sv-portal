@@ -34,7 +34,12 @@ namespace SV.Edge
             {
                 optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options => 
                 {
-                    options.EnableRetryOnFailure(maxRetryCount: 3);
+                    options.EnableRetryOnFailure
+                    (
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(3),
+                        errorCodesToAdd: null
+                    );
                 });
             });
         }
