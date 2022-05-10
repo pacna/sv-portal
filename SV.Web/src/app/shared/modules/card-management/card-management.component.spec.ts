@@ -4,7 +4,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Craft } from '../../types/customs/craft.enum';
 import { CardsApiService } from '../../services/cards-api.service';
 import { SharedSpies } from '../../testing/shared-spies.spec';
-
 import { CardManagementComponent } from './card-management.component';
 import { CardManagementData } from './types';
 import {
@@ -15,6 +14,7 @@ import {
 import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { CardEditEventService, CardManagementEventService } from './services';
 
 describe('CardManagementComponent', () => {
   let component: CardManagementComponent;
@@ -35,6 +35,8 @@ describe('CardManagementComponent', () => {
         MockAudioStepperComponent,
       ],
       providers: [
+        CardManagementEventService,
+        CardEditEventService,
         {
           provide: MatDialogRef,
           useValue: SharedSpies.createMatDialogRefSpy(),

@@ -4,8 +4,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardManagementEventService } from '../../services';
-
+import {
+  CardEditEventService,
+  CardManagementEventService,
+} from '../../services';
 import { CardStepperComponent } from './card-stepper.component';
 
 describe('CardStepperComponent', () => {
@@ -23,7 +25,7 @@ describe('CardStepperComponent', () => {
         BrowserAnimationsModule,
       ],
       declarations: [CardStepperComponent],
-      providers: [CardManagementEventService],
+      providers: [CardManagementEventService, CardEditEventService],
     }).compileComponents();
   });
 

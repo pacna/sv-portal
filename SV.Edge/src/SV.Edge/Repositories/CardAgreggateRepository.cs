@@ -121,7 +121,10 @@ namespace SV.Edge.Repositories
                 // safely update the evo doc before updating docs that have foreign key dependent 
                 if (request.Evolved != null)
                 {
-                    string baseEvoId = await this._queryBuilder.BuildEvoIdGetQuery(cardId: cardId).FirstOrDefaultAsync();
+                    List<EvoDocument> evos = await this._queryBuilder.BuildEvoSearchQuery(cardId: cardId).ToListAsync();
+                    string baseEvoId = evos.Where(x => !x.IsEvo).Select(x => x.EvoId).FirstOrDefault();
+                    string evolvedId = evos.Where(x => x.IsEvo).Select(x => x.EvoId).FirstOrDefault();
+
                     await this._context.Set<BattleStatsDocument>().Where(x => x.EvoId == baseEvoId).UpdateAsync(x => new BattleStatsDocument
                     {
                         Atk = request.BaseEvo.BattleStats.Atk,
@@ -137,7 +140,6 @@ namespace SV.Edge.Repositories
                     });
                     await this._context.SaveChangesAsync();
 
-                    string evolvedId = await this._queryBuilder.BuildEvoIdGetQuery(cardId: cardId, isEvo: true).FirstOrDefaultAsync();
                     await this._context.Set<BattleStatsDocument>().Where(x => x.EvoId == evolvedId).UpdateAsync(x => new BattleStatsDocument
                     {
                         Atk = request.Evolved.BattleStats.Atk,

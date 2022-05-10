@@ -84,8 +84,8 @@ export class DragoncraftOverviewComponent implements OnInit {
       .afterClosed()
       .pipe(
         untilDestroyed(this),
-        switchMap((shouldRefresh: boolean) => {
-          return shouldRefresh ? this.initFilterSearch() : of(null);
+        switchMap((card: CardResponse) => {
+          return card ? this.initFilterSearch() : of(null);
         })
       )
       .subscribe();

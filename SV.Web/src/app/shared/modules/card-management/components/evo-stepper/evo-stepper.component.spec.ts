@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardManagementEventService } from '../../services';
+import {
+  CardEditEventService,
+  CardManagementEventService,
+} from '../../services';
 import { MockEvoContentStepperComponent } from '../../testing';
 
 import { EvoStepperComponent } from './evo-stepper.component';
@@ -11,7 +14,7 @@ describe('EvoStepperComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [EvoStepperComponent, MockEvoContentStepperComponent],
-      providers: [CardManagementEventService],
+      providers: [CardManagementEventService, CardEditEventService],
     }).compileComponents();
   });
 

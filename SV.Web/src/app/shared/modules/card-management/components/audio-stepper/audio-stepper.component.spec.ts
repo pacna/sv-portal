@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CardEditEventService } from '../../services';
 import { AudioStepperComponent } from './audio-stepper.component';
 
 describe('AudioStepperComponent', () => {
@@ -24,6 +24,7 @@ describe('AudioStepperComponent', () => {
         BrowserAnimationsModule,
       ],
       declarations: [AudioStepperComponent],
+      providers: [CardEditEventService],
     }).compileComponents();
   });
 

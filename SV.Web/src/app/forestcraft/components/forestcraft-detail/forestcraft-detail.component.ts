@@ -25,6 +25,7 @@ import { CardManagementData } from '@svportal/shared/modules/card-management/typ
 export class ForestcraftDetailComponent implements OnInit {
   card: CardDetailResponse = {} as CardDetailResponse;
   pageSuccessState: PageSuccessState;
+  forestCraftType: Craft = Craft.forestcraft;
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly route: ActivatedRoute,
@@ -57,7 +58,7 @@ export class ForestcraftDetailComponent implements OnInit {
       data: {
         id: this.card.id,
         name: this.card.name,
-        craft: this.card.craft,
+        craft: this.forestCraftType,
       } as CardDeactivateData,
       autoFocus: false,
     });
@@ -70,7 +71,7 @@ export class ForestcraftDetailComponent implements OnInit {
         height: ModalConfig.fullHeight,
         minWidth: ModalConfig.fullWidth,
         data: {
-          craft: Craft.forestcraft,
+          craft: this.forestCraftType,
           card: this.card,
         } as CardManagementData,
       })

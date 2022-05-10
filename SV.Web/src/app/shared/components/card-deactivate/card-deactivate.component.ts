@@ -25,6 +25,7 @@ export class CardDeactivateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.title = `Remove ${Craft[this.dialogData.craft]} card`;
     this.cardName = this.dialogData.name;
   }
 

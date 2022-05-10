@@ -58,13 +58,13 @@ namespace SV.Edge.Repositories
             );
         }
 
-        public IQueryable<string> BuildEvoIdGetQuery(string cardId, bool isEvo = false)
+        public IQueryable<EvoDocument> BuildEvoSearchQuery(string cardId)
         {
             return
             (
                 from evo in this._queryableEvo
-                where evo.CardId == cardId && evo.IsEvo == isEvo
-                select evo.EvoId
+                where evo.CardId == cardId
+                select evo
             );
         }
 

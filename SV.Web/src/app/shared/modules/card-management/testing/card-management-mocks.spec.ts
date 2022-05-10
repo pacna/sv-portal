@@ -53,6 +53,8 @@ export class MockAudioStepperComponent implements IFormValue<string[]> {
 })
 export class MockEvoCardEditorComponent implements IFormValue<string> {
   @Input() editorHeader: string;
+  @Input() editorText: string;
+
   public getValue(): string {
     return 'foo';
   }
@@ -66,6 +68,7 @@ export class MockEvoContentStepperComponent
   implements IManagementStepper<EvoSpecs>
 {
   @Input() evoHeader: string;
+  @Input() evo: EvoSpecs;
 
   public isValid(): boolean {
     return false;

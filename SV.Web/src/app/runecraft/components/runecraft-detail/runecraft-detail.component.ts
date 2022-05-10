@@ -4,13 +4,17 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
 import { ModalConfig } from '@svportal/shared/constants/modal-config';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 import { CardsApiService } from '@svportal/shared/services';
 import {
   CardDeactivateData,
   CardDetailResponse,
+  CardResponse,
+  Craft,
   PageSuccessState,
 } from '@svportal/shared/types';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -21,6 +25,7 @@ import { map, Observable } from 'rxjs';
 export class RunecraftDetailComponent implements OnInit {
   card: CardDetailResponse = {} as CardDetailResponse;
   pageSuccessState: PageSuccessState;
+  runeCraftType: Craft = Craft.runecraft;
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly route: ActivatedRoute,
@@ -53,9 +58,30 @@ export class RunecraftDetailComponent implements OnInit {
       data: {
         id: this.card.id,
         name: this.card.name,
-        craft: this.card.craft,
+        craft: this.runeCraftType,
       } as CardDeactivateData,
       autoFocus: false,
     });
+  }
+
+  openCardManagement(): void {
+    this.dialog
+      .open(CardManagementComponent, {
+        autoFocus: false,
+        height: ModalConfig.fullHeight,
+        minWidth: ModalConfig.fullWidth,
+        data: {
+          craft: this.runeCraftType,
+          card: this.card,
+        } as CardManagementData,
+      })
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        switchMap((card: CardResponse) => {
+          return card ? this.getCard(card.id) : of(null);
+        })
+      )
+      .subscribe();
   }
 }
