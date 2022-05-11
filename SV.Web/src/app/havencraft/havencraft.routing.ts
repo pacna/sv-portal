@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { HavencraftDetailComponent } from './components/havencraft-detail/havencraft-detail.component';
 import { HavencraftOverviewComponent } from './components/havencraft-overview/havencraft-overview.component';
 
 export const havenCraftRoutes: Routes = [
@@ -12,5 +13,9 @@ export const havenCraftRoutes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: ':id',
+    component: HavencraftDetailComponent,
   },
 ];

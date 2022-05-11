@@ -1,11 +1,39 @@
-<div id="havencraft-overview">
-    <header-action-bar class="mb-40">
-        <h2 slot="header"> Havencraft </h2>
-        <ng-container slot="actions">
-            <button mat-raised-button class="primary-action-button">Create</button>
-        </ng-container>
+<mat-drawer-container id="havencraft-overview">
+  <mat-drawer #drawer>
+    <cards-filter-search
+      [headerCraftType]="havenCraftType"
+      [currentFilterRequest]="currentFilterRequest"
+      (changeSearchFilter)="handleFilterRequest($event)"
+      (close)="drawer.close()"
+    ></cards-filter-search>
+  </mat-drawer>
+  <mat-drawer-content>
+    <header-action-bar>
+      <h2 slot="header">Havencraft</h2>
+      <ng-container slot="actions">
+        <button
+          mat-raised-button
+          class="primary-action-button"
+          (click)="openCardManagement()"
+        >
+          Create
+        </button>
+      </ng-container>
     </header-action-bar>
-    <loading-content [hasLoaded]="hasCards()">
-        <sv-list [cards]="cards" (viewCardInfo)="handleCardInfo($event)"></sv-list>
-    </loading-content>
-</div>
+    <section class="mt-16 mb-16">
+      <button
+        mat-raised-button
+        class="secondary-action-button"
+        (click)="openFilter()"
+      >
+        <mat-icon>filter_list</mat-icon> Filter
+      </button>
+    </section>
+    <page-content [pageState]="pageSuccessState">
+      <sv-list
+        [cards]="cards"
+        (viewCardInfo)="handleCardInfo($event)"
+      ></sv-list>
+    </page-content>
+  </mat-drawer-content>
+</mat-drawer-container>

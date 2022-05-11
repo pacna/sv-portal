@@ -1,6 +1,7 @@
 import {
+  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
+  MockPageContentComponent,
   MockSVListComponent,
   SharedSpies,
 } from '@svportal/shared/testing';
@@ -10,6 +11,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HavencraftOverviewComponent } from './havencraft-overview.component';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('HavencraftOverviewComponent', () => {
   let component: HavencraftOverviewComponent;
@@ -18,12 +23,19 @@ describe('HavencraftOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatDialogModule,
+      ],
       declarations: [
         HavencraftOverviewComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
+        MockPageContentComponent,
         MockSVListComponent,
+        MockCardsFilterSearchComponent,
       ],
       providers: [
         {

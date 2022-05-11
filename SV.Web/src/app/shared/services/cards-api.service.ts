@@ -1,3 +1,11 @@
+// Angular
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+// Third party
+import { Observable } from 'rxjs';
+
+// Self
 import {
   CardResponse,
   CardSearchRequest,
@@ -5,9 +13,6 @@ import {
   CardPostRequest,
   CardPutRequest,
 } from '../types/api';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
