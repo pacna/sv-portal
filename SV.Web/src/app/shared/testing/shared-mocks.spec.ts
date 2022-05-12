@@ -1,8 +1,11 @@
+// Angular
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+// Self
 import { CardsFilterRequest } from './../types/customs/cards-filter-request';
 import { CardResponse } from './../types/api/card-response';
 import { CardDescription } from './../types/customs/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FollowerDescription } from '../types/customs/follower-description';
 import { Craft } from '../types/customs/craft.enum';
 import { PageSuccessState } from '../types/customs/page-success-state.enum';
