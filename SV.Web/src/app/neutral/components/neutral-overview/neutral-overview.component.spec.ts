@@ -1,15 +1,19 @@
 import {
+  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
-  MockLoadingContentComponent,
+  MockPageContentComponent,
   MockSVListComponent,
   SharedSpies,
 } from '@svportal/shared/testing';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NeutralOverviewComponent } from './neutral-overview.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('NeutralOverviewComponent', () => {
   let component: NeutralOverviewComponent;
@@ -18,12 +22,19 @@ describe('NeutralOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatDialogModule,
+      ],
       declarations: [
         NeutralOverviewComponent,
         MockHeaderActionBarComponent,
-        MockLoadingContentComponent,
+        MockPageContentComponent,
         MockSVListComponent,
+        MockCardsFilterSearchComponent,
       ],
       providers: [
         {

@@ -63,14 +63,6 @@ export class MockFollowerDetailDescriptionComponent {
 export class MockHeaderActionBarComponent {}
 
 @Component({
-  selector: 'loading-content',
-  template: '',
-})
-export class MockLoadingContentComponent {
-  @Input() hasLoaded: boolean = false;
-}
-
-@Component({
   selector: 'sv-list',
   template: '',
 })

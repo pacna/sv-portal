@@ -29,7 +29,6 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { SVListComponent } from './components/sv-list/sv-list.component';
 import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
 import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
-import { LoadingContentComponent } from './components/loading-content/loading-content.component';
 import { CardDescriptionComponent } from './components/card-description/card-description.component';
 import { FollowerDescriptionComponent } from './components/follower-description/follower-description.component';
 import { FollowerDetailDescriptionComponent } from './components/follower-detail-description/follower-detail-description.component';
@@ -48,7 +47,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
     SVListComponent,
     SVListItemComponent,
     HeaderActionBarComponent,
-    LoadingContentComponent,
     CardDetailsDescriptionComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
@@ -90,7 +88,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
     SVLayoutComponent,
     SVListComponent,
     HeaderActionBarComponent,
-    LoadingContentComponent,
     CardDetailsDescriptionComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
