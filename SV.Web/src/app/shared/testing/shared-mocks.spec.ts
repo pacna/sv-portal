@@ -68,6 +68,7 @@ export class MockHeaderActionBarComponent {}
 })
 export class MockSVListComponent {
   @Input() cards: CardResponse[];
+  @Input() numberOfColumns: number = 4;
 }
 
 @Component({

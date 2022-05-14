@@ -1,7 +1,8 @@
 @import "colors";
+@import "breakpoints";
 
 #card-management {
-  width: calc(90% / 2);
+  width: 60%;
   padding: 24px;
   margin: auto;
 
@@ -28,5 +29,12 @@
   .button-container {
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+@media #{$XSmall, $Small} {
+  #card-management {
+    width: 100%;
+    padding: 0px;
   }
 }

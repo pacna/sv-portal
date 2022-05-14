@@ -15,6 +15,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 import { CardManagementData } from '@svportal/shared/modules/card-management/types';
 import { ModalConfig } from '@svportal/shared/constants';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 
 @UntilDestroy()
 @Component({
@@ -28,12 +33,16 @@ export class ForestcraftOverviewComponent implements OnInit {
   forestCraftType: Craft = Craft.forestcraft;
   pageSuccessState: PageSuccessState;
   currentFilterRequest: CardsFilterRequest = {} as CardsFilterRequest;
+  numberOfColumns: number;
   constructor(
     private readonly cardsApiService: CardsApiService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly dialog: MatDialog
-  ) {}
+    private readonly dialog: MatDialog,
+    private readonly breakpointObserver: BreakpointObserver
+  ) {
+    this.handleScreenSize();
+  }
 
   ngOnInit(): void {
     this.initFilterSearch().subscribe();
@@ -42,38 +51,6 @@ export class ForestcraftOverviewComponent implements OnInit {
   openFilter(): void {
     this.drawer.autoFocus = false;
     this.drawer.open();
-  }
-
-  initFilterSearch(): Observable<void> {
-    return this.route.queryParams.pipe(
-      untilDestroyed(this),
-      switchMap((params: Params) => {
-        this.currentFilterRequest = new CardsFilterRequest(params);
-        if (!UtilityHelper.isObjEmpty(this.currentFilterRequest)) {
-          return this.searchCards(
-            this.currentFilterRequest.mapToRequest(this.forestCraftType)
-          );
-        }
-
-        return this.searchCards();
-      })
-    );
-  }
-
-  searchCards(
-    request: CardSearchRequest = {
-      craft: this.forestCraftType,
-    } as CardSearchRequest
-  ): Observable<void> {
-    return this.cardsApiService.searchCards(request).pipe(
-      untilDestroyed(this),
-      map((response: CardResponse[]) => {
-        this.cards = response;
-        this.pageSuccessState = UtilityHelper.isStringOrArrayEmpty(response)
-          ? PageSuccessState.empty
-          : PageSuccessState.exist;
-      })
-    );
   }
 
   openCardManagement(): void {
@@ -105,5 +82,49 @@ export class ForestcraftOverviewComponent implements OnInit {
 
   handleCardInfo(info: Pick<CardResponse, 'id' | 'craft'>): void {
     this.router.navigateByUrl(`${Craft[info.craft]}/${info.id}`);
+  }
+
+  private handleScreenSize(): void {
+    this.breakpointObserver
+      .observe([Breakpoints.XSmall, Breakpoints.Small])
+      .subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          this.numberOfColumns = result.breakpoints[Breakpoints.XSmall] ? 1 : 2;
+        } else {
+          this.numberOfColumns = 4;
+        }
+      });
+  }
+
+  private initFilterSearch(): Observable<void> {
+    return this.route.queryParams.pipe(
+      untilDestroyed(this),
+      switchMap((params: Params) => {
+        this.currentFilterRequest = new CardsFilterRequest(params);
+        if (!UtilityHelper.isObjEmpty(this.currentFilterRequest)) {
+          return this.searchCards(
+            this.currentFilterRequest.mapToRequest(this.forestCraftType)
+          );
+        }
+
+        return this.searchCards();
+      })
+    );
+  }
+
+  private searchCards(
+    request: CardSearchRequest = {
+      craft: this.forestCraftType,
+    } as CardSearchRequest
+  ): Observable<void> {
+    return this.cardsApiService.searchCards(request).pipe(
+      untilDestroyed(this),
+      map((response: CardResponse[]) => {
+        this.cards = response;
+        this.pageSuccessState = UtilityHelper.isStringOrArrayEmpty(response)
+          ? PageSuccessState.empty
+          : PageSuccessState.exist;
+      })
+    );
   }
 }
