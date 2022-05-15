@@ -16,25 +16,24 @@
       margin-bottom: 0px;
     }
 
-    .atk-dot {
-      border: 1px solid $primary-border-blue;
-      background-color: $primary-blue;
-      color: $plain-white;
-    }
-
-    .def-dot {
-      border: 1px solid $primary-border-red;
-      background-color: $primary-red;
-      color: $plain-white;
-    }
-
     span {
-      display: inline-block;
       text-align: center;
       height: 16px;
       width: 16px;
       padding: 4px;
       border-radius: 50%;
+
+      &.atk-dot {
+        border: 1px solid $primary-border-blue;
+        background-color: $primary-blue;
+        color: $plain-white;
+      }
+
+      &.def-dot {
+        border: 1px solid $primary-border-red;
+        background-color: $primary-red;
+        color: $plain-white;
+      }
     }
   }
 }

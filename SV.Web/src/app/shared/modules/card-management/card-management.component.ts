@@ -1,3 +1,4 @@
+// Angular
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,15 +6,25 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+
+// Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// Third party
+import { Observable } from 'rxjs';
+
+// Shared
 import {
   CardDetailResponse,
   CardPostRequest,
   CardPutRequest,
   CardResponse,
-} from '../../types/api';
-import { CardsApiService } from '../../services/cards-api.service';
-import { Craft } from '../../types/customs/craft.enum';
+} from '@svportal/shared/types/api';
+import { CardsApiService } from '@svportal/shared/services';
+import { Craft } from '@svportal/shared/types/customs/craft.enum';
+
+// Self
 import {
   CardManagementData,
   CardStepper,
@@ -21,9 +32,7 @@ import {
   IFormValue,
   IManagementStepper,
 } from './types';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CardEditEventService, CardManagementEventService } from './services';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'card-management',

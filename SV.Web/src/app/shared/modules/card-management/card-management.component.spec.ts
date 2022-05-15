@@ -1,9 +1,19 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { Craft } from '../../types/customs/craft.enum';
-import { CardsApiService } from '../../services/cards-api.service';
-import { SharedSpies } from '../../testing/shared-spies.spec';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
+
+// Shared
+import { Craft } from '@svportal/shared/types/customs/craft.enum';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
+import { SharedSpies } from '@svportal/shared/testing/shared-spies.spec';
+
+// Self
 import { CardManagementComponent } from './card-management.component';
 import { CardManagementData } from './types';
 import {
@@ -11,9 +21,6 @@ import {
   MockCardStepperComponent,
   MockEvoStepperComponent,
 } from './testing/card-management-mocks.spec';
-import { MatStepperModule } from '@angular/material/stepper';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
 import { CardEditEventService, CardManagementEventService } from './services';
 
 describe('CardManagementComponent', () => {
@@ -22,12 +29,7 @@ describe('CardManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        MatSnackBarModule,
-        MatStepperModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-      ],
+      imports: [MatStepperModule, BrowserAnimationsModule, MatIconModule],
       declarations: [
         CardManagementComponent,
         MockCardStepperComponent,
@@ -40,6 +42,10 @@ describe('CardManagementComponent', () => {
         {
           provide: MatDialogRef,
           useValue: SharedSpies.createMatDialogRefSpy(),
+        },
+        {
+          provide: MatSnackBar,
+          useValue: SharedSpies.createMatSnackBarSpy(),
         },
         {
           provide: CardsApiService,

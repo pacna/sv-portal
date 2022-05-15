@@ -25,7 +25,7 @@ export class CardsApiService {
   searchCards(request: CardSearchRequest): Observable<CardResponse[]> {
     const querySegments: string[] = [];
 
-    if (request.craft || request.craft === 0) {
+    if (request.craft) {
       querySegments.push(`craft=${request.craft}`);
     }
 

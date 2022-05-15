@@ -1,10 +1,17 @@
+// Angular
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+// Material
+import { MatDialog } from '@angular/material/dialog';
+
+// Third party
+import { map, Observable, of, switchMap } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+// Shared
 import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { Component, OnInit } from '@angular/core';
-import { map, Observable, of, switchMap } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { MatDialog } from '@angular/material/dialog';
 import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
 import {
   CardDeactivateData,

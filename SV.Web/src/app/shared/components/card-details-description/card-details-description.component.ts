@@ -29,17 +29,23 @@ export class CardDetailsDescriptionComponent implements OnInit {
     this.card = {
       craft: Craft[cardDetail.craft],
       rarity: Rarity[cardDetail.rarity],
-      createCostText: this.displayCost(cardDetail.cardPack, () =>
-        CreateCost[Rarity[cardDetail.rarity]]?.toString()
+      createCost: this.displayCost(
+        cardDetail.cardPack,
+        () => CreateCost[Rarity[cardDetail.rarity]]
       ),
-      liquefyCostText: this.displayCost(cardDetail.cardPack, () =>
-        LiquefyCost[Rarity[cardDetail.rarity]]?.toString()
+      liquefyCost: this.displayCost(
+        cardDetail.cardPack,
+        () => LiquefyCost[Rarity[cardDetail.rarity]]
       ),
       type: CardType[cardDetail.type],
+      ppCost: cardDetail.ppCost,
     } as CardDetails;
   }
 
-  private displayCost(cardPack: CardPack, displayCostFn: () => string): string {
+  private displayCost(
+    cardPack: CardPack,
+    displayCostFn: () => number
+  ): string | number {
     if (cardPack === CardPack.basic || cardPack === CardPack.promo) {
       return '- -';
     }

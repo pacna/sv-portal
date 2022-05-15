@@ -1,4 +1,5 @@
 @import "colors";
+@import "breakpoints";
 
 #card-details {
   display: flex;
@@ -15,13 +16,15 @@
   .is-three-fifth {
     flex-basis: 60%;
   }
-  .cols {
-    flex: 1;
-  }
 
   follower-description,
-  card-description {
+  card-description,
+  card-details-description {
     display: block;
+  }
+
+  card-details-description {
+    max-width: 400px;
   }
 
   .mat-icon {
@@ -32,5 +35,20 @@
 
   .mat-icon-button .mat-icon {
     line-height: inherit;
+  }
+}
+
+@media #{$XSmall, $Small} {
+  #card-details {
+    flex-direction: column;
+
+    card-details-description {
+      margin-top: 32px;
+      max-width: 100%;
+    }
+
+    card-description {
+      padding: 0px 24px;
+    }
   }
 }

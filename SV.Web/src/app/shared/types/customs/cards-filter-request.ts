@@ -10,7 +10,7 @@ export class CardsFilterRequest {
   name: string;
   rarities: Rarity[];
   types: CardType[];
-  
+
   constructor(params: Params) {
     this.sanitizeQueryParams(params);
   }
@@ -20,22 +20,24 @@ export class CardsFilterRequest {
       craft: !this.isAll ? craft : null,
       name: this.name,
       rarities: this.rarities,
-      types: this.types
-    } as CardSearchRequest
+      types: this.types,
+    } as CardSearchRequest;
   }
 
   private sanitizeQueryParams(params: Params): void {
-    const entriesinParams = Object.entries(params);
+    const entriesinParams: [string, any][] = Object.entries(params);
 
     entriesinParams.forEach(([key, value]: [string, any]) => {
       if (this.isArrayProp(key)) {
-        this[key] = Array.isArray(value) ? value.map((x: string) => Number(x)) : [Number(value)];
+        this[key] = Array.isArray(value)
+          ? value.map((x: string) => Number(x))
+          : [Number(value)];
       } else if (UtilityHelper.isStringBool(value)) {
-        this[key] = (value === 'true');
+        this[key] = value === 'true';
       } else {
         this[key] = value;
       }
-    })
+    });
   }
 
   private isArrayProp(propValue): boolean {

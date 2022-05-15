@@ -2,6 +2,8 @@
 
 My own implementation/design of the [Shadowverse Portal](https://shadowverse-portal.com/?lang=en) website.
 
+![sv-portal](./docs/sv-portal.png)
+
 ## Prerequisites
 
 1. [Node.js](https://nodejs.org/en/)

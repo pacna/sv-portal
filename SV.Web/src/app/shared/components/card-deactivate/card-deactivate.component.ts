@@ -1,9 +1,14 @@
+// Angular
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
+// Material
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// Self
 import { Craft } from '../../types/customs/craft.enum';
 import { CardsApiService } from '../../services/cards-api.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CardDeactivateData } from '../../types/customs/card-deactivate-data';
 
 @Component({

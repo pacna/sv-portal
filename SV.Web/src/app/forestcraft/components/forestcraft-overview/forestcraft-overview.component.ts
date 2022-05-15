@@ -1,3 +1,21 @@
+// Angular
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
+
+// Material
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+
+// Third party
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { map, Observable, of, switchMap } from 'rxjs';
+
+// Shared
 import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
 import {
   Craft,
@@ -5,21 +23,10 @@ import {
   PageSuccessState,
 } from '@svportal/shared/types/customs';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { map, Observable, of, switchMap } from 'rxjs';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MatDrawer } from '@angular/material/sidenav';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UtilityHelper } from '@svportal/shared/helpers';
-import { MatDialog } from '@angular/material/dialog';
 import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 import { CardManagementData } from '@svportal/shared/modules/card-management/types';
 import { ModalConfig } from '@svportal/shared/constants';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState,
-} from '@angular/cdk/layout';
 
 @UntilDestroy()
 @Component({

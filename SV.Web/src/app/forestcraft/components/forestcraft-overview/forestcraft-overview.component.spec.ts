@@ -1,3 +1,17 @@
+// Angular
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+
+// Third party
+import { of } from 'rxjs';
+
+// Shared
 import {
   MockHeaderActionBarComponent,
   MockCardsFilterSearchComponent,
@@ -6,15 +20,9 @@ import {
   MockPageContentComponent,
 } from '@svportal/shared/testing';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { MatIconModule } from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { ForestcraftOverviewComponent } from './forestcraft-overview.component';
-import { of } from 'rxjs';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatDialogModule } from '@angular/material/dialog';
 
 describe('ForestcraftOverviewComponent', () => {
   let component: ForestcraftOverviewComponent;

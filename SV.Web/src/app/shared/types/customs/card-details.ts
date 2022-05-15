@@ -1,7 +1,8 @@
 export interface CardDetails {
   craft: string;
   rarity: string;
-  createCostText: string;
-  liquefyCostText: string;
+  createCost: string | number;
+  liquefyCost: string | number;
   type: string;
+  ppCost: number;
 }

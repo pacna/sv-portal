@@ -2,14 +2,27 @@
 
 SV Web is the front end of the SV Portal app
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+# install node modules
+$ npm ci
+```
 
-## Build
+## How to run locally
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+```bash
+# local mode
+$ npm start
+```
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests.
+
+```bash
+# tests
+$ npm test
+```
