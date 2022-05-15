@@ -12,13 +12,12 @@ namespace SV.Edge
 {
     public class Startup
     {
-        private IConfiguration Configuration { get; }
         private ICORSPolicySettings CORSPolicySettings { get; set; }
         private INpgsqlPostgresDBSetting NpgsqlPostgresDBSetting { get; set; }
+        private bool UseInMemory { get; set; }
 
         public Startup(IConfiguration configuration)
         {
-            this.Configuration = configuration;
             this.GetInitSettings(configuration: configuration);
         }
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -27,7 +26,7 @@ namespace SV.Edge
         {
             services.AddControllers();
             services.AddServices();
-            services.AddRepositories();
+            services.AddRepositories(useInMemory: this.UseInMemory);
             services.AddSwagger();
             services.AddCors(corsPolicySettings: this.CORSPolicySettings);
             services.AddDbContext<SVPortalContext>(optionsBuilder =>
@@ -75,6 +74,7 @@ namespace SV.Edge
             {
                 this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
                 this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
+                this.UseInMemory = configuration.GetValue<bool>("memory");
             }
             catch (Exception ex)
             {

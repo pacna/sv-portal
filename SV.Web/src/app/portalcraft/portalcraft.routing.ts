@@ -1,4 +1,7 @@
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
 import { PortalcraftDetailComponent } from './components/portalcraft-detail/portalcraft-detail.component';
 import { PortalcraftOverviewComponent } from './components/portalcraft-overview/portalcraft-overview.component';
 

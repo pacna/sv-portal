@@ -1,25 +1,32 @@
-import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
-import { Craft } from '@svportal/shared/types/customs/craft.enum';
-import { CardsApiService } from '@svportal/shared/services/cards-api.service';
+// Angular
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { MatDrawer } from '@angular/material/sidenav';
-import {
-  CardsFilterRequest,
-  PageSuccessState,
-} from '@svportal/shared/types/customs';
-import { MatDialog } from '@angular/material/dialog';
-import { UtilityHelper } from '@svportal/shared/helpers';
-import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
-import { ModalConfig } from '@svportal/shared/constants';
-import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 import {
   BreakpointObserver,
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
+
+// Material
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+
+// Third party
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { map, Observable, of, switchMap } from 'rxjs';
+
+// Shared
+import { CardSearchRequest, CardResponse } from '@svportal/shared/types/api';
+import {
+  Craft,
+  CardsFilterRequest,
+  PageSuccessState,
+} from '@svportal/shared/types/customs';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
+import { UtilityHelper } from '@svportal/shared/helpers';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types';
+import { ModalConfig } from '@svportal/shared/constants';
 
 @UntilDestroy()
 @Component({

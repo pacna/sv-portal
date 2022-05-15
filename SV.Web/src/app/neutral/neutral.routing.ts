@@ -1,5 +1,8 @@
-import { NeutralOverviewComponent } from './components/neutral-overview/neutral-overview.component';
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
+import { NeutralOverviewComponent } from './components/neutral-overview/neutral-overview.component';
 import { NeutralDetailComponent } from './components/neutral-detail/neutral-detail.component';
 
 export const neutralRoutes: Routes = [

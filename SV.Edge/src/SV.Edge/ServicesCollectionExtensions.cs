@@ -15,9 +15,16 @@ namespace SV.Edge
             services.AddTransient<ICardService, CardService>();
         }
 
-        internal static void AddRepositories(this IServiceCollection services)
+        internal static void AddRepositories(this IServiceCollection services, bool useInMemory)
         {
-            services.AddTransient<ICardRepository, CardRepository>();
+            if (useInMemory)
+            {
+                services.AddTransient<ICardRepository, CardInMemoryRepository>();
+            }
+            else
+            {
+                services.AddTransient<ICardRepository, CardRepository>();
+            }
         }
 
         internal static void AddSwagger(this IServiceCollection services)

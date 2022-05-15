@@ -1,5 +1,8 @@
-import { ShadowcraftOverviewComponent } from './components/shadowcraft-overview/shadowcraft-overview.component';
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
+import { ShadowcraftOverviewComponent } from './components/shadowcraft-overview/shadowcraft-overview.component';
 import { ShadowcraftDetailComponent } from './components/shadowcraft-detail/shadowcraft-detail.component';
 
 export const shadowCraftRoutes: Routes = [

@@ -28,7 +28,9 @@ namespace SV.Edge.Repositories
                 AudioLocations = new List<string>
                 {
                     "https://svgdb.me/assets/audio/en/vo_100111010_1.mp3",
-                    "https://svgdb.me/assets/audio/en/vo_100111010_2.mp3"
+                    "https://svgdb.me/assets/audio/en/vo_100111010_2.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100111010_3.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100111010_4.mp3"
                 },
                 BattleStats = new BattleStats
                 {
@@ -59,6 +61,10 @@ namespace SV.Edge.Repositories
             {
                 AbilityText = "At the end of this turn, if at least 4 cards were played this turn, draw a card and give +1/+1 to all allied followers.<br>If at least 8 cards were played, draw 2 cards and give +2/+2 instead.",
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_121134010.png",
+                AudioLocations = new List<string>
+                {
+                    "https://svgdb.me/assets/audio/en/vo_121134010_1.mp3"
+                },
                 Craft = CraftType.Forestcraft,
                 FlavorText = "The people called him a hero—one who'd brought peace to Isunia with a blade of justice. Setus bore this as stoically as he would any other burden.\"With the Moon Corps—no, Countersolari—at our side, Isunia will know true justice.\" —Tales from Isunia, Entry 7",
                 Id = item2Id,
@@ -85,7 +91,10 @@ namespace SV.Edge.Repositories
                 ArtLocation = "https://svgdb.me/assets/cards/en/C_100211010.png",
                 AudioLocations = new List<string>
                 {
-                    "https://svgdb.me/assets/audio/en/vo_100211010_1.mp3"
+                    "https://svgdb.me/assets/audio/en/vo_100211010_1.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100211010_2.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100211010_3.mp3",
+                    "https://svgdb.me/assets/audio/en/vo_100211010_4.mp3"
                 },
                 BattleStats = new BattleStats
                 {
