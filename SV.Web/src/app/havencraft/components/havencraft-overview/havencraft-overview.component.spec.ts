@@ -1,20 +1,28 @@
+// Angular
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+
+// Third party
+import { of } from 'rxjs';
+
+// Shared
 import {
-  MockCardsFilterSearchComponent,
   MockHeaderActionBarComponent,
-  MockPageContentComponent,
+  MockCardsFilterSearchComponent,
   MockSVListComponent,
   SharedSpies,
+  MockPageContentComponent,
 } from '@svportal/shared/testing';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { HavencraftOverviewComponent } from './havencraft-overview.component';
-import { of } from 'rxjs';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
 
 describe('HavencraftOverviewComponent', () => {
   let component: HavencraftOverviewComponent;

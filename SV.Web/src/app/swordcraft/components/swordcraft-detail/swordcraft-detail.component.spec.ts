@@ -1,3 +1,14 @@
+// Angular
+import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// Material
+import { MatDialogModule } from '@angular/material/dialog';
+
+// Third party
+import { of } from 'rxjs';
+
+// Shared
 import {
   MockHeaderActionBarComponent,
   MockCardDetailsComponent,
@@ -6,11 +17,9 @@ import {
 } from '@svportal/shared/testing';
 import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// Self
 import { SwordcraftDetailComponent } from './swordcraft-detail.component';
-import { of } from 'rxjs';
-import { MatDialogModule } from '@angular/material/dialog';
 
 describe('SwordcraftDetailComponent', () => {
   let component: SwordcraftDetailComponent;

@@ -1,4 +1,7 @@
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
 import { HavencraftDetailComponent } from './components/havencraft-detail/havencraft-detail.component';
 import { HavencraftOverviewComponent } from './components/havencraft-overview/havencraft-overview.component';
 

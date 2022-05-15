@@ -1,18 +1,27 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
-import { ModalConfig } from '@svportal/shared/constants/modal-config';
-import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
-import { CardManagementData } from '@svportal/shared/modules/card-management/types';
-import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { CardResponse } from '@svportal/shared/types/api';
-import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
-import { CardDeactivateData } from '@svportal/shared/types/customs/card-deactivate-data';
-import { Craft } from '@svportal/shared/types/customs/craft.enum';
-import { PageSuccessState } from '@svportal/shared/types/customs/page-success-state.enum';
+
+// Material
+import { MatDialog } from '@angular/material/dialog';
+
+// Third party
 import { map, Observable, of, switchMap } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+// Shared
+import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
+import { CardsApiService } from '@svportal/shared/services/cards-api.service';
+import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
+import {
+  CardDeactivateData,
+  CardResponse,
+  Craft,
+  PageSuccessState,
+} from '@svportal/shared/types';
+import { ModalConfig } from '@svportal/shared/constants';
+import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
+import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 
 @UntilDestroy()
 @Component({

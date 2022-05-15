@@ -1,4 +1,7 @@
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
 import { SwordcraftDetailComponent } from './components/swordcraft-detail/swordcraft-detail.component';
 import { SwordcraftOverviewComponent } from './components/swordcraft-overview/swordcraft-overview.component';
 

@@ -1,4 +1,7 @@
+// Angular
 import { Routes } from '@angular/router';
+
+// Self
 import { BloodcraftDetailComponent } from './components/bloodcraft-detail/bloodcraft-detail.component';
 import { BloodcraftOverviewComponent } from './components/bloodcraft-overview/bloodcraft-overview.component';
 
