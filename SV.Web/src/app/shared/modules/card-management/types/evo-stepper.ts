@@ -1,4 +1,5 @@
-import { EvoSpecs } from '../../../types/customs/evo-specs';
+// Shared
+import { EvoSpecs } from '@svportal/shared/types/customs/evo-specs';
 
 export interface EvoStepper {
   base: EvoSpecs;

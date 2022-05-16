@@ -1,5 +1,8 @@
+// Angular
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+// Self
 import { CardManagementEvent } from '../types/card-management-event';
 
 @Injectable()

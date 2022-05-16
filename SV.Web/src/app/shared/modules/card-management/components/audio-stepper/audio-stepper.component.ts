@@ -1,7 +1,14 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
+// Third party
 import { filter } from 'rxjs';
-import { UtilityHelper } from '../../../../helpers/utility-helper';
+
+// Shared
+import { UtilityHelper } from '@svportal/shared/helpers/utility-helper';
+
+// Self
 import { CardEditEventService } from '../../services/card-edit-event.service';
 import { CardEditEvent, IFormValue } from '../../types';
 

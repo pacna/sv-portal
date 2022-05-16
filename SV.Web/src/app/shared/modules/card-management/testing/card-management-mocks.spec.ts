@@ -1,5 +1,10 @@
+// Angular
 import { Component, Input } from '@angular/core';
-import { EvoSpecs } from '../../../types/customs/evo-specs';
+
+// Shared
+import { EvoSpecs } from '@svportal/shared/types/customs/evo-specs';
+
+// Self
 import {
   CardStepper,
   EvoStepper,

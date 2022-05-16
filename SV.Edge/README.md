@@ -6,7 +6,7 @@ The edge service for the SV Portal app.
 
 ```bash
 # cd src/SV.Edge folder
-cd src/SV.Edge
+$ cd src/SV.Edge
 
 # normal mode
 $ dotnet run
@@ -15,18 +15,26 @@ $ dotnet run
 $ dotnet watch run
 ```
 
+## How to run in docker (Optional)
+
+```bash
+$ sh build-and-run.sh
+```
+
+**note**: Docker only runs using the in-memory implementation.
+
 ## How to run tests
 
 ```bash
 # tests
-dotnet test
+$ dotnet test
 ```
 
 ## How to run for production
 
 ```bash
 # cd src/SV.Edge folder
-cd src/SV.Edge
+$ cd src/SV.Edge
 
 # publish
 $ dotnet publish -c Release -o server

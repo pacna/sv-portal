@@ -1,7 +1,14 @@
+// Angular
 import { Component, OnInit, ViewChild } from '@angular/core';
+
+// Third party
 import { filter } from 'rxjs';
-import { CardType } from '../../../../types/customs/card-type.enum';
-import { EvoSpecs } from '../../../../types/customs/evo-specs';
+
+// Shared
+import { CardType } from '@svportal/shared/types/customs/card-type.enum';
+import { EvoSpecs } from '@svportal/shared/types/customs/evo-specs';
+
+// Self
 import {
   CardEditEventService,
   CardManagementEventService,

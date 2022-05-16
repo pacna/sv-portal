@@ -1,7 +1,7 @@
 # SV.Edge
 SV.Edge/src/SV.Edge/bin
 SV.Edge/src/SV.Edge/obj
-SV.Edge/src/SV.Edge/server
+SV.Edge/out
 SV.Edge/tests/SV.Edge.Tests/bin
 SV.Edge/tests/SV.Edge.Tests/obj
 

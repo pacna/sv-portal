@@ -1,7 +1,11 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Third party
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
+// Self
 import { EvoCardEditorComponent } from './evo-card-editor.component';
 
 describe('EvoCardEditorComponent', () => {

@@ -1,9 +1,16 @@
+// Angular
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+// Third party
 import { filter } from 'rxjs';
-import { BattleStats } from '../../../../types/customs/battle-stats';
-import { CardType } from '../../../../types/customs/card-type.enum';
-import { EvoSpecs } from '../../../../types/customs/evo-specs';
+
+// Shared
+import { BattleStats } from '@svportal/shared/types/customs/battle-stats';
+import { CardType } from '@svportal/shared/types/customs/card-type.enum';
+import { EvoSpecs } from '@svportal/shared/types/customs/evo-specs';
+
+// Self
 import { CardManagementEventService } from '../../services';
 import { IFormValue, IManagementStepper } from '../../types';
 import { CardManagementEvent } from '../../types/card-management-event';

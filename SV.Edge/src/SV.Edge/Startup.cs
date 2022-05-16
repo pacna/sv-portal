@@ -74,7 +74,7 @@ namespace SV.Edge
             {
                 this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
                 this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
-                this.UseInMemory = configuration.GetValue<bool>("memory");
+                this.UseInMemory = configuration.GetValue<bool>("inmemory");
             }
             catch (Exception ex)
             {

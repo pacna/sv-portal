@@ -1,5 +1,7 @@
+// Angular
 import { TestBed } from '@angular/core/testing';
 
+// Self
 import { CardManagementEventService } from './card-management-event.service';
 
 describe('CardManagementEventService', () => {

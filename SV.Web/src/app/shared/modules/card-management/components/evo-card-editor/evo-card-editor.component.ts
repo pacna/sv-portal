@@ -1,6 +1,9 @@
+// Angular
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
+// Self
 import { IFormValue } from '../../types/iform-value';
 
 declare const require: any;

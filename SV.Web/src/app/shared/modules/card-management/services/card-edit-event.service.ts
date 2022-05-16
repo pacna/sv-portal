@@ -1,5 +1,10 @@
+// Angular
 import { Injectable } from '@angular/core';
+
+// Third party
 import { BehaviorSubject, Observable } from 'rxjs';
+
+// Self
 import { CardEditEvent } from '../types/card-edit-event';
 
 @Injectable()

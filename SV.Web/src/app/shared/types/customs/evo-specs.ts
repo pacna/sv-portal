@@ -1,3 +1,4 @@
+// Self
 import { BattleStats } from './battle-stats';
 
 export interface EvoSpecs {

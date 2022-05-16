@@ -1,4 +1,5 @@
-import { Rarity, CardType, CardPack } from '../../../types/customs';
+// Shared
+import { Rarity, CardType, CardPack } from '@svportal/shared/types/customs';
 
 export interface CardStepper {
   name: string;

@@ -1,3 +1,4 @@
+// Self
 import { Rarity } from './rarity.enum';
 
 export interface RartiyConfig {

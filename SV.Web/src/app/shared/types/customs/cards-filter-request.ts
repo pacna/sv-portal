@@ -1,4 +1,7 @@
+// Angular
 import { Params } from '@angular/router';
+
+// Self
 import { CardSearchRequest } from './../api/card-search-request';
 import { Craft } from './craft.enum';
 import { CardType } from './card-type.enum';

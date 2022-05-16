@@ -18,6 +18,16 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 $ npm start
 ```
 
+## How to run in production (SSR)
+
+```bash
+# build
+$ npm run build:ssr
+
+# run
+$ npm run serve:ssr
+```
+
 ## Running unit tests
 
 Run `npm test` to execute the unit tests.

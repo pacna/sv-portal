@@ -1,3 +1,4 @@
+// Self
 import { Craft } from './craft.enum';
 
 export interface CardDeactivateData {

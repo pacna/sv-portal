@@ -1,10 +1,12 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// Self
 import {
   CardEditEventService,
   CardManagementEventService,
 } from '../../services';
 import { MockEvoContentStepperComponent } from '../../testing';
-
 import { EvoStepperComponent } from './evo-stepper.component';
 
 describe('EvoStepperComponent', () => {

@@ -1,13 +1,22 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+// Material
 import { MatSelectChange } from '@angular/material/select';
+
+// Third party
 import { filter } from 'rxjs';
-import { Rarities, Packs, CardTypes } from '../../../../constants';
+
+// Shared
+import { Rarities, Packs, CardTypes } from '@svportal/shared/constants';
 import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
-} from '../../../../types/customs';
+} from '@svportal/shared/types/customs';
+
+// Self
 import {
   CardEditEventService,
   CardManagementEventService,
