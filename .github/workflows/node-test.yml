@@ -22,5 +22,6 @@ jobs:
                   cache: "npm"
                   cache-dependency-path: ./SV.Web/package-lock.json
             - working-directory: ./SV.Web
-            - run: npm ci
-            - run: npm test
+              run: |
+                  npm ci
+                  npm test
