@@ -3,7 +3,7 @@ import { CardsFilterRequest } from './../../types/customs/cards-filter-request';
 import { CardTypes } from '../../constants/card-types';
 import { Rarities } from '../../constants/rarities';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Craft } from '../../types/customs/craft.enum';
 import { RartiyConfig } from '../../types/customs/rarity-config';
 import { CardTypeConfig } from '../../types/customs/card-type-config';
@@ -34,11 +34,11 @@ export class CardsFilterSearchComponent implements OnInit {
     Rarities;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  nameCtrl: FormControl = new FormControl(null);
-  raritiesCtrl: FormControl = new FormControl([]);
-  typesCtrl: FormControl = new FormControl([]);
-  craftCtrl: FormControl = new FormControl(this.none, [Validators.required]);
-  filterSearchFormGroup: FormGroup = new FormGroup({
+  nameCtrl: UntypedFormControl = new UntypedFormControl(null);
+  raritiesCtrl: UntypedFormControl = new UntypedFormControl([]);
+  typesCtrl: UntypedFormControl = new UntypedFormControl([]);
+  craftCtrl: UntypedFormControl = new UntypedFormControl(this.none, [Validators.required]);
+  filterSearchFormGroup: UntypedFormGroup = new UntypedFormGroup({
     name: this.nameCtrl,
     rarities: this.raritiesCtrl,
     types: this.typesCtrl,

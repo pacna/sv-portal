@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 // Material
 import { MatSelectChange } from '@angular/material/select';
@@ -36,16 +36,16 @@ export class CardStepperComponent
   cardPacks: CardPack[] = Packs;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  private nameCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private rarityCtrl: FormControl = new FormControl(null, [
+  private nameCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
+  private rarityCtrl: UntypedFormControl = new UntypedFormControl(null, [
     Validators.required,
   ]);
-  private typeCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private ppCostCtrl: FormControl = new FormControl(null, [
+  private typeCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
+  private ppCostCtrl: UntypedFormControl = new UntypedFormControl(null, [
     Validators.required,
   ]);
-  private packCtrl: FormControl = new FormControl(null, [Validators.required]);
-  cardStepperFormGroup: FormGroup = new FormGroup({
+  private packCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
+  cardStepperFormGroup: UntypedFormGroup = new UntypedFormGroup({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,
@@ -65,7 +65,7 @@ export class CardStepperComponent
     this.eventService.send({ type: event.value });
   }
 
-  get stepperFormGroup(): FormGroup {
+  get stepperFormGroup(): UntypedFormGroup {
     return this.cardStepperFormGroup;
   }
 

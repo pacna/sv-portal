@@ -1,7 +1,7 @@
 // Angular
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 // Self
 import { IFormValue } from '../../types/iform-value';
@@ -37,8 +37,8 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
     ],
   };
 
-  private ckeditorTextCtrl: FormControl = new FormControl('');
-  ckeditorFormGroup: FormGroup = new FormGroup({
+  private ckeditorTextCtrl: UntypedFormControl = new UntypedFormControl('');
+  ckeditorFormGroup: UntypedFormGroup = new UntypedFormGroup({
     ckeditorText: this.ckeditorTextCtrl,
   });
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
