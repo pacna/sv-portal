@@ -21,7 +21,7 @@ namespace SV.Edge.Controllers
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(List<CardResponse>))]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> SearchCards([FromQuery] CardSearchRequest request)
+        public async Task<IActionResult> SearchCardsAsync([FromQuery] CardSearchRequest request)
         {
             return this.OkIfFound(await this._service.SearchCardsAsync(request.ToRequest()));
         }
@@ -29,7 +29,7 @@ namespace SV.Edge.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardDetailResponse))]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetCard([FromRoute] string id)
+        public async Task<IActionResult> GetCardAsync([FromRoute] string id)
         {
             return this.OkIfFound(await this._service.GetCardAsync(id: id));
         }
@@ -37,7 +37,7 @@ namespace SV.Edge.Controllers
         [HttpPost]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AddCard([FromBody] CardPostRequest request)
+        public async Task<IActionResult> AddCardAsync([FromBody] CardPostRequest request)
         {
             return this.OkIfFound(await this._service.AddCardAsync(request.ToRequest()));
         }
@@ -45,14 +45,14 @@ namespace SV.Edge.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CardResponse))]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateCard([FromRoute] string id, [FromBody] CardPutRequest request)
+        public async Task<IActionResult> UpdateCardAsync([FromRoute] string id, [FromBody] CardPutRequest request)
         {
             return this.OkIfFound(await this._service.UpdateCardAsync(id: id, request: request.ToRequest()));
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> DeleteCard([FromRoute] string id)
+        public async Task<IActionResult> RemoveCardAsync([FromRoute] string id)
         {
             await this._service.RemoveCardAsync(id: id);
             return this.NoContent();

@@ -1,3 +1,3 @@
-# Src
+# SV Edge source
 
-The src folder for SV.Edge
+The src directory for SV.Edge
