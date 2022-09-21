@@ -202,7 +202,7 @@ namespace SV.Edge.Repositories
 
             if (cardBeforeUpdate == null)
             {
-                return null;
+                return Task.FromResult<Card>(null);
             }
 
             cardsInMemory[id] = new Card
@@ -212,7 +212,7 @@ namespace SV.Edge.Repositories
                 ArtLocation = request.BaseEvo.ArtLocation,
                 AudioLocations = request.AudioLocations,
                 BattleStats = request.BaseEvo.BattleStats,
-                CardPack =  cardBeforeUpdate.CardPack,
+                CardPack = cardBeforeUpdate.CardPack,
                 Craft = cardBeforeUpdate.Craft,
                 Evo = request.Evolved,
                 FlavorText = request.BaseEvo.FlavorText,

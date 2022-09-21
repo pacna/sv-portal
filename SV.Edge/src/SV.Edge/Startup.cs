@@ -19,6 +19,8 @@ namespace SV.Edge
         public Startup(IConfiguration configuration)
         {
             this.GetInitSettings(configuration: configuration);
+
+            Console.WriteLine("Edge.LitMusic Started");
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -31,7 +33,7 @@ namespace SV.Edge
             services.AddCors(corsPolicySettings: this.CORSPolicySettings);
             services.AddDbContext<SVPortalContext>(optionsBuilder =>
             {
-                optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options => 
+                optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options =>
                 {
                     options.EnableRetryOnFailure
                     (
@@ -41,6 +43,10 @@ namespace SV.Edge
                     );
                 });
             });
+
+#if DEBUG
+            Console.WriteLine(this.UseInMemory ? "Setting up InMemory datastore" : "");
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
