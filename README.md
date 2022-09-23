@@ -1,5 +1,10 @@
 # SV Portal
 
+<div style="display: inline-flex; gap: 8px">
+    <img alt="Dotnet test passing" src="https://github.com/pacna/sv-portal/workflows/Dotnet%20Test/badge.svg" />
+    <img alt="Node test passing" src="https://github.com/pacna/sv-portal/workflows/Node%20Test/badge.svg" />
+</div>
+
 My own implementation/design of the [Shadowverse Portal](https://shadowverse-portal.com/?lang=en) website.
 
 ![sv-portal](./docs/sv-portal.png)
