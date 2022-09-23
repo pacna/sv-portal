@@ -1,6 +1,6 @@
 # SV Portal
 
-<div style="display: inline-flex; gap: 8px">
+<div style="display: inline-flex; gap: 16px">
     <img alt="Dotnet test passing" src="https://github.com/pacna/sv-portal/workflows/Dotnet%20Test/badge.svg" />
     <img alt="Node test passing" src="https://github.com/pacna/sv-portal/workflows/Node%20Test/badge.svg" />
 </div>
