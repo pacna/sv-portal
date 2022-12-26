@@ -1,19 +1,15 @@
-using System.ComponentModel;
-
-namespace SV.Edge.Services.Constants
+namespace SV.Edge.Services.Constants;
+public enum RarityType
 {
-    public enum RarityType
-    {
-        [Description("Bronze")]
-        Bronze,
+    [Description("Bronze")]
+    Bronze,
 
-        [Description("Silver")]
-        Silver,
+    [Description("Silver")]
+    Silver,
 
-        [Description("Gold")]
-        Gold,
+    [Description("Gold")]
+    Gold,
 
-        [Description("Legendary")]
-        Legendary
-    }
+    [Description("Legendary")]
+    Legendary
 }

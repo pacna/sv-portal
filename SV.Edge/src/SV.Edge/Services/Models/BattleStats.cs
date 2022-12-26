@@ -1,8 +1,6 @@
-namespace SV.Edge.Services.Models
+namespace SV.Edge.Services.Models;
+public class BattleStats
 {
-    public class BattleStats
-    {
-        public int Atk { get; init; }
-        public int Def { get; init; }
-    }
+    public int Atk { get; init; }
+    public int Def { get; init; }
 }

@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace SV.Edge.Controllers
+namespace SV.Edge.Controllers;
+public class BaseController: ControllerBase
 {
-    public class BaseController: ControllerBase
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public IActionResult OkIfFound<TResult>(TResult result)
     {
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult OkIfFound<TResult>(TResult result)
-        {
-            return result == null
-                ? this.NotFound()
-                : this.Ok(result);
-        }
+        return result == null
+            ? this.NotFound()
+            : this.Ok(result);
     }
 }

@@ -1,7 +1,5 @@
-namespace SV.Edge.Settings
+namespace SV.Edge.Settings;
+public class NpgsqlPostgresDBSetting : INpgsqlPostgresDBSetting
 {
-    public class NpgsqlPostgresDBSetting : INpgsqlPostgresDBSetting
-    {
-        public string ConnectionString { get; set; }
-    }
+    public string ConnectionString { get; set; }
 }
