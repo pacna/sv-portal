@@ -1,6 +1,11 @@
 // override material styles to match the app UI
-.mat-tab-header-pagination-chevron {
-  border-color: $plain-white !important;
+.mat-mdc-tab-header-pagination-chevron {
+  border-color: $plain-white;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab__text-label,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab__text-label {
+  color: $plain-white;
 }
 
 .mat-drawer-container {

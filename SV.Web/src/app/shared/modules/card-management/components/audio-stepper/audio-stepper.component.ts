@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 // Third party
 import { filter } from 'rxjs';
@@ -18,9 +18,9 @@ import { CardEditEvent, IFormValue } from '../../types';
   styleUrls: ['./audio-stepper.component.scss'],
 })
 export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
-  private audioLocationToAddCtrl: UntypedFormControl = new UntypedFormControl(null);
+  private audioLocationToAddCtrl: FormControl = new FormControl(null);
   audios: string[] = [];
-  audioStepperFormGroup: UntypedFormGroup = new UntypedFormGroup({
+  audioStepperFormGroup: FormGroup = new FormGroup({
     audioLocationToAdd: this.audioLocationToAddCtrl,
   });
   constructor(private readonly eventEditService: CardEditEventService) {}

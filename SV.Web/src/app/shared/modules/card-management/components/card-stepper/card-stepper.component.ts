@@ -1,9 +1,9 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Material
-import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelectChange } from '@angular/material/select';
 
 // Third party
 import { filter } from 'rxjs';
@@ -36,16 +36,16 @@ export class CardStepperComponent
   cardPacks: CardPack[] = Packs;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  private nameCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  private rarityCtrl: UntypedFormControl = new UntypedFormControl(null, [
+  private nameCtrl: FormControl = new FormControl(null, [Validators.required]);
+  private rarityCtrl: FormControl = new FormControl(null, [
     Validators.required,
   ]);
-  private typeCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  private ppCostCtrl: UntypedFormControl = new UntypedFormControl(null, [
+  private typeCtrl: FormControl = new FormControl(null, [Validators.required]);
+  private ppCostCtrl: FormControl = new FormControl(null, [
     Validators.required,
   ]);
-  private packCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  cardStepperFormGroup: UntypedFormGroup = new UntypedFormGroup({
+  private packCtrl: FormControl = new FormControl(null, [Validators.required]);
+  cardStepperFormGroup: FormGroup = new FormGroup({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,
@@ -62,10 +62,11 @@ export class CardStepperComponent
   }
 
   updateEvoForm(event: MatSelectChange): void {
+    // console.log('hi', event);
     this.eventService.send({ type: event.value });
   }
 
-  get stepperFormGroup(): UntypedFormGroup {
+  get stepperFormGroup(): FormGroup {
     return this.cardStepperFormGroup;
   }
 
