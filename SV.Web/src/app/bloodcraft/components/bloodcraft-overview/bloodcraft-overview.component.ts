@@ -9,7 +9,7 @@ import {
 
 // Material
 import { MatDrawer } from '@angular/material/sidenav';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 // Third party
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';

@@ -2,8 +2,8 @@
 import { HttpClient } from '@angular/common/http';
 
 // Material
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 
 // Self
 import { CardsApiService } from '../services';
