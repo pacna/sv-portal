@@ -1,3 +1,5 @@
+@import "./breakpoints";
+
 // override material styles to match the app UI
 .mat-mdc-tab-header-pagination-chevron {
   border-color: $plain-white;
@@ -9,8 +11,6 @@
 }
 
 .mat-drawer-container {
-  position: unset !important;
-
   .mat-drawer {
     left: 0;
     max-width: 360px;
@@ -18,39 +18,99 @@
   }
 }
 
-.mat-form-field-outline-thick,
-.mat-focused .mat-form-field-label,
-.mat-option.mat-selected {
-  color: $primary-blue !important;
-}
-
 .mat-select-panel {
   min-width: calc(100% + 32px) !important;
 }
 
-.mat-primary .mat-pseudo-checkbox-checked,
-.mat-primary .mat-pseudo-checkbox-indeterminate,
 .mat-step-header .mat-step-icon-selected,
 .mat-step-header .mat-step-icon-state-done,
 .mat-step-header .mat-step-icon-state-edit {
   background-color: $primary-blue !important;
 }
 
-.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
-  .mat-form-field-outline-thick,
-.mat-focused .mat-form-field-required-marker,
-.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow,
-.mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent,
-.mat-form-field.mat-form-field-invalid
-  .mat-form-field-label
-  .mat-form-field-required-marker,
-.mat-form-field.mat-form-field-invalid .mat-form-field-label,
-.mat-form-field.mat-warn .mat-input-element,
-.mat-form-field-invalid .mat-input-element {
-  color: $primary-red !important;
+.mat-typography h2 {
+  margin: 0px;
 }
 
-.mat-form-field.mat-warn .mat-input-element,
-.mat-form-field-invalid .mat-input-element {
-  caret-color: $primary-red !important;
+.mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+  min-width: unset !important;
 }
+
+// SUCCESS/NORMAL state for forms
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__trailing {
+  border-color: $primary-blue;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
+  color: $primary-blue;
+}
+
+// ERROR state for forms
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mat-mdc-form-field
+  .mat-mdc-select.mat-mdc-select-invalid
+  .mat-mdc-select-arrow {
+  color: $primary-red;
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__leading,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused.mat-primary
+  .mat-mdc-select-arrow
+  .mdc-text-field--invalid:not(
+    .mdc-text-field--disabled
+  ).mdc-text-field--focused
+  .mdc-notched-outline__trailing,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled)
+  .mdc-notched-outline__leading,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled)
+  .mdc-notched-outline__notch,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled)
+  .mdc-notched-outline__trailing,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__leading,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__notch,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__trailing {
+  border-color: $primary-red !important;
+}
+
+.mdc-text-field--invalid .mdc-text-field__input {
+  caret-color: $primary-red;
+}
+
+// CHECKBOX
+.mat-primary
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
+  .mdc-list-item__primary-text {
+  color: $primary-blue;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked,
+.mat-primary .mat-pseudo-checkbox-indeterminate {
+  background-color: $primary-blue;
+}
+
+// @media #{$XSmall, $Small} {
+//   .mat-drawer-container {
+//     position: unset !important;
+//   }
+// }

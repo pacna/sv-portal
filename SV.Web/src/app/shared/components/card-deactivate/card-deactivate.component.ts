@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 // Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Self
 import { Craft } from '../../types/customs/craft.enum';

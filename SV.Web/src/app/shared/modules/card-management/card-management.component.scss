@@ -17,13 +17,7 @@
     }
 
     .mat-icon {
-      height: 36px;
-      width: auto;
-      font-size: 36px;
-    }
-
-    .mat-icon-button .mat-icon {
-      line-height: inherit;
+      transform: scale(1.5);
     }
   }
 

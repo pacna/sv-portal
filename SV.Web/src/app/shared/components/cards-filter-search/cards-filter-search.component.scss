@@ -3,29 +3,27 @@
 #cards-filter-search {
   text-align: center;
   flex-direction: column;
-  padding: 8px 16px;
+  padding: 20px 16px;
   text-transform: capitalize;
 
   header {
     display: flex;
     justify-content: center;
     align-items: center;
+
     h3 {
+      margin-left: auto;
       font-weight: 500;
       font-size: 20px;
       margin-bottom: 0px;
     }
 
     .mat-icon {
-      height: 28px;
-      font-size: 28px;
+      transform: scale(1.5);
     }
 
     button {
-      width: 0px;
-      line-height: 0px;
-      position: relative;
-      left: 60px;
+      margin-left: 40px;
     }
   }
 
@@ -34,15 +32,16 @@
       width: 100%;
     }
 
-    mat-chip-list {
+    mat-chip-listbox {
       display: flex;
       justify-content: center;
 
-      mat-chip {
-        cursor: pointer;
-      }
-      .mat-chip-selected {
+      mat-chip-option.mat-mdc-chip-selected {
         background-color: $primary-blue;
+      }
+
+      .mat-mdc-chip-action-label {
+        text-transform: capitalize;
       }
     }
 

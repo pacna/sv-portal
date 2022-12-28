@@ -9,7 +9,7 @@ import {
 
 // Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Third party
 import { Observable } from 'rxjs';

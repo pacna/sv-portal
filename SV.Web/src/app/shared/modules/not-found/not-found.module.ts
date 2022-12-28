@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 // Material
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule } from '@angular/material/button';
 
 // Self
 import { notFoundRoutes } from './not-found.routing';

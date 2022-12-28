@@ -62,7 +62,6 @@ export class CardStepperComponent
   }
 
   updateEvoForm(event: MatSelectChange): void {
-    // console.log('hi', event);
     this.eventService.send({ type: event.value });
   }
 

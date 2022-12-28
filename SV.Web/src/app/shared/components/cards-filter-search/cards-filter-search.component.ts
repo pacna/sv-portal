@@ -1,17 +1,30 @@
-import { AllOrNone } from './../../types/customs/all-or-none.enum';
+// Angular
+import { FormControl, FormGroup } from '@angular/forms';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+} from '@angular/core';
+
+// Self
 import { CardsFilterRequest } from './../../types/customs/cards-filter-request';
 import { CardTypes } from '../../constants/card-types';
 import { Rarities } from '../../constants/rarities';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Craft } from '../../types/customs/craft.enum';
 import { RartiyConfig } from '../../types/customs/rarity-config';
 import { CardTypeConfig } from '../../types/customs/card-type-config';
+import { UtilityHelper } from '../../helpers';
+import { Rarity } from '../../types/customs/rarity.enum';
+import { CardType } from '../../types/customs/card-type.enum';
 
 @Component({
   selector: 'cards-filter-search',
   templateUrl: './cards-filter-search.component.html',
   styleUrls: ['./cards-filter-search.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CardsFilterSearchComponent implements OnInit {
   @Input() set headerCraftType(craftType: Craft) {
@@ -19,7 +32,7 @@ export class CardsFilterSearchComponent implements OnInit {
   }
 
   @Input() set currentFilterRequest(request: CardsFilterRequest) {
-    if (!this.isObjEmpty(request)) return;
+    if (UtilityHelper.isObjEmpty<CardsFilterRequest>(request)) return;
     this.handleCurrentFilterRequest(request);
   }
 
@@ -28,17 +41,20 @@ export class CardsFilterSearchComponent implements OnInit {
 
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
-  all: AllOrNone = AllOrNone.all;
-  none: AllOrNone = AllOrNone.none;
   rarities: Record<'bronze' | 'silver' | 'gold' | 'legendary', RartiyConfig> =
     Rarities;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  nameCtrl: UntypedFormControl = new UntypedFormControl(null);
-  raritiesCtrl: UntypedFormControl = new UntypedFormControl([]);
-  typesCtrl: UntypedFormControl = new UntypedFormControl([]);
-  craftCtrl: UntypedFormControl = new UntypedFormControl(this.none, [Validators.required]);
-  filterSearchFormGroup: UntypedFormGroup = new UntypedFormGroup({
+  nameCtrl = new FormControl<string>(null);
+  raritiesCtrl = new FormControl<Rarity[]>([]);
+  typesCtrl = new FormControl<CardType[]>([]);
+  craftCtrl = new FormControl<boolean>(false);
+  filterSearchFormGroup = new FormGroup<{
+    name: FormControl<string>;
+    rarities: FormControl<Rarity[]>;
+    types: FormControl<CardType[]>;
+    craft: FormControl<boolean>;
+  }>({
     name: this.nameCtrl,
     rarities: this.raritiesCtrl,
     types: this.typesCtrl,
@@ -50,19 +66,15 @@ export class CardsFilterSearchComponent implements OnInit {
   ngOnInit(): void {}
 
   setToAll(): void {
-    this.craftCtrl.setValue(this.all);
+    this.craftCtrl.setValue(true);
   }
 
   get isAll(): boolean {
-    return this.craftCtrl.value === this.all;
-  }
-
-  isObjEmpty(currentFilterRequest: CardsFilterRequest): boolean {
-    return Object.keys(currentFilterRequest).length > 0;
+    return this.craftCtrl.value;
   }
 
   setToNone(): void {
-    this.craftCtrl.setValue(this.none);
+    this.craftCtrl.setValue(false);
   }
 
   submit(): void {
@@ -75,7 +87,7 @@ export class CardsFilterSearchComponent implements OnInit {
   }
 
   private handleCurrentFilterRequest(request: CardsFilterRequest): void {
-    this.craftCtrl.setValue(request.isAll ? this.all : this.none);
+    this.craftCtrl.setValue(request.isAll);
     this.nameCtrl.setValue(request.name);
     this.raritiesCtrl.setValue(request.rarities);
     this.typesCtrl.setValue(request.types);

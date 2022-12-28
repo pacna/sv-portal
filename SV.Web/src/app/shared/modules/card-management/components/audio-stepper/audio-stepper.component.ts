@@ -1,16 +1,15 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 // Third party
 import { filter } from 'rxjs';
 
-// Shared
-import { UtilityHelper } from '@svportal/shared/helpers/utility-helper';
-
 // Self
 import { CardEditEventService } from '../../services/card-edit-event.service';
 import { CardEditEvent, IFormValue } from '../../types';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'audio-stepper',
@@ -18,9 +17,12 @@ import { CardEditEvent, IFormValue } from '../../types';
   styleUrls: ['./audio-stepper.component.scss'],
 })
 export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
-  private audioLocationToAddCtrl: FormControl = new FormControl(null);
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  private audioLocationToAddCtrl = new FormControl<string>(null);
   audios: string[] = [];
-  audioStepperFormGroup: FormGroup = new FormGroup({
+  audioStepperFormGroup = new FormGroup<{
+    audioLocationToAdd: FormControl<string>;
+  }>({
     audioLocationToAdd: this.audioLocationToAddCtrl,
   });
   constructor(private readonly eventEditService: CardEditEventService) {}
@@ -29,11 +31,9 @@ export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
     this.handler();
   }
 
-  addAudio(): void {
-    if (
-      !UtilityHelper.isStringOrArrayEmpty(this.audioLocationToAddCtrl.value)
-    ) {
-      this.audios.push(this.audioLocationToAddCtrl.value);
+  addAudio(event: MatChipInputEvent): void {
+    if (event?.value && !this.audios.includes(event.value)) {
+      this.audios.push(event.value);
     }
   }
 

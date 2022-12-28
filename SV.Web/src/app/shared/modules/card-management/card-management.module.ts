@@ -10,10 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatLegacyChipsModule as MatChipsModule } from '@angular/material/legacy-chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Third party
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';

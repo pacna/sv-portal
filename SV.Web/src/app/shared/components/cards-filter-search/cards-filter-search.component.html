@@ -11,14 +11,18 @@
     </button>
   </header>
   <form class="mt-24" [formGroup]="filterSearchFormGroup" (ngSubmit)="submit()">
-    <mat-chip-list class="mb-24" multiple formControlName="craft">
-      <mat-chip [value]="all" [selected]="isAll" (click)="setToAll()">
+    <mat-chip-listbox class="mb-24" formControlName="craft">
+      <mat-chip-option [value]="true" [selected]="isAll" (click)="setToAll()">
         All
-      </mat-chip>
-      <mat-chip [value]="none" [selected]="!isAll" (click)="setToNone()">
+      </mat-chip-option>
+      <mat-chip-option
+        [value]="false"
+        [selected]="!isAll"
+        (click)="setToNone()"
+      >
         {{ header }}
-      </mat-chip>
-    </mat-chip-list>
+      </mat-chip-option>
+    </mat-chip-listbox>
     <mat-form-field appearance="outline" class="mb-16">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" />
@@ -55,12 +59,7 @@
       </mat-select>
     </mat-form-field>
     <section>
-      <button
-        mat-raised-button
-        class="primary-action-button"
-        [disabled]="!filterSearchFormGroup.valid"
-        type="submit"
-      >
+      <button mat-raised-button class="primary-action-button" type="submit">
         Search
       </button>
     </section>

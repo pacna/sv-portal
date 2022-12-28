@@ -1,30 +1,25 @@
 <form [formGroup]="audioStepperFormGroup">
-  <div>
-    <mat-form-field appearance="outline" class="cols is-four-fifth">
-      <mat-label>Location</mat-label>
-      <input matInput formControlName="audioLocationToAdd" />
-    </mat-form-field>
-    <section class="cols is-one-fifth action">
-      <button
-        mat-raised-button
-        class="primary-action-button"
-        (click)="addAudio()"
-      >
-        Create
-      </button>
-    </section>
-  </div>
-  <mat-form-field>
-    <mat-chip-list>
-      <mat-chip
+  <mat-form-field appearance="fill">
+    <mat-label>Location</mat-label>
+    <mat-chip-grid #chipGrid>
+      <mat-chip-row
         *ngFor="let audio of audios; let i = index"
+        (removed)="removeAudio(i)"
         [matTooltip]="audio"
       >
         <mat-icon>music_note</mat-icon>
-        <button matChipRemove (click)="removeAudio(i)">
+        <button matChipRemove>
           <mat-icon>cancel</mat-icon>
         </button>
-      </mat-chip>
-    </mat-chip-list>
+      </mat-chip-row>
+      <input
+        placeholder="Location..."
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addAudio($event)"
+      />
+    </mat-chip-grid>
+    <input matInput formControlName="audioLocationToAdd" />
   </mat-form-field>
 </form>
