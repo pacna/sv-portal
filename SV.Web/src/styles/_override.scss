@@ -1,5 +1,3 @@
-@import "./breakpoints";
-
 // override material styles to match the app UI
 .mat-mdc-tab-header-pagination-chevron {
   border-color: $plain-white;
@@ -109,8 +107,8 @@
   background-color: $primary-blue;
 }
 
-// @media #{$XSmall, $Small} {
-//   .mat-drawer-container {
-//     position: unset !important;
-//   }
-// }
+@media (min-width: 600px) {
+  .mat-drawer-container {
+    position: unset !important;
+  }
+}

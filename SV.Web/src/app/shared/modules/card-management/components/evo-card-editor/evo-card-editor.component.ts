@@ -37,8 +37,10 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
     ],
   };
 
-  private ckeditorTextCtrl: FormControl = new FormControl('');
-  ckeditorFormGroup: FormGroup = new FormGroup({
+  private ckeditorTextCtrl = new FormControl<string>('');
+  ckeditorFormGroup = new FormGroup<{
+    ckeditorText: FormControl<string>;
+  }>({
     ckeditorText: this.ckeditorTextCtrl,
   });
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {

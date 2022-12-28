@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Material
 import { MatSelectChange } from '@angular/material/select';
@@ -14,6 +14,8 @@ import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
+  Rarity,
+  CardType,
 } from '@svportal/shared/types/customs';
 
 // Self
@@ -36,16 +38,18 @@ export class CardStepperComponent
   cardPacks: CardPack[] = Packs;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  private nameCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private rarityCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  private typeCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private ppCostCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  private packCtrl: FormControl = new FormControl(null, [Validators.required]);
-  cardStepperFormGroup: FormGroup = new FormGroup({
+  private nameCtrl = new FormControl<string>(null, [Validators.required]);
+  private rarityCtrl = new FormControl<Rarity>(null, [Validators.required]);
+  private typeCtrl = new FormControl<CardType>(null, [Validators.required]);
+  private ppCostCtrl = new FormControl<number>(null, [Validators.required]);
+  private packCtrl = new FormControl<CardPack>(null, [Validators.required]);
+  cardStepperFormGroup = new FormGroup<{
+    name: FormControl<string>;
+    rarity: FormControl<Rarity>;
+    type: FormControl<CardType>;
+    ppCost: FormControl<number>;
+    pack: FormControl<CardPack>;
+  }>({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,
