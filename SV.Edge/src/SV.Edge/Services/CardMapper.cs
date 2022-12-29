@@ -3,7 +3,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Services;
-public static class CardMapper
+internal static class CardMapper
 {
     public static List<CardResponse> Map(List<Card> cards)
     {

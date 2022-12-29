@@ -1,5 +1,5 @@
 namespace SV.Edge.Settings;
-public interface ICORSPolicySettings
+internal interface ICORSPolicySettings
 {
     string PolicyName { get; set; }
     string[] AllowedOrigins { get; set; }
