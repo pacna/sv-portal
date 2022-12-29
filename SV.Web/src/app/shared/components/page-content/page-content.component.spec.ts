@@ -1,6 +1,10 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// Material
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+// Self
 import { PageContentComponent } from './page-content.component';
 
 describe('PageContentComponent', () => {

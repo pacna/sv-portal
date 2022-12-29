@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import {
   Component,
   Input,
-  OnInit,
   Output,
   EventEmitter,
   ViewEncapsulation,
@@ -26,7 +25,7 @@ import { CardType } from '../../types/customs/card-type.enum';
   styleUrls: ['./cards-filter-search.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CardsFilterSearchComponent implements OnInit {
+export class CardsFilterSearchComponent {
   @Input() set headerCraftType(craftType: Craft) {
     this.header = Craft[craftType].toString();
   }
@@ -61,9 +60,6 @@ export class CardsFilterSearchComponent implements OnInit {
     craft: this.craftCtrl,
   });
   header: string = '';
-  constructor() {}
-
-  ngOnInit(): void {}
 
   setToAll(): void {
     this.craftCtrl.setValue(true);

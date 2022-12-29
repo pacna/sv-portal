@@ -1,10 +1,12 @@
+// Angular
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// Self
 import {
   MockCardDetailsDescriptionComponent,
   MockCardDescriptionComponent,
+  MockFollowerDescriptionComponent,
 } from './../../testing/shared-mocks.spec';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockFollowerDescriptionComponent } from '../../testing/shared-mocks.spec';
-
 import { CardDetailsComponent } from './card-details.component';
 
 describe('CardDetailsComponent', () => {

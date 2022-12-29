@@ -1,5 +1,7 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { CardDetailsDescriptionComponent } from './card-details-description.component';
 
 describe('CardDetailsDescriptionComponent', () => {

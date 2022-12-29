@@ -1,5 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+// Angular
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+// Third party
 import { GalleryItem, ImageItemData, Gallery, GalleryConfig } from 'ng-gallery';
+
+// Self
 import { CardResponse } from '../../types/api/card-response';
 
 @Component({
@@ -7,7 +12,7 @@ import { CardResponse } from '../../types/api/card-response';
   templateUrl: './sv-list.component.html',
   styleUrls: ['./sv-list.component.scss'],
 })
-export class SVListComponent implements OnInit {
+export class SVListComponent {
   @Input() set cards(cards: CardResponse[]) {
     if (!cards) return;
     this.handleCards(cards);
@@ -19,8 +24,6 @@ export class SVListComponent implements OnInit {
   svCards: CardResponse[] = [];
 
   constructor(private gallery: Gallery) {}
-
-  ngOnInit(): void {}
 
   private handleCards(cards: CardResponse[]): void {
     this.svCards = cards;

@@ -1,5 +1,7 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { SVLayoutComponent } from './sv-layout.component';
 
 describe('SVLayoutComponent', () => {
@@ -8,7 +10,7 @@ describe('SVLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SVLayoutComponent],
+      imports: [SVLayoutComponent],
     }).compileComponents();
   });
 

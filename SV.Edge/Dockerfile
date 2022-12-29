@@ -14,6 +14,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 
 WORKDIR /app
 COPY --from=build-env /edge/out .
-ENTRYPOINT ["./SV.Edge", "inmemory=true"]
+ENTRYPOINT ["./SV.Edge", "--inmemory"]
 
 EXPOSE 5000

@@ -1,7 +1,11 @@
-import { LightboxModule } from 'ng-gallery/lightbox';
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardResponse } from '../../types/api/card-response';
 
+// Third party
+import { LightboxModule } from 'ng-gallery/lightbox';
+
+// Self
+import { CardResponse } from '../../types/api/card-response';
 import { SVListItemComponent } from './sv-list-item.component';
 
 describe('SVListItemComponent', () => {

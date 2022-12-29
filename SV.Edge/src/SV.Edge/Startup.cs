@@ -78,7 +78,7 @@ public class Startup
         {
             this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
             this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
-            this.UseInMemory = configuration.GetValue<bool>("inmemory");
+            this.UseInMemory = Environment.GetCommandLineArgs().Any(x => string.Equals(x, "--inmemory", StringComparison.OrdinalIgnoreCase));
         }
         catch (Exception ex)
         {

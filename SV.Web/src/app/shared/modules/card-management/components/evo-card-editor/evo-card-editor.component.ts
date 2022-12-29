@@ -1,24 +1,24 @@
 // Angular
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
+// Third party
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 // Self
 import { IFormValue } from '../../types/iform-value';
-
-declare const require: any;
 
 @Component({
   selector: 'evo-card-editor',
   templateUrl: './evo-card-editor.component.html',
   styleUrls: ['./evo-card-editor.component.scss'],
 })
-export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
+export class EvoCardEditorComponent implements IFormValue<string> {
   @Input() set editorText(editorText: string) {
     this.ckeditorTextCtrl.setValue(editorText ?? '');
   }
   @Input() editorHeader: string;
-  editor;
+  editor = ClassicEditor;
   ckeditorConfig = {
     toolbar: [
       'heading',
@@ -43,19 +43,6 @@ export class EvoCardEditorComponent implements OnInit, IFormValue<string> {
   }>({
     ckeditorText: this.ckeditorTextCtrl,
   });
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    // hack to load ckeditor for SSR
-    this.loadCKEditorHack();
-  }
-
-  ngOnInit(): void {}
-
-  private loadCKEditorHack(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
-      this.editor = ClassicEditor;
-    }
-  }
 
   public getValue(): string {
     return this.ckeditorTextCtrl.value;

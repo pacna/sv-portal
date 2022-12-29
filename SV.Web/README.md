@@ -2,6 +2,10 @@
 
 SV Web is the front end of the SV Portal app
 
+## Prerequisites
+
+1. [Node.js](https://nodejs.org/en/)
+
 ## Installation
 
 ```bash

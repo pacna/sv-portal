@@ -1,16 +1,21 @@
+// Angular
+import { Component, Input } from '@angular/core';
+
+// Third party
 import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
+
+// Self
 import { CardDescription } from './../../types/customs/card-description';
-import { Component, Input, OnInit } from '@angular/core';
 import { CardType } from '../../types/customs/card-type.enum';
 import { CardDetailResponse } from '../../types/api/card-detail-response';
-import { UtilityHelper } from '@svportal/shared/helpers';
+import { UtilityHelper } from '../../helpers';
 
 @Component({
   selector: 'card-details',
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.scss'],
 })
-export class CardDetailsComponent implements OnInit {
+export class CardDetailsComponent {
   @Input() set detail(detail: CardDetailResponse) {
     if (!detail || !this.hasCard(detail)) return;
     this.handleCardDetails(detail);
@@ -21,8 +26,6 @@ export class CardDetailsComponent implements OnInit {
   audioCounter: number = 0;
   cardsGallery: GalleryItem[] = [];
   constructor(private gallery: Gallery) {}
-
-  ngOnInit(): void {}
 
   playAudio(): void {
     this.audio.src = this.card.audioLocations[this.audioCounter];

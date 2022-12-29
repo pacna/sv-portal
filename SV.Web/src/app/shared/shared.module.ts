@@ -1,6 +1,5 @@
 // Angular
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +14,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -24,8 +22,6 @@ import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
 
 // Self
-import { SVLayoutComponent } from './components/sv-layout/sv-layout.component';
-import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { SVListComponent } from './components/sv-list/sv-list.component';
 import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
 import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
@@ -42,8 +38,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
 
 @NgModule({
   declarations: [
-    TopNavComponent,
-    SVLayoutComponent,
     SVListComponent,
     SVListItemComponent,
     HeaderActionBarComponent,
@@ -60,7 +54,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
   imports: [
     // Angular
     CommonModule,
-    RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -73,7 +66,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
     MatProgressSpinnerModule,
     MatGridListModule,
     MatToolbarModule,
-    MatTabsModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,
@@ -84,8 +76,6 @@ import { PageContentComponent } from './components/page-content/page-content.com
     MatSnackBarModule,
   ],
   exports: [
-    TopNavComponent,
-    SVLayoutComponent,
     SVListComponent,
     HeaderActionBarComponent,
     CardDetailsDescriptionComponent,

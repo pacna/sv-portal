@@ -1,5 +1,7 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { EmptyContentComponent } from './empty-content.component';
 
 describe('EmptyContentComponent', () => {

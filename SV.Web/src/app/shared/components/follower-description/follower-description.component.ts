@@ -1,13 +1,16 @@
+// Angular
+import { Component, Input } from '@angular/core';
+
+// Self
 import { FollowerDescription } from './../../types/customs/follower-description';
 import { CardDetailResponse } from './../../types/api/card-detail-response';
-import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'follower-description',
   templateUrl: './follower-description.component.html',
   styleUrls: ['./follower-description.component.scss'],
 })
-export class FollowerDescriptionComponent implements OnInit {
+export class FollowerDescriptionComponent {
   @Input() set cardDetail(cardDetail: CardDetailResponse) {
     if (!cardDetail) return;
     this.handleCardDetail(cardDetail);
@@ -15,10 +18,6 @@ export class FollowerDescriptionComponent implements OnInit {
   evolvedHeaderText: string = 'Evolved';
   baseFollowerDetail: FollowerDescription = {} as FollowerDescription;
   evolvedFollowerDetail: FollowerDescription = {} as FollowerDescription;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   private handleCardDetail(cardDetail: CardDetailResponse): void {
     this.baseFollowerDetail = {
