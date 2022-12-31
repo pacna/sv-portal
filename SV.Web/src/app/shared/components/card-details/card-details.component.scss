@@ -28,13 +28,7 @@
   }
 
   .mat-icon {
-    height: 48px;
-    width: 48px;
-    font-size: 48px;
-  }
-
-  .mat-icon-button .mat-icon {
-    line-height: inherit;
+    transform: scale(2);
   }
 }
 

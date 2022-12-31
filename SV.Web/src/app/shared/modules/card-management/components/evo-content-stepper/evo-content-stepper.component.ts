@@ -1,6 +1,6 @@
 // Angular
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Third party
 import { filter } from 'rxjs';
@@ -32,12 +32,16 @@ export class EvoContentStepperComponent
   }
   readonly abilityTextHeader: string = 'Ability Text';
   readonly flavorTextHeader: string = 'Flavor Text';
-  private atkCtrl: UntypedFormControl = new UntypedFormControl(null);
-  private defCtrl: UntypedFormControl = new UntypedFormControl(null);
-  private artLocationCtrl: UntypedFormControl = new UntypedFormControl(null, [
+  private atkCtrl = new FormControl<number>(null);
+  private defCtrl = new FormControl<number>(null);
+  private artLocationCtrl = new FormControl<string>(null, [
     Validators.required,
   ]);
-  evoContentFormGroup: UntypedFormGroup = new UntypedFormGroup({
+  evoContentFormGroup = new FormGroup<{
+    atk: FormControl<number>;
+    def: FormControl<number>;
+    artLocation: FormControl<string>;
+  }>({
     atk: this.atkCtrl,
     def: this.defCtrl,
     artLocation: this.artLocationCtrl,

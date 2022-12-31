@@ -7,14 +7,8 @@
 
 My own implementation/design of the [Shadowverse Portal](https://shadowverse-portal.com/?lang=en) website.
 
-![sv-portal](./docs/sv-portal.png)
-
-## Prerequisites
-
-1. [Node.js](https://nodejs.org/en/)
-2. [.NET Core](https://dotnet.microsoft.com/en-us/download)
-3. [PostgreSQL](https://www.postgresql.org/download/)
-4. [Docker](https://docs.docker.com/get-docker/) (optional)
+![sv-portal](./docs/sv-portal-1.png)
+![sv-portal](./docs/sv-portal-2.png)
 
 ## How to setup backend
 

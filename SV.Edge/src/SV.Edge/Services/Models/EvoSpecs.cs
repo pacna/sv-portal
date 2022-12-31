@@ -1,10 +1,8 @@
-namespace SV.Edge.Services.Models
+namespace SV.Edge.Services.Models;
+public class EvoSpecs
 {
-    public class EvoSpecs
-    {
-        public string AbilityText { get; init; }
-        public BattleStats BattleStats { get; init; }
-        public string FlavorText { get; init; }
-        public string ArtLocation { get; init; }
-    }
+    public string AbilityText { get; init; }
+    public BattleStats BattleStats { get; init; }
+    public string FlavorText { get; init; }
+    public string ArtLocation { get; init; }
 }

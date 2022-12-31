@@ -1,3 +1,4 @@
+// Self
 import { CardPack } from '../types/customs/card-pack.enum';
 
 export const Packs: CardPack[] = [

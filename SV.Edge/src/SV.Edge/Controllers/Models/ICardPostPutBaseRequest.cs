@@ -1,18 +1,15 @@
-using System.Collections.Generic;
 using SV.Edge.Services.Models;
 
-namespace SV.Edge.Controllers.Models
+namespace SV.Edge.Controllers.Models;
+public interface ICardPostPutBaseRequest
 {
-    public interface ICardPostPutBaseRequest
-    {
-        string Name { get; init; }
+    string Name { get; init; }
 
-        int PPCost { get; init; }
+    int PPCost { get; init; }
 
-        List<string> AudioLocations { get; init; }
+    List<string> AudioLocations { get; init; }
 
-        EvoSpecs BaseEvo { get; init; }
+    EvoSpecs BaseEvo { get; init; }
 
-        EvoSpecs Evolved { get; init; }
-    }
+    EvoSpecs Evolved { get; init; }
 }

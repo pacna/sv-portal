@@ -48,8 +48,10 @@ export const routes: Routes = [
   },
   {
     path: '404',
-    loadChildren: () =>
-      import('./shared/modules/not-found').then((mod) => mod.NotFoundModule),
+    loadComponent: () =>
+      import('./shared/components/not-found/not-found.component').then(
+        (mod) => mod.NotFoundComponent
+      ),
   },
   {
     path: '',

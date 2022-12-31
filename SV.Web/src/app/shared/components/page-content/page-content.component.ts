@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+// Angular
+import { Component, Input } from '@angular/core';
+
+// Self
 import { PageSuccessState } from '../../types/customs/page-success-state.enum';
 
 @Component({
@@ -6,10 +9,7 @@ import { PageSuccessState } from '../../types/customs/page-success-state.enum';
   templateUrl: './page-content.component.html',
   styleUrls: ['./page-content.component.scss'],
 })
-export class PageContentComponent implements OnInit {
+export class PageContentComponent {
   @Input() pageState: PageSuccessState;
   pageSuccessState = PageSuccessState;
-  constructor() {}
-
-  ngOnInit(): void {}
 }

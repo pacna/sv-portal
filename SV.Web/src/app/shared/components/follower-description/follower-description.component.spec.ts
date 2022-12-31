@@ -1,6 +1,8 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockFollowerDetailDescriptionComponent } from '../../testing/shared-mocks.spec';
 
+// Self
+import { MockFollowerDetailDescriptionComponent } from '../../testing/shared-mocks.spec';
 import { FollowerDescriptionComponent } from './follower-description.component';
 
 describe('FollowerDescriptionComponent', () => {

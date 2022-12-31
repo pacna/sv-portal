@@ -1,5 +1,4 @@
 // Angular
-import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Self
@@ -11,8 +10,7 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [NotFoundComponent],
+      imports: [NotFoundComponent],
     }).compileComponents();
   });
 

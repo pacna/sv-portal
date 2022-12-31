@@ -8,9 +8,8 @@ import { routes } from './app.routing';
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      relativeLinkResolution: 'legacy',
-      initialNavigation: 'enabledBlocking',
-    }),
+    initialNavigation: 'enabledBlocking'
+}),
   ],
   exports: [RouterModule],
 })

@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Material
 import { MatSelectChange } from '@angular/material/select';
@@ -14,6 +14,8 @@ import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
+  Rarity,
+  CardType,
 } from '@svportal/shared/types/customs';
 
 // Self
@@ -36,16 +38,18 @@ export class CardStepperComponent
   cardPacks: CardPack[] = Packs;
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  private nameCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  private rarityCtrl: UntypedFormControl = new UntypedFormControl(null, [
-    Validators.required,
-  ]);
-  private typeCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  private ppCostCtrl: UntypedFormControl = new UntypedFormControl(null, [
-    Validators.required,
-  ]);
-  private packCtrl: UntypedFormControl = new UntypedFormControl(null, [Validators.required]);
-  cardStepperFormGroup: UntypedFormGroup = new UntypedFormGroup({
+  private nameCtrl = new FormControl<string>(null, [Validators.required]);
+  private rarityCtrl = new FormControl<Rarity>(null, [Validators.required]);
+  private typeCtrl = new FormControl<CardType>(null, [Validators.required]);
+  private ppCostCtrl = new FormControl<number>(null, [Validators.required]);
+  private packCtrl = new FormControl<CardPack>(null, [Validators.required]);
+  cardStepperFormGroup = new FormGroup<{
+    name: FormControl<string>;
+    rarity: FormControl<Rarity>;
+    type: FormControl<CardType>;
+    ppCost: FormControl<number>;
+    pack: FormControl<CardPack>;
+  }>({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,
@@ -65,7 +69,7 @@ export class CardStepperComponent
     this.eventService.send({ type: event.value });
   }
 
-  get stepperFormGroup(): UntypedFormGroup {
+  get stepperFormGroup(): FormGroup {
     return this.cardStepperFormGroup;
   }
 

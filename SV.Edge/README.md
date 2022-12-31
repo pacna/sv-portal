@@ -2,6 +2,12 @@
 
 The edge service for the SV Portal app.
 
+## Prerequisites
+
+1. [.NET Core](https://dotnet.microsoft.com/en-us/download)
+2. [PostgreSQL](https://www.postgresql.org/download/)
+3. [Docker](https://docs.docker.com/get-docker/) (optional)
+
 ## How to run locally
 
 ```bash
@@ -12,13 +18,13 @@ $ cd src/SV.Edge
 $ dotnet run
 
 # normal mode using inmemory
-$ dotnet run inmemory=true
+$ dotnet run --inmemory
 
 # watch mode
 $ dotnet watch run
 
 # watch mode using inmemory
-$ dotnet watch run inmemory=true
+$ dotnet watch run --inmemory
 ```
 
 ## How to run in docker (Optional)
@@ -27,7 +33,7 @@ $ dotnet watch run inmemory=true
 $ sh build-and-run.sh
 ```
 
-**note**: Docker only runs using the in-memory implementation.
+**note**: Docker only runs using the inmemory implementation.
 
 ## How to run tests
 

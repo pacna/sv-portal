@@ -12,7 +12,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 // Shared
 import { CardDetailResponse } from '@svportal/shared/types/api/card-detail-response';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
-import { CardDeactivateComponent } from '@svportal/shared/components/card-deactivate/card-deactivate.component';
 import {
   CardDeactivateData,
   CardResponse,
@@ -20,7 +19,6 @@ import {
   PageSuccessState,
 } from '@svportal/shared/types';
 import { ModalConfig } from '@svportal/shared/constants';
-import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 import { CardManagementData } from '@svportal/shared/modules/card-management/types/card-management-data';
 
 @UntilDestroy()
@@ -58,7 +56,10 @@ export class SwordcraftDetailComponent implements OnInit {
     );
   }
 
-  openCardDeactivate(): void {
+  async openCardDeactivate(): Promise<void> {
+    const { CardDeactivateComponent } = await import(
+      '@svportal/shared/components/card-deactivate/card-deactivate.component'
+    );
     this.dialog.open(CardDeactivateComponent, {
       height: ModalConfig.minHeight,
       width: ModalConfig.minWidth,
@@ -71,7 +72,10 @@ export class SwordcraftDetailComponent implements OnInit {
     });
   }
 
-  openCardManagement(): void {
+  async openCardManagement(): Promise<void> {
+    const { CardManagementComponent } = await import(
+      '@svportal/shared/modules/card-management/card-management.component'
+    );
     this.dialog
       .open(CardManagementComponent, {
         autoFocus: false,

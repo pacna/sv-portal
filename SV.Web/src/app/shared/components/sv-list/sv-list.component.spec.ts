@@ -1,6 +1,10 @@
-import { MatGridListModule } from '@angular/material/grid-list';
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Material
+import { MatGridListModule } from '@angular/material/grid-list';
+
+// Self
 import { SVListComponent } from './sv-list.component';
 
 describe('SVListComponent', () => {

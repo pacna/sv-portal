@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,84 +7,82 @@ using Microsoft.Extensions.Hosting;
 using SV.Edge.Contexts;
 using SV.Edge.Settings;
 
-namespace SV.Edge
+namespace SV.Edge;
+public class Startup
 {
-    public class Startup
+    private ICORSPolicySettings CORSPolicySettings { get; set; }
+    private INpgsqlPostgresDBSetting NpgsqlPostgresDBSetting { get; set; }
+    private bool UseInMemory { get; set; }
+
+    public Startup(IConfiguration configuration)
     {
-        private ICORSPolicySettings CORSPolicySettings { get; set; }
-        private INpgsqlPostgresDBSetting NpgsqlPostgresDBSetting { get; set; }
-        private bool UseInMemory { get; set; }
+        this.GetInitSettings(configuration: configuration);
 
-        public Startup(IConfiguration configuration)
+        Console.WriteLine("SV.Edge Started");
+    }
+    // This method gets called by the runtime. Use this method to add services to the container.
+    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+        services.AddServices();
+        services.AddRepositories(useInMemory: this.UseInMemory);
+        services.AddSwagger();
+        services.AddCors(corsPolicySettings: this.CORSPolicySettings);
+        services.AddDbContext<SVPortalContext>(optionsBuilder =>
         {
-            this.GetInitSettings(configuration: configuration);
-
-            Console.WriteLine("SV.Edge Started");
-        }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
-            services.AddServices();
-            services.AddRepositories(useInMemory: this.UseInMemory);
-            services.AddSwagger();
-            services.AddCors(corsPolicySettings: this.CORSPolicySettings);
-            services.AddDbContext<SVPortalContext>(optionsBuilder =>
+            optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options =>
             {
-                optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options =>
-                {
-                    options.EnableRetryOnFailure
-                    (
-                        maxRetryCount: 5,
-                        maxRetryDelay: TimeSpan.FromSeconds(3),
-                        errorCodesToAdd: null
-                    );
-                });
+                options.EnableRetryOnFailure
+                (
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(3),
+                    errorCodesToAdd: null
+                );
             });
+        });
 
 #if DEBUG
-            Console.WriteLine(this.UseInMemory ? "Setting up InMemory datastore" : "");
+        Console.WriteLine(this.UseInMemory ? "Setting up InMemory datastore" : "");
 #endif
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        app.UseRouting();
+        app.UseSwagger();
+        app.UseCors(policyName: this.CORSPolicySettings.PolicyName);
+        app.UseMiddleware<HttpExceptionMiddleware>();
+        app.UseSwaggerUI(options =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "SV Edge");
+            // THIS IS IMPORTANT TO SET SWAGGER In root (/) dir
+            options.RoutePrefix = string.Empty;
+        });
 
-            app.UseRouting();
-            app.UseSwagger();
-            app.UseCors(policyName: this.CORSPolicySettings.PolicyName);
-            app.UseMiddleware<HttpExceptionMiddleware>();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "SV Edge");
-                // THIS IS IMPORTANT TO SET SWAGGER In root (/) dir
-                options.RoutePrefix = string.Empty;
-            });
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+    private void GetInitSettings(IConfiguration configuration)
+    {
+        try
+        {
+            this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
+            this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
+            this.UseInMemory = Environment.GetCommandLineArgs().Any(x => string.Equals(x, "--inmemory", StringComparison.OrdinalIgnoreCase));
         }
-
-        private void GetInitSettings(IConfiguration configuration)
+        catch (Exception ex)
         {
-            try
-            {
-                this.CORSPolicySettings = configuration.GetSection("CORSPolicy").Get<CORSPolicySettings>();
-                this.NpgsqlPostgresDBSetting = configuration.GetSection("NpgsqlPostgresDBSetting").Get<NpgsqlPostgresDBSetting>();
-                this.UseInMemory = configuration.GetValue<bool>("inmemory");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Unable to set setting --", ex.ToString());
-            }
+            Console.WriteLine("Unable to set setting --", ex.ToString());
         }
     }
 }

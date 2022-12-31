@@ -24,7 +24,6 @@ import {
 } from '@svportal/shared/types/customs';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
 import { UtilityHelper } from '@svportal/shared/helpers';
-import { CardManagementComponent } from '@svportal/shared/modules/card-management/card-management.component';
 import { CardManagementData } from '@svportal/shared/modules/card-management/types';
 import { ModalConfig } from '@svportal/shared/constants';
 
@@ -60,7 +59,10 @@ export class RunecraftOverviewComponent implements OnInit {
     this.drawer.open();
   }
 
-  openCardManagement(): void {
+  async openCardManagement(): Promise<void> {
+    const { CardManagementComponent } = await import(
+      '@svportal/shared/modules/card-management/card-management.component'
+    );
     this.dialog
       .open(CardManagementComponent, {
         autoFocus: false,

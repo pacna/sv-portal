@@ -1,6 +1,10 @@
-import { MatToolbarModule } from '@angular/material/toolbar';
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Material
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+// Self
 import { HeaderActionBarComponent } from './header-action-bar.component';
 
 describe('HeaderActionBarComponent', () => {
