@@ -23,8 +23,8 @@ export class CardCostPipe implements PipeTransform {
     return '- -';
   }
 
-  private createCreateCost(pack: Rarity): string {
-    switch (pack) {
+  private createCreateCost(rarity: Rarity): string {
+    switch (rarity) {
       case Rarity.bronze:
         return CreateCost.bronze.toString();
       case Rarity.silver:
@@ -38,8 +38,8 @@ export class CardCostPipe implements PipeTransform {
     }
   }
 
-  private createLiquefyCost(pack: Rarity): string {
-    switch (pack) {
+  private createLiquefyCost(rarity: Rarity): string {
+    switch (rarity) {
       case Rarity.bronze:
         return LiquefyCost.bronze.toString();
       case Rarity.silver:
