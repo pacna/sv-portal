@@ -35,6 +35,7 @@ import { CardsApiService } from './services/cards-api.service';
 import { CardDeactivateComponent } from './components/card-deactivate/card-deactivate.component';
 import { EmptyContentComponent } from './components/empty-content/empty-content.component';
 import { PageContentComponent } from './components/page-content/page-content.component';
+import { CardCostPipe } from './pipes';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,8 @@ import { PageContentComponent } from './components/page-content/page-content.com
     CardDeactivateComponent,
     EmptyContentComponent,
     PageContentComponent,
+    // Pipes
+    CardCostPipe,
   ],
   imports: [
     // Angular
