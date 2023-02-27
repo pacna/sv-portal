@@ -1,17 +1,17 @@
-<div id="card-details-description">
+<article>
   <h3>Card Details</h3>
   <dl>
     <dt>Craft:</dt>
-    <dd>{{ card?.craft }}</dd>
+    <dd>{{ card.craft }}</dd>
     <dt>Rarity:</dt>
-    <dd>{{ card?.rarity }}</dd>
+    <dd>{{ card.readableRarity }}</dd>
     <dt>Create:</dt>
-    <dd>{{ card?.createCost }}</dd>
+    <dd>{{ card.rarity | cardCost : card.pack : "create" }}</dd>
     <dt>Liquefy:</dt>
-    <dd>{{ card?.liquefyCost }}</dd>
+    <dd>{{ card.rarity | cardCost : card.pack : "liquefy" }}</dd>
     <dt>Type:</dt>
-    <dd>{{ card?.type }}</dd>
+    <dd>{{ card.type }}</dd>
     <dt>PP Cost:</dt>
-    <dd>{{ card?.ppCost }}</dd>
+    <dd>{{ card.ppCost }}</dd>
   </dl>
-</div>
+</article>

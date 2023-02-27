@@ -1,5 +1,6 @@
 // Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CardCostPipe } from '../../pipes';
 
 // Self
 import { CardDetailsDescriptionComponent } from './card-details-description.component';
@@ -10,7 +11,7 @@ describe('CardDetailsDescriptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CardDetailsDescriptionComponent],
+      declarations: [CardDetailsDescriptionComponent, CardCostPipe],
     }).compileComponents();
   });
 
