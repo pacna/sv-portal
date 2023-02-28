@@ -37,11 +37,7 @@ export class EvoContentStepperComponent
   private artLocationCtrl = new FormControl<string>(null, [
     Validators.required,
   ]);
-  evoContentFormGroup = new FormGroup<{
-    atk: FormControl<number>;
-    def: FormControl<number>;
-    artLocation: FormControl<string>;
-  }>({
+  evoContentFormGroup = new FormGroup({
     atk: this.atkCtrl,
     def: this.defCtrl,
     artLocation: this.artLocationCtrl,

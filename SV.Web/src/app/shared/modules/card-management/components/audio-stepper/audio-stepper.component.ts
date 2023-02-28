@@ -20,9 +20,7 @@ export class AudioStepperComponent implements OnInit, IFormValue<string[]> {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   private audioLocationToAddCtrl = new FormControl<string>(null);
   audios: string[] = [];
-  audioStepperFormGroup = new FormGroup<{
-    audioLocationToAdd: FormControl<string>;
-  }>({
+  audioStepperFormGroup = new FormGroup({
     audioLocationToAdd: this.audioLocationToAddCtrl,
   });
   constructor(private readonly eventEditService: CardEditEventService) {}

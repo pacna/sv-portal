@@ -48,12 +48,7 @@ export class CardsFilterSearchComponent {
   raritiesCtrl = new FormControl<Rarity[]>([]);
   typesCtrl = new FormControl<CardType[]>([]);
   craftCtrl = new FormControl<boolean>(false);
-  filterSearchFormGroup = new FormGroup<{
-    name: FormControl<string>;
-    rarities: FormControl<Rarity[]>;
-    types: FormControl<CardType[]>;
-    craft: FormControl<boolean>;
-  }>({
+  filterSearchFormGroup = new FormGroup({
     name: this.nameCtrl,
     rarities: this.raritiesCtrl,
     types: this.typesCtrl,

@@ -38,9 +38,7 @@ export class EvoCardEditorComponent implements IFormValue<string> {
   };
 
   private ckeditorTextCtrl = new FormControl<string>('');
-  ckeditorFormGroup = new FormGroup<{
-    ckeditorText: FormControl<string>;
-  }>({
+  ckeditorFormGroup = new FormGroup({
     ckeditorText: this.ckeditorTextCtrl,
   });
 

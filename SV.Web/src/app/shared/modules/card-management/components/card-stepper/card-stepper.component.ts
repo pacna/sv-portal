@@ -9,7 +9,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { filter } from 'rxjs';
 
 // Shared
-import { Rarities, Packs, CardTypes } from '@svportal/shared/constants';
+import { Rarities, CardTypes } from '@svportal/shared/constants';
 import {
   CardPack,
   RartiyConfig,
@@ -35,7 +35,7 @@ export class CardStepperComponent
 {
   rarities: Record<'bronze' | 'silver' | 'gold' | 'legendary', RartiyConfig> =
     Rarities;
-  cardPacks: CardPack[] = Packs;
+  cardPacks: CardPack[] = [CardPack.basic, CardPack.promo, CardPack.none];
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
   private nameCtrl = new FormControl<string>(null, [Validators.required]);
@@ -43,13 +43,7 @@ export class CardStepperComponent
   private typeCtrl = new FormControl<CardType>(null, [Validators.required]);
   private ppCostCtrl = new FormControl<number>(null, [Validators.required]);
   private packCtrl = new FormControl<CardPack>(null, [Validators.required]);
-  cardStepperFormGroup = new FormGroup<{
-    name: FormControl<string>;
-    rarity: FormControl<Rarity>;
-    type: FormControl<CardType>;
-    ppCost: FormControl<number>;
-    pack: FormControl<CardPack>;
-  }>({
+  cardStepperFormGroup = new FormGroup({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,
