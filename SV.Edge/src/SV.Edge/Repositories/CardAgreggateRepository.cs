@@ -6,6 +6,7 @@ using SV.Edge.Services.Models;
 using Z.EntityFramework.Plus;
 
 namespace SV.Edge.Repositories;
+
 internal class CardAggregateRepository
 {
     private readonly CardAggregateQueryBuilder _queryBuilder;

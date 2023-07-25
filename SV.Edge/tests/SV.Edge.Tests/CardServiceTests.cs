@@ -8,6 +8,7 @@ using SV.Edge.Services.Models;
 using Xunit;
 
 namespace SV.Edge.Tests;
+
 public class CardServiceTests
 {
     private readonly ICardRepository _cardRepo;

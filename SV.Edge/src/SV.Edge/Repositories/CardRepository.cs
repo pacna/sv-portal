@@ -3,6 +3,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories;
+
 internal class CardRepository : ICardRepository
 {
     CardAggregateRepository _cardAggregateRepository;

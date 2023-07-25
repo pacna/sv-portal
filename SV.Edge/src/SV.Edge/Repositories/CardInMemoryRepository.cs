@@ -3,6 +3,7 @@ using SV.Edge.Services.Constants;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories;
+
 public class CardInMemoryRepository : ICardRepository
 {
     private static Dictionary<string, Card> cardsInMemory;

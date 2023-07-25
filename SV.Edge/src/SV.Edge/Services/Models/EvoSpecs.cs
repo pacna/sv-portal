@@ -1,4 +1,5 @@
 namespace SV.Edge.Services.Models;
+
 public class EvoSpecs
 {
     public string AbilityText { get; init; }

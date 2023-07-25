@@ -1,6 +1,7 @@
 using SV.Edge.Services.Constants;
 
 namespace SV.Edge.Controllers.Attributes;
+
 public class ValidCardPackAttribute: ValidationAttribute
 {
     private ISet<string> _validSet = new HashSet<string> { CardPackType.Basic, CardPackType.None, CardPackType.Promo};

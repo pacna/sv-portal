@@ -4,6 +4,7 @@ using SV.Edge.Controllers.Models;
 using SV.Edge.Services;
 
 namespace SV.Edge.Controllers;
+
 [Route("cards")]
 public class CardController : BaseController
 {

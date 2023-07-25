@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace SV.Edge.Controllers;
+
 public class BaseController: ControllerBase
 {
     [ApiExplorerSettings(IgnoreApi = true)]

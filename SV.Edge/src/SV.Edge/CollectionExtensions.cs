@@ -1,4 +1,5 @@
 namespace SV.Edge;
+
 public static class CollectionExtensions
 {
     public static List<T> ToList<T>(this Dictionary<string, T> dict)

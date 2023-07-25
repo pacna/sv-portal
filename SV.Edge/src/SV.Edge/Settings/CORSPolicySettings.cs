@@ -1,4 +1,5 @@
 namespace SV.Edge.Settings;
+
 internal class CORSPolicySettings : ICORSPolicySettings
 {
     public string PolicyName { get; set; }

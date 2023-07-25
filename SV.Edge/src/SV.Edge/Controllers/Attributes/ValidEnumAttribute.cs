@@ -1,4 +1,5 @@
 namespace SV.Edge.Controllers.Attributes;
+
 public class ValidEnumAttribute: ValidationAttribute
 {
     private Type _enumType { get; set; }

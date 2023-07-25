@@ -4,6 +4,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories;
+
 internal class CardAggregateQueryBuilder
 {
     private readonly IQueryable<AudioDocument> _queryableAudio;

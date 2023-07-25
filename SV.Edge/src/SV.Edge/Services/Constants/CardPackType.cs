@@ -1,4 +1,5 @@
 namespace SV.Edge.Services.Constants;
+
 public static class CardPackType
 {
     public const string Basic = "Basic";

@@ -2,6 +2,7 @@ using SV.Edge.Services.Constants;
 using SV.Edge.Repositories.Models;
 
 namespace SV.Edge.Services.Models;
+
 public class AddCardRequest
 {
     public CraftType Craft { get; init; }

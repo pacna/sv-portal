@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SV.Edge.Contexts.Documents;
 
 namespace SV.Edge.Contexts;
+
 public class SVPortalContext : DbContext
 {
     public SVPortalContext(DbContextOptions<SVPortalContext> options) : base(options: options)
