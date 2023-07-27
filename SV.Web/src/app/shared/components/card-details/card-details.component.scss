@@ -61,7 +61,7 @@ article {
 }
 
 @media #{$XSmall, $Small} {
-  #card-details {
+  article {
     flex-direction: column;
 
     .card-details-description {

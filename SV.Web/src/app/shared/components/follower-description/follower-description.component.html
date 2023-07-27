@@ -1,10 +1,12 @@
-<follower-detail-description
-  class="mb-32"
-  [followerDescription]="baseFollowerDetail"
->
-</follower-detail-description>
-<follower-detail-description
-  [followerHeaderText]="evolvedHeaderText"
-  [followerDescription]="evolvedFollowerDetail"
->
-</follower-detail-description>
+<ng-container *ngFor="let followerDescription of followerDescriptions">
+  <article>
+    <section class="mb-16">
+      <h4>{{ followerDescription.form }}</h4>
+      <span class="atk-dot"> {{ followerDescription.atk }} </span>
+      <span class="def-dot"> {{ followerDescription.def }} </span>
+    </section>
+    <card-description
+      [cardDescription]="followerDescription.cardDescription"
+    ></card-description>
+  </article>
+</ng-container>

@@ -5,4 +5,5 @@ export interface FollowerDescription {
   atk: number;
   def: number;
   cardDescription: CardDescription;
+  form: string;
 }

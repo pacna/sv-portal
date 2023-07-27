@@ -15,27 +15,27 @@ export class FollowerDescriptionComponent {
     if (!cardDetail) return;
     this.handleCardDetail(cardDetail);
   }
-  evolvedHeaderText: string = 'Evolved';
-  baseFollowerDetail: FollowerDescription = {} as FollowerDescription;
-  evolvedFollowerDetail: FollowerDescription = {} as FollowerDescription;
+
+  followerDescriptions: FollowerDescription[] = [];
 
   private handleCardDetail(cardDetail: CardDetailResponse): void {
-    this.baseFollowerDetail = {
+    this.followerDescriptions.push({
       atk: cardDetail.battleStats.atk,
       def: cardDetail.battleStats.def,
       cardDescription: {
         abilityText: cardDetail.abilityText,
         flavorText: cardDetail.flavorText,
       },
-    };
-
-    this.evolvedFollowerDetail = {
+      form: 'Base',
+    });
+    this.followerDescriptions.push({
       atk: cardDetail.evo.battleStats.atk,
       def: cardDetail.evo.battleStats.def,
       cardDescription: {
         abilityText: cardDetail.evo.abilityText,
         flavorText: cardDetail.evo.flavorText,
       },
-    };
+      form: 'Evolved',
+    });
   }
 }
