@@ -29,7 +29,6 @@
     "@ckeditor/ckeditor5-build-classic": "^34.0.0",
     "@ngneat/until-destroy": "^9.0.2",
     "@nguniversal/express-engine": "^15.2.0",
-    "domino": "^2.1.6",
     "express": "^4.15.2",
     "http-proxy-middleware": "^2.0.3",
     "ng-gallery": "^6.0.1",

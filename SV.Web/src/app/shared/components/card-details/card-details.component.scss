@@ -1,7 +1,7 @@
 @import "colors";
 @import "breakpoints";
 
-#card-details {
+article {
   display: flex;
 
   img {
@@ -19,12 +19,40 @@
 
   follower-description,
   card-description,
-  card-details-description {
+  .card-details-description {
     display: block;
   }
 
-  card-details-description {
+  .card-details-description {
     max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 24px;
+    border-radius: 6px;
+
+    h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: $plain-white;
+      text-shadow: 2px 2px 20px $secondary-blue;
+    }
+
+    dl {
+      color: $plain-white;
+      margin-top: 16px;
+      margin-bottom: 0px;
+      line-height: 30px;
+
+      dt {
+        float: left;
+        font-weight: bold;
+        margin-right: 16px;
+      }
+
+      dd {
+        text-transform: capitalize;
+        margin-left: 0px;
+      }
+    }
   }
 
   .mat-icon {
@@ -36,7 +64,7 @@
   #card-details {
     flex-direction: column;
 
-    card-details-description {
+    .card-details-description {
       margin-top: 32px;
       max-width: 100%;
     }

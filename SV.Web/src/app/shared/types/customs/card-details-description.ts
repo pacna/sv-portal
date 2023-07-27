@@ -1,7 +1,7 @@
 import { CardPack } from './card-pack.enum';
 import { Rarity } from './rarity.enum';
 
-export interface CardDetails {
+export interface CardDetailsDescription {
   craft: string;
   readableRarity: string;
   rarity: Rarity;

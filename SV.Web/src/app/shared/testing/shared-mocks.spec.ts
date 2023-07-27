@@ -32,14 +32,6 @@ export class MockFollowerDescriptionComponent {
 }
 
 @Component({
-  selector: 'card-details-description',
-  template: '',
-})
-export class MockCardDetailsDescriptionComponent {
-  @Input() cardDetail: CardDetailResponse;
-}
-
-@Component({
   selector: 'card-description',
   template: '',
 })
