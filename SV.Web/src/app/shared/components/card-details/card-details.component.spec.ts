@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Self
 import {
-  MockCardDetailsDescriptionComponent,
   MockCardDescriptionComponent,
   MockFollowerDescriptionComponent,
 } from './../../testing/shared-mocks.spec';
 import { CardDetailsComponent } from './card-details.component';
+import { CardCostPipe } from '../../pipes';
 
 describe('CardDetailsComponent', () => {
   let component: CardDetailsComponent;
@@ -18,8 +18,8 @@ describe('CardDetailsComponent', () => {
       declarations: [
         CardDetailsComponent,
         MockFollowerDescriptionComponent,
-        MockCardDetailsDescriptionComponent,
         MockCardDescriptionComponent,
+        CardCostPipe,
       ],
     }).compileComponents();
   });

@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using SV.Edge.Services.Constants;
 
 namespace SV.Edge.Contexts.Documents;
+
 [Table("card", Schema = "sv_portal")]
 public class CardDocument
 {

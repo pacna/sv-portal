@@ -6,7 +6,6 @@ import { CardsFilterRequest } from './../types/customs/cards-filter-request';
 import { CardResponse } from './../types/api/card-response';
 import { CardDescription } from './../types/customs/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';
-import { FollowerDescription } from '../types/customs/follower-description';
 import { Craft } from '../types/customs/craft.enum';
 import { PageSuccessState } from '../types/customs/page-success-state.enum';
 
@@ -32,28 +31,11 @@ export class MockFollowerDescriptionComponent {
 }
 
 @Component({
-  selector: 'card-details-description',
-  template: '',
-})
-export class MockCardDetailsDescriptionComponent {
-  @Input() cardDetail: CardDetailResponse;
-}
-
-@Component({
   selector: 'card-description',
   template: '',
 })
 export class MockCardDescriptionComponent {
   @Input() cardDescription: CardDescription;
-}
-
-@Component({
-  selector: 'follower-detail-description',
-  template: '',
-})
-export class MockFollowerDetailDescriptionComponent {
-  @Input() followerHeaderText: string = 'Base';
-  @Input() followerDescription: FollowerDescription;
 }
 
 @Component({

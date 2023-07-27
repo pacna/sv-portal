@@ -2,6 +2,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories;
+
 public interface ICardRepository
 {
     Task<List<Card>> SearchCardsAsync(SearchCardRequest request);

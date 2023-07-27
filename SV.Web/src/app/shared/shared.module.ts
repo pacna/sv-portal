@@ -27,8 +27,6 @@ import { SVListItemComponent } from './components/sv-list-item/sv-list-item.comp
 import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
 import { CardDescriptionComponent } from './components/card-description/card-description.component';
 import { FollowerDescriptionComponent } from './components/follower-description/follower-description.component';
-import { FollowerDetailDescriptionComponent } from './components/follower-detail-description/follower-detail-description.component';
-import { CardDetailsDescriptionComponent } from './components/card-details-description/card-details-description.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
 import { CardsApiService } from './services/cards-api.service';
@@ -42,10 +40,8 @@ import { CardCostPipe } from './pipes';
     SVListComponent,
     SVListItemComponent,
     HeaderActionBarComponent,
-    CardDetailsDescriptionComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
-    FollowerDetailDescriptionComponent,
     CardDetailsComponent,
     CardsFilterSearchComponent,
     CardDeactivateComponent,
@@ -81,7 +77,6 @@ import { CardCostPipe } from './pipes';
   exports: [
     SVListComponent,
     HeaderActionBarComponent,
-    CardDetailsDescriptionComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,

@@ -1,6 +1,7 @@
 using SV.Edge.Services.Constants;
 
 namespace SV.Edge.Controllers.Models;
+
 public class CardResponse
 {
     public string ArtLocation { get; init; }

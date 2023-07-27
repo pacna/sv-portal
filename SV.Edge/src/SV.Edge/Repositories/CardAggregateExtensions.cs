@@ -3,6 +3,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Repositories;
+
 internal static class CardAggregateExtensions
 {
     public static IEnumerable<AudioDocument> ToEnumerable(this List<AudioDocument> audios, string cardId)

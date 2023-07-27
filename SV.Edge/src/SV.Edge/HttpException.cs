@@ -1,4 +1,5 @@
 namespace SV.Edge;
+
 public class HttpException : Exception
 {
     public HttpStatusCode StatusCode { get; }

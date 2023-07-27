@@ -2,6 +2,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 
 namespace SV.Edge;
+
 internal class HttpExceptionMiddleware
 {
     private readonly RequestDelegate _next;

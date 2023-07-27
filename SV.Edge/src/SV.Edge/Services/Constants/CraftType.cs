@@ -1,4 +1,5 @@
 namespace SV.Edge.Services.Constants;
+
 public enum CraftType
 {
     [Description("Forestcraft")]

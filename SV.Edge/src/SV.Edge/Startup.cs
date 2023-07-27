@@ -8,6 +8,7 @@ using SV.Edge.Contexts;
 using SV.Edge.Settings;
 
 namespace SV.Edge;
+
 public class Startup
 {
     private ICORSPolicySettings CORSPolicySettings { get; set; }
@@ -25,22 +26,24 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
-        services.AddServices();
-        services.AddRepositories(useInMemory: this.UseInMemory);
-        services.AddSwagger();
-        services.AddCors(corsPolicySettings: this.CORSPolicySettings);
-        services.AddDbContext<SVPortalContext>(optionsBuilder =>
-        {
-            optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options =>
+
+        services
+            .AddServices()
+            .AddRepositories(useInMemory: this.UseInMemory)
+            .AddSwagger()
+            .AddCors(corsPolicySettings: this.CORSPolicySettings)
+            .AddDbContext<SVPortalContext>(optionsBuilder =>
             {
-                options.EnableRetryOnFailure
-                (
-                    maxRetryCount: 5,
-                    maxRetryDelay: TimeSpan.FromSeconds(3),
-                    errorCodesToAdd: null
-                );
+                optionsBuilder.UseNpgsql(this.NpgsqlPostgresDBSetting.ConnectionString, options =>
+                {
+                    options.EnableRetryOnFailure
+                    (
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(3),
+                        errorCodesToAdd: null
+                    );
+                });
             });
-        });
 
 #if DEBUG
         Console.WriteLine(this.UseInMemory ? "Setting up InMemory datastore" : "");

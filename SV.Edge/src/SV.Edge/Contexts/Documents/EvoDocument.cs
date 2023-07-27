@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SV.Edge.Contexts.Documents;
+
 [Table("evo", Schema = "sv_portal")]
 public class EvoDocument
 {

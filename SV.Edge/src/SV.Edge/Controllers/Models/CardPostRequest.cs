@@ -3,6 +3,7 @@ using SV.Edge.Services.Constants;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Controllers.Models;
+
 public class CardPostRequest: ICardPostPutBaseRequest
 {
     [Required, ValidEnum(typeof(CraftType?))]

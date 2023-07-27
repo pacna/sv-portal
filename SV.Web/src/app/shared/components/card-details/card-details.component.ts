@@ -9,11 +9,16 @@ import { CardDescription } from './../../types/customs/card-description';
 import { CardType } from '../../types/customs/card-type.enum';
 import { CardDetailResponse } from '../../types/api/card-detail-response';
 import { UtilityHelper } from '../../helpers';
+import { Craft } from '../../types/customs/craft.enum';
+import { CardCostPipe } from '../../pipes/card-cost.pipe';
+import { Rarity } from '../../types/customs/rarity.enum';
+import { CardDetailsDescription } from '../../types/customs/card-details-description';
 
 @Component({
   selector: 'card-details',
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.scss'],
+  providers: [CardCostPipe],
 })
 export class CardDetailsComponent {
   @Input() set detail(detail: CardDetailResponse) {
@@ -25,6 +30,7 @@ export class CardDetailsComponent {
   cardDescription: CardDescription = {} as CardDescription;
   audioCounter: number = 0;
   cardsGallery: GalleryItem[] = [];
+  cardDetailsDescription: CardDetailsDescription = {} as CardDetailsDescription;
   constructor(private gallery: Gallery) {}
 
   playAudio(): void {
@@ -44,6 +50,17 @@ export class CardDetailsComponent {
     return !UtilityHelper.isStringOrArrayEmpty(this.card.audioLocations);
   }
 
+  private handleCardDetail(cardDetail: CardDetailResponse): void {
+    this.cardDetailsDescription = {
+      craft: Craft[cardDetail.craft],
+      rarity: cardDetail.rarity,
+      readableRarity: Rarity[cardDetail.rarity],
+      type: CardType[cardDetail.type],
+      ppCost: cardDetail.ppCost,
+      pack: cardDetail.cardPack,
+    } as CardDetailsDescription;
+  }
+
   private handleCardDetails(detail: CardDetailResponse): void {
     this.card = detail;
     this.cardDescription = {
@@ -51,6 +68,7 @@ export class CardDetailsComponent {
       flavorText: detail.flavorText,
     };
     this.loadCardsGallery(detail);
+    this.handleCardDetail(detail);
   }
 
   hasCard(card: CardDetailResponse): boolean {

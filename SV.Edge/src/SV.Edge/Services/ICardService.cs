@@ -2,6 +2,7 @@ using SV.Edge.Controllers.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Services;
+
 public interface ICardService
 {
     Task<List<CardResponse>> SearchCardsAsync(SearchCardRequest request);

@@ -9,12 +9,12 @@ using SV.Edge.Settings;
 namespace SV.Edge;
 internal static class ServicesCollectionExtensions
 {
-    internal static void AddServices(this IServiceCollection services)
+    internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddTransient<ICardService, CardService>();
+        return services.AddTransient<ICardService, CardService>();
     }
 
-    internal static void AddRepositories(this IServiceCollection services, bool useInMemory)
+    internal static IServiceCollection AddRepositories(this IServiceCollection services, bool useInMemory)
     {
         if (useInMemory)
         {
@@ -24,11 +24,13 @@ internal static class ServicesCollectionExtensions
         {
             services.AddTransient<ICardRepository, CardRepository>();
         }
+
+        return services;
     }
 
-    internal static void AddSwagger(this IServiceCollection services)
+    internal static IServiceCollection AddSwagger(this IServiceCollection services)
     {
-        services.AddSwaggerGen(options =>
+        return services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
@@ -39,9 +41,9 @@ internal static class ServicesCollectionExtensions
         });
     }
 
-    internal static void AddCors(this IServiceCollection services, ICORSPolicySettings corsPolicySettings)
+    internal static IServiceCollection AddCors(this IServiceCollection services, ICORSPolicySettings corsPolicySettings)
     {
-        services.AddCors(options =>
+        return services.AddCors(options =>
         {
             options.AddPolicy(name: corsPolicySettings.PolicyName,
                 builder =>

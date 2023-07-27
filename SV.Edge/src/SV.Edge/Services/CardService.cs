@@ -4,6 +4,7 @@ using SV.Edge.Repositories.Models;
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Services;
+
 public class CardService : ICardService
 {
     private readonly ICardRepository _cardRepo;

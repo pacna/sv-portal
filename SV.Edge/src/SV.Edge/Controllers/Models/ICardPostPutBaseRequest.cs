@@ -1,6 +1,7 @@
 using SV.Edge.Services.Models;
 
 namespace SV.Edge.Controllers.Models;
+
 public interface ICardPostPutBaseRequest
 {
     string Name { get; init; }

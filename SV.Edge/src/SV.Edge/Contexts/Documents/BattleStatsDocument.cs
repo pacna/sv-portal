@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SV.Edge.Contexts.Documents;
+
 [Table("battle_stats", Schema = "sv_portal")]
 public class BattleStatsDocument
 {
