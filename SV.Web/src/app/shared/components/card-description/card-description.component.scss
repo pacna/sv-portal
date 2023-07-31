@@ -1,13 +1,13 @@
 @import "colors";
 
-#card-description {
+article {
   max-width: 540px;
 
   p {
     color: $plain-white;
   }
 
-  .card-content-description {
+  p:nth-child(2) {
     margin-top: 16px;
     border-radius: 6px;
     padding: 12px 40px;
