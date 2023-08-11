@@ -1,4 +1,4 @@
-<mat-grid-list id="sv-list" [cols]="numberOfColumns" rowHeight="0.8:1">
+<mat-grid-list [cols]="numberOfColumns" rowHeight="0.8:1">
   <mat-grid-tile *ngFor="let card of svCards; let i = index">
     <sv-list-item
       [cardIndex]="i"
