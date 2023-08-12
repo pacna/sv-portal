@@ -3,23 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Material
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-
-// Third party
-import { of } from 'rxjs';
-
 // Shared
-import {
-  MockHeaderActionBarComponent,
-  MockCardsFilterSearchComponent,
-  MockSVListComponent,
-  SharedSpies,
-  MockPageContentComponent,
-} from '@svportal/shared/testing';
+import { SharedSpies } from '@svportal/shared/testing';
 import { CardsApiService } from '@svportal/shared/services/cards-api.service';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 // Self
 import { PortalcraftOverviewComponent } from './portalcraft-overview.component';
@@ -27,24 +14,15 @@ import { PortalcraftOverviewComponent } from './portalcraft-overview.component';
 describe('PortalcraftOverviewComponent', () => {
   let component: PortalcraftOverviewComponent;
   let fixture: ComponentFixture<PortalcraftOverviewComponent>;
-  let cardsApiService: jasmine.SpyObj<CardsApiService>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MatSidenavModule,
         BrowserAnimationsModule,
-        MatIconModule,
-        MatDialogModule,
+        BaseOverviewModule,
       ],
-      declarations: [
-        PortalcraftOverviewComponent,
-        MockHeaderActionBarComponent,
-        MockPageContentComponent,
-        MockSVListComponent,
-        MockCardsFilterSearchComponent,
-      ],
+      declarations: [PortalcraftOverviewComponent],
       providers: [
         {
           provide: CardsApiService,
@@ -55,10 +33,6 @@ describe('PortalcraftOverviewComponent', () => {
   });
 
   beforeEach(() => {
-    cardsApiService = TestBed.inject(
-      CardsApiService
-    ) as jasmine.SpyObj<CardsApiService>;
-    cardsApiService.searchCards.and.returnValue(of([]));
     fixture = TestBed.createComponent(PortalcraftOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
