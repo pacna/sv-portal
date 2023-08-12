@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Third party
 import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
@@ -39,6 +40,7 @@ import { CardManagementModule } from '../card-management';
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     CardManagementModule,
     HeaderActionBarComponent,
     PageContentComponent,
