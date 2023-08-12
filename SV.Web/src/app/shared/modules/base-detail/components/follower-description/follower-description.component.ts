@@ -2,8 +2,8 @@
 import { Component, Input } from '@angular/core';
 
 // Self
-import { FollowerDescription } from './../../types/customs/follower-description';
-import { CardDetailResponse } from './../../types/api/card-detail-response';
+import { FollowerDescription } from './../../../../types/customs/follower-description';
+import { CardDetailResponse } from './../../../../types/api/card-detail-response';
 
 @Component({
   selector: 'follower-description',

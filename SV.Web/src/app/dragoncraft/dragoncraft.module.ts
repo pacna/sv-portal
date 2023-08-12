@@ -14,9 +14,8 @@ import { SharedModule } from '@svportal/shared/shared.module';
 import {
   CardManagementModule,
   BaseOverviewModule,
+  BaseDetailModule,
 } from '@svportal/shared/modules';
-import { HeaderActionBarComponent } from '@svportal/shared/components/header-action-bar';
-import { PageContentComponent } from '@svportal/shared/components/page-content';
 
 // Self
 import { dragonCraftRoutes } from './dragoncraft.routing';
@@ -35,9 +34,7 @@ import { DragoncraftDetailComponent } from './components/dragoncraft-detail/drag
     SharedModule,
     CardManagementModule,
     BaseOverviewModule,
-    // Standalone
-    HeaderActionBarComponent,
-    PageContentComponent,
+    BaseDetailModule,
   ],
 })
 export class DragoncraftModule {}

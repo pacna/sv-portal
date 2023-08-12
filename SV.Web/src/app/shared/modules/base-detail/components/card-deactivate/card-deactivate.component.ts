@@ -7,9 +7,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Self
-import { Craft } from '../../types/customs/craft.enum';
-import { CardsApiService } from '../../services/cards-api.service';
-import { CardDeactivateData } from '../../types/customs/card-deactivate-data';
+import { Craft } from '../../../../types/customs/craft.enum';
+import { CardsApiService } from '../../../../services/cards-api.service';
+import { CardDeactivateData } from '../../../../types/customs/card-deactivate-data';
 
 @Component({
   selector: 'card-deactivate',

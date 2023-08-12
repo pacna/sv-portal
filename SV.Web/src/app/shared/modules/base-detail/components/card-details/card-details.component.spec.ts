@@ -5,7 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   MockCardDescriptionComponent,
   MockFollowerDescriptionComponent,
-} from './../../testing/shared-mocks.spec';
+} from './../../../../testing/shared-mocks.spec';
 import { CardDetailsComponent } from './card-details.component';
 import { CardCostPipe } from '../../pipes';
 

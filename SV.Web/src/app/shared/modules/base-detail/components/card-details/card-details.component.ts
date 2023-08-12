@@ -5,14 +5,14 @@ import { Component, Input } from '@angular/core';
 import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
 
 // Self
-import { CardDescription } from './../../types/customs/card-description';
-import { CardType } from '../../types/customs/card-type.enum';
-import { CardDetailResponse } from '../../types/api/card-detail-response';
-import { UtilityHelper } from '../../helpers';
-import { Craft } from '../../types/customs/craft.enum';
+import { CardDescription } from './../../../../types/customs/card-description';
+import { CardType } from './../../../../types/customs/card-type.enum';
+import { CardDetailResponse } from './../../../../types/api/card-detail-response';
+import { UtilityHelper } from './../../../../helpers';
+import { Craft } from './../../../../types/customs/craft.enum';
 import { CardCostPipe } from '../../pipes/card-cost.pipe';
-import { Rarity } from '../../types/customs/rarity.enum';
-import { CardDetailsDescription } from '../../types/customs/card-details-description';
+import { Rarity } from './../../../../types/customs/rarity.enum';
+import { CardDetailsDescription } from './../../../../types/customs/card-details-description';
 
 @Component({
   selector: 'card-details',
