@@ -10,14 +10,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 
 // Shared
-import { SharedModule } from './../shared/shared.module';
-import { CardManagementModule } from '../shared/modules/card-management';
+import { SharedModule } from '@svportal/shared/shared.module';
+import {
+  CardManagementModule,
+  BaseOverviewModule,
+} from '@svportal/shared/modules';
+import { HeaderActionBarComponent } from '@svportal/shared/components/header-action-bar';
+import { PageContentComponent } from '@svportal/shared/components/page-content';
 
 // Self
 import { neutralRoutes } from './neutral.routing';
 import { NeutralOverviewComponent } from './components/neutral-overview/neutral-overview.component';
 import { NeutralDetailComponent } from './components/neutral-detail/neutral-detail.component';
-import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [NeutralOverviewComponent, NeutralDetailComponent],
@@ -31,6 +35,9 @@ import { BaseOverviewModule } from '@svportal/shared/modules';
     SharedModule,
     CardManagementModule,
     BaseOverviewModule,
+    // Standalone
+    HeaderActionBarComponent,
+    PageContentComponent,
   ],
 })
 export class NeutralModule {}

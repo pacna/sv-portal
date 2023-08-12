@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Self
-import { CardsFilterRequest } from './../types/customs/cards-filter-request';
+import { CardsFilterRequest } from '../modules/base-overview/types/cards-filter-request';
 import { CardResponse } from './../types/api/card-response';
 import { CardDescription } from './../types/customs/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';

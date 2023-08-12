@@ -17,15 +17,14 @@ import { map, Observable, of, switchMap } from 'rxjs';
 
 // Shared
 import { CardSearchRequest, CardResponse } from './../../types/api';
-import {
-  Craft,
-  CardsFilterRequest,
-  PageSuccessState,
-} from './../../types/customs';
+import { Craft, PageSuccessState } from './../../types/customs';
 import { CardsApiService } from './../../services/cards-api.service';
-import { UtilityHelper } from './../../../shared/helpers';
-import { CardManagementData } from './../../../shared/modules/card-management/types';
+import { UtilityHelper } from './../../helpers';
+import { CardManagementData } from './../../modules/card-management/types';
 import { ModalConfig } from './../../../shared/constants';
+
+// Self
+import { CardsFilterRequest } from './types/cards-filter-request';
 
 @UntilDestroy()
 @Component({
@@ -35,10 +34,7 @@ import { ModalConfig } from './../../../shared/constants';
 })
 export class BaseOverviewComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
-  @Input() set craftName(craftName: string) {
-    this.craftType = Craft[craftName];
-  }
-  craftType: Craft;
+  @Input() craftType: Craft;
   cards: CardResponse[] = [];
   pageSuccessState: PageSuccessState;
   currentFilterRequest: CardsFilterRequest = {} as CardsFilterRequest;

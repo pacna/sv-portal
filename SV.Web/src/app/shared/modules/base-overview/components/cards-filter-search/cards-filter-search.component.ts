@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 // Self
-import { CardsFilterRequest } from './../../../../types/customs/cards-filter-request';
+import { CardsFilterRequest } from '../../types/cards-filter-request';
 import { CardTypes } from './../../../../constants/card-types';
 import { Rarities } from './../../../../constants/rarities';
 import { Craft } from './../../../../types/customs/craft.enum';

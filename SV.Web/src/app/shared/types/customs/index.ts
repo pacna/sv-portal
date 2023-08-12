@@ -5,7 +5,6 @@ export * from './card-details-description';
 export * from './card-pack.enum';
 export * from './card-type-config';
 export * from './card-type.enum';
-export * from './cards-filter-request';
 export * from './craft.enum';
 export * from './create-cost.enum';
 export * from './evo-specs';

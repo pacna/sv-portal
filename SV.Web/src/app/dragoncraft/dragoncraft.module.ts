@@ -10,14 +10,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 
 // Shared
-import { SharedModule } from './../shared/shared.module';
-import { CardManagementModule } from '../shared/modules/card-management';
+import { SharedModule } from '@svportal/shared/shared.module';
+import {
+  CardManagementModule,
+  BaseOverviewModule,
+} from '@svportal/shared/modules';
+import { HeaderActionBarComponent } from '@svportal/shared/components/header-action-bar';
+import { PageContentComponent } from '@svportal/shared/components/page-content';
 
 // Self
 import { dragonCraftRoutes } from './dragoncraft.routing';
 import { DragoncraftOverviewComponent } from './components/dragoncraft-overview/dragoncraft-overview.component';
 import { DragoncraftDetailComponent } from './components/dragoncraft-detail/dragoncraft-detail.component';
-import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [DragoncraftOverviewComponent, DragoncraftDetailComponent],
@@ -31,6 +35,9 @@ import { BaseOverviewModule } from '@svportal/shared/modules';
     SharedModule,
     CardManagementModule,
     BaseOverviewModule,
+    // Standalone
+    HeaderActionBarComponent,
+    PageContentComponent,
   ],
 })
 export class DragoncraftModule {}
