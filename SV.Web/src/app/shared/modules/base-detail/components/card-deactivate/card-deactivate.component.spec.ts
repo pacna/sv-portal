@@ -9,11 +9,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // Third party
 import { of } from 'rxjs';
 
+// Shared
+import { Craft } from '../../../../types/customs';
+import { CardsApiService } from '../../../../services/cards-api.service';
+import { SharedSpies } from '../../../../testing/shared-spies.spec';
+
 // Self
-import { CardDeactivateData, Craft } from '../../types/customs';
-import { CardsApiService } from '../../services/cards-api.service';
-import { SharedSpies } from '../../testing/shared-spies.spec';
 import { CardDeactivateComponent } from './card-deactivate.component';
+import { CardDeactivateData } from '../../types/card-deactivate-data';
 
 describe('CardDeactivateComponent', () => {
   let component: CardDeactivateComponent;

@@ -1,5 +1,12 @@
+// Angular
 import { Pipe, PipeTransform } from '@angular/core';
-import { CardPack, CreateCost, LiquefyCost, Rarity } from '../types';
+
+// Shared
+import { CardPack, Rarity } from '../../../types';
+
+// Self
+import { CreateCost } from '../types/create-cost.enum';
+import { LiquefyCost } from '../types/liquefy-cost.enum';
 
 @Pipe({ name: 'cardCost' })
 export class CardCostPipe implements PipeTransform {

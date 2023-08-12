@@ -2,12 +2,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Self
+import { CardDetailsComponent } from './card-details.component';
+import { CardCostPipe } from '../../pipes';
 import {
   MockCardDescriptionComponent,
   MockFollowerDescriptionComponent,
-} from './../../testing/shared-mocks.spec';
-import { CardDetailsComponent } from './card-details.component';
-import { CardCostPipe } from '../../pipes';
+} from '../../testing/base-detail-mocks.spec';
 
 describe('CardDetailsComponent', () => {
   let component: CardDetailsComponent;

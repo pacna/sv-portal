@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Self
-import { CardDescription } from './../../types/customs/card-description';
+import { CardDescription } from '../../types/card-description';
 
 @Component({
   selector: 'card-description',
