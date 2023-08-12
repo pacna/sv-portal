@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { runeCraftRoutes } from './runecraft.routing';
 import { RunecraftDetailComponent } from './components/runecraft-detail/runecraft-detail.component';
 import { RunecraftOverviewComponent } from './components/runecraft-overview/runecraft-overview.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [RunecraftDetailComponent, RunecraftOverviewComponent],
@@ -29,6 +30,7 @@ import { RunecraftOverviewComponent } from './components/runecraft-overview/rune
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class RunecraftModule {}

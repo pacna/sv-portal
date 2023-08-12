@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { forestCraftRoutes } from './forestcraft.routing';
 import { ForestcraftOverviewComponent } from './components/forestcraft-overview/forestcraft-overview.component';
 import { ForestcraftDetailComponent } from './components/forestcraft-detail/forestcraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [ForestcraftOverviewComponent, ForestcraftDetailComponent],
@@ -29,6 +30,7 @@ import { ForestcraftDetailComponent } from './components/forestcraft-detail/fore
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class ForestcraftModule {}

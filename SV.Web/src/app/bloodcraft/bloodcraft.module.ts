@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { bloodCraftRoutes } from './bloodcraft.routing';
 import { BloodcraftDetailComponent } from './components/bloodcraft-detail/bloodcraft-detail.component';
 import { BloodcraftOverviewComponent } from './components/bloodcraft-overview/bloodcraft-overview.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [BloodcraftOverviewComponent, BloodcraftDetailComponent],
@@ -29,6 +30,7 @@ import { BloodcraftOverviewComponent } from './components/bloodcraft-overview/bl
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class BloodcraftModule {}

@@ -9,15 +9,15 @@ import {
 } from '@angular/core';
 
 // Self
-import { CardsFilterRequest } from './../../types/customs/cards-filter-request';
-import { CardTypes } from '../../constants/card-types';
-import { Rarities } from '../../constants/rarities';
-import { Craft } from '../../types/customs/craft.enum';
-import { RartiyConfig } from '../../types/customs/rarity-config';
-import { CardTypeConfig } from '../../types/customs/card-type-config';
-import { UtilityHelper } from '../../helpers';
-import { Rarity } from '../../types/customs/rarity.enum';
-import { CardType } from '../../types/customs/card-type.enum';
+import { CardsFilterRequest } from './../../../../types/customs/cards-filter-request';
+import { CardTypes } from './../../../../constants/card-types';
+import { Rarities } from './../../../../constants/rarities';
+import { Craft } from './../../../../types/customs/craft.enum';
+import { RartiyConfig } from './../../../../types/customs/rarity-config';
+import { CardTypeConfig } from './../../../../types/customs/card-type-config';
+import { UtilityHelper } from './../../../../helpers';
+import { Rarity } from './../../../../types/customs/rarity.enum';
+import { CardType } from './../../../../types/customs/card-type.enum';
 
 @Component({
   selector: 'cards-filter-search',

@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { swordCraftRoutes } from './swordcraft.routing';
 import { SwordcraftOverviewComponent } from './components/swordcraft-overview/swordcraft-overview.component';
 import { SwordcraftDetailComponent } from './components/swordcraft-detail/swordcraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [SwordcraftOverviewComponent, SwordcraftDetailComponent],
@@ -29,6 +30,7 @@ import { SwordcraftDetailComponent } from './components/swordcraft-detail/swordc
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class SwordcraftModule {}

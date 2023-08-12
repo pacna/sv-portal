@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Self
-import { PageSuccessState } from '../../types/customs/page-success-state.enum';
+import { PageSuccessState } from '../../../../types/customs/page-success-state.enum';
 
 @Component({
   selector: 'page-content',

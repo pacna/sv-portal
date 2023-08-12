@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { havenCraftRoutes } from './havencraft.routing';
 import { HavencraftOverviewComponent } from './components/havencraft-overview/havencraft-overview.component';
 import { HavencraftDetailComponent } from './components/havencraft-detail/havencraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [HavencraftOverviewComponent, HavencraftDetailComponent],
@@ -29,6 +30,7 @@ import { HavencraftDetailComponent } from './components/havencraft-detail/havenc
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class HavencraftModule {}

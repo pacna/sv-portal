@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Self
-import { CardResponse } from '../../types/api/card-response';
+import { CardResponse } from '../../../../types/api/card-response';
 
 @Component({
   selector: 'sv-list-item',

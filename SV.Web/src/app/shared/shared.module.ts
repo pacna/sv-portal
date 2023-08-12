@@ -22,31 +22,19 @@ import { LightboxConfig, LightboxModule } from 'ng-gallery/lightbox';
 import { GalleryModule } from 'ng-gallery';
 
 // Self
-import { SVListComponent } from './components/sv-list/sv-list.component';
-import { SVListItemComponent } from './components/sv-list-item/sv-list-item.component';
-import { HeaderActionBarComponent } from './components/header-action-bar/header-action-bar.component';
 import { CardDescriptionComponent } from './components/card-description/card-description.component';
 import { FollowerDescriptionComponent } from './components/follower-description/follower-description.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
-import { CardsFilterSearchComponent } from './components/cards-filter-search/cards-filter-search.component';
 import { CardsApiService } from './services/cards-api.service';
 import { CardDeactivateComponent } from './components/card-deactivate/card-deactivate.component';
-import { EmptyContentComponent } from './components/empty-content/empty-content.component';
-import { PageContentComponent } from './components/page-content/page-content.component';
 import { CardCostPipe } from './pipes';
 
 @NgModule({
   declarations: [
-    SVListComponent,
-    SVListItemComponent,
-    HeaderActionBarComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
     CardDetailsComponent,
-    CardsFilterSearchComponent,
     CardDeactivateComponent,
-    EmptyContentComponent,
-    PageContentComponent,
     // Pipes
     CardCostPipe,
   ],
@@ -75,13 +63,9 @@ import { CardCostPipe } from './pipes';
     MatSnackBarModule,
   ],
   exports: [
-    SVListComponent,
-    HeaderActionBarComponent,
     CardDetailsComponent,
     CardDescriptionComponent,
     FollowerDescriptionComponent,
-    CardsFilterSearchComponent,
-    PageContentComponent,
   ],
   providers: [CardsApiService],
 })

@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { dragonCraftRoutes } from './dragoncraft.routing';
 import { DragoncraftOverviewComponent } from './components/dragoncraft-overview/dragoncraft-overview.component';
 import { DragoncraftDetailComponent } from './components/dragoncraft-detail/dragoncraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [DragoncraftOverviewComponent, DragoncraftDetailComponent],
@@ -29,6 +30,7 @@ import { DragoncraftDetailComponent } from './components/dragoncraft-detail/drag
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class DragoncraftModule {}

@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { portalCraftRoutes } from './portalcraft.routing';
 import { PortalcraftOverviewComponent } from './components/portalcraft-overview/portalcraft-overview.component';
 import { PortalcraftDetailComponent } from './components/portalcraft-detail/portalcraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [PortalcraftOverviewComponent, PortalcraftDetailComponent],
@@ -29,6 +30,7 @@ import { PortalcraftDetailComponent } from './components/portalcraft-detail/port
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class PortalcraftModule {}

@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { shadowCraftRoutes } from './shadowcraft.routing';
 import { ShadowcraftOverviewComponent } from './components/shadowcraft-overview/shadowcraft-overview.component';
 import { ShadowcraftDetailComponent } from './components/shadowcraft-detail/shadowcraft-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [ShadowcraftOverviewComponent, ShadowcraftDetailComponent],
@@ -29,6 +30,7 @@ import { ShadowcraftDetailComponent } from './components/shadowcraft-detail/shad
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class ShadowcraftModule {}

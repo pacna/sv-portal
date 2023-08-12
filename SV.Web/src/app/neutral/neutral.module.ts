@@ -17,6 +17,7 @@ import { CardManagementModule } from '../shared/modules/card-management';
 import { neutralRoutes } from './neutral.routing';
 import { NeutralOverviewComponent } from './components/neutral-overview/neutral-overview.component';
 import { NeutralDetailComponent } from './components/neutral-detail/neutral-detail.component';
+import { BaseOverviewModule } from '@svportal/shared/modules';
 
 @NgModule({
   declarations: [NeutralOverviewComponent, NeutralDetailComponent],
@@ -29,6 +30,7 @@ import { NeutralDetailComponent } from './components/neutral-detail/neutral-deta
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
   ],
 })
 export class NeutralModule {}
