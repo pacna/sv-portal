@@ -16,4 +16,4 @@ To set up the backend of SV Portal, follow the instructions provided in the SV.E
 
 ## Frontend Setup
 
-For the frontend setup, refer to the [SV.Web README](SV.Web/README.md) in the `SV.Web` folder.
+For the frontend setup, refer to the SV.Web [README](SV.Web/README.md) in the `SV.Web` folder.
