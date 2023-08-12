@@ -10,14 +10,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 
 // Shared
-import { SharedModule } from './../shared/shared.module';
-import { CardManagementModule } from '../shared/modules/card-management';
+import { SharedModule } from '@svportal/shared/shared.module';
+import {
+  CardManagementModule,
+  BaseOverviewModule,
+} from '@svportal/shared/modules';
+import { HeaderActionBarComponent } from '@svportal/shared/components/header-action-bar';
+import { PageContentComponent } from '@svportal/shared/components/page-content';
 
 // Self
 import { havenCraftRoutes } from './havencraft.routing';
 import { HavencraftOverviewComponent } from './components/havencraft-overview/havencraft-overview.component';
 import { HavencraftDetailComponent } from './components/havencraft-detail/havencraft-detail.component';
-
 @NgModule({
   declarations: [HavencraftOverviewComponent, HavencraftDetailComponent],
   imports: [
@@ -29,6 +33,10 @@ import { HavencraftDetailComponent } from './components/havencraft-detail/havenc
     MatDialogModule,
     SharedModule,
     CardManagementModule,
+    BaseOverviewModule,
+    // Standalone
+    HeaderActionBarComponent,
+    PageContentComponent,
   ],
 })
 export class HavencraftModule {}

@@ -1,19 +1,23 @@
 @import "colors";
 
-#sv-list-item {
-  text-align: center;
-  .sv-list-gallery-item {
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  section:first-child {
     img {
       width: 220px;
       height: 285px;
     }
+
     img:hover {
       filter: drop-shadow($secondary-blue 0px 0px 12px);
     }
   }
 
-  .sv-list-name-link {
-    margin-top: 16px;
+  section:nth-child(2) {
     a {
       color: $plain-white;
       text-shadow: 2px 2px 20px $secondary-blue;

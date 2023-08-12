@@ -1,7 +1,6 @@
 @import "colors";
 
 article {
-  margin-bottom: 32px;
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 6px;
   padding: 20px 24px;
@@ -37,4 +36,8 @@ article {
       }
     }
   }
+}
+
+article:first-child {
+  margin-bottom: 32px;
 }

@@ -2,11 +2,11 @@
 import { Params } from '@angular/router';
 
 // Self
-import { CardSearchRequest } from './../api/card-search-request';
-import { Craft } from './craft.enum';
-import { CardType } from './card-type.enum';
-import { Rarity } from './rarity.enum';
-import { UtilityHelper } from '../../helpers/utility-helper';
+import { CardSearchRequest } from '../../../types/api/card-search-request';
+import { Craft } from '../../../types/customs/craft.enum';
+import { CardType } from '../../../types/customs/card-type.enum';
+import { Rarity } from '../../../types/customs/rarity.enum';
+import { UtilityHelper } from '../../../helpers/utility-helper';
 
 export class CardsFilterRequest {
   isAll: boolean;

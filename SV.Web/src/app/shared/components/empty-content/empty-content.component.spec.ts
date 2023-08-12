@@ -10,7 +10,7 @@ describe('EmptyContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmptyContentComponent],
+      imports: [EmptyContentComponent],
     }).compileComponents();
   });
 

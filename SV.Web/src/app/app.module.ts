@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Shared
-import { SVLayoutComponent } from './shared/components/sv-layout/sv-layout.component';
-import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
+import { SVLayoutComponent } from './shared/components/sv-layout';
+import { TopNavComponent } from './shared/components/top-nav';
 
 // Self
 import { AppRoutingModule } from './app-routing.module';

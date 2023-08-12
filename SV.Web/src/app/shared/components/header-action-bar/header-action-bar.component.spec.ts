@@ -1,9 +1,6 @@
 // Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// Material
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 // Self
 import { HeaderActionBarComponent } from './header-action-bar.component';
 
@@ -13,8 +10,7 @@ describe('HeaderActionBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatToolbarModule],
-      declarations: [HeaderActionBarComponent],
+      imports: [HeaderActionBarComponent],
     }).compileComponents();
   });
 

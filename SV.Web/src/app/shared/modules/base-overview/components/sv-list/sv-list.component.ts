@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GalleryItem, ImageItemData, Gallery, GalleryConfig } from 'ng-gallery';
 
 // Self
-import { CardResponse } from '../../types/api/card-response';
+import { CardResponse } from '../../../../types/api/card-response';
 
 @Component({
   selector: 'sv-list',

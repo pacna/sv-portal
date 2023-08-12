@@ -1,0 +1,8 @@
+<article>
+  <section [lightbox]="cardIndex" gallery="sv-cards-gallery">
+    <img [src]="card.artLocation" [alt]="card.name" decoding="async" />
+  </section>
+  <section class="mt-16">
+    <a (click)="sendCardInfo(card)">{{ card.name }}</a>
+  </section>
+</article>
