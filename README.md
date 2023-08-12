@@ -5,15 +5,15 @@
     <img alt="Node test passing" src="https://github.com/pacna/sv-portal/workflows/Node%20Test/badge.svg" />
 </div>
 
-My own implementation/design of the [Shadowverse Portal](https://shadowverse-portal.com/?lang=en) website.
+My personal implementation and design inspired by the [Shadowverse Portal](https://shadowverse-portal.com/?lang=en) website.
 
 ![sv-portal](./docs/sv-portal-1.png)
 ![sv-portal](./docs/sv-portal-2.png)
 
-## How to setup backend
+## Backend Setup
 
-Follow the [README](SV.Edge/README.md) in `SV.Edge` folder
+To set up the backend of SV Portal, follow the instructions provided in the SV.Edge [README](SV.Edge/README.md) located in the `SV.Edge` folder.
 
-## How to setup frontend
+## Frontend Setup
 
-Follow the [README](SV.Web/README.md) in `SV.Web` folder
+For the frontend setup, refer to the [SV.Web README](SV.Web/README.md) in the `SV.Web` folder.
