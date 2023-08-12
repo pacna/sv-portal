@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Self
-import { CardDescription } from './../types/customs/card-description';
+import { CardDescription } from '../modules/base-detail/types/card-description';
 import { CardDetailResponse } from './../types/api/card-detail-response';
 import { PageSuccessState } from '../types/customs/page-success-state.enum';
 

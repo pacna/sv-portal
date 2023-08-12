@@ -6,10 +6,12 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// Self
+// Shared
 import { Craft } from '../../../../types/customs/craft.enum';
 import { CardsApiService } from '../../../../services/cards-api.service';
-import { CardDeactivateData } from '../../../../types/customs/card-deactivate-data';
+
+// Self
+import { CardDeactivateData } from '../../types/card-deactivate-data';
 
 @Component({
   selector: 'card-deactivate',

@@ -12,14 +12,12 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 // Shared
 import { CardDetailResponse } from '../../types/api/card-detail-response';
 import { CardsApiService } from '../../services/cards-api.service';
-import {
-  CardDeactivateData,
-  CardResponse,
-  Craft,
-  PageSuccessState,
-} from '../../types';
+import { CardResponse, Craft, PageSuccessState } from '../../types';
 import { ModalConfig } from '../../constants';
 import { CardManagementData } from '../..//modules/card-management/types/card-management-data';
+
+// Self
+import { CardDeactivateData } from './types/card-deactivate-data';
 
 @UntilDestroy()
 @Component({

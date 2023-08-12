@@ -1,9 +1,11 @@
 // Angular
 import { Component, Input } from '@angular/core';
 
-// Self
-import { FollowerDescription } from './../../../../types/customs/follower-description';
+// Shared
 import { CardDetailResponse } from './../../../../types/api/card-detail-response';
+
+// Self
+import { FollowerDescription } from '../../types/follower-description';
 
 @Component({
   selector: 'follower-description',

@@ -4,15 +4,17 @@ import { Component, Input } from '@angular/core';
 // Third party
 import { Gallery, GalleryConfig, GalleryItem, ImageItemData } from 'ng-gallery';
 
-// Self
-import { CardDescription } from './../../../../types/customs/card-description';
+// Shared
 import { CardType } from './../../../../types/customs/card-type.enum';
 import { CardDetailResponse } from './../../../../types/api/card-detail-response';
 import { UtilityHelper } from './../../../../helpers';
 import { Craft } from './../../../../types/customs/craft.enum';
-import { CardCostPipe } from '../../pipes/card-cost.pipe';
 import { Rarity } from './../../../../types/customs/rarity.enum';
-import { CardDetailsDescription } from './../../../../types/customs/card-details-description';
+
+// Self
+import { CardCostPipe } from '../../pipes/card-cost.pipe';
+import { CardDescription } from '../../types/card-description';
+import { CardDetailsDescription } from '../../types/card-details-description';
 
 @Component({
   selector: 'card-details',
