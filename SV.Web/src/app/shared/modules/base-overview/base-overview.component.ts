@@ -1,18 +1,25 @@
 // Angular
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   BreakpointObserver,
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 // Material
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 
 // Third party
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, Observable, of, switchMap } from 'rxjs';
 
 // Shared
@@ -26,7 +33,6 @@ import { ModalConfig } from './../../../shared/constants';
 // Self
 import { CardsFilterRequest } from './types/cards-filter-request';
 
-@UntilDestroy()
 @Component({
   selector: 'base-overview',
   templateUrl: './base-overview.component.html',
@@ -35,6 +41,7 @@ import { CardsFilterRequest } from './types/cards-filter-request';
 export class BaseOverviewComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
   @Input() craftType: Craft;
+  private _destroyRef: DestroyRef = inject<DestroyRef>(DestroyRef);
   cards: CardResponse[] = [];
   pageSuccessState: PageSuccessState;
   currentFilterRequest: CardsFilterRequest = {} as CardsFilterRequest;
@@ -71,7 +78,7 @@ export class BaseOverviewComponent implements OnInit {
       })
       .afterClosed()
       .pipe(
-        untilDestroyed(this),
+        takeUntilDestroyed(this._destroyRef),
         switchMap((card: CardResponse) => {
           return card ? this.initFilterSearch() : of(null);
         })
@@ -106,7 +113,7 @@ export class BaseOverviewComponent implements OnInit {
 
   private initFilterSearch(): Observable<void> {
     return this.route.queryParams.pipe(
-      untilDestroyed(this),
+      takeUntilDestroyed(this._destroyRef),
       switchMap((params: Params) => {
         this.currentFilterRequest = new CardsFilterRequest(params);
         if (!UtilityHelper.isObjEmpty(this.currentFilterRequest)) {
@@ -126,7 +133,7 @@ export class BaseOverviewComponent implements OnInit {
     } as CardSearchRequest
   ): Observable<void> {
     return this.cardsApiService.searchCards(request).pipe(
-      untilDestroyed(this),
+      takeUntilDestroyed(this._destroyRef),
       map((response: CardResponse[]) => {
         this.cards = response;
         this.pageSuccessState = UtilityHelper.isStringOrArrayEmpty(response)

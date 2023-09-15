@@ -1,13 +1,13 @@
 // Angular
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 // Material
 import { MatDialog } from '@angular/material/dialog';
 
 // Third party
 import { map, Observable, of, switchMap } from 'rxjs';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 // Shared
 import { CardDetailResponse } from '../../types/api/card-detail-response';
@@ -19,7 +19,6 @@ import { CardManagementData } from '../..//modules/card-management/types/card-ma
 // Self
 import { CardDeactivateData } from './types/card-deactivate-data';
 
-@UntilDestroy()
 @Component({
   selector: 'base-detail',
   templateUrl: './base-detail.component.html',
@@ -27,6 +26,7 @@ import { CardDeactivateData } from './types/card-deactivate-data';
 })
 export class BaseDetailComponent implements OnInit {
   @Input() craftType: Craft;
+  private _destroyRef: DestroyRef = inject<DestroyRef>(DestroyRef);
   card: CardDetailResponse = {} as CardDetailResponse;
   pageSuccessState: PageSuccessState;
   constructor(
@@ -46,7 +46,7 @@ export class BaseDetailComponent implements OnInit {
 
   getCard(id: string): Observable<void> {
     return this.cardsApiService.getCard(id).pipe(
-      untilDestroyed(this),
+      takeUntilDestroyed(this._destroyRef),
       map((response: CardDetailResponse) => {
         this.card = response;
         this.pageSuccessState = PageSuccessState.exist;
@@ -86,7 +86,7 @@ export class BaseDetailComponent implements OnInit {
       })
       .afterClosed()
       .pipe(
-        untilDestroyed(this),
+        takeUntilDestroyed(this._destroyRef),
         switchMap((card: CardResponse) => {
           return card ? this.getCard(card.id) : of(null);
         })
