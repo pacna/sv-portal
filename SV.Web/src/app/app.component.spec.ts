@@ -3,10 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // Shared
-import {
-  MockSVLayoutComponent,
-  MockTopNavComponent,
-} from './shared/testing/shared-mocks.spec';
+import { SVLayoutComponent } from './shared/components/sv-layout';
+import { TopNavComponent } from './shared/components/top-nav';
 
 // Self
 import { AppComponent } from './app.component';
@@ -17,8 +15,8 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent, MockSVLayoutComponent, MockTopNavComponent],
+      imports: [RouterTestingModule, SVLayoutComponent, TopNavComponent],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 

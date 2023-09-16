@@ -1,21 +1,50 @@
 # SV Edge
 
-The edge service for the SV Portal app.
+SV.Edge serves as the backend infrastructure for SV Portal.
 
-## How to run locally
+## Prerequisites
+
+Before setting up SV.Edge, please ensure you have the following tools and components installed:
+
+1. [.NET Core](https://dotnet.microsoft.com/en-us/download)
+2. [PostgreSQL](https://www.postgresql.org/download/)
+3. [Docker](https://docs.docker.com/get-docker/) (optional)
+
+## How to Run Locally
+
+Navigate to the `src/SV.Edge` directory:
 
 ```bash
-# cd src/SV.Edge folder
 $ cd src/SV.Edge
+```
 
-# normal mode
+For normal mode:
+
+```bash
 $ dotnet run
+```
 
-# watch mode
+For normal mode using in-memory storage:
+
+```bash
+$ dotnet run --inmemory
+```
+
+For watch mode:
+
+```bash
 $ dotnet watch run
 ```
 
-## How to run in docker (Optional)
+For watch mode using in-memory storage:
+
+```bash
+$ dotnet watch run --inmemory
+```
+
+## How to Run in Docker (Optional)
+
+You can run SV.Edge using Docker with the following command:
 
 ```bash
 $ sh build-and-run.sh
@@ -25,23 +54,36 @@ $ sh build-and-run.sh
 
 ## How to run tests
 
+To run tests, use:
+
 ```bash
-# tests
 $ dotnet test
 ```
 
-## How to run for production
+## How to Run for Production
+
+Follow these steps to run SV.Edge in a production environment:
+
+Navigate to the `src/SV.Edge` directory:
 
 ```bash
-# cd src/SV.Edge folder
 $ cd src/SV.Edge
+```
 
-# publish
+Publish the project:
+
+```bash
 $ dotnet publish -c Release -o server
+```
 
-# cd server folder
+Navigate to the `server` directory:
+
+```bash
 $ cd server
+```
 
-# run the binary
+Run the binary:
+
+```bash
 $ ./SV.Edge
 ```

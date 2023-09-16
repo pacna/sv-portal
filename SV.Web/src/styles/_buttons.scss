@@ -1,22 +1,29 @@
 @import "./colors.scss";
 
-.primary-action-button {
-  color: $plain-white;
-  background-color: $primary-blue;
+button.primary-action-button {
+  &.mat-mdc-raised-button:not(:disabled) {
+    color: $plain-white;
+    background-color: $primary-blue;
+  }
 }
 
-button.primary-action-button.mat-button-disabled {
+button.primary-action-button.mat-mdc-raised-button:disabled {
   background-color: $primary-blue !important;
   color: $plain-white !important;
   opacity: 50%;
 }
 
-.secondary-action-button {
-  color: $primary-blue;
-  background-color: $plain-white;
+button.secondary-action-button {
+  &.mat-mdc-raised-button:not(:disabled),
+  &.mat-mdc-button:not(:disabled) {
+    color: $primary-blue;
+    background-color: $plain-white;
+  }
 }
 
-.primary-destructive-action-button {
-  color: $plain-white;
-  background-color: $primary-red;
+button.primary-destructive-action-button {
+  &.mat-mdc-raised-button:not(:disabled) {
+    color: $plain-white;
+    background-color: $primary-red;
+  }
 }

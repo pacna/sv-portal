@@ -1,6 +1,7 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+// Self
 import { PageContentComponent } from './page-content.component';
 
 describe('PageContentComponent', () => {
@@ -9,8 +10,7 @@ describe('PageContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatProgressSpinnerModule],
-      declarations: [PageContentComponent],
+      imports: [PageContentComponent],
     }).compileComponents();
   });
 

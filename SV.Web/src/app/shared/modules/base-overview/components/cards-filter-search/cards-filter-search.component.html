@@ -1,0 +1,67 @@
+<div id="cards-filter-search">
+  <header>
+    <h3>{{ header }} Filter</h3>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="close"
+      (click)="close.emit()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <form class="mt-24" [formGroup]="filterSearchFormGroup" (ngSubmit)="submit()">
+    <mat-chip-listbox class="mb-24" formControlName="craft">
+      <mat-chip-option [value]="true" [selected]="isAll" (click)="setToAll()">
+        All
+      </mat-chip-option>
+      <mat-chip-option
+        [value]="false"
+        [selected]="!isAll"
+        (click)="setToNone()"
+      >
+        {{ header }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+    <mat-form-field appearance="outline" class="mb-16">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-16">
+      <mat-label>Rarity</mat-label>
+      <mat-select multiple formControlName="rarities">
+        <mat-option [value]="rarities.bronze.type">
+          {{ rarities.bronze.name }}
+        </mat-option>
+        <mat-option [value]="rarities.silver.type">
+          {{ rarities.silver.name }}
+        </mat-option>
+        <mat-option [value]="rarities.gold.type">
+          {{ rarities.gold.name }}
+        </mat-option>
+        <mat-option [value]="rarities.legendary.type">
+          {{ rarities.legendary.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select multiple formControlName="types">
+        <mat-option [value]="cardTypes.follower.type">
+          {{ cardTypes.follower.name }}
+        </mat-option>
+        <mat-option [value]="cardTypes.spell.type">
+          {{ cardTypes.spell.name }}
+        </mat-option>
+        <mat-option [value]="cardTypes.amulet.type">
+          {{ cardTypes.amulet.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <section>
+      <button mat-raised-button class="primary-action-button" type="submit">
+        Search
+      </button>
+    </section>
+  </form>
+</div>

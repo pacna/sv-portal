@@ -1,3 +1,3 @@
-# Tests
+# SV Edge tests
 
-The tests folder for SV.Edge
+The tests directory for SV.Edge.Tests

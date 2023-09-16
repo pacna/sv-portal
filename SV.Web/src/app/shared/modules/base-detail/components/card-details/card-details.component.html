@@ -1,0 +1,63 @@
+<article>
+  <section class="is-three-fifth">
+    <div [ngClass]="{ 'center-text': isFollower }" class="mb-40">
+      <ng-container *ngFor="let card of cardsGallery; let i = index">
+        <img
+          [lightbox]="i"
+          gallery="cards-detail-gallery"
+          [src]="card.data.src"
+          decoding="async"
+        />
+      </ng-container>
+    </div>
+    <div>
+      <follower-description
+        *ngIf="isFollower"
+        [cardDetail]="card"
+      ></follower-description>
+      <card-description
+        *ngIf="!isFollower"
+        [cardDescription]="cardDescription"
+      ></card-description>
+    </div>
+  </section>
+  <section class="is-two-fifth">
+    <div class="card-details-description">
+      <h3>Card Details</h3>
+      <dl>
+        <dt>Craft:</dt>
+        <dd>{{ cardDetailsDescription.craft }}</dd>
+        <dt>Rarity:</dt>
+        <dd>{{ cardDetailsDescription.readableRarity }}</dd>
+        <dt>Create:</dt>
+        <dd>
+          {{
+            cardDetailsDescription.rarity
+              | cardCost : cardDetailsDescription.pack : "create"
+          }}
+        </dd>
+        <dt>Liquefy:</dt>
+        <dd>
+          {{
+            cardDetailsDescription.rarity
+              | cardCost : cardDetailsDescription.pack : "liquefy"
+          }}
+        </dd>
+        <dt>Type:</dt>
+        <dd>{{ cardDetailsDescription.type }}</dd>
+        <dt>PP Cost:</dt>
+        <dd>{{ cardDetailsDescription.ppCost }}</dd>
+      </dl>
+    </div>
+
+    <button
+      *ngIf="hasAudio"
+      (click)="playAudio()"
+      mat-icon-button
+      class="mt-32"
+      color="accent"
+    >
+      <mat-icon>play_circle_outline</mat-icon>
+    </button>
+  </section>
+</article>

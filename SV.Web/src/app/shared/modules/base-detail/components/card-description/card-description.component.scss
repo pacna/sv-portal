@@ -1,0 +1,17 @@
+@import "colors";
+
+article {
+  max-width: 540px;
+
+  p {
+    color: $plain-white;
+  }
+
+  p:nth-child(2) {
+    margin-top: 16px;
+    border-radius: 6px;
+    padding: 12px 40px;
+    background-color: $primary-blue-darkest;
+    color: $secondary-blue;
+  }
+}

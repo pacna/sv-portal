@@ -32,12 +32,12 @@ export class EvoContentStepperComponent
   }
   readonly abilityTextHeader: string = 'Ability Text';
   readonly flavorTextHeader: string = 'Flavor Text';
-  private atkCtrl: FormControl = new FormControl(null);
-  private defCtrl: FormControl = new FormControl(null);
-  private artLocationCtrl: FormControl = new FormControl(null, [
+  private atkCtrl = new FormControl<number>(null);
+  private defCtrl = new FormControl<number>(null);
+  private artLocationCtrl = new FormControl<string>(null, [
     Validators.required,
   ]);
-  evoContentFormGroup: FormGroup = new FormGroup({
+  evoContentFormGroup = new FormGroup({
     atk: this.atkCtrl,
     def: this.defCtrl,
     artLocation: this.artLocationCtrl,

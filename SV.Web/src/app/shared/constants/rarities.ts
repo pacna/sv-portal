@@ -1,3 +1,4 @@
+// Self
 import { Rarity } from '../types/customs/rarity.enum';
 import { RartiyConfig } from '../types/customs/rarity-config';
 

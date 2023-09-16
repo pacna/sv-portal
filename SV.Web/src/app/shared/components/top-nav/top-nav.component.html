@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h1>SV Portal</h1>
 </mat-toolbar>
-<nav mat-tab-nav-bar [color]="'accent'">
+<nav mat-tab-nav-bar [color]="'accent'" [tabPanel]="tabPanel">
   <a
     mat-tab-link
     *ngFor="let link of navLinks"
@@ -13,3 +13,4 @@
     {{ link.routeName }}
   </a>
 </nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

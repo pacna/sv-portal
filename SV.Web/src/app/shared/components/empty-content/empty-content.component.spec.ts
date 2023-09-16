@@ -1,5 +1,7 @@
+// Angular
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { EmptyContentComponent } from './empty-content.component';
 
 describe('EmptyContentComponent', () => {
@@ -8,7 +10,7 @@ describe('EmptyContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmptyContentComponent],
+      imports: [EmptyContentComponent],
     }).compileComponents();
   });
 

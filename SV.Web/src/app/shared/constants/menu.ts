@@ -1,3 +1,4 @@
+// Self
 import { SVNavigationMenu } from '../types/customs/sv-navigation-menu';
 
 export const MENU: SVNavigationMenu[] = [

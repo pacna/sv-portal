@@ -11,10 +11,6 @@ mat-toolbar {
 
 nav {
   background-color: rgba(0, 0, 0, 0.5);
-  a {
-    color: $plain-white;
-  }
-
   .mat-tab-link {
     width: calc(100% / 9);
   }

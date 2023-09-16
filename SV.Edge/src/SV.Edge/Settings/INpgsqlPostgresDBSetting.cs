@@ -1,7 +1,6 @@
-namespace SV.Edge.Settings
+namespace SV.Edge.Settings;
+
+internal interface INpgsqlPostgresDBSetting
 {
-    public interface INpgsqlPostgresDBSetting
-    {
-        string ConnectionString { get; set; }
-    }
+    string ConnectionString { get; set; }
 }

@@ -1,0 +1,40 @@
+<mat-drawer-container>
+  <mat-drawer #drawer>
+    <cards-filter-search
+      [headerCraftType]="craftType"
+      [currentFilterRequest]="currentFilterRequest"
+      (changeSearchFilter)="handleFilterRequest($event)"
+      (close)="drawer.close()"
+    ></cards-filter-search>
+  </mat-drawer>
+  <mat-drawer-content>
+    <header-action-bar>
+      <h2 slot="header">Neutral</h2>
+      <ng-container slot="actions">
+        <button
+          mat-raised-button
+          class="primary-action-button"
+          (click)="openCardManagement()"
+        >
+          Create
+        </button>
+      </ng-container>
+    </header-action-bar>
+    <section class="mt-16 mb-16">
+      <button
+        mat-raised-button
+        class="secondary-action-button"
+        (click)="openFilter()"
+      >
+        <mat-icon>filter_list</mat-icon> Filter
+      </button>
+    </section>
+    <page-content [pageState]="pageSuccessState">
+      <sv-list
+        [cards]="cards"
+        [numberOfColumns]="numberOfColumns"
+        (viewCardInfo)="handleCardInfo($event)"
+      ></sv-list>
+    </page-content>
+  </mat-drawer-content>
+</mat-drawer-container>

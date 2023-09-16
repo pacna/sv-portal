@@ -1,8 +1,8 @@
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatToolbarModule } from '@angular/material/toolbar';
+// Angular
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Self
 import { TopNavComponent } from './top-nav.component';
 
 describe('TopNavComponent', () => {
@@ -11,8 +11,7 @@ describe('TopNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatToolbarModule, MatTabsModule],
-      declarations: [TopNavComponent],
+      imports: [TopNavComponent, RouterTestingModule],
     }).compileComponents();
   });
 

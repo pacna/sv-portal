@@ -1,0 +1,22 @@
+article {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  p {
+    height: 60px;
+  }
+
+  section {
+    display: inherit;
+    justify-content: flex-end;
+  }
+}
+
+.mat-dialog-container {
+  padding: 12px 24px !important;
+}

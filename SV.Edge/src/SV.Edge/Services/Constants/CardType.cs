@@ -1,16 +1,13 @@
-using System.ComponentModel;
+namespace SV.Edge.Services.Constants;
 
-namespace SV.Edge.Services.Constants
+public enum CardType
 {
-    public enum CardType
-    {
-        [Description("Follower")]
-        Follower,
+    [Description("Follower")]
+    Follower,
 
-        [Description("Spell")]
-        Spell,
+    [Description("Spell")]
+    Spell,
 
-        [Description("Amulet")]
-        Amulet
-    }
+    [Description("Amulet")]
+    Amulet
 }

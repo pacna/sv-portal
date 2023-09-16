@@ -9,11 +9,13 @@ import { MatSelectChange } from '@angular/material/select';
 import { filter } from 'rxjs';
 
 // Shared
-import { Rarities, Packs, CardTypes } from '@svportal/shared/constants';
+import { Rarities, CardTypes } from '@svportal/shared/constants';
 import {
   CardPack,
   RartiyConfig,
   CardTypeConfig,
+  Rarity,
+  CardType,
 } from '@svportal/shared/types/customs';
 
 // Self
@@ -33,19 +35,15 @@ export class CardStepperComponent
 {
   rarities: Record<'bronze' | 'silver' | 'gold' | 'legendary', RartiyConfig> =
     Rarities;
-  cardPacks: CardPack[] = Packs;
+  cardPacks: CardPack[] = [CardPack.basic, CardPack.promo, CardPack.none];
   cardTypes: Record<'follower' | 'spell' | 'amulet', CardTypeConfig> =
     CardTypes;
-  private nameCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private rarityCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  private typeCtrl: FormControl = new FormControl(null, [Validators.required]);
-  private ppCostCtrl: FormControl = new FormControl(null, [
-    Validators.required,
-  ]);
-  private packCtrl: FormControl = new FormControl(null, [Validators.required]);
-  cardStepperFormGroup: FormGroup = new FormGroup({
+  private nameCtrl = new FormControl<string>(null, [Validators.required]);
+  private rarityCtrl = new FormControl<Rarity>(null, [Validators.required]);
+  private typeCtrl = new FormControl<CardType>(null, [Validators.required]);
+  private ppCostCtrl = new FormControl<number>(null, [Validators.required]);
+  private packCtrl = new FormControl<CardPack>(null, [Validators.required]);
+  cardStepperFormGroup = new FormGroup({
     name: this.nameCtrl,
     rarity: this.rarityCtrl,
     type: this.typeCtrl,

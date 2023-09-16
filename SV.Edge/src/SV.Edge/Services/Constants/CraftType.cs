@@ -1,34 +1,31 @@
-using System.ComponentModel;
+namespace SV.Edge.Services.Constants;
 
-namespace SV.Edge.Services.Constants
+public enum CraftType
 {
-    public enum CraftType
-    {
-        [Description("Forestcraft")]
-        Forestcraft = 1,
+    [Description("Forestcraft")]
+    Forestcraft = 1,
 
-        [Description("Swordcraft")]
-        Swordcraft = 2,
+    [Description("Swordcraft")]
+    Swordcraft = 2,
 
-        [Description("Runecraft")]
-        Runecraft = 3,
+    [Description("Runecraft")]
+    Runecraft = 3,
 
-        [Description("Dragoncraft")]
-        Dragoncraft = 4,
+    [Description("Dragoncraft")]
+    Dragoncraft = 4,
 
-        [Description("Shadowcraft")]
-        Shadowcraft = 5,
+    [Description("Shadowcraft")]
+    Shadowcraft = 5,
 
-        [Description("Bloodcraft")]
-        Bloodcraft = 6,
+    [Description("Bloodcraft")]
+    Bloodcraft = 6,
 
-        [Description("Havencraft")]
-        Havencraft = 7,
+    [Description("Havencraft")]
+    Havencraft = 7,
 
-        [Description("Portalcraft")]
-        Portalcraft = 8,
+    [Description("Portalcraft")]
+    Portalcraft = 8,
 
-        [Description("Neutral")]
-        Neutral = 9
-    }
+    [Description("Neutral")]
+    Neutral = 9
 }

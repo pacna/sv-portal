@@ -1,3 +1,4 @@
+// Self
 import { ModalConfigType } from '../types/customs/modal-config-type';
 
 export const ModalConfig: ModalConfigType = {

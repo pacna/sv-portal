@@ -1,7 +1,9 @@
-name: Dotnet test
+name: Dotnet Test
 
 on:
     push:
+        branches: [main]
+    pull_request:
         branches: [main]
 
 jobs:
@@ -13,10 +15,7 @@ jobs:
             - name: Setup .NET
               uses: actions/setup-dotnet@v2
               with:
-                  dotnet-version: 6.0.x
-            - name: Restore dependencies
-              run: dotnet restore ./SV.Edge
-            - name: Build
-              run: dotnet build ./SV.Edge
-            - name: Test
-              run: dotnet test ./SV.Edge
+                  dotnet-version: 7.0.x
+            - working-directory: ./SV.Edge
+              run: |
+                  dotnet test

@@ -1,32 +1,5 @@
 form {
-  div {
-    display: flex;
-    align-items: center;
-
-    .cols {
-      flex: 1;
-    }
-
-    .is-four-fifth {
-      flex-basis: 80%;
-    }
-
-    .is-one-fifth {
-      flex-basis: 20%;
-    }
-
-    .action {
-      display: inherit;
-      justify-content: flex-end;
-    }
-
-    button {
-      height: 40px;
-      margin-bottom: 20px;
-    }
-  }
-
-  .mat-form-field {
+  mat-form-field {
     width: 100%;
   }
 }

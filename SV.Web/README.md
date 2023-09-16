@@ -1,38 +1,55 @@
 # SV Web
 
-SV Web is the front end of the SV Portal app
+SV.Web is the user interface part of the SV Portal project.
+
+## Prerequisites
+
+Before setting up SV.Web, ensure you have the following tools installed:
+
+1. [Node.js](https://nodejs.org/en/)
 
 ## Installation
 
+To install the necessary node modules, use the following command:
+
 ```bash
-# install node modules
 $ npm ci
 ```
 
-## How to run locally
+## Running Locally
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To run the app in a local development server, follow these steps:
+
+1. Run the development server:
 
 ```bash
-# local mode
 $ npm start
 ```
 
-## How to run in production (SSR)
+2. Open your browser and navigate to `http://localhost:4200/`. The app will automatically reload if you modify any source files.
+
+## Running in Production (SSR)
+
+For production with Server-Side Rendering (SSR), follow these steps:
+
+1. Build the app:
 
 ```bash
-# build
 $ npm run build:ssr
+```
 
-# run
+2. Run the built app:
+
+```bash
 $ npm run serve:ssr
 ```
 
-## Running unit tests
+## Running Unit Tests
 
-Run `npm test` to execute the unit tests.
+To execute unit tests, use the following command:
 
 ```bash
-# tests
 $ npm test
 ```
+
+This will run the test suite and provide information about the test results.
