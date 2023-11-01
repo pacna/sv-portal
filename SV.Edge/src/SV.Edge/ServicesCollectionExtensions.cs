@@ -1,5 +1,3 @@
-using System.Net.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using SV.Edge.Repositories;
@@ -9,6 +7,13 @@ using SV.Edge.Settings;
 namespace SV.Edge;
 internal static class ServicesCollectionExtensions
 {
+    internal static IServiceCollection AddMVC(this IServiceCollection services)
+    {
+        services.AddControllers();
+
+        return services;
+    }
+
     internal static IServiceCollection AddServices(this IServiceCollection services)
     {
         return services.AddTransient<ICardService, CardService>();
@@ -18,14 +23,10 @@ internal static class ServicesCollectionExtensions
     {
         if (useInMemory)
         {
-            services.AddTransient<ICardRepository, CardInMemoryRepository>();
+            return services.AddTransient<ICardRepository, CardInMemoryRepository>();
         }
-        else
-        {
-            services.AddTransient<ICardRepository, CardRepository>();
-        }
-
-        return services;
+        
+        return services.AddTransient<ICardRepository, CardRepository>();
     }
 
     internal static IServiceCollection AddSwagger(this IServiceCollection services)
