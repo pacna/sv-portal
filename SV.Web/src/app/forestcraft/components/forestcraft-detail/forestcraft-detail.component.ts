@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'forestcraft-detail',
-  templateUrl: './forestcraft-detail.component.html',
+  template: `<base-detail [craftType]="forestCraftType"></base-detail>`,
 })
 export class ForestcraftDetailComponent {
   forestCraftType: Craft = Craft.forestcraft;
-  constructor() {}
 }

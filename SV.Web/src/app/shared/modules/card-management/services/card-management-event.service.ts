@@ -11,7 +11,6 @@ export class CardManagementEventService {
     new BehaviorSubject<CardManagementEvent>(null);
   private eventObs$: Observable<CardManagementEvent> =
     this.event$.asObservable();
-  constructor() {}
 
   send(event: CardManagementEvent): void {
     this.event$.next(event);

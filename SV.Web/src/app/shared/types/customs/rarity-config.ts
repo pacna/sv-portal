@@ -1,7 +1,7 @@
 // Self
 import { Rarity } from './rarity.enum';
 
-export interface RartiyConfig {
+export type RartiyConfig = {
   type: Rarity;
   name: string;
-}
+};

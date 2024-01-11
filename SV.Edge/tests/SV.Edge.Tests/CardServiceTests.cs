@@ -48,8 +48,7 @@ public class CardServiceTests
 
         // ASSERT
         Assert.NotNull(cards);
-        Assert.Collection(cards, 
-            x => Assert.Equal(x.Craft, request.Craft),
+        Assert.Collection(cards,
             x => Assert.Equal(x.Craft, request.Craft),
             x => Assert.Equal(x.Craft, request.Craft)
         );

@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'runecraft-detail',
-  templateUrl: './runecraft-detail.component.html',
+  template: `<base-detail [craftType]="runeCraftType"></base-detail>`,
 })
 export class RunecraftDetailComponent {
   runeCraftType: Craft = Craft.runecraft;
-  constructor() {}
 }

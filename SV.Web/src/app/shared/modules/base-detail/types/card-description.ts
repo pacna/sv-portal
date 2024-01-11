@@ -1,4 +1,4 @@
-export interface CardDescription {
+export type CardDescription = {
   abilityText: string;
   flavorText: string;
-}
+};

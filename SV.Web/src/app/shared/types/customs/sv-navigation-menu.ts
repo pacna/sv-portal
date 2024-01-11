@@ -1,4 +1,4 @@
-export interface SVNavigationMenu {
+export type SVNavigationMenu = {
   routeName: string;
   routeLink: string;
-}
+};

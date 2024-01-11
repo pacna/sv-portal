@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'dragoncraft-overview',
-  templateUrl: './dragoncraft-overview.component.html',
+  template: '<base-overview [craftType]="dragonCraftType"></base-overview>',
 })
 export class DragoncraftOverviewComponent {
   dragonCraftType: Craft = Craft.dragoncraft;
-  constructor() {}
 }

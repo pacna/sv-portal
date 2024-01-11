@@ -1,9 +1,9 @@
 // Self
 import { BattleStats } from './battle-stats';
 
-export interface EvoSpecs {
+export type EvoSpecs = {
   artLocation: string;
   abilityText: string;
   battleStats: BattleStats;
   flavorText: string;
-}
+};
