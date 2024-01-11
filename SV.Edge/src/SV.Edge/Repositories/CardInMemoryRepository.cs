@@ -19,36 +19,36 @@ public class CardInMemoryRepository : ICardRepository
         cardsInMemory = new Dictionary<string, Card>();
         cardsInMemory.TryAdd(item1Id, new Card
         {
-            AbilityText = "Last Words: Put a Fairy into your hand.",
-            ArtLocation = "https://svgdb.me/assets/cards/en/C_100111010.png",
+            AbilityText = "Last Words: Gain 1 shadow.",
+            ArtLocation = "https://svgdb.me/assets/cards/en/C_101511120.png",
             AudioLocations = new List<string>
             {
-                "https://svgdb.me/assets/audio/en/vo_100111010_1.mp3",
-                "https://svgdb.me/assets/audio/en/vo_100111010_2.mp3",
-                "https://svgdb.me/assets/audio/en/vo_100111010_3.mp3",
-                "https://svgdb.me/assets/audio/en/vo_100111010_4.mp3"
+                "https://svgdb.me/assets/audio/en/vo_101511120_1.mp3",
+                "https://svgdb.me/assets/audio/en/vo_101511120_2.mp3",
+                "https://svgdb.me/assets/audio/en/vo_101511120_3.mp3",
+                "https://svgdb.me/assets/audio/en/vo_101511120_4.mp3"
             },
             BattleStats = new BattleStats
             {
                 Atk = 1,
-                Def = 1
+                Def = 2
             },
             CardPack = CardPackType.Basic,
-            Craft = CraftType.Forestcraft,
+            Craft = CraftType.Shadowcraft,
             Evo = new EvoSpecs
             {
                 AbilityText = "(Same as the unevolved form.)",
-                ArtLocation = "https://svgdb.me/assets/cards/en/E_100111010.png",
-                FlavorText = "If you try and hurt me, we'll make you regret it. But if you're a good friend, the fairies won't forget it!",
+                ArtLocation = "https://svgdb.me/assets/cards/en/E_101511120.png",
+                FlavorText = "Eternal life comes at a price: one's flesh and blood, one's feelings, one's memories. The skull beast could not even remember its old master and was condemned to spreading death for all eternity.",
                 BattleStats = new BattleStats
                 {
                     Atk = 3,
-                    Def = 3
+                    Def = 4
                 }
             },
-            FlavorText = "Fairies get lonely, so we always stick together. If you hurt me, they won't be pleased!",
+            FlavorText = "All this poor creature wanted was another hug from its master. A demon granted it eternal life in order to fulfill that final wish.",
             Id = item1Id,
-            Name = "Water Fairy",
+            Name = "Skull Beast",
             PPCost = 1,
             Rarity = RarityType.Bronze,
             Type = CardType.Follower
@@ -167,19 +167,17 @@ public class CardInMemoryRepository : ICardRepository
             cardList = cardList.Where(x => request.Types.Contains(x.Type));
         }
 
-        return Task.FromResult<List<Card>>(cardList.ToList());
+        return Task.FromResult(cardList.ToList());
     }
 
     public Task<Card> GetCardAsync(string id)
     {
-        cardsInMemory.TryGetValue(id, out Card card);
-
-        if (card == null)
+        if (cardsInMemory.TryGetValue(id, out Card card))
         {
-            return Task.FromResult<Card>(null);
+            return Task.FromResult(card);
         }
 
-        return Task.FromResult<Card>(card);
+        return Task.FromResult<Card>(null);
     }
 
     public Task<Card> AddCardAsync(Card card)
@@ -189,36 +187,34 @@ public class CardInMemoryRepository : ICardRepository
 
         cardsInMemory.TryAdd(id, card);
 
-        return Task.FromResult<Card>(card);
+        return Task.FromResult(card);
     }
 
     public Task<Card> UpdateCardAsync(string id, UpdateCardRequest request)
     {
-        cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate);
-
-        if (cardBeforeUpdate == null)
+        if (cardsInMemory.TryGetValue(id, out Card cardBeforeUpdate))
         {
-            return Task.FromResult<Card>(null);
+            cardsInMemory[id] = new Card
+            {
+                Id = id,
+                AbilityText = request.BaseEvo.AbilityText,
+                ArtLocation = request.BaseEvo.ArtLocation,
+                AudioLocations = request.AudioLocations,
+                BattleStats = request.BaseEvo.BattleStats,
+                CardPack = cardBeforeUpdate.CardPack,
+                Craft = cardBeforeUpdate.Craft,
+                Evo = request.Evolved,
+                FlavorText = request.BaseEvo.FlavorText,
+                Name = request.Name,
+                PPCost = request.PPCost,
+                Rarity = cardBeforeUpdate.Rarity,
+                Type = cardBeforeUpdate.Type
+            };
+
+            return Task.FromResult(cardsInMemory[id]);
         }
 
-        cardsInMemory[id] = new Card
-        {
-            Id = id,
-            AbilityText = request.BaseEvo.AbilityText,
-            ArtLocation = request.BaseEvo.ArtLocation,
-            AudioLocations = request.AudioLocations,
-            BattleStats = request.BaseEvo.BattleStats,
-            CardPack = cardBeforeUpdate.CardPack,
-            Craft = cardBeforeUpdate.Craft,
-            Evo = request.Evolved,
-            FlavorText = request.BaseEvo.FlavorText,
-            Name = request.Name,
-            PPCost = request.PPCost,
-            Rarity = cardBeforeUpdate.Rarity,
-            Type = cardBeforeUpdate.Type
-        };
-
-        return Task.FromResult<Card>(cardsInMemory[id]);
+        return Task.FromResult<Card>(null);
     }
 
     public Task RemoveCardAsync(string id)

@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'havencraft-detail',
-  templateUrl: './havencraft-detail.component.html',
+  template: `<base-detail [craftType]="havenCraftType"></base-detail>`,
 })
 export class HavencraftDetailComponent {
   havenCraftType: Craft = Craft.havencraft;
-  constructor() {}
 }

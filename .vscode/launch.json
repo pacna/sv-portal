@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/SV.Edge/bin/Debug/net7.0/SV.Edge.dll",
+            "program": "${workspaceFolder}/SV.Edge/src/SV.Edge/bin/Debug/net8.0/SV.Edge.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/SV.Edge",
+            "cwd": "${workspaceFolder}/SV.Edge/src/SV.Edge",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

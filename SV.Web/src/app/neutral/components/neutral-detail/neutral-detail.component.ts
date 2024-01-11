@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'neutral-detail',
-  templateUrl: './neutral-detail.component.html',
+  template: `<base-detail [craftType]="neutralType"></base-detail>`,
 })
 export class NeutralDetailComponent {
   neutralType: Craft = Craft.neutral;
-  constructor() {}
 }

@@ -1,14 +1,14 @@
 $top-nav-height: 64px;
 $nav-height: 48px;
 
-#top-nav {
+div:first-of-type {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
 
-#main-content {
+div:last-of-type {
   overflow: auto;
   position: absolute;
   top: $top-nav-height + $nav-height;
