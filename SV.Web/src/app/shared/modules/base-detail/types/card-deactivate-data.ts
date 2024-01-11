@@ -1,8 +1,8 @@
 // Self
 import { Craft } from '../../../types/customs/craft.enum';
 
-export interface CardDeactivateData {
+export type CardDeactivateData = {
   id: string;
   name: string;
   craft: Craft;
-}
+};

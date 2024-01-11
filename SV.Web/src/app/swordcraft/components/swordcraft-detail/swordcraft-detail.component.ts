@@ -6,9 +6,8 @@ import { Craft } from '@svportal/shared/types/customs';
 
 @Component({
   selector: 'swordcraft-detail',
-  templateUrl: './swordcraft-detail.component.html',
+  template: `<base-detail [craftType]="swordCraftType"></base-detail>`,
 })
 export class SwordcraftDetailComponent {
   swordCraftType: Craft = Craft.swordcraft;
-  constructor() {}
 }

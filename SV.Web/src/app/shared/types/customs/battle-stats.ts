@@ -1,4 +1,4 @@
-export interface BattleStats {
+export type BattleStats = {
   atk: number;
   def: number;
-}
+};

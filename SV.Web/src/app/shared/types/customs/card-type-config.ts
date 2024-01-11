@@ -1,7 +1,7 @@
 // Self
 import { CardType } from './card-type.enum';
 
-export interface CardTypeConfig {
+export type CardTypeConfig = {
   type: CardType;
   name: string;
-}
+};
